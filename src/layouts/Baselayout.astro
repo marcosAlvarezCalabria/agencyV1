@@ -1,0 +1,21 @@
+---
+import "../styles/global.css";
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Agencia Cusco</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo1.JPG" />
+    <meta name="description" content="Agencia de viajes y excursiones en Cusco" />
+  </head>
+  <body class="bg-bg font-sans">
+    <Navbar />
+    <main class="pt-16">
+      <slot />
+    </main>
+  </body>
+</html>
+
