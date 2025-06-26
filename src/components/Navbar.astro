@@ -1,37 +1,94 @@
 ---
 ---
-<nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50 border-b border-bg-25">
+<nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-8">
-    <div class="flex justify-between h-16 items-center">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
       <a href="/" class="flex items-center gap-2">
-        <img src="/assets/images/logo1.JPG" alt="Logo" class="h-10 w-10 rounded-full border-2 border-verde-800 shadow" />
-        <span class="font-bold text-2xl text-verde-800 tracking-tight">Agencia Cusco</span>
+        <img src="/assets/images/logo1.JPG" alt="Logo" class="h-10 w-10 rounded-full border-2 border-green-800 shadow" />
+        <span class="font-bold text-2xl text-green-800 tracking-tight">Peru Inkas Travel</span>
       </a>
+      <!-- Links desktop -->
       <div class="hidden md:flex items-center gap-6">
-        <a href="#inicio" class="text-negro font-semibold hover:text-new transition-colors duration-200">Inicio</a>
-        <a href="#nosotros" class="text-negro font-semibold hover:text-new transition-colors duration-200">Nosotros</a>
-        <a href="#viajes" class="text-negro font-semibold hover:text-new transition-colors duration-200">Viajes</a>
-        <a href="#testimonios" class="text-negro font-semibold hover:text-new transition-colors duration-200">Testimonios</a>
-        <a href="#contacto" class="text-negro font-semibold hover:text-new transition-colors duration-200">Contacto</a>
-        <a href="#reserva" class="ml-4 px-4 py-2 rounded-full bg-new text-white font-bold shadow hover:bg-naranjado-50 hover:text-negro transition-colors duration-200">Reserva</a>
+        <a href="#inicio" class="nav-underline text-gray-900 font-semibold hover:text-orange-600 transition-colors duration-200">Inicio</a>
+        <a href="#nosotros" class="nav-underline text-gray-900 font-semibold hover:text-orange-600 transition-colors duration-200">Nosotros</a>
+        <a href="#viajes" class="nav-underline text-gray-900 font-semibold hover:text-orange-600 transition-colors duration-200">Viajes</a>
+        <a href="#testimonios" class="nav-underline text-gray-900 font-semibold hover:text-orange-600 transition-colors duration-200">Testimonios</a>
+        <a href="#contacto" class="nav-underline text-gray-900 font-semibold hover:text-orange-600 transition-colors duration-200">Contacto</a>
       </div>
+      <!-- Hamburger -->
       <div class="md:hidden flex items-center">
-        <button id="menu-btn" class="text-verde-800 focus:outline-none">
-          <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="menu-btn" class="text-green-800 focus:outline-none" aria-label="Abrir menú">
+          <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </div>
   </div>
-  <!-- Menú móvil -->
-  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 bg-white/95 backdrop-blur-md border-b border-bg-25 rounded-b-xl shadow">
-    <a href="#inicio" class="block py-2 text-negro font-semibold hover:text-new">Inicio</a>
-    <a href="#nosotros" class="block py-2 text-negro font-semibold hover:text-new">Nosotros</a>
-    <a href="#viajes" class="block py-2 text-negro font-semibold hover:text-new">Viajes</a>
-    <a href="#testimonios" class="block py-2 text-negro font-semibold hover:text-new">Testimonios</a>
-    <a href="#contacto" class="block py-2 text-negro font-semibold hover:text-new">Contacto</a>
-    <a href="#reserva" class="block py-2 mt-2 rounded-full bg-new text-white font-bold text-center shadow hover:bg-naranjado-50 hover:text-negro transition-colors duration-200">Reserva</a>
-  </div>
 </nav>
+
+<!-- Overlay fuera del nav -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+<!-- Menú móvil tipo drawer inferior fuera del nav -->
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 mx-auto max-w-xl bg-gray-100 rounded-t-xl shadow z-50 px-0 pb-4 transform translate-y-full transition-transform duration-500 ease-in-out">
+  <div class="relative flex items-center h-8 mb-1">
+    <!-- Agarrador ovalado centrado -->
+    <div class="w-12 h-2 bg-gray-300 rounded-full mx-auto"></div>
+    <!-- Botón de cerrar alineado a la derecha -->
+    <button id="close-menu" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-700 text-2xl focus:outline-none" aria-label="Cerrar menú">&times;</button>
+  </div>
+  <a href="#inicio" class="block py-2 px-6 text-gray-900 font-semibold rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">Inicio</a>
+  <a href="#nosotros" class="block py-2 px-6 text-gray-900 font-semibold rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">Nosotros</a>
+  <a href="#viajes" class="block py-2 px-6 text-gray-900 font-semibold rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">Viajes</a>
+  <a href="#testimonios" class="block py-2 px-6 text-gray-900 font-semibold rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">Testimonios</a>
+  <a href="#contacto" class="block py-2 px-6 text-gray-900 font-semibold rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">Contacto</a>
+</div>
+
+<script type="module" is:inline>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-overlay');
+  const closeBtn = document.getElementById('close-menu');
+  const iconHamburger = document.getElementById('icon-hamburger');
+  const iconClose = document.getElementById('icon-close');
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    iconHamburger.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    // Asegura que translate-y-full esté quitado antes de animar
+    menu.classList.remove('translate-y-full');
+    // Forzar reflow para que la transición se aplique correctamente
+    void menu.offsetWidth;
+    menu.classList.add('translate-y-0');
+  }
+
+  function closeMenu() {
+    menu.classList.remove('translate-y-0');
+    menu.classList.add('translate-y-full');
+    iconHamburger.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    // Espera la duración de la transición antes de ocultar
+    setTimeout(() => {
+      menu.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }, 500); // 500ms igual a duration-500
+  }
+
+  btn?.addEventListener('click', () => {
+    if (menu.classList.contains('hidden') || menu.classList.contains('translate-y-full')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+  overlay?.addEventListener('click', closeMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+</script>
