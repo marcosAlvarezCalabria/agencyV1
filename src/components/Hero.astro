@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Video Scrub Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<!-- Hero -->
+<section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+  <!-- Video de fondo fijo -->
+  <video
+    id="hero-video"
+    class="fixed inset-0 w-full h-screen object-cover z-0"
+    src="/assets/videos/hero-video3.mp4"
+    preload="auto"
+    playsinline
+    muted
+    autoplay
+    style="pointer-events: none;"
+  ></video>
+  <!-- Frase centrada -->
+  <div class="relative z-20 flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-white text-3xl sm:text-5xl font-bold drop-shadow-lg">
+      Explore the heart of the Andes<br />
+      <span class="font-light">with local guides</span>
+    </h1>
+  </div>
+</section>
+
+<div class="h-24"></div>
+
+<!-- Sección 1 -->
+<section id="nosotros" class="relative z-30 bg-white py-32 flex items-center justify-center">
+  <div class="text-3xl font-bold text-gray-800">Sección 1: Contenido sobre el video</div>
+</section>
+
+<div class="h-24"></div>
+
+<!-- Sección 2 -->
+<section id="viajes" class="relative z-30 bg-orange-100 py-32 flex items-center justify-center">
+  <div class="text-3xl font-bold text-orange-700">Sección 2: Más contenido</div>
+</section>
+
+<div class="h-24"></div>
+
+<!-- Cards -->
+<section id="destacados" class="relative z-30 bg-gray-50 py-20">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl sm:text-4xl font-bold text-center mb-12 text-green-800">Nuestros viajes destacados</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+        <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/hero-video.mp4" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="relative z-20 p-6 flex flex-col items-center">
+          <img src="/assets/images/logoInkasTravel.jpg" alt="Cusco Mágico" class="w-20 h-20 rounded-full object-cover mb-4 border-2 border-green-800 bg-white/80">
+          <h3 class="text-xl font-semibold text-white mb-2">Cusco Mágico</h3>
+          <p class="text-gray-100 text-center mb-4">Descubre la ciudad imperial y sus maravillas con guías locales apasionados.</p>
+          <button class="bg-green-800 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Ver más</button>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+        <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/hero-video2.mp4" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="relative z-20 p-6 flex flex-col items-center">
+          <img src="/assets/images/logo1.JPG" alt="Aventura Andina" class="w-20 h-20 rounded-full object-cover mb-4 border-2 border-orange-500 bg-white/80">
+          <h3 class="text-xl font-semibold text-white mb-2">Aventura Andina</h3>
+          <p class="text-gray-100 text-center mb-4">Trekking, cultura y paisajes únicos en rutas poco exploradas de los Andes.</p>
+          <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-400 transition">Ver más</button>
+        </div>
+      </div>
+      <!-- Card 3: Montaña de Siete Colores -->
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+        <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/video7colores.mp4" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <div class="relative z-20 p-6 flex flex-col items-center">
+          <img src="/assets/images/logo.png" alt="Montaña de Siete Colores" class="w-20 h-20 rounded-full object-cover mb-4 border-2 border-yellow-400 bg-white/80">
+          <h3 class="text-xl font-semibold text-yellow-600 mb-2">Montaña de Siete Colores</h3>
+          <p class="text-gray-100 text-center mb-4">Vive la experiencia única de la Vinicunca con guías locales expertos.</p>
+          <button class="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-300 transition">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  // Hero video: solo lógica de quedarse en el último frame
+  window.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+      heroVideo.loop = false;
+      heroVideo.currentTime = 0;
+      heroVideo.addEventListener('ended', () => {
+        heroVideo.pause();
+        heroVideo.currentTime = heroVideo.duration;
+      });
+    }
+
+    // Cards: reproducir solo si son visibles
+    const cardVideos = document.querySelectorAll('.card-video');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.3 }); // 30% visible para activar
+
+      cardVideos.forEach(video => {
+        observer.observe(video);
+      });
+    } else {
+      // Fallback: reproduce todos si no hay soporte
+      cardVideos.forEach(video => video.play());
+    }
+  });
+</script>
+
+</body>
+</html>
