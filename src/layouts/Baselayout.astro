@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from '../components/Navbar.astro';
+import Header from '../components/Header.astro';
 ---
 
 <html lang="es">
@@ -11,13 +12,12 @@ import Navbar from '../components/Navbar.astro';
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo1.JPG" />
     <meta name="description" content="Agencia de viajes y excursiones en Cusco" />
   </head>
-  <body class="bg-bg font-sans">
-    <Navbar />
-    <main class="pt-16">
+  <body class="bg-bg text-negro">
+    <Header />
+    <main>
       <slot />
     </main>
     <section class="relative w-full h-screen flex items-center justify-center overflow-hidden">
     </section>
   </body>
 </html>
-

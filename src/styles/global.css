@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap');
 @import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
 }
 
-html, body, #root {
-  height: 100
+:root {
+  --negro: #1a1a1a;
+  --verde-800: #065036;
+  --green-900: #2b4e3f;
+  --verde-50: #dbe6d1;
+  --bg-darker: #dbe6d1; /* Alias para verde-50 */
+  --bg: #f3f1ef;
+  --bg-25: #fefaf7;
+  --naranjado-25: #f1e1d6;
+  --naranjado-50: #e9b18a;
+  --new: #ec623e; /* CTA */
+  --rosa: #f0dddb;
+  --dark-nature: #7c3a24;
+
+  /* Definimos la fuente por defecto */
+  font-family: 'Figtree', sans-serif;
+}
+
+html, body {
+  height: 100%;
 }

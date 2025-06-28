@@ -1,0 +1,126 @@
+---
+// src/components/Header.astro
+// Este componente no necesita props por ahora.
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-16 px-6 sm:px-8 transition-transform duration-300 ease-in-out">
+  <!-- Logo a la izquierda -->
+  <a href="/" class="flex items-center gap-3 z-10">
+    <img src="/assets/images/logo1.JPG" alt="Logo" class="h-10 w-10 rounded-full border-2 border-white/50 shadow" />
+    <span class="font-bold text-xl text-white tracking-tight hidden sm:block">Peru Inkas Travel</span>
+  </a>
+
+  <!-- Contenedor del menú a la derecha -->
+  <div class="flex items-center">
+    <!-- Menú de escritorio (ovalado) - Oculto en móvil -->
+    <div class="hidden md:flex">
+      <nav 
+        id="menu-container" 
+        class="flex items-center gap-x-4 sm:gap-x-8 px-4 sm:px-6 py-2 border rounded-full transition-all duration-300 ease-in-out border-transparent"
+      >
+        <a href="#inicio" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Inicio</a>
+        <a href="#nosotros" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Nosotros</a>
+        <a href="#viajes" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Viajes</a>
+        <a href="#destacados" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Destacados</a>
+      </nav>
+    </div>
+
+    <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
+    <div class="md:hidden flex items-center">
+      <button id="menu-btn" class="text-white focus:outline-none" aria-label="Abrir menú">
+        <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Overlay y Menú móvil que sale desde abajo -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 bg-bg-25/90 backdrop-blur-lg rounded-t-2xl shadow-lg z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out">
+  <div class="w-12 h-1.5 bg-verde-50 rounded-full mx-auto mb-4"></div>
+  <a href="#inicio" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Inicio</a>
+  <a href="#nosotros" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Nosotros</a>
+  <a href="#viajes" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Viajes</a>
+  <a href="#destacados" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Destacados</a>
+</div>
+
+<script is:inline>
+  // --- Elementos del DOM ---
+  const mainHeader = document.getElementById('main-header');
+  const menuContainer = document.getElementById('menu-container');
+  const btn = document.getElementById('menu-btn'); // Botón de hamburguesa
+  const menu = document.getElementById('mobile-menu'); // Panel del menú móvil
+  const overlay = document.getElementById('mobile-overlay'); // Fondo oscuro
+  const iconHamburger = document.getElementById('icon-hamburger');
+  const iconClose = document.getElementById('icon-close');
+  const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+
+  // --- Estado ---
+  let lastScrollY = window.scrollY;
+
+  // --- Lógica de Scroll ---
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // 1. Ocultar/mostrar header al hacer scroll
+    // Se oculta al bajar, se muestra al subir (y no está en la parte superior)
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      mainHeader.classList.add('-translate-y-full');
+    } else if (currentScrollY < lastScrollY) {
+      mainHeader.classList.remove('-translate-y-full');
+    }
+    lastScrollY = currentScrollY;
+
+    // 2. Cambiar fondo del menú de escritorio
+    if (menuContainer) {
+      if (currentScrollY > 10) {
+        menuContainer.classList.add('bg-green-900/50', 'backdrop-blur-lg', 'border-verde-50/30');
+        menuContainer.classList.remove('border-transparent');
+      } else {
+        menuContainer.classList.remove('bg-green-900/50', 'backdrop-blur-lg', 'border-verde-50/30');
+        menuContainer.classList.add('border-transparent');
+      }
+    }
+  };
+
+  // --- Lógica del Menú Móvil ---
+  function openMenu() {
+    menu.classList.remove('translate-y-full');
+    overlay.classList.remove('hidden');
+    iconHamburger.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+  }
+
+  function closeMenu() {
+    menu.classList.add('translate-y-full');
+    overlay.classList.add('hidden');
+    iconHamburger.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    document.body.style.overflow = ''; // Restaurar scroll del fondo
+  }
+
+  // --- Event Listeners ---
+  window.addEventListener('scroll', handleScroll);
+
+  btn?.addEventListener('click', () => {
+    if (menu.classList.contains('translate-y-full')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+
+  overlay?.addEventListener('click', closeMenu); // Cierra al hacer clic fuera
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu); // Cierra al hacer clic en un enlace
+  });
+
+  // Estado inicial al cargar la página
+  document.addEventListener('DOMContentLoaded', handleScroll);
+</script>
