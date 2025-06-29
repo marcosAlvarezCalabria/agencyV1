@@ -5,9 +5,8 @@
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-16 px-6 sm:px-8 transition-transform duration-300 ease-in-out">
   <!-- Logo a la izquierda -->
-  <a href="/" class="flex items-center gap-3 z-10">
-    <img src="/assets/images/logo1.JPG" alt="Logo" class="h-10 w-10 rounded-full border-2 border-white/50 shadow" />
-    <span class="font-bold text-xl text-white tracking-tight hidden sm:block">Peru Inkas Travel</span>
+  <a href="/" class="flex items-center z-10">
+    <img src="/assets/images/logoInkasTravel.png" alt="Logo" class="w-15 h-auto" />
   </a>
 
   <!-- Contenedor del menú a la derecha -->
@@ -16,18 +15,18 @@
     <div class="hidden md:flex">
       <nav 
         id="menu-container" 
-        class="flex items-center gap-x-4 sm:gap-x-8 px-4 sm:px-6 py-2 border rounded-full transition-all duration-300 ease-in-out border-transparent"
+        class="flex items-center gap-x-4 sm:gap-x-8 px-4 sm:px-6 py-2 border rounded-full transition-all duration-300 ease-in-out bg-[#372212] border-[#d2a530]"
       >
-        <a href="#inicio" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Inicio</a>
-        <a href="#nosotros" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Nosotros</a>
-        <a href="#viajes" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Viajes</a>
-        <a href="#destacados" class="text-white text-sm sm:text-base font-medium hover:text-bg-darker transition-colors">Destacados</a>
+        <a href="#inicio" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">Inicio</a>
+        <a href="#nosotros" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">Nosotros</a>
+        <a href="#viajes" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">Viajes</a>
+        <a href="#destacados" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">Destacados</a>
       </nav>
     </div>
 
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
     <div class="md:hidden flex items-center">
-      <button id="menu-btn" class="text-white focus:outline-none" aria-label="Abrir menú">
+      <button id="menu-btn" class="text-[#d2a530] focus:outline-none" aria-label="Abrir menú">
         <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -43,26 +42,36 @@
 <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 <div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 bg-bg-25/90 backdrop-blur-lg rounded-t-2xl shadow-lg z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out">
   <div class="w-12 h-1.5 bg-verde-50 rounded-full mx-auto mb-4"></div>
-  <a href="#inicio" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Inicio</a>
-  <a href="#nosotros" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Nosotros</a>
-  <a href="#viajes" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Viajes</a>
-  <a href="#destacados" class="block text-center py-3 text-negro font-semibold rounded-lg hover:bg-naranjado-25 transition-colors">Destacados</a>
+  <a href="#inicio" class="block text-center py-3 text-stone-800 font-semibold rounded-lg hover:bg-stone-200/70 transition-colors duration-300">Inicio</a>
+  <a href="#nosotros" class="block text-center py-3 text-stone-800 font-semibold rounded-lg hover:bg-stone-200/70 transition-colors duration-300">Nosotros</a>
+  <a href="#viajes" class="block text-center py-3 text-stone-800 font-semibold rounded-lg hover:bg-stone-200/70 transition-colors duration-300">Viajes</a>
+  <a href="#destacados" class="block text-center py-3 text-stone-800 font-semibold rounded-lg hover:bg-stone-200/70 transition-colors duration-300">Destacados</a>
 </div>
 
 <script is:inline>
   // --- Elementos del DOM ---
   const mainHeader = document.getElementById('main-header');
-  const menuContainer = document.getElementById('menu-container');
   const btn = document.getElementById('menu-btn'); // Botón de hamburguesa
   const menu = document.getElementById('mobile-menu'); // Panel del menú móvil
   const overlay = document.getElementById('mobile-overlay'); // Fondo oscuro
   const iconHamburger = document.getElementById('icon-hamburger');
   const iconClose = document.getElementById('icon-close');
+  
+  // --- Elementos para el indicador de sección activa ---
+  const desktopLinks = document.querySelectorAll('#menu-container a');
   const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+  const allLinks = [...desktopLinks, ...mobileMenuLinks];
+  // Obtenemos las secciones a partir de los enlaces del menú
+  const sections = Array.from(desktopLinks)
+    .map(link => {
+      const href = link.getAttribute('href');
+      // Nos aseguramos de que es un ancla interna
+      return href.startsWith('#') ? document.querySelector(href) : null;
+    })
+    .filter(section => section); // Filtramos nulos si algún enlace no va a una sección
 
   // --- Estado ---
   let lastScrollY = window.scrollY;
-
   // --- Lógica de Scroll ---
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -76,16 +85,50 @@
     }
     lastScrollY = currentScrollY;
 
-    // 2. Cambiar fondo del menú de escritorio
-    if (menuContainer) {
-      if (currentScrollY > 10) {
-        menuContainer.classList.add('bg-green-900/50', 'backdrop-blur-lg', 'border-verde-50/30');
-        menuContainer.classList.remove('border-transparent');
-      } else {
-        menuContainer.classList.remove('bg-green-900/50', 'backdrop-blur-lg', 'border-verde-50/30');
-        menuContainer.classList.add('border-transparent');
+    // 2. Actualizar el indicador de sección activa
+    updateActiveLink();
+  };
+
+  const updateActiveLink = () => {
+    if (sections.length === 0) return;
+
+    const scrollY = window.scrollY;
+    // Un desplazamiento para que la sección se marque como activa un poco antes de llegar al borde superior.
+    // Usamos la altura del header como referencia + un margen.
+    const headerOffset = mainHeader.offsetHeight + 40; 
+
+    let currentSectionId = sections.length > 0 ? sections[0].id : '';
+
+    // Encontramos la última sección cuya parte superior ya hemos pasado
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - headerOffset;
+      if (scrollY >= sectionTop) {
+        currentSectionId = section.id;
       }
-    }
+    });
+
+    // Aplicamos los estilos a todos los enlaces (móvil y escritorio)
+    allLinks.forEach(link => {
+      const linkSectionId = link.getAttribute('href').substring(1);
+
+      if (linkSectionId === currentSectionId) {
+        // Es el enlace activo
+        if (link.closest('#menu-container')) { // Enlace de escritorio
+          link.classList.remove('text-stone-200');
+          link.classList.add('text-[#d2a530]');
+        } else { // Enlace móvil
+          link.classList.add('bg-stone-200/70');
+        }
+      } else {
+        // No es el enlace activo
+        if (link.closest('#menu-container')) { // Enlace de escritorio
+          link.classList.remove('text-[#d2a530]');
+          link.classList.add('text-stone-200');
+        } else { // Enlace móvil
+          link.classList.remove('bg-stone-200/70');
+        }
+      }
+    });
   };
 
   // --- Lógica del Menú Móvil ---
@@ -122,5 +165,5 @@
   });
 
   // Estado inicial al cargar la página
-  document.addEventListener('DOMContentLoaded', handleScroll);
+  window.addEventListener('load', handleScroll); // Usamos 'load' para asegurar que las alturas de las secciones son correctas
 </script>

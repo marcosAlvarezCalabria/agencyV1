@@ -23,9 +23,12 @@
   ></video>
   <!-- Frase centrada -->
   <div class="relative z-20 flex flex-col items-center justify-center text-center px-4">
-    <h1 class="text-white text-3xl sm:text-5xl font-bold drop-shadow-lg">
-      Explore the heart of the Andes<br />
-      <span class="font-light">with local guides</span>
+    <h1 
+      id="hero-title"
+      class="text-[#372212] uppercase text-3xl sm:text-5xl font-extrabold leading-relaxed drop-shadow-lg opacity-0 translate-y-4 transition-all duration-[2000ms] ease-out"
+    >
+      Explore the heart of the <span class="text-[#d2a530]">Andes</span><br />
+      <span class="font-normal capitalize text-stone-700">with local guides</span>
     </h1>
   </div>
 </section>
@@ -89,8 +92,15 @@
 </section>
 
 <script is:inline>
-  // Hero video: solo lógica de quedarse en el último frame
   window.addEventListener('DOMContentLoaded', () => {
+    // --- Animación de entrada para el texto del Hero ---
+    const heroTitle = document.getElementById('hero-title');
+    // Esperamos 2.5 segundos antes de iniciar la animación
+    setTimeout(() => {
+      heroTitle?.classList.remove('opacity-0', 'translate-y-4');
+    }, 2500);
+
+    // --- Lógica del video del Hero ---
     const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
       heroVideo.loop = false;
@@ -101,7 +111,7 @@
       });
     }
 
-    // Cards: reproducir solo si son visibles
+    // --- Lógica de videos en las Cards ---
     const cardVideos = document.querySelectorAll('.card-video');
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
