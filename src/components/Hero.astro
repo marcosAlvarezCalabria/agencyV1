@@ -13,7 +13,6 @@
     preload="auto"
     playsinline
     muted
-    autoplay
     style="pointer-events: none;"
   ></video>
   <!-- Frase centrada -->
@@ -99,6 +98,9 @@
         if (contentHasBeenShown) return; // Evita que se ejecute dos veces
         contentHasBeenShown = true;
 
+        // Inicia la reproducción del video en el momento justo
+        heroVideo.play();
+
         // Oculta el preloader
         preloader.classList.add('opacity-0');
         setTimeout(() => {
@@ -108,7 +110,7 @@
         // Muestra el texto un poco después de que el preloader empiece a desaparecer
         setTimeout(() => {
           heroTitle.classList.remove('opacity-0', 'translate-y-4');
-        }, 300); // Retraso de 2 segundos
+        }, 300); // Retraso más corto para una transición fluida
       };
 
       // Espera a que el video esté listo para reproducirse
