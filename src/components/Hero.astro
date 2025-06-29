@@ -2,7 +2,7 @@
 <section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
   <!-- Pantalla de carga para el video -->
   <div id="video-preloader" class="fixed inset-0 z-30 flex items-center justify-center bg-orange-50 transition-opacity duration-500 ease-in-out">
-    <img src="/assets/images/logoInkasTravel.png" alt="Cargando..." class="w-40 animate-pulse" />
+    <img src="/assets/images/logoInkasTravel.png" alt="Cargando..." class="w-32 animate-pulse" />
   </div>
 
   <!-- Video de fondo fijo -->
@@ -88,29 +88,38 @@
 
 <script is:inline>
   window.addEventListener('DOMContentLoaded', () => {
-    // --- Animación de entrada para el texto del Hero ---
     const heroTitle = document.getElementById('hero-title');
-    // Inicia la animación un poco después de que el preloader empiece a desaparecer.
-    setTimeout(() => {
-      heroTitle?.classList.remove('opacity-0', 'translate-y-4');
-    }, 1200);
-
-    // --- Lógica de la pantalla de carga ---
     const preloader = document.getElementById('video-preloader');
-    if (preloader) {
-      // Ocultamos el preloader después de 1s para una carga más rápida.
-      setTimeout(() => {
+    const heroVideo = document.getElementById('hero-video');
+
+    if (heroVideo && preloader && heroTitle) {
+      let contentHasBeenShown = false;
+
+      const showContent = () => {
+        if (contentHasBeenShown) return; // Evita que se ejecute dos veces
+        contentHasBeenShown = true;
+
+        // Oculta el preloader
         preloader.classList.add('opacity-0');
         setTimeout(() => {
           preloader.style.display = 'none';
         }, 500); // Coincide con la duración de la transición
-      }, 1000); // El preloader se muestra por 1 segundo.
+
+        // Muestra el texto un poco después de que el preloader empiece a desaparecer
+        setTimeout(() => {
+          heroTitle.classList.remove('opacity-0', 'translate-y-4');
+        }, 1000); // Retraso de un segundo
+      };
+
+      // Espera a que el video esté listo para reproducirse
+      heroVideo.addEventListener('canplay', showContent, { once: true });
+
+      // Fallback: si el video tarda más de 4 segundos, muestra todo de todos modos
+      setTimeout(showContent, 4000);
     }
     
     // --- Lógica del video del Hero ---
-    const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
-
       // Lógica de reproducción del video
       heroVideo.loop = false;
       heroVideo.currentTime = 0;
