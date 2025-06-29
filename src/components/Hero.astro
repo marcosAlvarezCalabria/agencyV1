@@ -98,6 +98,14 @@
         if (contentHasBeenShown) return; // Evita que se ejecute dos veces
         contentHasBeenShown = true;
 
+        // En móvil, acelera el primer segundo del video para llegar antes a la acción.
+        if (window.innerWidth < 768) { // 768px es el breakpoint 'md' de Tailwind
+          heroVideo.playbackRate = 2.5; // Reproduce más del doble de rápido
+          setTimeout(() => {
+            heroVideo.playbackRate = 1; // Vuelve a la velocidad normal después de 1 segundo
+          }, 200);
+        }
+
         // Inicia la reproducción del video en el momento justo
         heroVideo.play();
 
