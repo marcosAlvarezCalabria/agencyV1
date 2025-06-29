@@ -1,10 +1,15 @@
 <!-- Hero -->
 <section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+  <!-- Pantalla de carga para el video -->
+  <div id="video-preloader" class="fixed inset-0 z-30 flex items-center justify-center bg-orange-50 transition-opacity duration-500 ease-in-out">
+    <img src="/assets/images/logoInkasTravel.png" alt="Cargando..." class="w-40 animate-pulse" />
+  </div>
+
   <!-- Video de fondo fijo -->
   <video
     id="hero-video"
     class="fixed inset-0 w-full h-screen object-cover z-0"
-    src="/assets/videos/hero-video-origin.mp4"
+    src="/assets/videos/hero-video3.mp4"
     preload="auto"
     playsinline
     muted
@@ -90,9 +95,22 @@
       heroTitle?.classList.remove('opacity-0', 'translate-y-4');
     }, 2500);
 
-    // --- Lógica del video del Hero ---
+    // --- Lógica del video del Hero y su pantalla de carga ---
     const heroVideo = document.getElementById('hero-video');
+    const preloader = document.getElementById('video-preloader');
+
     if (heroVideo) {
+      // Si hay preloader, lo gestionamos
+      if (preloader) {
+        heroVideo.addEventListener('canplay', () => {
+          preloader.classList.add('opacity-0');
+          setTimeout(() => {
+            preloader.style.display = 'none';
+          }, 500); // Coincide con la duración de la transición
+        });
+      }
+
+      // Lógica de reproducción del video
       heroVideo.loop = false;
       heroVideo.currentTime = 0;
       heroVideo.addEventListener('ended', () => {
