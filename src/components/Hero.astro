@@ -95,20 +95,21 @@
       heroTitle?.classList.remove('opacity-0', 'translate-y-4');
     }, 2500);
 
-    // --- Lógica del video del Hero y su pantalla de carga ---
-    const heroVideo = document.getElementById('hero-video');
+    // --- Lógica de la pantalla de carga ---
     const preloader = document.getElementById('video-preloader');
-
+    if (preloader) {
+      // Ocultamos el preloader después de 1.5s, sin esperar al video.
+      setTimeout(() => {
+        preloader.classList.add('opacity-0');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500); // Coincide con la duración de la transición
+      }, 1500); // El preloader se muestra por 1.5 segundos
+    }
+    
+    // --- Lógica del video del Hero ---
+    const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
-      // Si hay preloader, lo gestionamos
-      if (preloader) {
-        heroVideo.addEventListener('canplay', () => {
-          preloader.classList.add('opacity-0');
-          setTimeout(() => {
-            preloader.style.display = 'none';
-          }, 500); // Coincide con la duración de la transición
-        });
-      }
 
       // Lógica de reproducción del video
       heroVideo.loop = false;
