@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "trips": "Trips",
+    "featured": "Featured"
+  },
+  "hero": {
+    "title_line1": "Explore the heart of the",
+    "title_line2": "Andes",
+    "subtitle": "with local guides"
+  },
+  "featured": {
+    "title": "Our Featured Trips"
+  }
+}

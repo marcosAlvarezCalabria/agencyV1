@@ -10,7 +10,7 @@
   </a>
 
   <!-- Contenedor del menú a la derecha -->
-  <div class="flex items-center">
+  <div class="flex items-center gap-x-4">
     <!-- Menú de escritorio (ovalado) - Oculto en móvil -->
     <div class="hidden md:flex">
       <nav 
@@ -24,8 +24,39 @@
       </nav>
     </div>
 
+    <!-- Botón para cambiar de idioma (Escritorio) -->
+    <div class="hidden md:block">
+      <button id="lang-btn-peru-desktop" class="w-8 h-8 rounded-md overflow-hidden border-2 border-[#d2a530] shadow-md transition-transform hover:scale-110" aria-label="Cambiar a Inglés">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="w-full h-full">
+          <path fill="#D80027" d="M0 0h21v21H0z"/>
+          <path fill="#FFF" d="M7 0h7v21H7z"/>
+        </svg>
+      </button>
+      <button id="lang-btn-uk-desktop" class="w-8 h-8 rounded-md overflow-hidden border-2 border-[#d2a530] shadow-md transition-transform hover:scale-110 hidden" aria-label="Cambiar a Español">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="w-full h-full">
+          <path fill="#00247d" d="M0 0h21v21H0z"/>
+          <path d="m0 0 21 21M21 0 0 21" stroke="#fff" stroke-width="3"/><path d="m0 0 21 21M21 0 0 21" stroke="#cf142b" stroke-width="2"/><path d="M10.5 0v21M0 10.5h21" stroke="#fff" stroke-width="5"/><path d="M10.5 0v21M0 10.5h21" stroke="#cf142b" stroke-width="3"/>
+        </svg>
+      </button>
+    </div>
+
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
-    <div class="md:hidden flex items-center">
+    <div class="md:hidden flex items-center gap-x-2">
+      <!-- Botón para cambiar de idioma (Móvil) -->
+      <div class="mt-1">
+        <button id="lang-btn-peru-mobile" class="w-6 h-6 rounded-md overflow-hidden border-2 border-[#d2a530] shadow-md" aria-label="Cambiar a Inglés">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="w-full h-full">
+            <path fill="#D80027" d="M0 0h21v21H0z"/>
+            <path fill="#FFF" d="M7 0h7v21H7z"/>
+          </svg>
+        </button>
+        <button id="lang-btn-uk-mobile" class="w-6 h-6 rounded-md overflow-hidden border-2 border-[#d2a530] shadow-md hidden" aria-label="Cambiar a Español">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" class="w-full h-full">
+            <path fill="#00247d" d="M0 0h21v21H0z"/>
+            <path d="m0 0 21 21M21 0 0 21" stroke="#fff" stroke-width="3"/><path d="m0 0 21 21M21 0 0 21" stroke="#cf142b" stroke-width="2"/><path d="M10.5 0v21M0 10.5h21" stroke="#fff" stroke-width="5"/><path d="M10.5 0v21M0 10.5h21" stroke="#cf142b" stroke-width="3"/>
+          </svg>
+        </button>
+      </div>
       <button id="menu-btn" class="text-[#d2a530] focus:outline-none" aria-label="Abrir menú">
         <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -169,6 +200,24 @@
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', closeMenu); // Cierra al hacer clic en un enlace
   });
+
+  // --- Lógica del cambio de bandera ---
+  const langBtnPeruDesktop = document.getElementById('lang-btn-peru-desktop');
+  const langBtnUkDesktop = document.getElementById('lang-btn-uk-desktop');
+  const langBtnPeruMobile = document.getElementById('lang-btn-peru-mobile');
+  const langBtnUkMobile = document.getElementById('lang-btn-uk-mobile');
+
+  function toggleFlags() {
+    langBtnPeruDesktop?.classList.toggle('hidden');
+    langBtnUkDesktop?.classList.toggle('hidden');
+    langBtnPeruMobile?.classList.toggle('hidden');
+    langBtnUkMobile?.classList.toggle('hidden');
+  }
+
+  langBtnPeruDesktop?.addEventListener('click', toggleFlags);
+  langBtnUkDesktop?.addEventListener('click', toggleFlags);
+  langBtnPeruMobile?.addEventListener('click', toggleFlags);
+  langBtnUkMobile?.addEventListener('click', toggleFlags);
 
   // Estado inicial al cargar la página
   window.addEventListener('load', handleScroll); // Usamos 'load' para asegurar que las alturas de las secciones son correctas

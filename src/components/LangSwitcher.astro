@@ -1,0 +1,8 @@
+---
+// src/components/LangSwitcher.astro
+const currentLang = Astro.cookies.get('lang')?.value || 'en';
+---
+<div class="flex gap-2 my-4">
+  <a href="/?lang=en" class="px-3 py-1 bg-blue-200 rounded">English</a>
+  <a href="/?lang=es" class="px-3 py-1 bg-green-200 rounded">Español</a>
+</div>

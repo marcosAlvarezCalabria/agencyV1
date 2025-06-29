@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "trips": "Viajes",
+    "featured": "Destacados"
+  },
+  "hero": {
+    "title_line1": "Explora el corazón de los",
+    "title_line2": "Andes",
+    "subtitle": "con guías locales"
+  },
+  "featured": {
+    "title": "Nuestros Viajes Destacados"
+  }
+}
