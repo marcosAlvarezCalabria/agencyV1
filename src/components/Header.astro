@@ -2,8 +2,17 @@
 // src/components/Header.astro
 const { lang = 'es', t } = Astro.props;
 const oppositeLang = lang === 'es' ? 'en' : 'es';
-const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/';
-const switchTo = `/${oppositeLang}${currentPath}`;
+
+// Genera la URL para el idioma alternativo.
+// Si estamos en 'es' (ej: / o /nosotros), el enlace será a '/en' o '/en/nosotros'.
+// Si estamos en 'en' (ej: /en o /en/nosotros), el enlace será a '/' o '/nosotros'.
+let switchTo;
+if (lang === 'es') {
+  const path = Astro.url.pathname === '/' ? '' : Astro.url.pathname;
+  switchTo = `/en${path}`;
+} else {
+  switchTo = Astro.url.pathname.replace(/^\/en/, '') || '/';
+}
 ---
 
 <header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-16 px-6 sm:px-8 transition-transform duration-300 ease-in-out">

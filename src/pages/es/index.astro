@@ -1,12 +1,4 @@
 ---
-import BaseLayout from '../../layouts/Baselayout.astro';
-import Hero from '../../components/Hero.astro';
-import { useTranslations } from '../../i18n/utils.js';
-
-const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
-const t = useTranslations(lang);
+// Esta página redirige permanentemente a la ruta raíz, que sirve el idioma por defecto (español).
+return Astro.redirect('/', 301);
 ---
-
-<BaseLayout>
-  <Hero t={t} />
-</BaseLayout>
