@@ -1,3 +1,7 @@
+---
+const { t } = Astro.props;
+---
+
 <!-- Hero -->
 <section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
   <!-- Pantalla de carga para el video -->
@@ -21,9 +25,11 @@
       id="hero-title"
       class="text-[#372212] uppercase text-3xl sm:text-5xl font-extrabold leading-relaxed drop-shadow-lg opacity-0 translate-y-4 transition-all duration-[2000ms] ease-out"
     >
-      Explore the heart of the <span class="text-[#d2a530]">Andes</span><br />
-      <span class="font-normal capitalize text-stone-700">with local guides</span>
+      {t('hero.title_line1')} <span class="text-[#d2a530]">{t('hero.title_line2')}</span>
     </h1>
+    <p class="text-lg sm:text-2xl text-stone-700 mt-4 opacity-0 translate-y-4 transition-all duration-[2000ms] ease-out delay-[500ms]">
+      {t('hero.subtitle')}
+    </p>
   </div>
 </section>
 

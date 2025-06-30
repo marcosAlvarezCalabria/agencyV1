@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../layouts/Baselayout.astro';
 import Hero from '../../components/Hero.astro';
+import { useTranslations } from '../../i18n/utils.js';
+
+const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
+const t = useTranslations(lang);
 ---
 
 <BaseLayout>
-  <Hero/></Hero>
+  <Hero t={t} />
 </BaseLayout>
