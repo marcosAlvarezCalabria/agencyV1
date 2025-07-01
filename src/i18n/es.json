@@ -2,7 +2,7 @@
   "nav": {
     "home": "Inicio",
     "about": "Nosotros",
-    "trips": "Viajes",
+    "tours": "Tours",
     "featured": "Destacados"
   },
   "hero": {
@@ -11,6 +11,13 @@
     "subtitle": "con guías locales"
   },
   "featured": {
-    "title": "Nuestros Viajes Destacados"
+    "title": "Nuestros Tours Destacados"
+  },
+  "tours": {
+    "title": "Nuestros Tours"
+  },
+  "card": {
+    "includes": "Incluye",
+    "seeMore": "Ver más detalles"
   }
 }

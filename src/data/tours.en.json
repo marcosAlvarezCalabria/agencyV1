@@ -1,0 +1,147 @@
+[
+  {
+    "name": "Inca Jungle + Machupicchu",
+    "duration": "4d/3n or 3d/2n",
+    "description": "Combined adventure of biking, hiking, and culture to Machupicchu.",
+    "includes": [
+      "Tourist transportation",
+      "Bicycle",
+      "Meals",
+      "Train",
+      "3 nights in a hostel",
+      "Entrance to Machupicchu",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Salkantay Trek + Machupicchu",
+    "duration": "4d/3n or 3d/2n",
+    "description": "Trekking along one of the most famous paths to Machupicchu.",
+    "includes": [
+      "Tourist transportation",
+      "Tents and mats",
+      "Meals",
+      "Train",
+      "Accommodation in Aguas Calientes",
+      "Entrance to Machupicchu",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Sacred Valley + Machupicchu",
+    "duration": "2d/1n",
+    "description": "Discover the Sacred Valley and end in Machupicchu.",
+    "includes": [
+      "Sacred Valley Tour",
+      "Buffet lunch",
+      "Train",
+      "1 night in a hostel in Aguas Calientes",
+      "Entrance to Machupicchu",
+      "Round-trip bus",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Machupicchu by Car",
+    "duration": "2d/1n",
+    "description": "Access Machupicchu by road, the most economical option.",
+    "includes": [
+      "Tourist transportation",
+      "3 meals",
+      "1 night in a hostel in Aguas Calientes",
+      "Entrance to Machupicchu",
+      "Bus",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "South Valley",
+    "duration": "8:30 am – 3:00 pm",
+    "description": "Cultural circuit with Inca, pre-Inca, and colonial architecture.",
+    "includes": [
+      "Tourist transportation",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "7 Ausangate Lagoons",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Natural excursion in the Ausangate area.",
+    "includes": [
+      "Transportation",
+      "Entrance fee",
+      "Hotel pickup",
+      "Breakfast and lunch",
+      "Professional guide",
+      "Oxygen"
+    ]
+  },
+  {
+    "name": "Rainbow Mountain",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Hike to the famous Vinicunca, the rainbow mountain.",
+    "includes": [
+      "Transportation",
+      "Entrance fee",
+      "Hotel pickup",
+      "Breakfast and lunch",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Queswachaca Bridge – Tupac Amaru",
+    "duration": "08:40 – 17:00",
+    "description": "Discover the Inca hanging bridge and the history of Tupac Amaru.",
+    "includes": [
+      "Transportation",
+      "Entrance fee",
+      "Meals",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "River Rafting",
+    "duration": "All day",
+    "description": "Safe and fun water adventure in rivers near Cusco.",
+    "includes": [
+      "Tourist transportation",
+      "Complete rafting equipment",
+      "Lunch",
+      "Hot drinks",
+      "Sauna",
+      "Zipline",
+      "Professional guide / captain"
+    ]
+  },
+  {
+    "name": "ATVs Maras – Moray",
+    "duration": "7 am – 1 pm / 1 pm – 6 pm",
+    "description": "ATV tour through Maras, Moray, and high Andean lagoons.",
+    "includes": [
+      "Tourist transportation",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Humantay Lagoon",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Trekking to one of the most impressive lagoons in Cusco.",
+    "includes": [
+      "Transportation",
+      "Breakfast",
+      "Lunch",
+      "Oxygen",
+      "Walking sticks",
+      "Professional guide"
+    ]
+  },
+  {
+    "name": "Maras – Moray (traditional tour)",
+    "duration": "8:30 am – 3:00 pm",
+    "description": "Archaeological and cultural visit to emblematic sites of the Sacred Valley.",
+    "includes": [
+      "Tourist transportation",
+      "Professional guide"
+    ]
+  }
+]

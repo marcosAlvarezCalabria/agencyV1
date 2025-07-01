@@ -1,0 +1,147 @@
+[
+  {
+    "name": "Inca Jungle + Machupicchu",
+    "duration": "4d/3n o 3d/2n",
+    "description": "Aventura combinada de bicicleta, caminata y cultura hasta Machupicchu.",
+    "includes": [
+      "Transporte turístico",
+      "Bicicleta",
+      "Alimentación",
+      "Tren",
+      "3 noches de hostal",
+      "Entrada a Machupicchu",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Salkantay Trek + Machupicchu",
+    "duration": "4d/3n o 3d/2n",
+    "description": "Trekking por uno de los caminos más famosos hacia Machupicchu.",
+    "includes": [
+      "Transporte turístico",
+      "Carpas y matras",
+      "Alimentación",
+      "Tren",
+      "Alojamiento en Aguas Calientes",
+      "Entrada a Machupicchu",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Valle Sagrado + Machupicchu",
+    "duration": "2d/1n",
+    "description": "Descubre el Valle Sagrado y termina en Machupicchu.",
+    "includes": [
+      "Tour Valle Sagrado",
+      "Almuerzo buffet",
+      "Tren",
+      "1 noche de hostal en Aguas Calientes",
+      "Entrada a Machupicchu",
+      "Bus ida y vuelta",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Machupicchu by Car",
+    "duration": "2d/1n",
+    "description": "Accede a Machupicchu por carretera, opción más económica.",
+    "includes": [
+      "Transporte turístico",
+      "3 comidas",
+      "1 noche de hostal en Aguas Calientes",
+      "Entrada a Machupicchu",
+      "Bus",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Valle Sur",
+    "duration": "8:30 am – 3:00 pm",
+    "description": "Circuito cultural con arquitectura inca, pre-inca y colonial.",
+    "includes": [
+      "Transporte turístico",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "7 Lagunas Ausangate",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Excursión natural en la zona del Ausangate.",
+    "includes": [
+      "Transporte",
+      "Ingreso",
+      "Recojo desde el hotel",
+      "Desayuno y almuerzo",
+      "Guía profesional",
+      "Oxígeno"
+    ]
+  },
+  {
+    "name": "Montaña de Colores",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Caminata hacia la famosa Vinicunca, la montaña arcoíris.",
+    "includes": [
+      "Transporte",
+      "Ingreso",
+      "Recojo desde el hotel",
+      "Desayuno y almuerzo",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Puente Queswachaca – Tupac Amaru",
+    "duration": "08:40 – 17:00",
+    "description": "Descubre el puente colgante inca y la historia de Tupac Amaru.",
+    "includes": [
+      "Transporte",
+      "Ingreso",
+      "Alimentación",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "River Rafting (Canotaje)",
+    "duration": "Todo el día",
+    "description": "Aventura acuática segura y divertida en ríos cercanos a Cusco.",
+    "includes": [
+      "Transporte turístico",
+      "Equipo de rafting completo",
+      "Almuerzo",
+      "Bebidas calientes",
+      "Sauna",
+      "Zipline",
+      "Guía profesional / capitán"
+    ]
+  },
+  {
+    "name": "Cuatrimotos Maras – Moray",
+    "duration": "7 am – 1 pm / 1 pm – 6 pm",
+    "description": "Recorrido en cuatrimotos por Maras, Moray y lagunas altoandinas.",
+    "includes": [
+      "Transporte turístico",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Laguna Humantay",
+    "duration": "4:30 am – 6:00 pm",
+    "description": "Trekking a una de las lagunas más impresionantes del Cusco.",
+    "includes": [
+      "Transporte",
+      "Desayuno",
+      "Almuerzo",
+      "Oxígeno",
+      "Bastones",
+      "Guía profesional"
+    ]
+  },
+  {
+    "name": "Maras – Moray (tour tradicional)",
+    "duration": "8:30 am – 3:00 pm",
+    "description": "Visita arqueológica y cultural por sitios emblemáticos del Valle Sagrado.",
+    "includes": [
+      "Transporte turístico",
+      "Guía profesional"
+    ]
+  }
+]

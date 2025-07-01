@@ -22,5 +22,40 @@ const t = useTranslations(lang);
     <main>
       <slot />
     </main>
+
+    <!-- Botón para volver arriba -->
+    <a
+      id="scrollToTopBtn"
+      href="#"
+      class="fixed bottom-4 right-4 z-50 hidden h-8 w-8 items-center justify-center rounded-full bg-[#d2a530] text-[#372212] shadow-lg transition-all duration-300 hover:bg-[#372212] hover:text-[#d2a530] focus:outline-none focus:ring-2 focus:ring-[#d2a530] focus:ring-offset-2"
+      aria-label="Volver al inicio"
+    >
+      <span class="material-symbols-outlined text-xl">
+        keyboard_arrow_up
+      </span>
+    </a>
+
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        if (scrollToTopBtn) {
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+              scrollToTopBtn.classList.remove('hidden');
+              scrollToTopBtn.classList.add('flex');
+            } else {
+              scrollToTopBtn.classList.remove('flex');
+              scrollToTopBtn.classList.add('hidden');
+            }
+          });
+
+          scrollToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "about": "About Us",
-    "trips": "Trips",
+    "tours": "Tours",
     "featured": "Featured"
   },
   "hero": {
@@ -11,6 +11,13 @@
     "subtitle": "with local guides"
   },
   "featured": {
-    "title": "Our Featured Trips"
+    "title": "Our Featured Tours"
+  },
+  "tours": {
+    "title": "Our Tours"
+  },
+  "card": {
+    "includes": "Includes",
+    "seeMore": "See more details"
   }
 }

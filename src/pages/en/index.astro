@@ -3,11 +3,12 @@
 import BaseLayout from '../../layouts/Baselayout.astro';
 import Hero from '../../components/Hero.astro';
 import { useTranslations } from '../../i18n/utils.js';
+import toursEn from '../../data/tours.en.json';
 
 const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
 const t = useTranslations(lang);
 ---
 
 <BaseLayout>
-  <Hero t={t} />
+  <Hero t={t} tours={toursEn} />
 </BaseLayout>
