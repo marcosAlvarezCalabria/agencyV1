@@ -28,9 +28,19 @@ html, body {
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.25); /* Aumenté la opacidad del fondo */
-  backdrop-filter: blur(15px); /* Aumenté el desenfoque */
-  -webkit-backdrop-filter: blur(15px);
+  /* Estilos por defecto (móvil) - más opaco */
+  background: rgba(255, 255, 255, 0.5); /* Opacidad aumentada para móvil */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para desktop (a partir de 768px) - menos opaco */
+@media (min-width: 768px) {
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.25); /* Opacidad original para desktop */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
 }
