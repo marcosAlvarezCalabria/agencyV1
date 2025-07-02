@@ -1,6 +1,6 @@
 ---
 const { t, tours } = Astro.props;
-import Tours from '../components/Tours.astro';
+import ToursCarousel from '../components/ToursCarousel.astro';
 
 ---
 
@@ -45,9 +45,10 @@ import Tours from '../components/Tours.astro';
 <div class="h-24"></div>
 
 <!-- Sección 2 -->
-<section id="tours" class="relative z-30 bg-orange-100 py-32 flex items-center justify-center">
-  <div>
-    <Tours tours={tours} t={t} />
+<section id="tours" class="relative z-30 bg-orange-100 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12 text-primary">{t('tours.title')}</h2>
+    <ToursCarousel tours={tours} t={t} />
   </div>
 </section>
 

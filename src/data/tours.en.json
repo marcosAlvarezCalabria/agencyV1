@@ -11,7 +11,8 @@
       "3 nights in a hostel",
       "Entrance to Machupicchu",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Salkantay Trek + Machupicchu",
@@ -25,7 +26,8 @@
       "Accommodation in Aguas Calientes",
       "Entrance to Machupicchu",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Sacred Valley + Machupicchu",
@@ -39,7 +41,8 @@
       "Entrance to Machupicchu",
       "Round-trip bus",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Machupicchu by Car",
@@ -52,7 +55,8 @@
       "Entrance to Machupicchu",
       "Bus",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "South Valley",
@@ -61,7 +65,8 @@
     "includes": [
       "Tourist transportation",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "7 Ausangate Lagoons",
@@ -74,7 +79,8 @@
       "Breakfast and lunch",
       "Professional guide",
       "Oxygen"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Rainbow Mountain",
@@ -86,7 +92,8 @@
       "Hotel pickup",
       "Breakfast and lunch",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Queswachaca Bridge – Tupac Amaru",
@@ -97,7 +104,8 @@
       "Entrance fee",
       "Meals",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "River Rafting",
@@ -111,7 +119,8 @@
       "Sauna",
       "Zipline",
       "Professional guide / captain"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "ATVs Maras – Moray",
@@ -120,7 +129,8 @@
     "includes": [
       "Tourist transportation",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Humantay Lagoon",
@@ -133,7 +143,8 @@
       "Oxygen",
       "Walking sticks",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Maras – Moray (traditional tour)",
@@ -142,6 +153,7 @@
     "includes": [
       "Tourist transportation",
       "Professional guide"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   }
 ]

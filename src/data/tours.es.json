@@ -11,7 +11,8 @@
       "3 noches de hostal",
       "Entrada a Machupicchu",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Salkantay Trek + Machupicchu",
@@ -25,7 +26,8 @@
       "Alojamiento en Aguas Calientes",
       "Entrada a Machupicchu",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Valle Sagrado + Machupicchu",
@@ -39,7 +41,8 @@
       "Entrada a Machupicchu",
       "Bus ida y vuelta",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Machupicchu by Car",
@@ -52,7 +55,8 @@
       "Entrada a Machupicchu",
       "Bus",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Valle Sur",
@@ -61,7 +65,8 @@
     "includes": [
       "Transporte turístico",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "7 Lagunas Ausangate",
@@ -74,7 +79,8 @@
       "Desayuno y almuerzo",
       "Guía profesional",
       "Oxígeno"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Montaña de Colores",
@@ -86,7 +92,8 @@
       "Recojo desde el hotel",
       "Desayuno y almuerzo",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Puente Queswachaca – Tupac Amaru",
@@ -97,7 +104,8 @@
       "Ingreso",
       "Alimentación",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "River Rafting (Canotaje)",
@@ -111,7 +119,8 @@
       "Sauna",
       "Zipline",
       "Guía profesional / capitán"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Cuatrimotos Maras – Moray",
@@ -120,7 +129,8 @@
     "includes": [
       "Transporte turístico",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Laguna Humantay",
@@ -133,7 +143,8 @@
       "Oxígeno",
       "Bastones",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Maras – Moray (tour tradicional)",
@@ -142,6 +153,7 @@
     "includes": [
       "Transporte turístico",
       "Guía profesional"
-    ]
+    ],
+    "image": "/assets/images/salkantay.jpg"
   }
 ]
