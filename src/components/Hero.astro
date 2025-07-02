@@ -1,6 +1,7 @@
 ---
 const { t, tours } = Astro.props;
 import ToursCarousel from '../components/ToursCarousel.astro';
+import TourCard from '../components/TourCard.astro';
 
 ---
 
@@ -29,27 +30,55 @@ import ToursCarousel from '../components/ToursCarousel.astro';
     >
       {t('hero.title_line1')} <span class="text-[#d2a530]">{t('hero.title_line2')}</span>
     </h1>
-    <p class="text-lg sm:text-2xl text-stone-700 mt-4 opacity-0 translate-y-4 transition-all duration-[2000ms] ease-out delay-[500ms]">
+    <p id="hero-subtitle" class="text-xl sm:text-3xl text-stone-700 font-semibold mt-4 opacity-0 translate-y-4 transition-all duration-[2000ms] ease-out delay-[500ms]">
       {t('hero.subtitle')}
     </p>
+    <a
+      id="hero-button"
+      href="https://wa.me/51984302905?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20ayuda%20para%20planificar%20mi%20viaje."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="glassmorphism text-[#372212] font-bold py-3 px-6 rounded-lg mt-12 inline-block hover:bg-white/20 transition-all duration-300 opacity-0 translate-y-4 ease-out delay-[1000ms]"
+      style="transition-duration: 2000ms;"
+    >
+      {t('hero.unlock_trip_planning')}
+    </a>
   </div>
 </section>
 
 <div class="h-24"></div>
 
-<!-- Sección 1 -->
+<!-- Sección Tours -->
+<section id="tours" class="relative z-30 py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-12 text-stone-100 drop-shadow-lg">{t('tours.title')}</h2>
+
+    <!-- Grid para Desktop -->
+    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {tours.map(tour => (
+        <TourCard 
+          name={tour.name}
+          duration={tour.duration}
+          description={tour.description}
+          includes={tour.includes}
+          image={tour.image}
+          t={t}
+        />
+      ))}
+    </div>
+
+    <!-- Carousel para Móvil -->
+    <div class="md:hidden">
+      <ToursCarousel tours={tours} t={t} />
+    </div>
+  </div>
+</section>
+
+<div class="h-24"></div>
+
+<!-- Sección Nosotros -->
 <section id="nosotros" class="relative z-30 bg-white py-32 flex items-center justify-center">
   <div class="text-3xl font-bold text-gray-800">Sección 1: Contenido sobre el video</div>
-</section>
-
-<div class="h-24"></div>
-
-<!-- Sección 2 -->
-<section id="tours" class="relative z-30 bg-orange-100 py-16">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-12 text-primary">{t('tours.title')}</h2>
-    <ToursCarousel tours={tours} t={t} />
-  </div>
 </section>
 
 <div class="h-24"></div>
@@ -99,10 +128,12 @@ import ToursCarousel from '../components/ToursCarousel.astro';
 <script is:inline>
   window.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.getElementById('hero-title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+    const heroButton = document.getElementById('hero-button');
     const preloader = document.getElementById('video-preloader');
     const heroVideo = document.getElementById('hero-video');
 
-    if (heroVideo && preloader && heroTitle) {
+    if (heroVideo && preloader && heroTitle && heroSubtitle && heroButton) {
       let contentHasBeenShown = false;
 
       const showContent = () => {
@@ -129,6 +160,8 @@ import ToursCarousel from '../components/ToursCarousel.astro';
         // Muestra el texto un poco después de que el preloader empiece a desaparecer
         setTimeout(() => {
           heroTitle.classList.remove('opacity-0', 'translate-y-4');
+          heroSubtitle.classList.remove('opacity-0', 'translate-y-4');
+          heroButton.classList.remove('opacity-0', 'translate-y-4');
         }, 2000); // Retraso de 2 segundos
       };
 

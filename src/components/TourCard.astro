@@ -2,23 +2,23 @@
 const { name, duration, description, includes, t, image } = Astro.props;
 ---
 
-<div class="border rounded-lg shadow-lg p-6 bg-white flex flex-col h-full">
+<div class="glassmorphism rounded-lg p-6 flex flex-col h-full text-stone-800 border border-white/20">
   <img src={image} alt={name} class="w-full h-48 object-cover rounded-md mb-4" loading="lazy" />
-  <h3 class="text-2xl font-bold text-primary mb-2">{name}</h3>
-  <p class="text-sm text-gray-500 mb-4 flex items-center">
+  <h3 class="text-2xl font-bold text-stone-900 mb-2">{name}</h3>
+  <p class="text-sm text-stone-700 mb-4 flex items-center">
     <span class="material-symbols-outlined mr-2">schedule</span>
     {duration}
   </p>
-  <p class="text-gray-700 mb-4 flex-grow">{description}</p>
+  <p class="text-stone-700 mb-4 flex-grow">{description}</p>
   <div>
-    <h4 class="font-semibold mb-2">{t('card.includes')}:</h4>
-    <ul class="list-disc list-inside text-gray-600 space-y-1">
+    <h4 class="font-semibold text-stone-900 mb-2">{t('card.includes')}:</h4>
+    <ul class="list-disc list-inside text-stone-700 space-y-1">
       {includes.map((item) => (
         <li>{item}</li>
       ))}
     </ul>
   </div>
-  <a href="#" class="mt-6 bg-accent text-white font-bold py-2 px-4 rounded-md hover:bg-accent-dark transition-colors text-center w-full block">
+  <a href="#" class="mt-6 bg-[#d2a530] text-white font-bold py-2 px-4 rounded-md hover:bg-[#b88a2a] transition-colors text-center w-full block">
     {t('card.seeMore')}
   </a>
 </div>

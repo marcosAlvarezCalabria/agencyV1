@@ -26,3 +26,12 @@ html {
 html, body {
   height: 100%;
 }
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25); /* Aumenté la opacidad del fondo */
+  backdrop-filter: blur(15px); /* Aumenté el desenfoque */
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}

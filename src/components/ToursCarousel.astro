@@ -3,7 +3,6 @@ import 'swiper/css';
 import 'swiper/css/thumbs';
 
 const { tours } = Astro.props;
-const initial = 1; // El segundo slide (índice 1)
 ---
 
 <!-- Carousel principal -->
@@ -19,23 +18,9 @@ const initial = 1; // El segundo slide (índice 1)
   </div>
 </div>
 
-<!-- Carousel de thumbnails (debe ir antes para obtener la instancia) -->
-<div class="swiper thumbs-swiper mb-4">
-  <div class="swiper-wrapper">
-    {tours.map(tour => (
-      <div class="swiper-slide">
-        <div class="p-2 bg-white rounded shadow text-center text-xs font-semibold thumb-content">
-          {tour.name}
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
+
 
 <style>
-  .main-swiper .swiper-slide {
-    transition: all 0.3s;
-  }
   .swiper-slide-thumb-active .thumb-content {
     background: #f59e42;
     color: #fff;
@@ -55,22 +40,10 @@ const initial = 1; // El segundo slide (índice 1)
     spaceBetween: 10,
     watchSlidesProgress: true,
     navigation: false,
-    initialSlide: 1, // Mostrar el segundo slide al cargar
   });
 
   new Swiper('.main-swiper', {
     slidesPerView: 1,
-    centeredSlides: true,
-    spaceBetween: 0,
-    initialSlide: 1, // Mostrar el segundo slide al cargar
-    breakpoints: {
-      1024: {
-        slidesPerView: 3,
-        centeredSlides: true,
-        spaceBetween: 48,
-        initialSlide: 1, // Asegura el segundo slide en desktop también
-      }
-    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
