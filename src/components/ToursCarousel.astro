@@ -1,26 +1,41 @@
 ---
+import TourCardCarousel from './TourCardCarousel.astro';
 import 'swiper/css';
 import 'swiper/css/thumbs';
 
-const { tours } = Astro.props;
+const { tours, lang, t } = Astro.props;
 ---
 
 <!-- Carousel principal -->
-<div class="swiper main-swiper mb-6">
-  <div class="swiper-wrapper">
-    {tours.map(tour => (
-      <div class="swiper-slide">
-        <img src={tour.image} alt={tour.name} class="w-full h-64 object-cover rounded-xl mb-2" />
-        <h3 class="text-xl font-bold text-center">{tour.name}</h3>
-        <p class="text-center text-gray-500 text-sm">{tour.duration}</p>
+<div class="swiper main-swiper mb-6 relative">
+  <div class="swiper-wrapper pb-10"> <!-- Añadido pb-10 para dar espacio a la paginación -->
+    {tours && tours.map(tour => (
+      <div class="swiper-slide p-2"> <!-- Añadido p-2 para que la sombra de la card no se corte -->
+        <TourCardCarousel tour={tour} lang={lang} t={t} />
       </div>
     ))}
   </div>
+  <!-- Botones de Navegación -->
+  <div class="swiper-button-prev text-[#d2a530] opacity-0 translate-y-4 transition-all duration-300"></div>
+  <div class="swiper-button-next text-[#d2a530] opacity-0 translate-y-4 transition-all duration-300"></div>
+
+  <!-- Paginación -->
+  <div class="swiper-pagination"></div>
 </div>
 
 
 
 <style>
+  .swiper-button-next, .swiper-button-prev {
+    color: #d2a530; /* Color dorado para las flechas */
+    top: 50%; /* Ajuste vertical si es necesario */
+    transform: translateY(-50%);
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #d2a530; /* Color dorado para la paginación activa */
+  }
+
   .swiper-slide-thumb-active .thumb-content {
     background: #f59e42;
     color: #fff;
@@ -30,26 +45,55 @@ const { tours } = Astro.props;
 
 <script>
   import Swiper from 'swiper';
-  import { Thumbs, Navigation } from 'swiper/modules';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
 
-  Swiper.use([Thumbs, Navigation]);
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiperContainer = document.querySelector('.main-swiper');
+    if (!swiperContainer) return;
 
-  let thumbsSwiper;
-  thumbsSwiper = new Swiper('.thumbs-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 10,
-    watchSlidesProgress: true,
-    navigation: false,
-  });
+    const swiper = new Swiper(swiperContainer, {
+      modules: [Navigation, Pagination],
+      loop: true,
+      slidesPerView: 1.4,
+      centeredSlides: true,
+      spaceBetween: 16,
+      initialSlide: 1,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
 
-  new Swiper('.main-swiper', {
-    slidesPerView: 1,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: thumbsSwiper,
-    },
+    const nextBtn = swiperContainer.querySelector('.swiper-button-next');
+    const prevBtn = swiperContainer.querySelector('.swiper-button-prev');
+    let inactivityTimer;
+
+    const hideButtons = () => {
+      nextBtn?.classList.add('opacity-0', 'translate-y-4');
+      prevBtn?.classList.add('opacity-0', 'translate-y-4');
+    };
+
+    const showButtons = () => {
+      nextBtn?.classList.remove('opacity-0', 'translate-y-4');
+      prevBtn?.classList.remove('opacity-0', 'translate-y-4');
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(hideButtons, 500); // Ocultar después de 500ms
+    };
+
+    // Mostrar botones al interactuar con el carrusel
+    swiperContainer.addEventListener('mousemove', showButtons);
+    swiperContainer.addEventListener('touchstart', showButtons, { passive: true });
+
+    // Ocultar botones cuando el ratón sale del carrusel
+    swiperContainer.addEventListener('mouseleave', hideButtons);
+
+    // Iniciar el ciclo la primera vez
+    showButtons();
   });
 </script>

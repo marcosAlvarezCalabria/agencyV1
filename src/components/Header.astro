@@ -27,7 +27,7 @@ if (lang === 'es') {
     <div class="hidden md:flex">
       <nav 
         id="menu-container" 
-        class="flex items-center gap-x-4 sm:gap-x-8 px-4 sm:px-6 py-2 border rounded-full transition-all duration-300 ease-in-out border-[#d2a530] glassmorphism"
+        class="flex items-center gap-x-4 sm:gap-x-8 px-4 sm:px-6 py-2 rounded-full transition-all duration-300 ease-in-out glassmorphism"
       >
         <a href="#inicio" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.home')}</a>
         <a href="#nosotros" class="text-stone-200 text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.about')}</a>
@@ -38,7 +38,7 @@ if (lang === 'es') {
 
     <!-- Selector de idioma (escritorio) -->
     <div class="hidden md:flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 border rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 glassmorphism border-[#d2a530] text-stone-200 hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
+      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 glassmorphism text-stone-200 hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
         <span class="material-symbols-outlined !text-lg">
           language
         </span>
@@ -49,7 +49,7 @@ if (lang === 'es') {
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
     <div class="md:hidden flex items-center gap-x-3">
       <!-- Selector de idioma (móvil) -->
-      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 border rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-300 glassmorphism border-[#d2a530] text-stone-200 hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
+      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-300 glassmorphism hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
         <span class="material-symbols-outlined !text-sm">
           language
         </span>
