@@ -52,15 +52,15 @@ const { tours, lang, t } = Astro.props;
   import 'swiper/css/pagination';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const swiperContainer = document.querySelector('.main-swiper');
+    const swiperContainer = document.querySelector('.main-swiper') as HTMLElement;
     if (!swiperContainer) return;
 
     const swiper = new Swiper(swiperContainer, {
       modules: [Navigation, Pagination],
       loop: true,
-      slidesPerView: 1.4,
+      slidesPerView: 1.2,
       centeredSlides: true,
-      spaceBetween: 16,
+      spaceBetween: 8,
       initialSlide: 1,
       navigation: {
         nextEl: '.swiper-button-next',
