@@ -42,15 +42,7 @@ const { tours, lang, t } = Astro.props;
     box-shadow: 0 0 0 2px #f59e42;
   }
 
-  /* Overlay del modal para móvil: opacidad más alta en pantallas pequeñas */
-  #carousel-modal-overlay {
-    background: rgba(0,0,0,0.85); /* Más oscuro por defecto */
-  }
-  @media (min-width: 768px) {
-    #carousel-modal-overlay {
-      background: rgba(0,0,0,0.6); /* Menos opaco en desktop */
-    }
-  }
+  
 </style>
 
 <script>

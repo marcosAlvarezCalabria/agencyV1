@@ -29,7 +29,7 @@ html, body {
 
 .glassmorphism {
   /* Estilos por defecto (móvil) - más opaco */
-  background: rgba(255, 255, 255, 0.6); /* Opacidad aumentada para móvil */
+  background: rgba(255, 255, 255, 0.9); /* Opacidad aumentada para móvil */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;

@@ -36,12 +36,12 @@ if (typeof window !== 'undefined') {
     document.querySelectorAll('.tour-card-desktop').forEach(card => {
       card.addEventListener('click', function (e) {
         // No abrir modal si se hace click en el botón de WhatsApp
-        if (e.target.closest('.whatsapp-btn')) return;
+        if (e.target && (e.target as Element).closest('.whatsapp-btn')) return;
         // Obtener datos de la card
         const name = card.getAttribute('data-name');
         const duration = card.getAttribute('data-duration');
         const description = card.getAttribute('data-description');
-        const includes = card.getAttribute('data-includes').split('||');
+        const includes = card.getAttribute('data-includes')?.split('||') || [];
         const image = card.getAttribute('data-image');
         const whatsapp = card.getAttribute('data-whatsapp');
         // Crear modal
@@ -71,11 +71,15 @@ if (typeof window !== 'undefined') {
           </div>
         `;
         // Cerrar modal
-        document.getElementById('close-modal-btn-desktop').onclick = closeModal;
-        document.getElementById('desktop-modal-overlay').onclick = closeModal;
+        const closeBtn = document.getElementById('close-modal-btn-desktop');
+        const overlay = document.getElementById('desktop-modal-overlay');
+        if (closeBtn) closeBtn.onclick = closeModal;
+        if (overlay) overlay.onclick = closeModal;
         document.body.style.overflow = 'hidden';
         function closeModal() {
-          modalRoot.innerHTML = '';
+          if (modalRoot) {
+            modalRoot.innerHTML = '';
+          }
           document.body.style.overflow = '';
         }
       });
