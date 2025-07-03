@@ -25,5 +25,13 @@
     "subtitle": "About Us",
     "title": "Meet Katy and her story",
     "description": "A proud Cusqueña, Katy started her adventure agency with the mission to share the true beauty of Peru. With over 10 years guiding in the region, she has earned the trust of travelers through her local knowledge and authentic experiences."
+  },
+  "contact": {
+    "title": "Our Office",
+    "address": "Calle Triunfo 392, Office 211CC",
+    "city": "Cusco, Peru",
+    "phone": "+51 984 775 784",
+    "email": "peruinkastravel@hotmail.com",
+    "visitUs": "Visit Us"
   }
 }

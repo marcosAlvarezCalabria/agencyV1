@@ -25,5 +25,13 @@
     "subtitle": "Sobre Nosotros",
     "title": "Conoce a Katy y su historia",
     "description": "Orgullosa cusqueña, Katy comenzó su agencia de aventuras con la misión de compartir la verdadera belleza del Perú. Con más de 10 años guiando en la región, se ha ganado la confianza de viajeros por su conocimiento local y sus experiencias auténticas."
+  },
+  "contact": {
+    "title": "Nuestra Oficina",
+    "address": "Calle Triunfo 392, Oficina 211CC",
+    "city": "Cusco, Perú",
+    "phone": "+51 984 775 784",
+    "email": "peruinkastravel@hotmail.com",
+    "visitUs": "Visítanos"
   }
 }
