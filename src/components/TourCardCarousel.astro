@@ -43,7 +43,8 @@ if (typeof window !== 'undefined') {
         const name = card.getAttribute('data-name');
         const duration = card.getAttribute('data-duration');
         const description = card.getAttribute('data-description');
-        const includes = card.getAttribute('data-includes').split('||');
+        const includesAttr = card.getAttribute('data-includes');
+        const includes = includesAttr ? includesAttr.split('||') : [];
         const image = card.getAttribute('data-image');
         const whatsapp = card.getAttribute('data-whatsapp');
         // Crear modal
