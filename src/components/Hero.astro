@@ -200,5 +200,23 @@ import AboutCard from '../components/AboutCard.astro';
       // Fallback: reproduce todos si no hay soporte
       cardVideos.forEach(video => video.play());
     }
+
+    // --- Scroll automático al detectar interacción ---
+    let scrollTriggered = false;
+    const scrollToTours = () => {
+      if (scrollTriggered) return;
+      scrollTriggered = true;
+      const toursSection = document.getElementById('tours');
+      if (toursSection) {
+        const y = toursSection.getBoundingClientRect().top + window.scrollY - 24; // Ajuste para compensar el hueco
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+    // Detectar primer toque o scroll manual
+    window.addEventListener('touchstart', scrollToTours, { once: true });
+    window.addEventListener('wheel', scrollToTours, { once: true });
+    window.addEventListener('keydown', (e) => {
+      if ([32, 33, 34, 35, 36, 38, 40].includes(e.keyCode)) scrollToTours(); // teclas de navegación
+    }, { once: true });
   });
 </script>
