@@ -129,94 +129,58 @@ import AboutCard from '../components/AboutCard.astro';
     const preloader = document.getElementById('video-preloader');
     const heroVideo = document.getElementById('hero-video');
 
+    // Animación de entrada y preloader
     if (heroVideo && preloader && heroTitle && heroSubtitle && heroButton) {
-      let contentHasBeenShown = false;
-
+      let shown = false;
       const showContent = () => {
-        if (contentHasBeenShown) return; // Evita que se ejecute dos veces
-        contentHasBeenShown = true;
-
-        // En móvil, acelera el primer segundo del video para llegar antes a la acción.
-        if (window.innerWidth < 768) { // 768px es el breakpoint 'md' de Tailwind
-          heroVideo.playbackRate = 2.5; // Reproduce más del doble de rápido
-          setTimeout(() => {
-            heroVideo.playbackRate = 1; // Vuelve a la velocidad normal después de 1 segundo
-          }, 200);
+        if (shown) return;
+        shown = true;
+        if (window.innerWidth < 768) {
+          heroVideo.playbackRate = 2.5;
+          setTimeout(() => { heroVideo.playbackRate = 1; }, 200);
         }
-
-        // Inicia la reproducción del video en el momento justo
         heroVideo.play();
-
-        // Oculta el preloader
         preloader.classList.add('opacity-0');
-        setTimeout(() => {
-          preloader.style.display = 'none';
-        }, 500); // Coincide con la duración de la transición
-
-        // Muestra el texto un poco después de que el preloader empiece a desaparecer
+        setTimeout(() => { preloader.style.display = 'none'; }, 500);
         setTimeout(() => {
           heroTitle.classList.remove('opacity-0', 'translate-y-4');
           heroSubtitle.classList.remove('opacity-0', 'translate-y-4');
           heroButton.classList.remove('opacity-0', 'translate-y-4');
-        }, 2000); // Retraso de 2 segundos
+        }, 2000);
       };
-
-      // Espera a que el video esté listo para reproducirse
       heroVideo.addEventListener('canplay', showContent, { once: true });
-
-      // Fallback: si el video tarda más de 4 segundos, muestra todo de todos modos
       setTimeout(showContent, 4000);
     }
-    
-    // --- Lógica del video del Hero ---
-    if (heroVideo) {
-      // Lógica de reproducción del video
-      heroVideo.loop = false;
-      heroVideo.currentTime = 0;
-      heroVideo.addEventListener('ended', () => {
-        heroVideo.pause();
-        heroVideo.currentTime = heroVideo.duration;
-      });
-    }
 
-    // --- Lógica de videos en las Cards ---
+    // Videos en cards: solo reproducir si son visibles
     const cardVideos = document.querySelectorAll('.card-video');
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const video = entry.target;
-          if (entry.isIntersecting) {
-            video.play();
-          } else {
-            video.pause();
-          }
+          if (entry.isIntersecting) video.play(); else video.pause();
         });
-      }, { threshold: 0.3 }); // 30% visible para activar
-
-      cardVideos.forEach(video => {
-        observer.observe(video);
-      });
+      }, { threshold: 0.3 });
+      cardVideos.forEach(video => observer.observe(video));
     } else {
-      // Fallback: reproduce todos si no hay soporte
       cardVideos.forEach(video => video.play());
     }
 
-    // --- Scroll automático al detectar interacción ---
+    // Scroll automático al detectar interacción
     let scrollTriggered = false;
     const scrollToTours = () => {
       if (scrollTriggered) return;
       scrollTriggered = true;
       const toursSection = document.getElementById('tours');
       if (toursSection) {
-        const y = toursSection.getBoundingClientRect().top + window.scrollY - 24; // Ajuste para compensar el hueco
+        const y = toursSection.getBoundingClientRect().top + window.scrollY - 24;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     };
-    // Detectar primer toque o scroll manual
     window.addEventListener('touchstart', scrollToTours, { once: true });
     window.addEventListener('wheel', scrollToTours, { once: true });
     window.addEventListener('keydown', (e) => {
-      if ([32, 33, 34, 35, 36, 38, 40].includes(e.keyCode)) scrollToTours(); // teclas de navegación
+      if ([32, 33, 34, 35, 36, 38, 40].includes(e.keyCode)) scrollToTours();
     }, { once: true });
   });
 </script>
