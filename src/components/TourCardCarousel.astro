@@ -6,65 +6,101 @@ if (!tour) {
 }
 const { name, duration, description, includes, image } = tour;
 const whatsappLink = `https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`;
+const cardId = `carousel-card-${name.replace(/\s+/g, '').toLowerCase()}`;
 ---
 
-
-  <div class="tour-card-carousel bg-white/30 backdrop-blur-md rounded-md p-4 flex flex-col h-full text-stone-800 shadow-inner overflow-hidden border border-solid border-white/40">
-    <img src={image} alt={name} class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
-    <h3 class="text-xl font-bold text-stone-900 mb-2">{name}</h3>
-    <p class="text-sm text-stone-700 mb-4 flex items-center">
-      <span class="material-symbols-outlined mr-2 text-base">schedule</span>
-      {duration}
-    </p>
-    <div class="text-sm text-stone-700 mb-4 flex-grow">
-      <p>{description}</p>
-    </div>
-
-    <!-- Botón para expandir -->
-    <button class="expand-button mt-auto mb-3 text-sm font-semibold text-stone-600 hover:text-stone-900 transition-colors flex items-center justify-center">
-      {t('card.moreInfo')}
-      <span class="material-symbols-outlined ml-1 icon-plus">add_circle</span>
-      <span class="material-symbols-outlined ml-1 icon-minus hidden">remove_circle</span>
-    </button>
-
-    <!-- Contenido expandible -->
-    <div class="expandable-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-      <div class="pt-2 pb-4 border-t border-stone-300/50">
-        <h4 class="font-semibold text-stone-900 mb-2">{t('card.includes')}:</h4>
-        <ul class="list-disc list-inside text-sm text-stone-700 space-y-1">
-          {includes && includes.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
-    <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="mt-auto bg-[#d2a530] text-white font-bold py-2 px-4 rounded-md hover:bg-[#b88a2a] transition-colors text-center w-full block">
-      {t('card.bookNow')}
-    </a>
+<div id={cardId}
+  class="tour-card-carousel bg-white/30 backdrop-blur-md rounded-md p-4 flex flex-col h-full text-stone-800 shadow-inner overflow-hidden border border-solid border-white/40 cursor-pointer"
+  data-name={name}
+  data-duration={duration}
+  data-description={description}
+  data-includes={includes.join('||')}
+  data-image={image}
+  data-whatsapp={whatsappLink}
+>
+  <img src={image} alt={name} class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
+  <h3 class="text-xl font-bold text-stone-900 mb-2">{name}</h3>
+  <p class="text-sm text-stone-700 mb-4 flex items-center">
+    <span class="material-symbols-outlined mr-2 text-base">schedule</span>
+    {duration}
+  </p>
+  <div class="text-sm text-stone-700 mb-4 flex-grow">
+    <p>{description}</p>
   </div>
+  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="mt-auto bg-[#d2a530] text-white font-bold py-2 px-4 rounded-md hover:bg-[#b88a2a] transition-colors text-center w-full block whatsapp-btn">
+    {t('card.bookNow')}
+  </a>
+</div>
 
 <script>
-  document.querySelectorAll('.tour-card-carousel').forEach(card => {
-    const button = card.querySelector('.expand-button');
-    const content = card.querySelector('.expandable-content');
-    const iconPlus = card.querySelector('.icon-plus');
-    const iconMinus = card.querySelector('.icon-minus');
-
-    if (button && content) {
-      button.addEventListener('click', () => {
-        const isOpen = content.classList.toggle('is-open');
-        
-        if (isOpen) {
-          content.style.maxHeight = content.scrollHeight + "px";
-          iconPlus.classList.add('hidden');
-          iconMinus.classList.remove('hidden');
-        } else {
-          content.style.maxHeight = "0";
-          iconPlus.classList.remove('hidden');
-          iconMinus.classList.add('hidden');
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.tour-card-carousel').forEach(card => {
+      card.addEventListener('click', function (e) {
+        // No abrir modal si se hace click en el botón de WhatsApp
+        if (e.target.closest('.whatsapp-btn')) return;
+        // Obtener datos de la card
+        const name = card.getAttribute('data-name');
+        const duration = card.getAttribute('data-duration');
+        const description = card.getAttribute('data-description');
+        const includes = card.getAttribute('data-includes').split('||');
+        const image = card.getAttribute('data-image');
+        const whatsapp = card.getAttribute('data-whatsapp');
+        // Crear modal
+        let modalRoot = document.getElementById('carousel-modal-root');
+        if (!modalRoot) {
+          modalRoot = document.createElement('div');
+          modalRoot.id = 'carousel-modal-root';
+          document.body.appendChild(modalRoot);
+        }
+        modalRoot.innerHTML = `
+          <div class='fixed inset-0 bg-black/60 z-40 flex items-center justify-center' id='carousel-modal-overlay'></div>
+          <div class='fixed inset-0 z-50 flex items-center justify-center'>
+            <div class='modal-card-carousel relative bg-white/95 rounded-xl shadow-2xl p-6 max-w-[95vw] w-[420px] max-h-[90vh] overflow-y-auto flex flex-col items-center'>
+              <button class='absolute top-4 right-4 text-2xl text-[#d2a530] bg-white rounded-full shadow p-2 hover:bg-[#d2a530] hover:text-white transition' id='close-modal-btn'>✕</button>
+              <img src='${image}' alt='${name}' class='w-full h-40 object-cover rounded-md mb-4' />
+              <h3 class='text-2xl font-bold text-stone-900 mb-2'>${name}</h3>
+              <p class='text-base text-stone-700 mb-2 flex items-center'><span class='material-symbols-outlined mr-2 text-base'>schedule</span>${duration}</p>
+              <p class='text-base text-stone-700 mb-4'>${description}</p>
+              <div class='w-full mb-4'>
+                <h4 class='font-semibold text-stone-900 mb-2'>Incluye:</h4>
+                <ul class='list-disc list-inside text-base text-stone-700 space-y-1'>
+                  ${includes.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+              </div>
+              <a href='${whatsapp}' target='_blank' rel='noopener noreferrer' class='mt-auto bg-[#d2a530] text-white font-bold py-2 px-4 rounded-md hover:bg-[#b88a2a] transition-colors text-center w-full block'>Reservar por WhatsApp</a>
+            </div>
+          </div>
+        `;
+        // Cerrar modal
+        document.getElementById('close-modal-btn').onclick = closeModal;
+        document.getElementById('carousel-modal-overlay').onclick = closeModal;
+        document.body.style.overflow = 'hidden';
+        function closeModal() {
+          modalRoot.innerHTML = '';
+          document.body.style.overflow = '';
         }
       });
-    }
+    });
   });
+}
 </script>
+
+<style>
+.modal-card-carousel {
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border-radius: 1rem;
+  max-width: 95vw;
+  width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 50;
+  animation: modalIn 0.25s cubic-bezier(.4,2,.6,1) both;
+}
+@keyframes modalIn {
+  0% { transform: scale(0.8) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+</style>
