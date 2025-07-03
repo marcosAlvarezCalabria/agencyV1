@@ -1,0 +1,20 @@
+---
+const { t } = Astro.props;
+---
+
+<div class="about-card glassmorphism rounded-xl p-6 md:p-8 w-full max-w-4xl mx-auto text-stone-800 flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+  <div class="profile-pic w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/50 flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Katy" class="w-full h-full object-cover" />
+  </div>
+  <div class="text-content text-center md:text-left">
+    <div class="subtitle uppercase text-sm tracking-wide text-[#b64926] font-bold mb-2">
+      {t ? t('about.subtitle') : 'Sobre Nosotros'}
+    </div>
+    <div class="title text-2xl md:text-3xl font-bold text-[#3d1f14] mb-4">
+      {t ? t('about.title') : 'Conoce a Katy y su historia'}
+    </div>
+    <div class="description text-base leading-relaxed text-[#372212]">
+      {t ? t('about.description') : 'Orgullosa cusqueña, Katy comenzó su agencia de aventuras con la misión de compartir la verdadera belleza del Perú. Con más de 10 años guiando en la región, se ha ganado la confianza de viajeros por su conocimiento local y sus experiencias auténticas.'}
+    </div>
+  </div>
+</div>
