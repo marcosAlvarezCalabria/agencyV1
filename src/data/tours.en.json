@@ -3,6 +3,7 @@
     "name": "Inca Jungle + Machupicchu",
     "duration": "4d/3n or 3d/2n",
     "description": "Combined adventure of biking, hiking, and culture to Machupicchu.",
+    "price": 320,
     "includes": [
       "Tourist transportation",
       "Bicycle",
@@ -18,6 +19,7 @@
     "name": "Salkantay Trek + Machupicchu",
     "duration": "4d/3n or 3d/2n",
     "description": "Trekking along one of the most famous paths to Machupicchu.",
+    "price": 350,
     "includes": [
       "Tourist transportation",
       "Tents and mats",
@@ -33,6 +35,7 @@
     "name": "Sacred Valley + Machupicchu",
     "duration": "2d/1n",
     "description": "Discover the Sacred Valley and end in Machupicchu.",
+    "price": 280,
     "includes": [
       "Sacred Valley Tour",
       "Buffet lunch",
@@ -48,6 +51,7 @@
     "name": "Machupicchu by Car",
     "duration": "2d/1n",
     "description": "Access Machupicchu by road, the most economical option.",
+    "price": 180,
     "includes": [
       "Tourist transportation",
       "3 meals",
@@ -62,6 +66,7 @@
     "name": "South Valley",
     "duration": "8:30 am – 3:00 pm",
     "description": "Cultural circuit with Inca, pre-Inca, and colonial architecture.",
+    "price": 35,
     "includes": [
       "Tourist transportation",
       "Professional guide"
@@ -72,6 +77,7 @@
     "name": "7 Ausangate Lagoons",
     "duration": "4:30 am – 6:00 pm",
     "description": "Natural excursion in the Ausangate area.",
+    "price": 45,
     "includes": [
       "Transportation",
       "Entrance fee",
@@ -86,6 +92,7 @@
     "name": "Rainbow Mountain",
     "duration": "4:30 am – 6:00 pm",
     "description": "Hike to the famous Vinicunca, the rainbow mountain.",
+    "price": 40,
     "includes": [
       "Transportation",
       "Entrance fee",
@@ -99,6 +106,7 @@
     "name": "Queswachaca Bridge – Tupac Amaru",
     "duration": "08:40 – 17:00",
     "description": "Discover the Inca hanging bridge and the history of Tupac Amaru.",
+    "price": 38,
     "includes": [
       "Transportation",
       "Entrance fee",
@@ -111,6 +119,7 @@
     "name": "River Rafting",
     "duration": "All day",
     "description": "Safe and fun water adventure in rivers near Cusco.",
+    "price": 55,
     "includes": [
       "Tourist transportation",
       "Complete rafting equipment",
@@ -126,6 +135,7 @@
     "name": "ATVs Maras – Moray",
     "duration": "7 am – 1 pm / 1 pm – 6 pm",
     "description": "ATV tour through Maras, Moray, and high Andean lagoons.",
+    "price": 50,
     "includes": [
       "Tourist transportation",
       "Professional guide"
@@ -136,6 +146,7 @@
     "name": "Humantay Lagoon",
     "duration": "4:30 am – 6:00 pm",
     "description": "Trekking to one of the most impressive lagoons in Cusco.",
+    "price": 45,
     "includes": [
       "Transportation",
       "Breakfast",
@@ -150,6 +161,7 @@
     "name": "Maras – Moray (traditional tour)",
     "duration": "8:30 am – 3:00 pm",
     "description": "Archaeological and cultural visit to emblematic sites of the Sacred Valley.",
+    "price": 35,
     "includes": [
       "Tourist transportation",
       "Professional guide"

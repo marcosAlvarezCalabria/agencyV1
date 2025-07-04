@@ -4,7 +4,7 @@ if (!tour) {
   // No renderizar nada si el tour no está definido
   return null;
 }
-const { name, duration, description, includes, image } = tour;
+const { name, duration, description, includes, image, price } = tour;
 const whatsappLink = `https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`;
 const cardId = `carousel-card-${name.replace(/\s+/g, '').toLowerCase()}`;
 ---
@@ -19,7 +19,12 @@ const cardId = `carousel-card-${name.replace(/\s+/g, '').toLowerCase()}`;
   data-whatsapp={whatsappLink}
 >
   <img src={image} alt={name} class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
-  <h3 class="text-xl font-bold text-stone-900 mb-2">{name}</h3>
+  <h3 class="text-xl font-bold text-stone-900 mb-1">{name}</h3>
+  {price && (
+    <div class="inline-block bg-[#d2a530] text-white text-lg font-extrabold rounded-full px-4 py-1 mb-2 shadow price-badge">
+      {(t('card.from') || 'From') + ' ' + price + ' USD'}
+    </div>
+  )}
   <p class="text-sm text-stone-700 mb-4 flex items-center">
     <span class="material-symbols-outlined mr-2 text-base">schedule</span>
     {duration}
@@ -39,7 +44,6 @@ if (typeof window !== 'undefined') {
       card.addEventListener('click', function (e) {
       // No abrir modal si se hace click en el botón de WhatsApp
       if ((e.target instanceof Element) && e.target.closest('.whatsapp-btn')) return;
-      
       // Obtener datos de la card
       const name = card.getAttribute('data-name');
       const duration = card.getAttribute('data-duration');
@@ -48,7 +52,7 @@ if (typeof window !== 'undefined') {
       const includes = includesAttr ? includesAttr.split('||') : [];
       const image = card.getAttribute('data-image');
       const whatsapp = card.getAttribute('data-whatsapp');
-      
+      const price = card.querySelector('.price-badge')?.textContent || '';
       // Crear modal
       let modalRoot = document.getElementById('carousel-modal-root');
       if (!modalRoot) {
@@ -56,14 +60,14 @@ if (typeof window !== 'undefined') {
         modalRoot.id = 'carousel-modal-root';
         document.body.appendChild(modalRoot);
       }
-      
       modalRoot.innerHTML = `
         <div class='fixed inset-0 bg-black/60 z-40 flex items-center justify-center' id='carousel-modal-overlay'></div>
         <div class='fixed inset-0 z-50 flex items-center justify-center'>
         <div class='modal-card-carousel relative bg-white/95 rounded-xl shadow-2xl p-6 max-w-[95vw] w-[420px] max-h-[90vh] overflow-y-auto flex flex-col items-center'>
-          <button class='absolute top-4 right-4 text-2xl text-[#d2a530] bg-white rounded-full shadow p-2 hover:bg-[#d2a530] hover:text-white transition' id='close-modal-btn'>✕</button>
+          <button class='absolute top-4 right-4 text-2xl text-[#d2a530] bg-white rounded-full shadow p-2 hover:bg-[#d2a530] hover:text-white transition' id='close-modal-btn'>×</button>
           <img src='${image}' alt='${name}' class='w-full h-40 object-cover rounded-md mb-4' />
           <h3 class='text-2xl font-bold text-stone-900 mb-2'>${name}</h3>
+          ${price ? `<div class='inline-block bg-[#d2a530] text-white text-lg font-extrabold rounded-full px-4 py-1 mb-2 shadow'>${price}</div>` : ''}
           <p class='text-base text-stone-700 mb-2 flex items-center'><span class='material-symbols-outlined mr-2 text-base'>schedule</span>${duration}</p>
           <p class='text-base text-stone-700 mb-4'>${description}</p>
           <div class='w-full mb-4'>
@@ -76,7 +80,6 @@ if (typeof window !== 'undefined') {
         </div>
         </div>
       `;
-      
       // Cerrar modal
       const closeBtn = document.getElementById('close-modal-btn');
       if (closeBtn) {
@@ -87,7 +90,6 @@ if (typeof window !== 'undefined') {
         overlayElement.onclick = closeModal;
       }
       document.body.style.overflow = 'hidden';
-      
       function closeModal() {
         if (modalRoot) {
         modalRoot.innerHTML = '';
@@ -98,7 +100,6 @@ if (typeof window !== 'undefined') {
     });
     });
   };
-
 </script>
 
 <style>
