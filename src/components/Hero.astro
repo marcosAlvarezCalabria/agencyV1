@@ -135,10 +135,9 @@ import AboutCard from '../components/AboutCard.astro';
       const showContent = () => {
         if (shown) return;
         shown = true;
-        if (window.innerWidth < 768) {
-          heroVideo.playbackRate = 2.5;
-          setTimeout(() => { heroVideo.playbackRate = 1; }, 200);
-        }
+        // Acelera el video durante 200ms
+        heroVideo.playbackRate = 2.5;
+        setTimeout(() => { heroVideo.playbackRate = 1; }, 200);
         heroVideo.play();
         preloader.classList.add('opacity-0');
         setTimeout(() => { preloader.style.display = 'none'; }, 500);
@@ -166,10 +165,12 @@ import AboutCard from '../components/AboutCard.astro';
       cardVideos.forEach(video => video.play());
     }
 
-    // Scroll automático al detectar interacción
+    // Scroll automático al detectar interacción SOLO si estamos cerca del hero
     let scrollTriggered = false;
     const scrollToTours = () => {
       if (scrollTriggered) return;
+      // Solo activar si el usuario está cerca del top (hero)
+      if (window.scrollY > 200) return;
       scrollTriggered = true;
       const toursSection = document.getElementById('tours');
       if (toursSection) {
