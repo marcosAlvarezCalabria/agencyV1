@@ -3,7 +3,6 @@
 const { lang = 'es', t } = Astro.props;
 const oppositeLang = lang === 'es' ? 'en' : 'es';
 
-// Lógica robusta para cambiar idioma en páginas de detalle de tour y evitar duplicados de prefijo
 let switchTo;
 const path = Astro.url.pathname;
 const cleanPath = path
@@ -11,15 +10,30 @@ const cleanPath = path
   .replace(/^\/es\//, '/')
   .replace(/^\/en/, '')
   .replace(/^\/es/, '');
-const tourDetailRegex = /^\/tours\/([^\/]+)$/;
-if (lang === 'es' && /^\/es\/tours\//.test(path)) {
-  // Si estamos en /es/tours/[slug], ir a /tours/[slug]
+
+// Lógica mejorada para tours dinámicos
+const isTourDetailEs = /^\/es\/tours\/([^\/]+)$/.test(path);
+const isTourDetailEn = /^\/tours\/([^\/]+)$/.test(path);
+
+if (isTourDetailEs || isTourDetailEn) {
+  // Extraer slug
   const slug = path.split('/').pop();
-  switchTo = `/tours/${slug}`;
-} else if (lang === 'en' && /^\/tours\//.test(path)) {
-  // Si estamos en /tours/[slug], ir a /es/tours/[slug]
-  const slug = path.split('/').pop();
-  switchTo = `/es/tours/${slug}`;
+  let existsInOtherLang = false;
+  if (lang === 'es') {
+    // Verificar si el slug existe en inglés
+    try {
+      const toursEn = await import('../../data/tours.en.json');
+      existsInOtherLang = toursEn.default.some(t => t.slug === slug);
+    } catch {}
+    switchTo = existsInOtherLang ? `/tours/${slug}` : '/tours';
+  } else {
+    // Verificar si el slug existe en español
+    try {
+      const toursEs = await import('../../data/tours.es.json');
+      existsInOtherLang = toursEs.default.some(t => t.slug === slug);
+    } catch {}
+    switchTo = existsInOtherLang ? `/es/tours/${slug}` : '/es/tours';
+  }
 } else {
   // Para cualquier otra ruta, limpiar prefijos y anteponer el correcto
   if (oppositeLang === 'en') {
