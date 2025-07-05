@@ -22,14 +22,14 @@ if (isTourDetailEs || isTourDetailEn) {
   if (lang === 'es') {
     // Verificar si el slug existe en inglés
     try {
-      const toursEn = await import('../../data/tours.en.json');
+      const toursEn = await import('../data/tours.en.json');
       existsInOtherLang = toursEn.default.some(t => t.slug === slug);
     } catch {}
     switchTo = existsInOtherLang ? `/tours/${slug}` : '/tours';
   } else {
     // Verificar si el slug existe en español
     try {
-      const toursEs = await import('../../data/tours.es.json');
+      const toursEs = await import('../data/tours.es.json');
       existsInOtherLang = toursEs.default.some(t => t.slug === slug);
     } catch {}
     switchTo = existsInOtherLang ? `/es/tours/${slug}` : '/es/tours';
