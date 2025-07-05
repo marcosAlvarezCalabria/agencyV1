@@ -1,4 +1,27 @@
 ---
-// Esta página redirige permanentemente a la ruta raíz, que sirve el idioma por defecto (español).
-return Astro.redirect('/', 301);
+import Baselayout from '../../layouts/Baselayout.astro';
+import Hero from '../../components/Hero.astro';
+import TripAdvisorReviews from '../../components/TripAdvisorReviews.astro';
+import toursEs from '../../data/tours.es.json';
+import { useTranslations } from '../../i18n/utils.js';
+
+const t = useTranslations('es');
+
+const layoutProps = {
+  ...Astro.props,
+  lang: 'es',
+  seo: {
+    title: 'Agencia Cusco | Viajes y Tours',
+    description: 'Agencia de viajes y excursiones en Cusco. Descubre los mejores tours y experiencias.',
+    hreflangs: [
+      { lang: 'es', url: '/es' },
+      { lang: 'en', url: '/en' }
+    ]
+  },
+  t
+};
 ---
+<Baselayout {...layoutProps}>
+  <Hero t={t} tours={toursEs} />
+  <TripAdvisorReviews />
+</Baselayout>
