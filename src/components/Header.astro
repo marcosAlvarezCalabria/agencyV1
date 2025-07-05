@@ -10,11 +10,13 @@ const tourDetailEsRegex = /^\/es\/tours\/([^\/]+)$/;
 const tourDetailEnRegex = /^\/tours\/([^\/]+)$/;
 if (tourDetailEsRegex.test(path)) {
   // Si estamos en /es/tours/[slug], ir a /tours/[slug]
-  const slug = path.match(tourDetailEsRegex)[1];
+  const match = path.match(tourDetailEsRegex);
+  const slug = match ? match[1] : '';
   switchTo = `/tours/${slug}`;
 } else if (tourDetailEnRegex.test(path)) {
   // Si estamos en /tours/[slug], ir a /es/tours/[slug]
-  const slug = path.match(tourDetailEnRegex)[1];
+  const match = path.match(tourDetailEnRegex);
+  const slug = match ? match[1] : '';
   switchTo = `/es/tours/${slug}`;
 } else {
   // Lógica original para otras páginas

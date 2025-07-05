@@ -7,7 +7,7 @@ import { useTranslations } from '../../i18n/utils.js';
 const t = useTranslations('en');
 
 // SEO y lang dinámico para el layout
-Astro.props = {
+const props = {
   ...Astro.props,
   lang: 'en',
   seo: {
@@ -21,6 +21,6 @@ Astro.props = {
   t
 };
 ---
-<Baselayout {...Astro.props}>
+<Baselayout {...props}>
   <Hero t={t} tours={toursEn} />
 </Baselayout>

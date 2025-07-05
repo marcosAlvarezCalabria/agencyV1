@@ -17,7 +17,7 @@ if (!tour) {
 
 // SEO y lang dinámico para el layout
 Astro.props = {
-  ...Astro.props,
+  ...(Astro.props || {}),
   lang: 'en',
   seo: {
     title: `${tour.name} | Agencia Cusco`,
