@@ -4,8 +4,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { useTranslations } from "../i18n/utils.js";
 
-// Detecta el idioma desde la URL
-const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
+// Recibe lang y seo como props desde la página
+const { lang = 'es', seo = {} } = Astro.props;
 const t = useTranslations(lang);
 ---
 
@@ -13,10 +13,11 @@ const t = useTranslations(lang);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Agencia Cusco</title>
+    <title>{seo.title || 'Agencia Cusco'}</title>
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo1.JPG" />
-    <meta name="description" content="Agencia de viajes y excursiones en Cusco" />
+    <meta name="description" content={seo.description || 'Agencia de viajes y excursiones en Cusco'} />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    {seo.hreflangs && seo.hreflangs.map(h => <link rel="alternate" hreflang={h.lang} href={h.url} />)}
   </head>
   <body class="bg-bg text-negro">
     <Header lang={lang} t={t} />

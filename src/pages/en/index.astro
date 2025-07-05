@@ -1,14 +1,26 @@
 ---
-//index.astro en inglés
-import BaseLayout from '../../layouts/Baselayout.astro';
+import Baselayout from '../../layouts/Baselayout.astro';
 import Hero from '../../components/Hero.astro';
-import { useTranslations } from '../../i18n/utils.js';
 import toursEn from '../../data/tours.en.json';
+import { useTranslations } from '../../i18n/utils.js';
 
-const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
-const t = useTranslations(lang);
+const t = useTranslations('en');
+
+// SEO y lang dinámico para el layout
+Astro.props = {
+  ...Astro.props,
+  lang: 'en',
+  seo: {
+    title: 'Cusco Travel Agency | Tours and Trips',
+    description: 'Travel agency in Cusco. Discover the best tours and experiences in Peru.',
+    hreflangs: [
+      { lang: 'en', url: '/en' },
+      { lang: 'es', url: '/' }
+    ]
+  },
+  t
+};
 ---
-
-<BaseLayout>
+<Baselayout {...Astro.props}>
   <Hero t={t} tours={toursEn} />
-</BaseLayout>
+</Baselayout>

@@ -1,0 +1,31 @@
+---
+import Baselayout from '../../layouts/Baselayout.astro';
+import toursEs from '../../data/tours.es.json';
+import TourCard from '../../components/TourCard.astro';
+
+// SEO y lang dinámico para el layout
+Astro.props = {
+  ...Astro.props,
+  lang: 'es',
+  seo: {
+    title: 'Nuestros Tours | Agencia Cusco',
+    description: 'Descubre los mejores tours en Cusco y Perú. Aventura, cultura y más con Agencia Cusco.',
+    hreflangs: [
+      { lang: 'es', url: '/es/tours' },
+      { lang: 'en', url: '/tours' }
+    ]
+  }
+};
+---
+<Baselayout {...Astro.props}>
+  <section id="tours" class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-10 text-primary">Nuestros Tours</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {toursEs.map(tour => (
+          <TourCard {...tour} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Baselayout>

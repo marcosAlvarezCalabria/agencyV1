@@ -1,18 +1,30 @@
 ---
 //index.astro en español 
 
-import BaseLayout from '../layouts/Baselayout.astro';
+import Baselayout from '../layouts/Baselayout.astro';
 import Hero from '../components/Hero.astro';
 import TripAdvisorReviews from '../components/TripAdvisorReviews.astro';
-import { useTranslations } from '../i18n/utils.js';
 import toursEs from '../data/tours.es.json';
+import { useTranslations } from '../i18n/utils.js';
 
-const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'es';
-const t = useTranslations(lang);
-const tripAdvisorEmbedUrl = ""; // Pega aquí el embedUrl de TripAdvisor cuando lo tengas
+const t = useTranslations('es');
+
+// SEO y lang dinámico para el layout
+Astro.props = {
+  ...Astro.props,
+  lang: 'es',
+  seo: {
+    title: 'Agencia Cusco | Viajes y Tours',
+    description: 'Agencia de viajes y excursiones en Cusco. Descubre los mejores tours y experiencias.',
+    hreflangs: [
+      { lang: 'es', url: '/' },
+      { lang: 'en', url: '/en' }
+    ]
+  },
+  t
+};
 ---
-
-<BaseLayout>
+<Baselayout {...Astro.props}>
   <Hero t={t} tours={toursEs} />
-  <TripAdvisorReviews embedUrl={tripAdvisorEmbedUrl} />
-</BaseLayout>
+  <TripAdvisorReviews />
+</Baselayout>

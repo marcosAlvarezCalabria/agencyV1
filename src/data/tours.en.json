@@ -1,6 +1,7 @@
 [
   {
     "name": "Inca Jungle + Machupicchu",
+    "slug": "inca-jungle-machupicchu",
     "duration": "4d/3n or 3d/2n",
     "description": "Combined adventure of biking, hiking, and culture to Machupicchu.",
     "price": 320,
@@ -17,6 +18,7 @@
   },
   {
     "name": "Salkantay Trek + Machupicchu",
+    "slug": "salkantay-trek-machupicchu",
     "duration": "4d/3n or 3d/2n",
     "description": "Trekking along one of the most famous paths to Machupicchu.",
     "price": 350,
@@ -29,13 +31,11 @@
       "Entrance to Machupicchu",
       "Professional guide"
     ],
-
-
-    
     "image": "/assets/images/salkantay.jpg"
   },
   {
     "name": "Sacred Valley + Machupicchu",
+    "slug": "sacred-valley-machupicchu",
     "duration": "2d/1n",
     "description": "Discover the Sacred Valley and end in Machupicchu.",
     "price": 280,
@@ -52,6 +52,7 @@
   },
   {
     "name": "Machupicchu by Car",
+    "slug": "machupicchu-by-car",
     "duration": "2d/1n",
     "description": "Access Machupicchu by road, the most economical option.",
     "price": 180,
@@ -67,6 +68,7 @@
   },
   {
     "name": "South Valley",
+    "slug": "valle-sur",
     "duration": "8:30 am – 3:00 pm",
     "description": "Cultural circuit with Inca, pre-Inca, and colonial architecture.",
     "price": 35,
@@ -78,6 +80,7 @@
   },
   {
     "name": "7 Ausangate Lagoons",
+    "slug": "7-lagunas-ausangate",
     "duration": "4:30 am – 6:00 pm",
     "description": "Natural excursion in the Ausangate area.",
     "price": 45,
@@ -93,6 +96,7 @@
   },
   {
     "name": "Rainbow Mountain",
+    "slug": "montana-de-colores",
     "duration": "4:30 am – 6:00 pm",
     "description": "Hike to the famous Vinicunca, the rainbow mountain.",
     "price": 40,
@@ -107,6 +111,7 @@
   },
   {
     "name": "Queswachaca Bridge – Tupac Amaru",
+    "slug": "puente-queswachaca-tupac-amaru",
     "duration": "08:40 – 17:00",
     "description": "Discover the Inca hanging bridge and the history of Tupac Amaru.",
     "price": 38,
@@ -120,6 +125,7 @@
   },
   {
     "name": "River Rafting",
+    "slug": "river-rafting-canotaje",
     "duration": "All day",
     "description": "Safe and fun water adventure in rivers near Cusco.",
     "price": 55,
@@ -136,6 +142,7 @@
   },
   {
     "name": "ATVs Maras – Moray",
+    "slug": "cuatrimotos-maras-moray",
     "duration": "7 am – 1 pm / 1 pm – 6 pm",
     "description": "ATV tour through Maras, Moray, and high Andean lagoons.",
     "price": 50,
@@ -147,6 +154,7 @@
   },
   {
     "name": "Humantay Lagoon",
+    "slug": "laguna-humantay",
     "duration": "4:30 am – 6:00 pm",
     "description": "Trekking to one of the most impressive lagoons in Cusco.",
     "price": 45,
@@ -162,6 +170,7 @@
   },
   {
     "name": "Maras – Moray (traditional tour)",
+    "slug": "maras-moray-tradicional",
     "duration": "8:30 am – 3:00 pm",
     "description": "Archaeological and cultural visit to emblematic sites of the Sacred Valley.",
     "price": 35,
