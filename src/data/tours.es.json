@@ -1,18 +1,57 @@
 [
   {
-    "name": "Inca Jungle + Machupicchu",
-    "slug": "inca-jungle-machupicchu",
-    "duration": "4d/3n o 3d/2n",
-    "description": "Aventura combinada de bicicleta, caminata y cultura hasta Machupicchu.",
-    "price": 320,
+    "name": "Camino Inca Clásico a Machu Picchu 4D/3N",
+    "slug": "camino-inca-clasico-machu-picchu",
+    "duration": "4d/3n",
+    "description": "El Camino Inca Clásico es la ruta de trekking más famosa de Sudamérica, combinando paisajes andinos, selva alta y sitios arqueológicos únicos hasta llegar a Machu Picchu al amanecer del cuarto día.",
+    "price": 690,
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Cusco – Km 82 – Wayllabamba",
+        "description": "Salida temprano desde Cusco hacia el Km 82. Caminata por paisajes agrícolas y el sitio arqueológico de Llactapata. Campamento en Wayllabamba."
+      },
+      {
+        "day": "Día 2",
+        "title": "Wayllabamba – Warmiwañusca – Pacaymayo",
+        "description": "Ascenso al punto más alto del camino (Abra Warmiwañusca, 4,215 msnm). Descenso y campamento en Pacaymayo."
+      },
+      {
+        "day": "Día 3",
+        "title": "Pacaymayo – Wiñay Wayna",
+        "description": "Visita a Runkurakay, Sayacmarca y Phuyupatamarca. Caminata por bosque nuboso hasta Wiñay Wayna."
+      },
+      {
+        "day": "Día 4",
+        "title": "Wiñay Wayna – Machu Picchu – Cusco",
+        "description": "Salida muy temprano hacia Inti Punku (Puerta del Sol) para ver el amanecer en Machu Picchu. Visita guiada y retorno a Cusco."
+      }
+    ],
     "includes": [
-      "Transporte turístico",
-      "Bicicleta",
-      "Alimentación",
-      "Tren",
-      "3 noches de hostal",
-      "Entrada a Machupicchu",
-      "Guía profesional"
+      "Transporte desde Cusco al Km 82",
+      "Guía profesional bilingüe",
+      "Cocinero y equipo de cocina",
+      "Carpas dobles de alta montaña",
+      "Colchonetas",
+      "Alimentación completa durante el trek",
+      "Porteadores para equipo de campamento",
+      "Entradas al Camino Inca y Machu Picchu",
+      "Bus de bajada a Aguas Calientes",
+      "Tren de retorno a Cusco"
+    ],
+    "not_included": [
+      "Desayuno primer día",
+      "Almuerzo/cena último día",
+      "Bolsa de dormir",
+      "Bastones de trekking",
+      "Propinas"
+    ],
+    "recommendations": [
+      "Reservar con varios meses de anticipación",
+      "Llevar pasaporte original",
+      "Buen estado físico",
+      "Ropa para clima variado",
+      "Repelente y protector solar"
     ],
     "image": "/assets/images/inka-jungle+machupichu1.jpg",
     "images": [

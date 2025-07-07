@@ -61,15 +61,56 @@ const seo = {
         <h1 class="text-3xl md:text-4xl font-extrabold text-[#b64926] mb-2">{tour.name}</h1>
         <span class="inline-block bg-[#d2a530] text-white px-3 py-1 rounded-lg font-bold text-lg mb-2">${tour.price}</span>
         <p class="text-[#372212] text-lg mb-4">{tour.description}</p>
-        <div class="mb-4">
+        <div class="mb-4 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V6c0-2.21 3.59-4 8-4s8 1.79 8 4v8c0 2.21-3.59 4-8 4z" /></svg>
           <span class="font-semibold text-[#b64926]">Duración:</span> {tour.duration}
         </div>
+        {tour.itinerary && (
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 014-4h4m0 0V7m0 4l-4-4-4 4" /></svg>
+              <span class="font-semibold text-[#b64926]">Itinerario:</span>
+            </div>
+            <ul class="list-decimal list-inside text-[#372212]">
+              {tour.itinerary.map(dia => (
+                <li class="mb-1">
+                  <span class="font-bold">{dia.day}:</span> <span class="italic">{dia.title}</span> – {dia.description}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div class="mb-4">
-          <span class="font-semibold text-[#b64926]">Incluye:</span>
+          <div class="flex items-center gap-2 mb-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            <span class="font-semibold text-[#b64926]">Incluye:</span>
+          </div>
           <ul class="list-disc list-inside text-[#372212]">
-            {tour.includes.map(item => <li>{item}</li>)}
+            {tour.includes.map(item => <li>✅ {item}</li>)}
           </ul>
         </div>
+        {tour.not_included && (
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              <span class="font-semibold text-[#b64926]">No incluye:</span>
+            </div>
+            <ul class="list-disc list-inside text-[#372212]">
+              {tour.not_included.map(item => <li>❌ {item}</li>)}
+            </ul>
+          </div>
+        )}
+        {tour.recommendations && (
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 20c4.418 0 8-1.79 8-4V6c0-2.21-3.582-4-8-4S4 3.79 4 6v10c0 2.21 3.582 4 8 4z" /></svg>
+              <span class="font-semibold text-[#b64926]">Recomendaciones:</span>
+            </div>
+            <ul class="list-disc list-inside text-[#372212]">
+              {tour.recommendations.map(item => <li>💡 {item}</li>)}
+            </ul>
+          </div>
+        )}
         <div class="flex gap-4 mt-4">
           <a href="/es/tours" class="text-[#b64926] underline hover:text-[#d2a530]">← Volver a los tours</a>
         </div>

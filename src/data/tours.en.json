@@ -1,18 +1,57 @@
 [
   {
-    "name": "Inca Jungle + Machupicchu",
-    "slug": "inca-jungle-machupicchu",
-    "duration": "4d/3n or 3d/2n",
-    "description": "Combined adventure of biking, hiking, and culture to Machupicchu.",
-    "price": 320,
+    "name": "Classic Inca Trail to Machu Picchu 4D/3N",
+    "slug": "camino-inca-clasico-machu-picchu",
+    "duration": "4d/3n",
+    "description": "The Classic Inca Trail is South America's most famous trekking route, combining Andean landscapes, cloud forest, and unique archaeological sites, culminating at Machu Picchu at sunrise on the fourth day.",
+    "price": 690,
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Cusco – Km 82 – Wayllabamba",
+        "description": "Early departure from Cusco to Km 82. Hike through agricultural landscapes and the archaeological site of Llactapata. Camp at Wayllabamba."
+      },
+      {
+        "day": "Day 2",
+        "title": "Wayllabamba – Warmiwañusca – Pacaymayo",
+        "description": "Ascent to the highest point of the trail (Warmiwañusca Pass, 4,215 m). Descent and camp at Pacaymayo."
+      },
+      {
+        "day": "Day 3",
+        "title": "Pacaymayo – Wiñay Wayna",
+        "description": "Visit Runkurakay, Sayacmarca, and Phuyupatamarca. Hike through cloud forest to Wiñay Wayna."
+      },
+      {
+        "day": "Day 4",
+        "title": "Wiñay Wayna – Machu Picchu – Cusco",
+        "description": "Very early departure to Inti Punku (Sun Gate) to see the sunrise at Machu Picchu. Guided tour and return to Cusco."
+      }
+    ],
     "includes": [
-      "Tourist transportation",
-      "Bicycle",
-      "Meals",
-      "Train",
-      "3 nights in a hostel",
-      "Entrance to Machupicchu",
-      "Professional guide"
+      "Transport from Cusco to Km 82",
+      "Professional bilingual guide",
+      "Cook and kitchen equipment",
+      "High mountain double tents",
+      "Sleeping mats",
+      "All meals during the trek",
+      "Porters for camping equipment",
+      "Entrance fees to Inca Trail and Machu Picchu",
+      "Bus down to Aguas Calientes",
+      "Train back to Cusco"
+    ],
+    "not_included": [
+      "Breakfast on the first day",
+      "Lunch/dinner on the last day",
+      "Sleeping bag",
+      "Trekking poles",
+      "Tips"
+    ],
+    "recommendations": [
+      "Book several months in advance",
+      "Bring original passport",
+      "Good physical condition",
+      "Clothing for varied weather",
+      "Insect repellent and sunscreen"
     ],
     "image": "/assets/images/inka-jungle+machupichu1.jpg",
     "images": [
