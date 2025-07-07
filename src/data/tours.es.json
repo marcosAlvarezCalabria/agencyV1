@@ -14,7 +14,13 @@
       "Entrada a Machupicchu",
       "Guía profesional"
     ],
-    "image": "/assets/images/salkantay.jpg"
+    "image": "/assets/images/inka-jungle+machupichu1.jpg",
+    "images": [
+      "/assets/images/inka-jungle+machupichu1.jpg",
+      "/assets/images/inka-jungle+machupichu2.jpg",
+      "/assets/images/inka-jungle+machupichu3.jpg",
+      "/assets/images/inka-jungle+machupichu4.jpg"
+    ]
   },
   {
     "name": "Salkantay Trek + Machupicchu",
