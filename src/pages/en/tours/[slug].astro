@@ -30,12 +30,27 @@ const seo = {
   <section class="max-w-3xl mx-auto py-10 px-4">
     {tour.images && tour.images.length > 0 && (
       <div class="mb-8">
-        {/* Imagen grande + miniaturas con scroll horizontal en móvil, igual que en español */}
-        <div class="flex flex-col items-center">
+        {/* Desktop: grilla tipo collage */}
+        <div class="hidden md:grid grid-cols-2 gap-2 md:grid-cols-4 masonry-grid">
+          <div class="col-span-2 row-span-2">
+            <img src={tour.images[0]} alt={tour.name + ' 1'} class="rounded-xl w-full h-64 object-cover" loading="lazy" />
+          </div>
+          <div>
+            <img src={tour.images[1]} alt={tour.name + ' 2'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
+          </div>
+          <div>
+            <img src={tour.images[2]} alt={tour.name + ' 3'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
+          </div>
+          <div class="col-span-2">
+            <img src={tour.images[3]} alt={tour.name + ' 4'} class="rounded-xl w-full h-40 object-cover" loading="lazy" />
+          </div>
+        </div>
+        {/* Mobile: imagen grande + miniaturas */}
+        <div class="md:hidden flex flex-col items-center">
           <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' main'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
-          <div class="flex gap-2 justify-center mt-2 overflow-x-auto flex-nowrap w-full scrollbar-thin scrollbar-thumb-[#d2a530]/60 scrollbar-track-transparent">
+          <div class="flex gap-2 justify-center mt-2">
             {tour.images.map((img, idx) => (
-              <img src={img} alt={tour.name + ' thumb ' + (idx+1)} class="rounded-lg w-16 h-16 object-cover border-2 border-transparent hover:border-[#d2a530] cursor-pointer transition-all duration-200 flex-shrink-0" loading="lazy" onclick={`document.getElementById('mainTourImg').src='${img}'`} />
+              <img src={img} alt={tour.name + ' thumb ' + (idx+1)} class="rounded-lg w-16 h-16 object-cover border-2 border-transparent hover:border-[#d2a530] cursor-pointer transition-all duration-200" loading="lazy" onclick={`document.getElementById('mainTourImg').src='${img}'`} />
             ))}
           </div>
         </div>
