@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; media-src 'self' blob:; frame-ancestors 'self';
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: SAMEORIGIN
+*/
