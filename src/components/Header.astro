@@ -63,16 +63,16 @@ function sectionLink(section) {
         id="menu-container" 
         class="flex items-center justify-center gap-x-2 sm:gap-x-4 px-4 sm:px-6 py-2 rounded-full transition-all duration-300 ease-in-out glassmorphism"
       >
-        <a href={sectionLink('inicio')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.home')}</a>
-        <a href={sectionLink('nosotros')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.about')}</a>
-        <a href={sectionLink('tours')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.tours')}</a>
-        <a href={sectionLink('destacados')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#d2a530] transition-colors duration-300">{t('nav.featured')}</a>
+        <a href={sectionLink('inicio')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.home')}</a>
+        <a href={sectionLink('nosotros')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.about')}</a>
+        <a href={sectionLink('tours')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.tours')}</a>
+        <a href={sectionLink('destacados')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.featured')}</a>
       </nav>
     </div>
 
     <!-- Selector de idioma (escritorio) -->
     <div class="hidden md:flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 glassmorphism text-stone-200 hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 glassmorphism text-[#372212] hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-lg">
           language
         </span>
@@ -83,18 +83,18 @@ function sectionLink(section) {
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
     <div class="md:hidden flex items-center gap-x-3">
       <!-- Selector de idioma (móvil) -->
-      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-300 glassmorphism hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-300 glassmorphism text-[#372212] hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-sm">
           language
         </span>
         <span class="uppercase">{oppositeLang}</span>
       </a>
 
-      <button id="menu-btn" class="text-[#d2a530] focus:outline-none" aria-label="Abrir menú">
-        <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="menu-btn" class="text-[#372212] focus:outline-none" aria-label="Abrir menú">
+        <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="#372212" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="#372212" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -106,10 +106,10 @@ function sectionLink(section) {
 <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 <div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-lg z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism">
   <div class="w-12 h-1.5 bg-[#d2a530]/50 rounded-full mx-auto mb-6"></div>
-  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#d2a530] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.home')}</a>
-  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#d2a530] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.about')}</a>
-  <a href={sectionLink('tours')} class="block text-center py-3 text-[#d2a530] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.tours')}</a>
-  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#d2a530] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.featured')}</a>
+  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.home')}</a>
+  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.about')}</a>
+  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.tours')}</a>
+  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.featured')}</a>
 </div>
 
 <script is:inline>
