@@ -45,6 +45,9 @@ if (isTourDetailEs || isTourDetailEn) {
 
 // Generador de enlaces de sección para el menú
 function sectionLink(section) {
+  if (section === 'tours') {
+    return lang === 'es' ? '/es/tours' : '/tours';
+  }
   return lang === 'es' ? `/es/#${section}` : `/#${section}`;
 }
 ---

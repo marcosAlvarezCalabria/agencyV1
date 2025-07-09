@@ -1,16 +1,20 @@
 ---
 import BaseLayout from '../layouts/Baselayout.astro';
-import toursEs from '../data/tours.es.json';
+import toursEn from '../data/tours.en.json';
 import TourCard from '../components/TourCard.astro';
+import ToursCarousel from '../components/ToursCarousel.astro';
 ---
 
 <BaseLayout>
-  <section id="tours" class="py-16 px-4 bg-gray-50">
+  <section id="tours" class="py-16 px-4 bg-white">
     <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-10 text-primary">Nuestros Tours</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {toursEs.map(tour => (
-          <TourCard {...tour} />
+      <h2 class="text-4xl font-bold text-center mb-10 text-primary">Our Tours</h2>
+      <div class="block md:hidden">
+        <ToursCarousel tours={toursEn} lang="en" t={(key) => undefined} />
+      </div>
+      <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {toursEn.map(tour => (
+          <TourCard tour={tour} lang="en" t={(key) => undefined} />
         ))}
       </div>
     </div>
