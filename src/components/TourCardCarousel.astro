@@ -4,9 +4,22 @@ if (!tour) {
   // No renderizar nada si el tour no está definido
   return null;
 }
-const { name, duration, description, includes, image, price, slug } = tour;
+const { name, duration, description, includes, image, images = [], price, slug } = tour;
 const cardId = `carousel-card-${name.replace(/\s+/g, '').toLowerCase()}`;
 const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
+
+let mainImage = image;
+if (images.length > 0) {
+  mainImage = images[0];
+}
+
+let selectedIndex = 0;
+
+function selectImage(idx) {
+  selectedIndex = idx;
+  mainImage = images[idx] || image;
+  // For Astro Islands, this would need to be a client:load or client:visible component for reactivity
+}
 ---
 <a id={cardId}
   href={detailsUrl}
@@ -17,7 +30,7 @@ const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
   data-includes={includes.join('||')}
   data-image={image}
 >
-  <img src={image} alt={name} class="w-full h-32 object-cover rounded-md mb-3" loading="lazy" />
+  <img src={mainImage} alt={name} class="w-full h-32 object-cover rounded-md mb-3 transition-all duration-300" loading="lazy" />
   <h3 class="text-xl font-bold text-stone-900 mb-1">{name}</h3>
   {price && (
     <div class="inline-block bg-[#d2a530] text-[#372212] text-base font-semibold rounded-full px-3 py-1 mb-2 price-badge">

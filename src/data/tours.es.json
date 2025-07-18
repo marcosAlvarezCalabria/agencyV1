@@ -76,7 +76,15 @@
       "Entrada a Machupicchu",
       "Guía profesional"
     ],
-    "image": "/assets/images/salkantay.jpg"
+    "image": "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
+    "images": [
+      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
+      "/assets/images/Salkantay_Trek+_Machupicchu/Salkantaytrek+machupichu2.webp",
+      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu3.webp",
+      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu4.webp",
+      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu6.webp",
+      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu7.webp"
+    ]
   },
   {
     "name": "Valle Sagrado + Machupicchu",

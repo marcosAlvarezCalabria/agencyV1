@@ -1,5 +1,5 @@
 ---
-// Página dinámica de tour individual en inglés
+// Dynamic tour page in English
 import Baselayout from '../../../layouts/Baselayout.astro';
 
 export async function getStaticPaths() {
@@ -9,20 +9,31 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const tours = (await import('../../../data/tours.en.json')).default;
-const tour = tours.find(t => t.slug === slug);
+
+let tour = tours.find(t => t.slug === slug);
+// Si no tiene 'images' pero sí 'image', crear array 'images' con la imagen única
+if (tour && !tour.images && tour.image) {
+  tour = {
+    ...tour,
+    images: [tour.image],
+    itinerary: tour.itinerary || [],
+    not_included: tour.not_included || [],
+    recommendations: tour.recommendations || []
+  };
+}
 
 if (!tour) {
   throw new Error('Tour not found');
 }
 
-// Aquí creamos props personalizados en variables
+// SEO and lang for layout
 const lang = 'en';
 const seo = {
-  title: `${tour.name} | Agencia Cusco`,
+  title: `${tour.name} | Cusco Agency`,
   description: tour.description,
   hreflangs: [
-    { lang: 'en', url: `/tours/${slug}` },
-    { lang: 'es', url: `/es/tours/${slug}` }
+    { lang: 'es', url: `/es/tours/${slug}` },
+    { lang: 'en', url: `/tours/${slug}` }
   ]
 };
 ---
@@ -30,30 +41,66 @@ const seo = {
   <section class="max-w-3xl mx-auto py-10 px-4">
     {tour.images && tour.images.length > 0 && (
       <div class="mb-8">
-        {/* Desktop: grilla tipo collage */}
-        <div class="hidden md:grid grid-cols-2 gap-2 md:grid-cols-4 masonry-grid">
-          <div class="col-span-2 row-span-2">
-            <img src={tour.images[0]} alt={tour.name + ' 1'} class="rounded-xl w-full h-64 object-cover" loading="lazy" />
-          </div>
-          <div>
-            <img src={tour.images[1]} alt={tour.name + ' 2'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
-          </div>
-          <div>
-            <img src={tour.images[2]} alt={tour.name + ' 3'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
-          </div>
-          <div class="col-span-2">
-            <img src={tour.images[3]} alt={tour.name + ' 4'} class="rounded-xl w-full h-40 object-cover" loading="lazy" />
-          </div>
-        </div>
-        {/* Mobile: imagen grande + miniaturas */}
-        <div class="md:hidden flex flex-col items-center">
-          <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' main'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
-          <div class="flex gap-2 justify-center mt-2">
-            {tour.images.map((img, idx) => (
-              <img src={img} alt={tour.name + ' thumb ' + (idx+1)} class="rounded-lg w-16 h-16 object-cover border-2 border-transparent hover:border-[#d2a530] cursor-pointer transition-all duration-200" loading="lazy" onclick={`document.getElementById('mainTourImg').src='${img}'`} />
-            ))}
-          </div>
-        </div>
+        {tour.images.length >= 4 ? (
+          <>
+            {/* Desktop: collage grid */}
+            <div class="hidden md:grid grid-cols-2 gap-2 md:grid-cols-4 masonry-grid">
+              <div class="col-span-2 row-span-2">
+                <img src={tour.images[0]} alt={tour.name + ' 1'} class="rounded-xl w-full h-64 object-cover" loading="lazy" />
+              </div>
+              <div>
+                <img src={tour.images[1]} alt={tour.name + ' 2'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
+              </div>
+              <div>
+                <img src={tour.images[2]} alt={tour.name + ' 3'} class="rounded-xl w-full h-32 object-cover" loading="lazy" />
+              </div>
+              <div class="col-span-2">
+                <img src={tour.images[3]} alt={tour.name + ' 4'} class="rounded-xl w-full h-40 object-cover" loading="lazy" />
+              </div>
+            </div>
+            {/* Mobile: main image + thumbnails (pure JS, accessible, clean) */}
+            <div class="md:hidden flex flex-col items-center">
+              <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' main'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
+              <div id="miniCarousel" class="flex gap-2 justify-start mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+                {tour.images.map((img, idx) => (
+                  <img
+                    src={img}
+                    alt={tour.name + ' thumbnail ' + (idx+1)}
+                    class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
+                    aria-label={`View image ${idx+1} of ${tour.images.length}`}
+                    tabindex={0}
+                    style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
+                    loading="lazy"
+                    onclick={`
+                      var mainImg = document.getElementById('mainTourImg');
+                      if(mainImg) mainImg.src='${img}';
+                      Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
+                      this.style.borderColor='#d2a530';
+                      // Center active thumbnail in carousel
+                      const carousel = document.getElementById('miniCarousel');
+                      if(carousel){
+                        const rect = this.getBoundingClientRect();
+                        const crect = carousel.getBoundingClientRect();
+                        carousel.scrollBy({
+                          left: rect.left - crect.left - crect.width/2 + rect.width/2,
+                          behavior: 'smooth'
+                        });
+                      }
+                    `}
+                    onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Desktop y móvil: solo una imagen grande */}
+            <div class="flex flex-col items-center">
+              <img src={tour.images[0]} alt={tour.name} class="rounded-xl w-full h-64 object-cover mb-2 transition-all duration-300" loading="lazy" />
+            </div>
+          </>
+        )}
       </div>
     )}
     <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
@@ -72,9 +119,9 @@ const seo = {
               <span class="font-semibold text-[#b64926]">Itinerary:</span>
             </div>
             <ul class="list-decimal list-inside text-[#372212]">
-              {tour.itinerary.map(dia => (
+              {tour.itinerary.map(day => (
                 <li class="mb-1">
-                  <span class="font-bold">{dia.day}:</span> <span class="italic">{dia.title}</span> – {dia.description}
+                  <span class="font-bold">{day.day}:</span> <span class="italic">{day.title}</span> – {day.description}
                 </li>
               ))}
             </ul>

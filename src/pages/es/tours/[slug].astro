@@ -45,12 +45,34 @@ const seo = {
             <img src={tour.images[3]} alt={tour.name + ' 4'} class="rounded-xl w-full h-40 object-cover" loading="lazy" />
           </div>
         </div>
-        <!-- Mobile: imagen grande + miniaturas -->
+        <!-- Mobile: imagen grande + miniaturas (JS puro, accesible y limpio) -->
         <div class="md:hidden flex flex-col items-center">
           <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
-          <div class="flex gap-2 justify-center mt-2">
+          <div id="miniCarousel" class="flex gap-2 justify-start mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
             {tour.images.map((img, idx) => (
-              <img src={img} alt={tour.name + ' thumb ' + (idx+1)} class="rounded-lg w-16 h-16 object-cover border-2 border-transparent hover:border-[#d2a530] cursor-pointer transition-all duration-200" loading="lazy" onclick={`document.getElementById('mainTourImg').src='${img}'`} />
+              <img
+                src={img}
+                alt={tour.name + ' miniatura ' + (idx+1)}
+                class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
+                aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
+                tabindex="0"
+                style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
+                loading="lazy"
+                onclick={`
+                  document.getElementById('mainTourImg').src='${img}';
+                  Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
+                  this.style.borderColor='#d2a530';
+                  // Centrar la miniatura activa en el carrusel
+                  const carousel = document.getElementById('miniCarousel');
+                  const rect = this.getBoundingClientRect();
+                  const crect = carousel.getBoundingClientRect();
+                  carousel.scrollBy({
+                    left: rect.left - crect.left - crect.width/2 + rect.width/2,
+                    behavior: 'smooth'
+                  });
+                `}
+                onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
+              />
             ))}
           </div>
         </div>
