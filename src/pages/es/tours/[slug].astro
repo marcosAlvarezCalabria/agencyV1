@@ -32,7 +32,7 @@ const seo = {
     <div class="tour-detail-flex">
       {/* Galería a la izquierda en desktop */}
       {tour.images && tour.images.length > 0 && (
-        <aside class="tour-gallery-column hidden md:flex flex-col w-[38vw] max-w-[650px] min-w-[320px] h-[85vh] sticky top-24 self-start mr-6 pr-2 lg:pr-4">
+        <aside class="tour-gallery-column hidden md:flex flex-col w-[38vw] max-w-[650px] min-w-[320px] h-[85vh] sticky top-24 self-start mr-6 pr-2 lg:pr-4" style="display:none;" md:style="display:flex;">
           <div class="gallery-main-img-wrap mb-3" style="position:relative;">
             <span id="mainImgLoader" class="img-loader-overlay"></span>
             <img id="mainDesktopTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="gallery-main-img" loading="lazy"
@@ -61,6 +61,39 @@ const seo = {
             </div>
           )}
         </aside>
+      )}
+      {/* Galería móvil arriba en mobile */}
+      {tour.images && tour.images.length > 0 && (
+        <div class="md:hidden flex flex-col items-center w-full mb-8">
+          <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
+          <div id="miniCarousel" class="flex gap-2 justify-center mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+            {tour.images.map((img, idx) => (
+              <img
+                src={img}
+                alt={tour.name + ' miniatura ' + (idx+1)}
+                class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
+                aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
+                tabindex="0"
+                style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
+                loading="lazy"
+                onclick={`
+                  document.getElementById('mainTourImg').src='${img}';
+                  Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
+                  this.style.borderColor='#d2a530';
+                  // Centrar la miniatura activa en el carrusel
+                  const carousel = document.getElementById('miniCarousel');
+                  const rect = this.getBoundingClientRect();
+                  const crect = carousel.getBoundingClientRect();
+                  carousel.scrollBy({
+                    left: rect.left - crect.left - crect.width/2 + rect.width/2,
+                    behavior: 'smooth'
+                  });
+                `}
+                onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
+              />
+            ))}
+          </div>
+        </div>
       )}
       {/* Columna de texto scrollable a la derecha */}
       <main class="tour-detail-content grow">
@@ -122,39 +155,6 @@ const seo = {
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
         </a>
       </main>
-      {/* Galería móvil */}
-      {tour.images && tour.images.length > 0 && (
-        <div class="md:hidden flex flex-col items-center w-full mb-8">
-          <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
-          <div id="miniCarousel" class="flex gap-2 justify-start mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
-            {tour.images.map((img, idx) => (
-              <img
-                src={img}
-                alt={tour.name + ' miniatura ' + (idx+1)}
-                class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
-                aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
-                tabindex="0"
-                style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
-                loading="lazy"
-                onclick={`
-                  document.getElementById('mainTourImg').src='${img}';
-                  Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
-                  this.style.borderColor='#d2a530';
-                  // Centrar la miniatura activa en el carrusel
-                  const carousel = document.getElementById('miniCarousel');
-                  const rect = this.getBoundingClientRect();
-                  const crect = carousel.getBoundingClientRect();
-                  carousel.scrollBy({
-                    left: rect.left - crect.left - crect.width/2 + rect.width/2,
-                    behavior: 'smooth'
-                  });
-                `}
-                onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   </section>
 </Baselayout>

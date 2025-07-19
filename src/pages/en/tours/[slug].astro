@@ -44,7 +44,7 @@ const seo = {
     <div class="tour-detail-flex">
       {/* Gallery left on desktop */}
       {tour.images && tour.images.length > 0 && (
-        <aside class="tour-gallery-column hidden md:flex flex-col w-[38vw] max-w-[650px] min-w-[320px] h-[85vh] sticky top-24 self-start mr-6 pr-2 lg:pr-4">
+        <aside class="tour-gallery-column hidden md:flex flex-col w-[38vw] max-w-[650px] min-w-[320px] h-[85vh] sticky top-24 self-start mr-6 pr-2 lg:pr-4" style="display:none;" md:style="display:flex;">
           <div class="gallery-main-img-wrap mb-3" style="position:relative;">
             <span id="mainImgLoader" class="img-loader-overlay"></span>
             <img id="mainDesktopTourImg" src={tour.images[0]} alt={tour.name + ' main'} class="gallery-main-img" loading="lazy"
