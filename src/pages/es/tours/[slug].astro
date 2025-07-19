@@ -27,52 +27,40 @@ const seo = {
 };
 ---
 <Baselayout lang={lang} seo={seo}>
-  <section class="max-w-3xl mx-auto py-10 px-4">
-    {tour.images && tour.images.length > 0 && (
-      <div class="mb-8">
-        <!-- Desktop: grilla flexible para todas las imágenes -->
-        <div class="hidden md:grid grid-cols-2 md:grid-cols-4 gap-2 masonry-grid">
-          {tour.images.map((img, idx) => (
-            <div class={idx === 0 ? 'col-span-2 row-span-2' : idx === 3 ? 'col-span-2' : ''}>
-              <img src={img} alt={tour.name + ' ' + (idx+1)} class={idx === 0 ? 'rounded-xl w-full h-64 object-cover' : idx === 3 ? 'rounded-xl w-full h-40 object-cover' : 'rounded-xl w-full h-32 object-cover'} loading="lazy" />
-            </div>
-          ))}
-        </div>
-        <!-- Mobile: imagen grande + miniaturas (JS puro, accesible y limpio) -->
-        <div class="md:hidden flex flex-col items-center">
-          <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
-          <div id="miniCarousel" class="flex gap-2 justify-start mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
-            {tour.images.map((img, idx) => (
-              <img
-                src={img}
-                alt={tour.name + ' miniatura ' + (idx+1)}
-                class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
-                aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
-                tabindex="0"
-                style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
-                loading="lazy"
-                onclick={`
-                  document.getElementById('mainTourImg').src='${img}';
-                  Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
-                  this.style.borderColor='#d2a530';
-                  // Centrar la miniatura activa en el carrusel
-                  const carousel = document.getElementById('miniCarousel');
-                  const rect = this.getBoundingClientRect();
-                  const crect = carousel.getBoundingClientRect();
-                  carousel.scrollBy({
-                    left: rect.left - crect.left - crect.width/2 + rect.width/2,
-                    behavior: 'smooth'
-                  });
-                `}
-                onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
-              />
-            ))}
+  <section class="w-full px-2 md:px-6 lg:px-10 py-10">
+    <div class="tour-detail-flex">
+      {/* Galería a la izquierda en desktop */}
+      {tour.images && tour.images.length > 0 && (
+        <aside class="tour-gallery-column hidden md:flex flex-col w-[38vw] max-w-[650px] min-w-[320px] h-[85vh] sticky top-24 self-start mr-6 pr-2 lg:pr-4">
+          <div class="gallery-main-img-wrap mb-3" style="position:relative;">
+            <span id="mainImgLoader" class="img-loader-overlay"></span>
+            <img id="mainDesktopTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="gallery-main-img" loading="lazy"
+              onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.style.display='flex'" />
           </div>
-        </div>
-      </div>
-    )}
-    <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-      <div class="flex-1">
+          {tour.images.length > 1 && (
+            <div id="desktopThumbCarousel" class="gallery-thumbs-row flex gap-2 overflow-x-auto pb-1" style="scrollbar-width: none; -ms-overflow-style: none;">
+              {tour.images.map((img, idx) => (
+                <div class="gallery-thumb-wrap" style="position:relative;">
+                  <span class="img-loader-overlay img-thumb-loader"></span>
+                  <img src={img} alt={tour.name + ' miniatura ' + (idx+1)} class="gallery-thumb-img" tabindex="0" loading="lazy"
+                    onclick={`
+                      document.getElementById('mainDesktopTourImg').src='${img}';
+                      Array.from(this.parentNode.parentNode.querySelectorAll('.gallery-thumb-img')).forEach(el=>el.style.border='1.5px solid #ffe08233');
+                      this.style.border='2.5px solid #d2a530';
+                      this.previousElementSibling.style.display='flex';
+                      document.getElementById('mainImgLoader').style.display='flex';
+                    `}
+                    onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.style.display='flex'"
+                    style={idx === 0 ? 'border:2.5px solid #d2a530' : 'border:1.5px solid #ffe08233'}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </aside>
+      )}
+      {/* Columna de texto scrollable a la derecha */}
+      <main class="tour-detail-content grow">
         <h1 class="text-3xl md:text-4xl font-extrabold text-[#b64926] mb-2">{tour.name}</h1>
         <span class="inline-block bg-[#d2a530] text-white px-3 py-1 rounded-lg font-bold text-lg mb-2">${tour.price}</span>
         <p class="text-[#372212] text-lg mb-4">{tour.description}</p>
@@ -129,7 +117,185 @@ const seo = {
         <div class="flex gap-4 mt-4">
           <a href="/es/tours" class="text-[#b64926] underline hover:text-[#d2a530]">← Volver a los tours</a>
         </div>
-      </div>
+      </main>
+      {/* Galería móvil */}
+      {tour.images && tour.images.length > 0 && (
+        <div class="md:hidden flex flex-col items-center w-full mb-8">
+          <img id="mainTourImg" src={tour.images[0]} alt={tour.name + ' principal'} class="rounded-xl w-full h-56 object-cover mb-2 transition-all duration-300" loading="lazy" />
+          <div id="miniCarousel" class="flex gap-2 justify-start mt-2 overflow-x-auto w-full pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+            {tour.images.map((img, idx) => (
+              <img
+                src={img}
+                alt={tour.name + ' miniatura ' + (idx+1)}
+                class="rounded-lg w-16 h-16 object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0"
+                aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
+                tabindex="0"
+                style={idx === 0 ? 'border-color:#d2a530' : 'border-color:transparent'}
+                loading="lazy"
+                onclick={`
+                  document.getElementById('mainTourImg').src='${img}';
+                  Array.from(this.parentNode.children).forEach(el=>el.style.borderColor='transparent');
+                  this.style.borderColor='#d2a530';
+                  // Centrar la miniatura activa en el carrusel
+                  const carousel = document.getElementById('miniCarousel');
+                  const rect = this.getBoundingClientRect();
+                  const crect = carousel.getBoundingClientRect();
+                  carousel.scrollBy({
+                    left: rect.left - crect.left - crect.width/2 + rect.width/2,
+                    behavior: 'smooth'
+                  });
+                `}
+                onkeydown={`if(event.key==='Enter'||event.key===' '){this.click();}`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 </Baselayout>
+<style>
+  .tour-detail-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  @media (min-width: 768px) {
+    .tour-detail-flex {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 2rem;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    @media (min-width: 1024px) {
+      .tour-detail-flex {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  }
+  .tour-gallery-column {
+    position: sticky;
+    top: 6.5rem;
+    align-self: flex-start;
+    max-height: 80vh;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-right: 1.5rem;
+    margin-left: 0;
+  }
+  .gallery-main-img-wrap {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #fff;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 rgba(166,124,0,0.08);
+    border: 1.5px solid #ffe08233;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.1rem;
+    background: #fff;
+    transition: transform 0.18s;
+    display: block;
+  }
+  .img-loader-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: rgba(255,255,255,0.7);
+  }
+  .img-loader-overlay:before {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 54px;
+    background: url('/assets/images/logoInkasTravel.png') center center no-repeat;
+    background-size: contain;
+    animation: logo-blink 1.2s linear infinite;
+    opacity: 0.85;
+  }
+  .img-thumb-loader:before {
+    width: 32px;
+    height: 32px;
+  }
+  .gallery-main-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 18px 0 rgba(166,124,0,0.13);
+  }
+  .gallery-thumbs-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffe082 #fffde7;
+  }
+  .gallery-thumb-wrap {
+    flex: 0 0 auto;
+    width: 70px;
+    aspect-ratio: 1/1;
+    background: #fff;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 6px 0 rgba(166,124,0,0.07);
+    border: 1.2px solid #ffe08233;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+  }
+  .gallery-thumb-wrap:hover {
+    box-shadow: 0 2px 12px 0 rgba(166,124,0,0.13);
+  }
+  .gallery-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.7rem;
+    background: #fff;
+    transition: transform 0.15s;
+    display: block;
+  }
+  @keyframes logo-blink {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 0.2; }
+  }
+  .gallery-thumb-img:hover {
+    transform: scale(1.06);
+  }
+  .tour-detail-content {
+    min-width: 0;
+    width: 100%;
+    max-width: 900px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 2rem;
+    overflow-y: auto;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  @media (min-width: 1024px) {
+    .tour-detail-content {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+</style>
