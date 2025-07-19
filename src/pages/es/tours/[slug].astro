@@ -38,7 +38,7 @@ const seo = {
               onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.style.display='flex'" />
           </div>
           {tour.images.length > 1 && (
-            <div id="desktopThumbCarousel" class="gallery-thumbs-row flex gap-2 overflow-x-auto pb-1" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <div id="desktopThumbCarousel" class="gallery-thumbs-row flex gap-2 overflow-x-auto pb-1 justify-center" style="scrollbar-width: none; -ms-overflow-style: none; margin-left:auto; margin-right:auto;">
               {tour.images.map((img, idx) => (
                 <div class="gallery-thumb-wrap" style="position:relative;">
                   <span class="img-loader-overlay img-thumb-loader"></span>
@@ -47,7 +47,9 @@ const seo = {
                       document.getElementById('mainDesktopTourImg').src='${img}';
                       Array.from(this.parentNode.parentNode.querySelectorAll('.gallery-thumb-img')).forEach(el=>el.style.border='1.5px solid #ffe08233');
                       this.style.border='2.5px solid #d2a530';
-                      this.previousElementSibling.style.display='flex';
+                      // Oculta el loader de la miniatura al hacer clic
+                      this.previousElementSibling.style.display='none';
+                      // Muestra el loader principal
                       document.getElementById('mainImgLoader').style.display='flex';
                     `}
                     onload="this.previousElementSibling.style.display='none'" onerror="this.previousElementSibling.style.display='flex'"
