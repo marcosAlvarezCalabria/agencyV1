@@ -52,48 +52,55 @@ function sectionLink(section) {
 }
 ---
 
-<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex justify-between items-center h-16 px-6 sm:px-8 transition-transform duration-300 ease-in-out">
+<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex items-center h-16 px-6 sm:px-8 bg-transparent border-none shadow-none">
   <!-- Logo a la izquierda -->
-  <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10">
-    <img src="/assets/images/logoInkasTravel.png" alt="Logo" class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out" />
-  </a>
-
-  <!-- Contenedor del menú a la derecha -->
-  <div class="flex items-center gap-x-4">
-    <!-- Menú de escritorio (ovalado) - Oculto en móvil -->
-    <div class="hidden md:flex">
-      <nav 
-        id="menu-container" 
-        class="flex items-center justify-center gap-x-2 sm:gap-x-4 px-4 sm:px-6 py-2 rounded-full transition-all duration-300 ease-in-out glassmorphism"
-      >
-        <a href={sectionLink('inicio')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.home')}</a>
-        <a href={sectionLink('nosotros')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.about')}</a>
-        <a href={sectionLink('tours')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.tours')}</a>
-        <a href={sectionLink('destacados')} class="text-[#372212] text-sm sm:text-base font-medium hover:text-[#a67c00] transition-colors duration-300">{t('nav.featured')}</a>
-      </nav>
-    </div>
-
+  <div class="flex items-center justify-start min-w-0">
+    <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10">
+      <img src="/assets/images/logoInkasTravel.png" alt="Logo" class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out drop-shadow-xl hover:scale-105 hover:drop-shadow-2xl focus:scale-105" />
+    </a>
+  </div>
+  <!-- Menú y selector de idioma a la derecha (desktop) -->
+  <div class="hidden md:flex flex-1 min-w-0 items-center justify-end gap-x-6">
+    <nav 
+      id="menu-container" 
+      class="flex items-center gap-x-6 px-2 sm:px-4 py-2 transition-all duration-300 ease-in-out bg-transparent border-none shadow-none"
+    >
+      <a href={sectionLink('inicio')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.home')}</a>
+      <a href={sectionLink('nosotros')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.about')}</a>
+      <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.tours')}</a>
+      <a href={sectionLink('destacados')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.featured')}</a>
+    </nav>
     <!-- Selector de idioma (escritorio) -->
-    <div class="hidden md:flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 glassmorphism text-[#372212] hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+    <div class="flex items-center">
+      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-lg">
           language
         </span>
         <span class="uppercase">{oppositeLang}</span>
       </a>
     </div>
-
+  </div>
+  <!-- Menú móvil y selector de idioma móvil a la derecha -->
+  <div class="md:hidden flex flex-1 min-w-0 items-center justify-end gap-x-4">
+    <!-- Selector de idioma (escritorio) -->
+    <div class="hidden md:flex items-center">
+      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+        <span class="material-symbols-outlined !text-lg">
+          language
+        </span>
+        <span class="uppercase">{oppositeLang}</span>
+      </a>
+    </div>
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
     <div class="md:hidden flex items-center gap-x-3">
       <!-- Selector de idioma (móvil) -->
-      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-medium transition-colors duration-300 glassmorphism text-[#372212] hover:bg-white/20" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-sm">
           language
         </span>
         <span class="uppercase">{oppositeLang}</span>
       </a>
-
-      <button id="menu-btn" class="text-[#372212] focus:outline-none" aria-label="Abrir menú">
+      <button id="menu-btn" class="text-[#372212] focus:outline-none hover:scale-110 transition-transform duration-200" aria-label="Abrir menú">
         <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="#372212" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -104,15 +111,16 @@ function sectionLink(section) {
     </div>
   </div>
 </header>
+</header>
 
 <!-- Overlay y Menú móvil que sale desde abajo -->
 <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
-<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-lg z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism">
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-white/90 dark:bg-[#232323]/90 backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
   <div class="w-12 h-1.5 bg-[#d2a530]/50 rounded-full mx-auto mb-6"></div>
-  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.home')}</a>
-  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.about')}</a>
-  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.tours')}</a>
-  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-lg hover:bg-white/10 transition-colors duration-300">{t('nav.featured')}</a>
+  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.home')}</a>
+  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.about')}</a>
+  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.tours')}</a>
+  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.featured')}</a>
 </div>
 
 <script is:inline>
@@ -241,12 +249,58 @@ function sectionLink(section) {
   window.addEventListener('load', handleScroll); // Usamos 'load' para asegurar que las alturas de las secciones son correctas
 </script>
 <style>
+  /* Header y menú sin fondo ni borde */
+  .glassmorphism-lang {
+    background: linear-gradient(90deg, #ffe082cc 0%, #fffde7cc 100%);
+    box-shadow: 0 2px 8px 0 rgba(255, 215, 64, 0.10);
+    border: 1px solid #ffe08244;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+  .menu-link {
+    position: relative;
+    outline: none;
+    background: none !important;
+    border: 2px solid transparent;
+    box-shadow: none !important;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.25);
+    letter-spacing: 0.01em;
+    border-radius: 0.7em;
+    transition: color 0.2s;
+  }
+  .menu-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.7em;
+    border: 2px solid #ffe082;
+    background: rgba(255, 224, 130, 0.32);
+    box-shadow: 0 2px 16px 0 rgba(255, 224, 130, 0.18);
+    opacity: 0;
+    transform: scale(0.7,0.7);
+    transition: opacity 0.25s, transform 0.35s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .menu-link:hover::before,
+  .menu-link:focus::before,
+  .menu-link.active::before {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+  .menu-link:hover,
+  .menu-link:focus,
+  .menu-link.active {
+    color: #a67c00 !important;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.25);
+    z-index: 1;
+  }
   #lang-toggle-desktop:hover,
   #lang-toggle-mobile:hover {
     color: #d2a530 !important;
   }
-
-  /* Esto asegura que el ícono también cambie de color */
   #lang-toggle-desktop:hover .material-symbols-outlined,
   #lang-toggle-mobile:hover .material-symbols-outlined {
     color: #d2a530 !important;
