@@ -16,7 +16,8 @@ const seo = {
 ---
 
 <Baselayout lang={lang} seo={seo}>
-  <section id="tours" class="py-16 px-4 bg-white">
+  <section id="tours" class="py-16 px-4 min-h-screen relative overflow-hidden">
+    <div class="fixed inset-0 w-full h-full -z-10" style="background: linear-gradient(90deg, #bfa76a 0%, #2d2320 100%);"></div>
     <div class="container mx-auto">
       <h2 class="text-4xl font-bold text-center mb-10 text-primary">Nuestros Tours</h2>
       <div class="block md:hidden">
@@ -24,7 +25,9 @@ const seo = {
       </div>
       <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {toursEs.map(tour => (
-          <TourCard tour={tour} lang="es" t={(key) => undefined} />
+          <div class="rounded-2xl shadow-xl bg-white/80 backdrop-blur-md hover:shadow-2xl transition-all duration-200">
+            <TourCard tour={tour} lang="es" t={(key) => undefined} />
+          </div>
         ))}
       </div>
     </div>

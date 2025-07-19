@@ -27,7 +27,8 @@ const seo = {
 };
 ---
 <Baselayout lang={lang} seo={seo}>
-  <section class="w-full px-2 md:px-6 lg:px-10 py-10">
+  <section class="w-full px-2 md:px-6 lg:px-10 py-10 relative overflow-hidden">
+    <div class="fixed inset-0 w-full h-full -z-10" style="background: linear-gradient(90deg, #f5e7c5 0%, #f5e7c5 65%, #b89b7b 100%);"></div>
     <div class="tour-detail-flex">
       {/* Galería a la izquierda en desktop */}
       {tour.images && tour.images.length > 0 && (
@@ -116,9 +117,10 @@ const seo = {
             </ul>
           </div>
         )}
-        <div class="flex gap-4 mt-4">
-          <a href="/es/tours" class="text-[#b64926] underline hover:text-[#d2a530]">← Volver a los tours</a>
-        </div>
+        <!-- Botón flotante solo icono, abajo a la izquierda -->
+        <a href="/es/tours" class="fixed left-6 bottom-8 z-50 bg-[#d2a530] hover:bg-[#b64926] text-white font-bold p-4 rounded-full shadow-xl transition-all duration-200 flex items-center justify-center text-lg" style="box-shadow:0 4px 24px 0 rgba(166,124,0,0.13);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </a>
       </main>
       {/* Galería móvil */}
       {tour.images && tour.images.length > 0 && (

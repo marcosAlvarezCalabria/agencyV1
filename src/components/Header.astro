@@ -115,7 +115,7 @@ function sectionLink(section) {
 
 <!-- Overlay y Menú móvil que sale desde abajo -->
 <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
-<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-white/90 dark:bg-[#232323]/90 backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-transparent dark:bg-transparent backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
   <div class="w-12 h-1.5 bg-[#d2a530]/50 rounded-full mx-auto mb-6"></div>
   <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.home')}</a>
   <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.about')}</a>
