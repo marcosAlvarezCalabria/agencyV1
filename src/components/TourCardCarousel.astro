@@ -55,14 +55,23 @@ function selectImage(idx) {
     ontouchend="if(!window.__touchMoved){window.location.href=''+detailsUrl;}"
     onclick="window.location.href=''+detailsUrl;"
   >
+  <div class="flex flex-col gap-2 mt-2">
+    <a href={detailsUrl}
+       class="bg-[#d2a530] text-[#372212] font-bold py-2 px-4 text-center w-full block cursor-pointer hover:bg-[#e6c75c] transition-colors border border-[#b88a2a]"
+       style="box-shadow:0 2px 8px #d2a53033;"
+       ontouchstart="event.stopPropagation();"
+       onclick="event.stopPropagation();">
+      {t('card.seeDetails') || 'Ver detalles'}
+    </a>
     <a href={`https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`}
        target="_blank"
        rel="noopener noreferrer"
-       class="mt-2 bg-[#a67c00] text-white font-bold py-2 px-4 text-center w-full block cursor-pointer hover:bg-[#b88a2a] transition-colors whatsapp-btn"
+       class="bg-[#a67c00] text-white font-bold py-2 px-4 text-center w-full block cursor-pointer hover:bg-[#b88a2a] transition-colors whatsapp-btn"
        style="box-shadow:0 2px 8px #a67c0033;"
        ontouchstart="event.stopPropagation();"
        onclick="event.stopPropagation();">
       {t('card.bookNow')}
     </a>
+  </div>
   </div>
 </div>

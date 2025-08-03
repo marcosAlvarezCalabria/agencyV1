@@ -22,7 +22,8 @@ export const ui = {
       title: "Our Featured Trips"
     },
     card: {
-      bookNow: "Book now"
+      bookNow: "Book now",
+      seeDetails: "See details"
     }
   },
   es: {
@@ -41,7 +42,8 @@ export const ui = {
       title: "Nuestros Viajes Destacados"
     },
     card: {
-      bookNow: "Reservar ahora"
+      bookNow: "Reservar ahora",
+      seeDetails: "Ver detalles"
     }
   }
   // ... otros idiomas
