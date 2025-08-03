@@ -72,7 +72,7 @@ function sectionLink(section) {
     </nav>
     <!-- Selector de idioma (escritorio) -->
     <div class="flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-lg">
           language
         </span>
@@ -94,7 +94,7 @@ function sectionLink(section) {
     <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
     <div class="md:hidden flex items-center gap-x-3">
       <!-- Selector de idioma (móvil) -->
-      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 rounded-full px-2 py-0.5 text-xs font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
+      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 px-2 py-0.5 text-xs font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
         <span class="material-symbols-outlined !text-sm">
           language
         </span>
@@ -115,12 +115,12 @@ function sectionLink(section) {
 
 <!-- Overlay y Menú móvil que sale desde abajo -->
 <div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
-<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 rounded-t-2xl shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-transparent dark:bg-transparent backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
-  <div class="w-12 h-1.5 bg-[#d2a530]/50 rounded-full mx-auto mb-6"></div>
-  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.home')}</a>
-  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.about')}</a>
-  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.tours')}</a>
-  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold rounded-xl hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.featured')}</a>
+<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-transparent dark:bg-transparent backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
+  <div class="w-12 h-1.5 bg-[#d2a530]/50 mx-auto mb-6"></div>
+  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.home')}</a>
+  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.about')}</a>
+  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.tours')}</a>
+  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.featured')}</a>
 </div>
 
 <script is:inline>
@@ -267,14 +267,14 @@ function sectionLink(section) {
     overflow: hidden;
     text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.25);
     letter-spacing: 0.01em;
-    border-radius: 0.7em;
+    border-radius: 0;
     transition: color 0.2s;
   }
   .menu-link::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 0.7em;
+    border-radius: 0;
     border: 2px solid #ffe082;
     background: rgba(255, 224, 130, 0.32);
     box-shadow: 0 2px 16px 0 rgba(255, 224, 130, 0.18);

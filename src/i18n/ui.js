@@ -6,37 +6,43 @@ export const languagesList = {
 export const defaultLang = "es";
 
 export const ui = {
-    en: {
-        nav: {
-            home: "Home",
-            about: "About Us",
-            trips: "Trips",
-            featured: "Featured"
-        },
-        hero: {
-            title_line1: "Explore the heart of the",
-            title_line2: "Andes",
-            subtitle: "with local guides"
-        },
-        featured: {
-            title: "Our Featured Trips"
-        }
+  en: {
+    nav: {
+      home: "Home",
+      about: "About Us",
+      trips: "Trips",
+      featured: "Featured"
     },
-    es: {
-        nav: {
-            home: "Inicio",
-            about: "Nosotros",
-            trips: "Viajes",
-            featured: "Destacados"
-        },
-        hero: {
-            title_line1: "Explora el corazón de los",
-            title_line2: "Andes",
-            subtitle: "con guías locales"
-        },
-        featured: {
-            title: "Nuestros Viajes Destacados"
-        }
+    hero: {
+      title_line1: "Explore the heart of the",
+      title_line2: "Andes",
+      subtitle: "with local guides"
+    },
+    featured: {
+      title: "Our Featured Trips"
+    },
+    card: {
+      bookNow: "Book now"
     }
-    // ... otros idiomas
+  },
+  es: {
+    nav: {
+      home: "Inicio",
+      about: "Nosotros",
+      trips: "Viajes",
+      featured: "Destacados"
+    },
+    hero: {
+      title_line1: "Explora el corazón de los",
+      title_line2: "Andes",
+      subtitle: "con guías locales"
+    },
+    featured: {
+      title: "Nuestros Viajes Destacados"
+    },
+    card: {
+      bookNow: "Reservar ahora"
+    }
+  }
+  // ... otros idiomas
 };

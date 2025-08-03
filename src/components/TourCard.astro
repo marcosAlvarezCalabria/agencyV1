@@ -11,7 +11,7 @@ const cardId = `desktop-card-${name.replace(/\s+/g, '').toLowerCase()}`;
 const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
 ---
 <div id={cardId}
-  class="tour-card-desktop bg-white/70 backdrop-blur-md rounded-md p-3 flex flex-col h-full text-stone-800 shadow-lg overflow-hidden border border-solid border-white/60 transition-transform duration-300 hover:scale-[1.025] group"
+  class="tour-card-desktop bg-white/70 backdrop-blur-md p-3 flex flex-col h-full text-stone-800 shadow-lg overflow-hidden border border-solid border-white/60 transition-transform duration-300 hover:scale-[1.025] group"
   data-name={name}
   data-duration={duration}
   data-description={description}
@@ -21,10 +21,10 @@ const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
   data-slug={slug}
 >
   <a href={detailsUrl} style="text-decoration: none;" class="flex flex-col flex-grow">
-    <img src={image} alt={name} class="w-full h-32 object-cover rounded-md mb-3 transition-all duration-300" loading="lazy" />
+    <img src={image} alt={name} class="w-full h-32 object-cover mb-3 transition-all duration-300" loading="lazy" />
     <h3 class="text-xl font-bold text-stone-900 mb-1">{name}</h3>
     {price && (
-      <div class="inline-block bg-[#d2a530] text-[#372212] text-base font-semibold rounded-full px-3 py-1 mb-2 price-badge">
+      <div class="inline-block bg-[#d2a530] text-[#372212] text-base font-semibold px-3 py-1 mb-2 price-badge">
         {(t('card.from') || 'Desde') + ' ' + price + ' USD'}
       </div>
     )}
@@ -34,7 +34,7 @@ const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
     </p>
     <p class="text-sm text-stone-700 mb-4 flex-grow">{description}</p>
   </a>
-  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="mt-4 bg-[#a67c00] text-white font-bold py-2 px-4 rounded-md hover:bg-[#b88a2a] transition-colors text-center w-full block whatsapp-btn" style="box-shadow:0 2px 8px #a67c0033;">
+  <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="mt-4 bg-[#a67c00] text-white font-bold py-2 px-4 hover:bg-[#b88a2a] transition-colors text-center w-full block whatsapp-btn" style="box-shadow:0 2px 8px #a67c0033;">
     {t('card.bookNow')}
   </a>
 </div>
@@ -42,5 +42,6 @@ const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
 <style>
 .tour-card-desktop {
   cursor: pointer;
+  border-radius: 0;
 }
 </style>
