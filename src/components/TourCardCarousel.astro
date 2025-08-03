@@ -21,9 +21,8 @@ function selectImage(idx) {
   // For Astro Islands, this would need to be a client:load or client:visible component for reactivity
 }
 ---
-<a id={cardId}
-  href={detailsUrl}
-  class="tour-card-carousel bg-white/70 backdrop-blur-md p-4 flex flex-col h-full text-stone-800 shadow-lg overflow-hidden border border-solid border-white/60 cursor-pointer no-underline"
+<div id={cardId}
+  class="tour-card-carousel bg-white/70 backdrop-blur-md p-4 flex flex-col h-full text-stone-800 shadow-lg overflow-hidden border border-solid border-white/60 select-none"
   data-name={name}
   data-duration={duration}
   data-description={description}
@@ -44,12 +43,26 @@ function selectImage(idx) {
   <div class="text-sm text-stone-700 mb-4 flex-grow">
     <p>{description}</p>
   </div>
-</a>
-  <a href={`https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`}
-     target="_blank"
-     rel="noopener noreferrer"
-     class="mt-2 bg-[#a67c00] text-white font-bold py-2 px-4 text-center w-full block cursor-pointer hover:bg-[#b88a2a] transition-colors whatsapp-btn"
-     style="box-shadow:0 2px 8px #a67c0033;">
-    {t('card.bookNow')}
-  </a>
-</a>
+  <div id={cardId}
+    class="tour-card-carousel bg-white/70 backdrop-blur-md p-4 flex flex-col h-full text-stone-800 shadow-lg overflow-hidden border border-solid border-white/60 select-none"
+    data-name={name}
+    data-duration={duration}
+    data-description={description}
+    data-includes={includes.join('||')}
+    data-image={image}
+    ontouchstart="window.__touchStartX = event.touches[0].clientX; window.__touchStartY = event.touches[0].clientY; window.__touchMoved = false;"
+    ontouchmove="if(Math.abs(event.touches[0].clientX-window.__touchStartX)>10 || Math.abs(event.touches[0].clientY-window.__touchStartY)>10){window.__touchMoved=true;}"
+    ontouchend="if(!window.__touchMoved){window.location.href=''+detailsUrl;}"
+    onclick="window.location.href=''+detailsUrl;"
+  >
+    <a href={`https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`}
+       target="_blank"
+       rel="noopener noreferrer"
+       class="mt-2 bg-[#a67c00] text-white font-bold py-2 px-4 text-center w-full block cursor-pointer hover:bg-[#b88a2a] transition-colors whatsapp-btn"
+       style="box-shadow:0 2px 8px #a67c0033;"
+       ontouchstart="event.stopPropagation();"
+       onclick="event.stopPropagation();">
+      {t('card.bookNow')}
+    </a>
+  </div>
+</div>
