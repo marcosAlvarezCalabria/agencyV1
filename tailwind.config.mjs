@@ -11,6 +11,8 @@ export default {
       },
       // Aquí mapeamos tus variables CSS a clases de Tailwind
       colors: {
+        'brand-orange': '#b64926',
+        'brand-gold': '#d2a530',
         'negro': 'var(--negro)',
         'verde': {
           50: 'var(--verde-50)',

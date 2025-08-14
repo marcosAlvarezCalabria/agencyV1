@@ -1,36 +1,38 @@
 ---
-import Baselayout from '../../layouts/Baselayout.astro';
+import BaseLayout from '../../layouts/Baselayout.astro';
 import toursEs from '../../data/tours.es.json';
 import TourCard from '../../components/TourCard.astro';
 import ToursCarousel from '../../components/ToursCarousel.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = 'es';
+const t = useTranslations('es');
 const seo = {
   title: 'Nuestros Tours | Agencia Cusco',
-  description: 'Descubre los mejores tours en Cusco y Perú. Aventura, cultura y más con Agencia Cusco.',
+  description: 'Descubre nuestros mejores tours en Cusco y Perú. Aventura, cultura y más con Agencia Cusco.',
   hreflangs: [
-    { lang: 'es', url: '/es/tours' },
-    { lang: 'en', url: '/tours' }
+    { lang: 'en', url: '/en/tours' },
+    { lang: 'es', url: '/es/tours' }
   ]
 };
 ---
 
-<Baselayout lang={lang} seo={seo}>
-  <section id="tours" class="py-16 px-4 min-h-screen relative overflow-hidden">
-    <div class="fixed inset-0 w-full h-full -z-10" style="background: linear-gradient(90deg, #bfa76a 0%, #2d2320 100%);"></div>
-    <div class="container mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-10 text-primary">Nuestros Tours</h2>
+<BaseLayout lang="es" t={t} seo={seo}>
+  <section 
+    id="tours" 
+    class="relative py-16 px-4 bg-cover bg-center"
+    style="background-image: url('/assets/images/tours-bg.jpg');"
+  >
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-10 text-white">{t('tours.title')}</h2>
       <div class="block md:hidden">
-        <ToursCarousel tours={toursEs} lang={lang} t={(key) => undefined} />
+        <ToursCarousel tours={toursEs} lang="es" t={t} />
       </div>
       <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {toursEs.map(tour => (
-          <div class="rounded-2xl shadow-xl bg-white/80 backdrop-blur-md hover:shadow-2xl transition-all duration-200">
-            <TourCard tour={tour} lang="es" t={(key) => undefined} />
-          </div>
+          <TourCard tour={tour} lang="es" t={t} />
         ))}
       </div>
     </div>
   </section>
-</Baselayout>
-
+</BaseLayout>
