@@ -19,7 +19,36 @@
   },
   "card": {
     "includes": "Incluye",
-    "bookNow": "Reservar Ahora"
+    "bookNow": "Reservar Ahora",
+    "availability": {
+      "limitedTitle": "¡Disponibilidad limitada!",
+      "onlySpotsLeft": "¡Solo {count} cupos!",
+      "title": "Disponibilidad",
+      "available": "Disponible"
+    },
+    "badge": {
+      "popular": "Popular",
+      "today": "HOY"
+    },
+    "actions": {
+      "addToFavorites": "Añadir a favoritos",
+      "quickView": "Vista rápida",
+      "seeDetails": "Ver detalles completos",
+      "enquireNow": "Consultar AHORA"
+    },
+    "rating": {
+      "label": "Calificación: {rating} de {max} estrellas"
+    },
+    "price": {
+      "perPerson": "por persona",
+      "youSave": "¡Ahorrás ${amount}!"
+    },
+    "features": {
+      "freeCancellation": "Cancelación gratis",
+      "guide": "Guía especializado",
+      "transport": "Transporte incluido",
+      "meals": "Comidas"
+    }
   },
   "about": {
     "subtitle": "Sobre Nosotros",

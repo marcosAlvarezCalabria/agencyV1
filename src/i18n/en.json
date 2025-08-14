@@ -19,7 +19,36 @@
   },
   "card": {
     "includes": "Includes",
-    "bookNow": "Book Now"
+    "bookNow": "Book Now",
+    "availability": {
+      "limitedTitle": "Limited availability!",
+      "onlySpotsLeft": "Only {count} spots left!",
+      "title": "Availability",
+      "available": "Available"
+    },
+    "badge": {
+      "popular": "Popular",
+      "today": "TODAY"
+    },
+    "actions": {
+      "addToFavorites": "Add to favorites",
+      "quickView": "Quick view",
+      "seeDetails": "See full details",
+      "enquireNow": "Enquire NOW"
+    },
+    "rating": {
+      "label": "Rating: {rating} out of {max} stars"
+    },
+    "price": {
+      "perPerson": "per person",
+      "youSave": "You save ${amount}!"
+    },
+    "features": {
+      "freeCancellation": "Free cancellation",
+      "guide": "Specialized guide",
+      "transport": "Transport included",
+      "meals": "Meals"
+    }
   },
   "about": {
     "subtitle": "About Us",
