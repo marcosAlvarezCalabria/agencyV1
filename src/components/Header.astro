@@ -16,18 +16,15 @@ const isTourDetailEs = /^\/es\/tours\/([^\/]+)$/.test(path);
 const isTourDetailEn = /^\/tours\/([^\/]+)$/.test(path);
 
 if (isTourDetailEs || isTourDetailEn) {
-  // Extraer slug
   const slug = path.split('/').pop();
   let existsInOtherLang = false;
   if (lang === 'es') {
-    // Verificar si el slug existe en inglés
     try {
       const toursEn = await import('../data/tours.en.json');
       existsInOtherLang = toursEn.default.some(t => t.slug === slug);
     } catch {}
     switchTo = existsInOtherLang ? `/en/tours/${slug}` : '/en/tours';
   } else {
-    // Verificar si el slug existe en español
     try {
       const toursEs = await import('../data/tours.es.json');
       existsInOtherLang = toursEs.default.some(t => t.slug === slug);
@@ -35,7 +32,6 @@ if (isTourDetailEs || isTourDetailEn) {
     switchTo = existsInOtherLang ? `/es/tours/${slug}` : '/es/tours';
   }
 } else {
-  // Para cualquier otra ruta, limpiar prefijos y anteponer el correcto
   if (oppositeLang === 'en') {
     switchTo = `/en${cleanPath === '/' ? '' : cleanPath}`;
   } else {
@@ -43,7 +39,7 @@ if (isTourDetailEs || isTourDetailEn) {
   }
 }
 
-// Generador de enlaces de sección para el menú
+// Generador de enlaces de sección mejorado
 function sectionLink(section) {
   if (section === 'tours') {
     return lang === 'es' ? '/es/tours' : '/tours';
@@ -52,113 +48,231 @@ function sectionLink(section) {
 }
 ---
 
-<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex items-center h-16 px-6 sm:px-8 bg-transparent border-none shadow-none">
-  <!-- Logo a la izquierda -->
+<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex items-center h-16 px-6 sm:px-8 bg-transparent border-none shadow-none backdrop-blur-md transition-all duration-300">
+  <!-- Logo mejorado -->
   <div class="flex items-center justify-start min-w-0">
-    <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10">
-      <img src="/assets/images/logoInkasTravel.png" alt="Logo" class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out drop-shadow-xl hover:scale-105 hover:drop-shadow-2xl focus:scale-105" />
+    <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10 group">
+      <img 
+        src="/assets/images/logoInkasTravel.png" 
+        alt="Peru Inkas Travel Logo" 
+        class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out drop-shadow-xl group-hover:scale-105 group-hover:drop-shadow-2xl focus:scale-105" 
+      />
+      <!-- Texto del logo en desktop -->
+      <div class="hidden lg:block ml-3 text-white">
+        <div class="text-lg font-bold tracking-tight">Peru Inkas</div>
+        <div class="text-sm opacity-90 -mt-1">Travel</div>
+      </div>
     </a>
   </div>
-  <!-- Menú y selector de idioma a la derecha (desktop) -->
+
+  <!-- Menú desktop mejorado -->
   <div class="hidden md:flex flex-1 min-w-0 items-center justify-end gap-x-6">
     <nav 
       id="menu-container" 
       class="flex items-center gap-x-6 px-2 sm:px-4 py-2 transition-all duration-300 ease-in-out bg-transparent border-none shadow-none"
     >
-      <a href={sectionLink('inicio')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.home')}</a>
-      <a href={sectionLink('nosotros')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.about')}</a>
-      <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.tours')}</a>
-      <a href={sectionLink('destacados')} class="menu-link text-lg sm:text-xl font-extrabold px-2 py-1 transition-all duration-300 drop-shadow-md">{t('nav.featured')}</a>
+      <a href={sectionLink('inicio')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+        <span>{t('nav.home')}</span>
+      </a>
+      <a href={sectionLink('nosotros')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+        <span>{t('nav.about')}</span>
+      </a>
+      <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+        <span>{t('nav.tours')}</span>
+      </a>
+      <a href={sectionLink('destacados')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+        <span>{t('nav.featured')}</span>
+      </a>
     </nav>
-    <!-- Selector de idioma (escritorio) -->
+
+    <!-- Selector de idioma mejorado (escritorio) -->
     <div class="flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
-        <span class="material-symbols-outlined !text-lg">
-          language
-        </span>
-        <span class="uppercase">{oppositeLang}</span>
+      <a href={switchTo} 
+         id="lang-toggle-desktop" 
+         class="flex items-center gap-x-2 px-4 py-2 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/90 to-[#fffde7]/90 text-[#372212] shadow-lg hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60 rounded-full backdrop-blur-sm" 
+         aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
+        <span class="material-symbols-outlined !text-lg">language</span>
+        <span class="uppercase font-black">{oppositeLang}</span>
       </a>
     </div>
   </div>
-  <!-- Menú móvil y selector de idioma móvil a la derecha -->
+
+  <!-- Menú móvil mejorado -->
   <div class="md:hidden flex flex-1 min-w-0 items-center justify-end gap-x-4">
-    <!-- Selector de idioma (escritorio) -->
-    <div class="hidden md:flex items-center">
-      <a href={switchTo} id="lang-toggle-desktop" class="flex items-center gap-x-2 rounded-full px-3 py-1.5 text-sm font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
-        <span class="material-symbols-outlined !text-lg">
-          language
-        </span>
-        <span class="uppercase">{oppositeLang}</span>
-      </a>
-    </div>
-    <!-- Botón de hamburguesa para móvil - Oculto en escritorio -->
-    <div class="md:hidden flex items-center gap-x-3">
-      <!-- Selector de idioma (móvil) -->
-      <a href={switchTo} id="lang-toggle-mobile" class="flex items-center gap-x-1 px-2 py-0.5 text-xs font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/80 to-[#fffde7]/80 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60" aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`} onclick="event.preventDefault(); window.location.href=this.href;">
-        <span class="material-symbols-outlined !text-sm">
-          language
-        </span>
-        <span class="uppercase">{oppositeLang}</span>
-      </a>
-      <button id="menu-btn" class="text-[#372212] focus:outline-none hover:scale-110 transition-transform duration-200" aria-label="Abrir menú">
-        <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="#372212" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="#372212" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
+    <!-- Selector de idioma móvil -->
+    <a href={switchTo} 
+       id="lang-toggle-mobile" 
+       class="flex items-center gap-x-1 px-3 py-1.5 text-xs font-bold transition-all duration-300 glassmorphism-lang bg-gradient-to-r from-[#ffe082]/90 to-[#fffde7]/90 text-[#372212] shadow-md hover:from-[#fffde7] hover:to-[#ffe082] hover:scale-105 focus:scale-105 border border-[#ffe082]/60 rounded-full" 
+       aria-label={`Cambiar a ${oppositeLang === 'es' ? 'Español' : 'English'}`}>
+      <span class="material-symbols-outlined !text-sm">language</span>
+      <span class="uppercase">{oppositeLang}</span>
+    </a>
+
+    <!-- Botón hamburguesa mejorado -->
+    <button id="menu-btn" 
+            class="relative text-[#372212] focus:outline-none hover:scale-110 transition-transform duration-200 p-2 rounded-full bg-white/20 backdrop-blur-sm" 
+            aria-label="Abrir menú">
+      <div class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </div>
+    </button>
   </div>
-</header>
 </header>
 
-<!-- Overlay y Menú móvil que sale desde abajo -->
-<div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
-<div id="mobile-menu" class="md:hidden fixed left-0 right-0 bottom-0 shadow-2xl z-50 p-4 transform translate-y-full transition-transform duration-300 ease-in-out glassmorphism-menu bg-transparent dark:bg-transparent backdrop-blur-xl border-t border-[#e5e7eb]/60 dark:border-[#222]/60">
-  <div class="w-12 h-1.5 bg-[#d2a530]/50 mx-auto mb-6"></div>
-  <a href={sectionLink('inicio')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.home')}</a>
-  <a href={sectionLink('nosotros')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.about')}</a>
-  <a href={sectionLink('tours')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.tours')}</a>
-  <a href={sectionLink('destacados')} class="block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">{t('nav.featured')}</a>
+<!-- Overlay mejorado -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden backdrop-blur-sm"></div>
+
+<!-- Menú móvil lateral -->
+<div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out bg-gradient-to-b from-white to-gray-50">
+  <!-- Header del menú -->
+  <div class="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-[#d2a530] to-[#b64926]">
+    <div class="flex items-center gap-3">
+      <img src="/assets/images/logoInkasTravel.png" alt="Logo" class="w-12 h-12 rounded-full shadow-lg" />
+      <div class="text-white">
+        <div class="font-bold text-lg">Peru Inkas</div>
+        <div class="text-sm opacity-90">Travel</div>
+      </div>
+    </div>
+    <button id="close-menu" class="text-white hover:text-gray-200 p-2 rounded-full hover:bg-white/20 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Contenido del menú -->
+  <div class="p-6">
+    <!-- Enlaces de navegación -->
+    <nav class="space-y-1">
+      <a href={sectionLink('inicio')} 
+         class="mobile-menu-item flex items-center gap-3 text-gray-700 hover:text-[#b64926] hover:bg-[#d2a530]/10 px-4 py-3 rounded-lg transition-all duration-200 group">
+        <svg class="w-5 h-5 text-[#d2a530] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+        </svg>
+        <span class="font-semibold">{t('nav.home')}</span>
+      </a>
+      
+      <a href={sectionLink('nosotros')} 
+         class="mobile-menu-item flex items-center gap-3 text-gray-700 hover:text-[#b64926] hover:bg-[#d2a530]/10 px-4 py-3 rounded-lg transition-all duration-200 group">
+        <svg class="w-5 h-5 text-[#d2a530] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
+        <span class="font-semibold">{t('nav.about')}</span>
+      </a>
+      
+      <a href={sectionLink('tours')} 
+         class="mobile-menu-item flex items-center gap-3 text-gray-700 hover:text-[#b64926] hover:bg-[#d2a530]/10 px-4 py-3 rounded-lg transition-all duration-200 group">
+        <svg class="w-5 h-5 text-[#d2a530] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+        </svg>
+        <span class="font-semibold">{t('nav.tours')}</span>
+      </a>
+      
+      <a href={sectionLink('destacados')} 
+         class="mobile-menu-item flex items-center gap-3 text-gray-700 hover:text-[#b64926] hover:bg-[#d2a530]/10 px-4 py-3 rounded-lg transition-all duration-200 group">
+        <svg class="w-5 h-5 text-[#d2a530] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+        </svg>
+        <span class="font-semibold">{t('nav.featured')}</span>
+      </a>
+    </nav>
+
+    <!-- Separador -->
+    <div class="my-6 border-t border-gray-200"></div>
+
+    <!-- Acciones rápidas -->
+    <div class="space-y-3">
+      <!-- WhatsApp -->
+      <a href="https://wa.me/51984775784" 
+         target="_blank" 
+         rel="noopener"
+         class="flex items-center gap-3 bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 transition-colors shadow-lg">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+        <div>
+          <div class="font-semibold">Consulta WhatsApp</div>
+          <div class="text-xs opacity-90">Respuesta inmediata</div>
+        </div>
+      </a>
+
+      <!-- Teléfono -->
+      <a href="tel:+51984775784" 
+         class="flex items-center gap-3 bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <div>
+          <div class="font-semibold">Llamar ahora</div>
+          <div class="text-xs opacity-90">+51 984 775 784</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Footer del menú -->
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <div class="text-center">
+        <p class="text-xs text-gray-500 mb-2">Síguenos en</p>
+        <div class="flex justify-center space-x-4">
+          <a href="https://www.facebook.com/share/19qWaZ6KHs/?mibextid=qi2Omg" target="_blank" class="text-blue-600 hover:text-blue-800">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/peruinkastravel?utm_source=qr&igsh=MXE1cnN2a3lnejRhbA==" target="_blank" class="text-pink-600 hover:text-pink-800">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.402 3.635 1.37 2.668 2.337 2.396 3.51 2.338 4.788 2.279 6.068 2.266 6.477 2.266 12c0 5.523.013 5.932.072 7.212.058 1.278.33 2.451 1.297 3.418.967.967 2.14 1.239 3.418 1.297C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.278-.058 2.451-.33 3.418-1.297.967-.967 1.239-2.14 1.297-3.418.059-1.28.072-1.689.072-7.212 0-5.523-.013-5.932-.072-7.212-.058-1.278-.33-2.451-1.297-3.418C19.399.402 18.226.13 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script is:inline>
   // --- Elementos del DOM ---
   const mainHeader = document.getElementById('main-header');
-  const btn = document.getElementById('menu-btn'); // Botón de hamburguesa
-  const menu = document.getElementById('mobile-menu'); // Panel del menú móvil
-  const overlay = document.getElementById('mobile-overlay'); // Fondo oscuro
-  const iconHamburger = document.getElementById('icon-hamburger');
-  const iconClose = document.getElementById('icon-close');
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-overlay');
+  const closeMenuBtn = document.getElementById('close-menu');
   
   // --- Elementos para el indicador de sección activa ---
   const desktopLinks = document.querySelectorAll('#menu-container a');
-  const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+  const mobileMenuLinks = document.querySelectorAll('#mobile-menu .mobile-menu-item');
   const allLinks = [...desktopLinks, ...mobileMenuLinks];
-  // Obtenemos las secciones a partir de los enlaces del menú
   const sections = Array.from(desktopLinks)
     .map(link => {
       const href = link.getAttribute('href');
-      // Nos aseguramos de que es un ancla interna
       return href.startsWith('#') ? document.querySelector(href) : null;
     })
-    .filter(section => section); // Filtramos nulos si algún enlace no va a una sección
+    .filter(section => section);
 
   // --- Estado ---
   let lastScrollY = window.scrollY;
-  // --- Lógica de Scroll ---
-  const handleScroll = () => {
-    // Cierra el menú móvil si está abierto y el usuario empieza a hacer scroll
-    if (!menu.classList.contains('translate-y-full')) {
-      closeMenu();
-      return; // Evita que se ejecute el resto de la lógica de scroll
-    }
+  let isMenuOpen = false;
 
+  // --- Lógica de Scroll mejorada ---
+  const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
-    // 1. Ocultar/mostrar header al hacer scroll
-    // Se oculta al bajar, se muestra al subir (y no está en la parte superior)
+    // Cerrar menú si está abierto y hay scroll
+    if (isMenuOpen) {
+      closeMenu();
+      return;
+    }
+
+    // Header con fondo dinámico basado en scroll
+    if (currentScrollY > 50) {
+      mainHeader.classList.add('header-scrolled');
+    } else {
+      mainHeader.classList.remove('header-scrolled');
+    }
+
+    // Ocultar/mostrar header
     if (currentScrollY > lastScrollY && currentScrollY > 100) {
       mainHeader.classList.add('-translate-y-full');
     } else if (currentScrollY < lastScrollY) {
@@ -166,7 +280,7 @@ function sectionLink(section) {
     }
     lastScrollY = currentScrollY;
 
-    // 2. Actualizar el indicador de sección activa
+    // Actualizar indicador de sección activa
     updateActiveLink();
   };
 
@@ -174,13 +288,10 @@ function sectionLink(section) {
     if (sections.length === 0) return;
 
     const scrollY = window.scrollY;
-    // Un desplazamiento para que la sección se marque como activa un poco antes de llegar al borde superior.
-    // Usamos la altura del header como referencia + un margen.
-    const headerOffset = mainHeader.offsetHeight + 40; 
+    const headerOffset = mainHeader.offsetHeight + 40;
 
     let currentSectionId = sections.length > 0 ? sections[0].id : '';
 
-    // Encontramos la última sección cuya parte superior ya hemos pasado
     sections.forEach(section => {
       const sectionTop = section.offsetTop - headerOffset;
       if (scrollY >= sectionTop) {
@@ -188,74 +299,133 @@ function sectionLink(section) {
       }
     });
 
-    // Aplicamos los estilos a todos los enlaces (móvil y escritorio)
+    // Aplicar estilos activos
     allLinks.forEach(link => {
       const linkSectionId = link.getAttribute('href').substring(1);
-
-      if (linkSectionId === currentSectionId) {
-        // Es el enlace activo
-        if (link.closest('#menu-container')) { // Enlace de escritorio
+      const isActive = linkSectionId === currentSectionId;
+      
+      if (link.closest('#menu-container')) {
+        // Enlaces de escritorio
+        link.classList.toggle('active', isActive);
+        if (isActive) {
           link.classList.remove('text-stone-200');
           link.classList.add('text-[#d2a530]');
-        } else { // Enlace móvil
-          link.classList.add('bg-white/10');
-        }
-      } else {
-        // No es el enlace activo
-        if (link.closest('#menu-container')) { // Enlace de escritorio
+        } else {
           link.classList.remove('text-[#d2a530]');
           link.classList.add('text-stone-200');
-        } else { // Enlace móvil
-          link.classList.remove('bg-white/10');
         }
+      } else {
+        // Enlaces móviles
+        link.classList.toggle('active-mobile', isActive);
       }
     });
   };
 
-  // --- Lógica del Menú Móvil ---
+  // --- Funciones del menú ---
   function openMenu() {
-    menu.classList.remove('translate-y-full');
+    isMenuOpen = true;
+    menu.classList.remove('translate-x-full');
     overlay.classList.remove('hidden');
-    iconHamburger.classList.add('hidden');
-    iconClose.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+    document.body.style.overflow = 'hidden';
+    
+    // Animar líneas del hamburger
+    btn.classList.add('active');
   }
 
   function closeMenu() {
-    menu.classList.add('translate-y-full');
+    isMenuOpen = false;
+    menu.classList.add('translate-x-full');
     overlay.classList.add('hidden');
-    iconHamburger.classList.remove('hidden');
-    iconClose.classList.add('hidden');
-    document.body.style.overflow = ''; // Restaurar scroll del fondo
+    document.body.style.overflow = '';
+    
+    // Restaurar líneas del hamburger
+    btn.classList.remove('active');
   }
 
   // --- Event Listeners ---
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   btn?.addEventListener('click', () => {
-    if (menu.classList.contains('translate-y-full')) {
-      openMenu();
+    if (isMenuOpen) {
+      closeMenu();
     } else {
+      openMenu();
+    }
+  });
+
+  closeMenuBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
+  // Cerrar menú al hacer clic en enlaces
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar menú con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
       closeMenu();
     }
   });
 
-  overlay?.addEventListener('click', closeMenu); // Cierra al hacer clic fuera
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', closeMenu); // Cierra al hacer clic en un enlace
-  });
-
-  // Estado inicial al cargar la página
-  window.addEventListener('load', handleScroll); // Usamos 'load' para asegurar que las alturas de las secciones son correctas
+  // Estado inicial
+  window.addEventListener('load', handleScroll);
 </script>
+
 <style>
-  /* Header y menú sin fondo ni borde */
-  .glassmorphism-lang {
-    background: linear-gradient(90deg, #ffe082cc 0%, #fffde7cc 100%);
-    box-shadow: 0 2px 8px 0 rgba(255, 215, 64, 0.10);
-    border: 1px solid #ffe08244;
-    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+  /* Header con fondo dinámico */
+  .header-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(210, 165, 48, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
+
+  /* Hamburger animado */
+  .hamburger-lines {
+    width: 24px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .line {
+    height: 3px;
+    width: 100%;
+    background-color: #372212;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  #menu-btn.active .line1 {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  #menu-btn.active .line2 {
+    opacity: 0;
+  }
+
+  #menu-btn.active .line3 {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  /* Selector de idioma mejorado */
+  .glassmorphism-lang {
+    background: linear-gradient(90deg, #ffe082ee 0%, #fffde7ee 100%);
+    box-shadow: 0 4px 12px rgba(255, 215, 64, 0.15);
+    border: 1px solid #ffe08255;
+    transition: all 0.3s ease;
+  }
+
+  .glassmorphism-lang:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 215, 64, 0.25);
+  }
+
+  /* Enlaces del menú desktop */
   .menu-link {
     position: relative;
     outline: none;
@@ -267,42 +437,67 @@ function sectionLink(section) {
     overflow: hidden;
     text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.25);
     letter-spacing: 0.01em;
-    border-radius: 0;
-    transition: color 0.2s;
+    border-radius: 8px;
+    transition: all 0.3s ease;
   }
+
   .menu-link::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 0;
+    border-radius: 8px;
     border: 2px solid #ffe082;
-    background: rgba(255, 224, 130, 0.32);
-    box-shadow: 0 2px 16px 0 rgba(255, 224, 130, 0.18);
+    background: rgba(255, 224, 130, 0.25);
+    box-shadow: 0 4px 20px rgba(255, 224, 130, 0.2);
     opacity: 0;
-    transform: scale(0.7,0.7);
-    transition: opacity 0.25s, transform 0.35s cubic-bezier(.4,0,.2,1);
+    transform: scale(0.8);
+    transition: opacity 0.3s, transform 0.4s cubic-bezier(.4,0,.2,1);
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
   }
+
   .menu-link:hover::before,
   .menu-link:focus::before,
   .menu-link.active::before {
     opacity: 1;
-    transform: scale(1,1);
+    transform: scale(1);
   }
+
   .menu-link:hover,
   .menu-link:focus,
   .menu-link.active {
     color: #a67c00 !important;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.25);
-    z-index: 1;
+    transform: translateY(-2px);
   }
-  #lang-toggle-desktop:hover,
-  #lang-toggle-mobile:hover {
-    color: #d2a530 !important;
+
+  /* Enlaces móviles activos */
+  .mobile-menu-item.active-mobile {
+    background: linear-gradient(90deg, #d2a530, #b64926);
+    color: white;
   }
-  #lang-toggle-desktop:hover .material-symbols-outlined,
-  #lang-toggle-mobile:hover .material-symbols-outlined {
-    color: #d2a530 !important;
+
+  .mobile-menu-item.active-mobile svg {
+    color: white;
+  }
+
+  /* Transiciones suaves */
+  * {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Mejoras responsive */
+  @media (max-width: 768px) {
+    #mobile-menu {
+      max-width: 85vw;
+    }
+  }
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
