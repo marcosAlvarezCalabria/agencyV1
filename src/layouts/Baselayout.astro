@@ -19,7 +19,7 @@ const t = useTranslations(lang);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     {seo.hreflangs && seo.hreflangs.map(h => <link rel="alternate" hreflang={h.lang} href={h.url} />)}
   </head>
-  <body class="bg-bg text-negro">
+  <body style="background-color: var(--bg-primary); color: var(--text-primary);">
     <Header lang={lang} t={t} />
     <main class="pt-16">
       <slot />
@@ -30,7 +30,15 @@ const t = useTranslations(lang);
     <a
       id="scrollToTopBtn"
       href="#"
-      class="fixed bottom-4 right-4 z-50 hidden h-8 w-8 items-center justify-center rounded-full bg-[#d2a530] text-[#372212] shadow-lg transition-all duration-300 hover:bg-[#372212] hover:text-[#d2a530] focus:outline-none focus:ring-2 focus:ring-[#d2a530] focus:ring-offset-2"
+      class="fixed bottom-4 right-4 z-50 hidden h-8 w-8 items-center justify-center rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+      style="
+        background-color: var(--primary-500);
+        color: var(--text-inverse);
+        box-shadow: var(--shadow-primary);
+        focus-ring-color: var(--primary-500);
+      "
+      onmouseover="this.style.backgroundColor = 'var(--secondary-800)'; this.style.color = 'var(--primary-500)';"
+      onmouseout="this.style.backgroundColor = 'var(--primary-500)'; this.style.color = 'var(--text-inverse)';"
       aria-label="Volver al inicio"
     >
       <span class="material-symbols-outlined text-xl">

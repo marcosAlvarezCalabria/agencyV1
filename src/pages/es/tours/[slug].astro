@@ -28,7 +28,7 @@ const seo = {
 ---
 <Baselayout lang={lang} seo={seo}>
   <section class="w-full px-2 md:px-6 lg:px-10 py-10 relative overflow-hidden">
-    <div class="fixed inset-0 w-full h-full -z-10" style="background: linear-gradient(90deg, #f5e7c5 0%, #f5e7c5 65%, #b89b7b 100%);"></div>
+    <div class="fixed inset-0 w-full h-full -z-10" style="background: var(--bg-primary);"></div>
     <div class="tour-detail-flex">
       {/* Galería lateral solo en desktop/tablet */}
       {/* Galería única responsive (desktop y mobile) */}
@@ -52,14 +52,14 @@ const seo = {
                     class="gallery-thumb-img w-16 h-16 md:w-full md:h-full object-cover border-2 border-transparent cursor-pointer transition-all duration-200 flex-shrink-0 no-rounded"
                     aria-label={`Ver imagen ${idx+1} de ${tour.images.length}`}
                     tabindex="0"
-                    style={idx === 0 ? 'border:2.5px solid #d2a530' : 'border:1.5px solid #ffe08233'}
+                    style={idx === 0 ? 'border:2.5px solid var(--primary-500)' : 'border:1.5px solid var(--primary-200)'}
                     loading="lazy"
                     onload="if(this.previousElementSibling) this.previousElementSibling.style.display='none';"
                     onerror="if(this.previousElementSibling) this.previousElementSibling.style.display='flex';"
                     onclick={`
                       document.getElementById('mainTourImg').src='${img}';
-                      Array.from(this.parentNode.parentNode.querySelectorAll('.gallery-thumb-img')).forEach(el=>el.style.border='1.5px solid #ffe08233');
-                      this.style.border='2.5px solid #d2a530';
+                      Array.from(this.parentNode.parentNode.querySelectorAll('.gallery-thumb-img')).forEach(el=>el.style.border='1.5px solid var(--primary-200)');
+                      this.style.border='2.5px solid var(--primary-500)';
                       if(this.previousElementSibling) this.previousElementSibling.style.display='none';
                       document.getElementById('mainImgLoader').style.display='flex';
                       // Centrar la miniatura activa en el carrusel solo en mobile
@@ -83,20 +83,20 @@ const seo = {
       )}
       {/* Columna de texto scrollable a la derecha */}
       <main class="tour-detail-content grow">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-[#b64926] mb-2">{tour.name}</h1>
-        <span class="inline-block bg-[#d2a530] text-white px-3 py-1 rounded-lg font-bold text-lg mb-2">${tour.price}</span>
-        <p class="text-[#372212] text-lg mb-4">{tour.description}</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-2" style="color: var(--earth-600);">{tour.name}</h1>
+        <span class="inline-block text-white px-3 py-1 rounded-lg font-bold text-lg mb-2" style="background-color: var(--primary-500);">${tour.price}</span>
+        <p class="text-lg mb-4" style="color: var(--text-primary);">{tour.description}</p>
         <div class="mb-4 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V6c0-2.21 3.59-4 8-4s8 1.79 8 4v8c0 2.21-3.59 4-8 4z" /></svg>
-          <span class="font-semibold text-[#b64926]">Duración:</span> {tour.duration}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="color: var(--earth-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V6c0-2.21 3.59-4 8-4s8 1.79 8 4v8c0 2.21-3.59 4-8 4z" /></svg>
+          <span class="font-semibold" style="color: var(--earth-600);">Duración:</span> <span style="color: var(--text-secondary);">{tour.duration}</span>
         </div>
         {tour.itinerary && (
           <div class="mb-4">
             <div class="flex items-center gap-2 mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 014-4h4m0 0V7m0 4l-4-4-4 4" /></svg>
-              <span class="font-semibold text-[#b64926]">Itinerario:</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="color: var(--earth-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 014-4h4m0 0V7m0 4l-4-4-4 4" /></svg>
+              <span class="font-semibold" style="color: var(--earth-600);">Itinerario:</span>
             </div>
-            <ul class="list-decimal list-inside text-[#372212]">
+            <ul class="list-decimal list-inside" style="color: var(--text-primary);">
               {tour.itinerary.map(dia => (
                 <li class="mb-1">
                   <span class="font-bold">{dia.day}:</span> <span class="italic">{dia.title}</span> – {dia.description}
@@ -107,18 +107,18 @@ const seo = {
         )}
         <div class="mb-4">
           <div class="flex items-center gap-2 mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-            <span class="font-semibold text-[#b64926]">Incluye:</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="color: var(--earth-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            <span class="font-semibold" style="color: var(--earth-600);">Incluye:</span>
           </div>
-          <ul class="list-disc list-inside text-[#372212]">
+          <ul class="list-disc list-inside" style="color: var(--text-primary);">
             {tour.includes.map(item => <li>✅ {item}</li>)}
           </ul>
         </div>
         {tour.not_included && (
           <div class="mb-4">
             <div class="flex items-center gap-2 mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              <span class="font-semibold text-[#b64926]">No incluye:</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="color: var(--earth-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              <span class="font-semibold" style="color: var(--earth-600);">No incluye:</span>
             </div>
             <ul class="list-disc list-inside text-[#372212]">
               {tour.not_included.map(item => <li>❌ {item}</li>)}
@@ -128,8 +128,8 @@ const seo = {
         {tour.recommendations && (
           <div class="mb-4">
             <div class="flex items-center gap-2 mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#b64926]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 20c4.418 0 8-1.79 8-4V6c0-2.21-3.582-4-8-4S4 3.79 4 6v10c0 2.21 3.582 4 8 4z" /></svg>
-              <span class="font-semibold text-[#b64926]">Recomendaciones:</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="color: var(--earth-600);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 20c4.418 0 8-1.79 8-4V6c0-2.21-3.582-4-8-4S4 3.79 4 6v10c0 2.21 3.582 4 8 4z" /></svg>
+              <span class="font-semibold" style="color: var(--earth-600);">Recomendaciones:</span>
             </div>
             <ul class="list-disc list-inside text-[#372212]">
               {tour.recommendations.map(item => <li>💡 {item}</li>)}
@@ -137,7 +137,7 @@ const seo = {
           </div>
         )}
         <!-- Botón flotante solo icono, abajo a la izquierda -->
-        <a href="/es/tours" class="fixed left-6 bottom-8 z-50 bg-[#d2a530] hover:bg-[#b64926] text-white font-bold p-4 rounded-full shadow-xl transition-all duration-200 flex items-center justify-center text-lg" style="box-shadow:0 4px 24px 0 rgba(166,124,0,0.13);">
+        <a href="/es/tours" class="fixed left-6 bottom-8 z-50 text-white font-bold p-4 rounded-full shadow-xl transition-all duration-200 flex items-center justify-center text-lg" style="background-color: var(--primary-500); box-shadow: var(--shadow-primary-lg);" onmouseover="this.style.backgroundColor = 'var(--earth-600)';" onmouseout="this.style.backgroundColor = 'var(--primary-500)';">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
         </a>
       </main>

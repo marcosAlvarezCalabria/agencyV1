@@ -1,0 +1,101 @@
+---
+// Página de prueba para diagnosticar colores
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Test - Sistema de Colores</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <style>
+        body {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-family: 'Figtree', sans-serif;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 2px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+        }
+        .color-box {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 0.5rem;
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: var(--text-primary);">🔍 Test del Sistema de Colores</h1>
+    
+    <div class="test-section">
+        <h2>Variables CSS</h2>
+        <p>--bg-primary: <span style="background-color: var(--bg-primary); padding: 4px 8px; border: 1px solid var(--border-medium);">var(--bg-primary)</span></p>
+        <p>--text-primary: <span style="color: var(--text-primary); font-weight: bold;">var(--text-primary)</span></p>
+        <p>--primary-500: <span style="background-color: var(--primary-500); color: white; padding: 4px 8px;">var(--primary-500)</span></p>
+        <p>--secondary-800: <span style="color: var(--secondary-800); font-weight: bold;">var(--secondary-800)</span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Variables Antiguas (compatibilidad)</h2>
+        <p>--bg: <span style="background-color: var(--bg); padding: 4px 8px; border: 1px solid var(--border-medium);">var(--bg)</span></p>
+        <p>--negro: <span style="color: var(--negro); font-weight: bold;">var(--negro)</span></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Paleta de Colores</h2>
+        <h3>Primarios (Dorado)</h3>
+        <div class="color-box" style="background-color: var(--primary-100);" title="primary-100"></div>
+        <div class="color-box" style="background-color: var(--primary-300);" title="primary-300"></div>
+        <div class="color-box" style="background-color: var(--primary-500);" title="primary-500"></div>
+        <div class="color-box" style="background-color: var(--primary-700);" title="primary-700"></div>
+        
+        <h3>Secundarios (Marrón)</h3>
+        <div class="color-box" style="background-color: var(--secondary-100);" title="secondary-100"></div>
+        <div class="color-box" style="background-color: var(--secondary-300);" title="secondary-300"></div>
+        <div class="color-box" style="background-color: var(--secondary-600);" title="secondary-600"></div>
+        <div class="color-box" style="background-color: var(--secondary-800);" title="secondary-800"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Texto</h2>
+        <p style="color: var(--text-primary);">Texto primario (var(--text-primary))</p>
+        <p style="color: var(--text-secondary);">Texto secundario (var(--text-secondary))</p>
+        <p style="color: var(--text-muted);">Texto suave (var(--text-muted))</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test de Tour Sample</h2>
+        <div style="background-color: var(--bg-primary); padding: 2rem; border-radius: var(--radius-lg);">
+            <h1 style="color: var(--earth-600); font-size: 2rem; font-weight: bold;">Machu Picchu Adventure</h1>
+            <span style="background-color: var(--primary-500); color: white; padding: 0.5rem 1rem; border-radius: var(--radius-md); font-weight: bold;">$299</span>
+            <p style="color: var(--text-primary); margin: 1rem 0;">Este es un ejemplo de cómo debería verse un tour con nuestro nuevo sistema de colores.</p>
+            <p style="color: var(--text-secondary);">Duración: 2 días</p>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar valores computados
+        const root = document.documentElement;
+        const computed = getComputedStyle(root);
+        
+        console.log('🎨 Valores CSS Computados:');
+        console.log('--bg-primary:', computed.getPropertyValue('--bg-primary'));
+        console.log('--text-primary:', computed.getPropertyValue('--text-primary'));
+        console.log('--primary-500:', computed.getPropertyValue('--primary-500'));
+        console.log('--secondary-800:', computed.getPropertyValue('--secondary-800'));
+        
+        // Variables antiguas
+        console.log('🔄 Variables de Compatibilidad:');
+        console.log('--bg:', computed.getPropertyValue('--bg'));
+        console.log('--negro:', computed.getPropertyValue('--negro'));
+    </script>
+</body>
+</html>
