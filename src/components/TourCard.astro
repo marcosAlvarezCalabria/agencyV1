@@ -135,7 +135,7 @@ const originalPrice = hasDiscount ? Math.floor(price * 1.2) : null;
         </div>
         <div class="flex items-center justify-between text-xs">
           <span class="text-gray-600">por persona</span>
-          {hasDiscount && (
+          {hasDiscount && originalPrice !== null && (
             <span class="text-green-600 font-bold">¡Ahorrás ${originalPrice - price}!</span>
           )}
         </div>

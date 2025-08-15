@@ -100,10 +100,12 @@ import AboutCard from '../components/AboutCard.astro';
   <div class="container mx-auto">
     <h2 class="text-4xl font-bold text-center mb-12 drop-shadow-lg" style="color: #3d1f14 !important;">{t('tours.title')}</h2>
 
-    <!-- Grid para Desktop -->
-    <div class="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {tours.map(tour => (
-        <TourCard tour={tour} t={t} />
+    <!-- Grid para Desktop con animaciones -->
+    <div class="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8 tours-grid" data-aos-container>
+      {tours.map((tour, index) => (
+        <div class="tour-card-container" data-aos="fade-up" data-aos-delay={index * 50}>
+          <TourCard tour={tour} t={t} />
+        </div>
       ))}
     </div>
 
@@ -129,9 +131,9 @@ import AboutCard from '../components/AboutCard.astro';
 <section id="destacados" class="relative z-30 bg-gray-50 py-20">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-2xl sm:text-4xl font-bold text-center mb-12 text-green-800">Nuestros tours destacados</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 destacados-grid">
       <!-- Card 1 -->
-      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px] featured-card" data-aos="fade-up" data-aos-delay="0">
         <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/hero-video.mp4" loop muted playsinline></video>
         <div class="absolute inset-0 bg-black/40 z-10"></div>
         <div class="relative z-20 p-6 flex flex-col items-center">
@@ -142,7 +144,7 @@ import AboutCard from '../components/AboutCard.astro';
         </div>
       </div>
       <!-- Card 2 -->
-      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px] featured-card" data-aos="fade-up" data-aos-delay="100">
         <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/hero-video2.mp4" loop muted playsinline></video>
         <div class="absolute inset-0 bg-black/40 z-10"></div>
         <div class="relative z-20 p-6 flex flex-col items-center">
@@ -153,7 +155,7 @@ import AboutCard from '../components/AboutCard.astro';
         </div>
       </div>
       <!-- Card 3: Montaña de Siete Colores -->
-      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px]">
+      <div class="relative rounded-xl shadow-lg overflow-hidden flex flex-col items-center justify-end min-h-[350px] featured-card" data-aos="fade-up" data-aos-delay="200">
         <video class="absolute inset-0 w-full h-full object-cover z-0 card-video" src="/assets/videos/video7colores.mp4" loop muted playsinline></video>
         <div class="absolute inset-0 bg-black/40 z-10"></div>
         <div class="relative z-20 p-6 flex flex-col items-center">
@@ -281,6 +283,69 @@ import AboutCard from '../components/AboutCard.astro';
   background: #d2a530;
   border-radius: 50%;
   animation: dotBounce 1.4s ease-in-out infinite both;
+}
+
+/* ===============================
+   ANIMACIONES DE ENTRADA (AOS)
+   =============================== */
+
+/* Estados iniciales - elementos ocultos */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estados cuando aparecen */
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variaciones de animación */
+[data-aos="fade-up"] {
+  transform: translateY(50px);
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(-50px);
+}
+
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(50px);
+}
+
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+}
+
+/* Contenedores especiales */
+.tour-card-container {
+  transition-delay: var(--delay, 0ms);
+}
+
+.featured-card {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animación de títulos */
+.section-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.section-title.aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
@@ -538,5 +603,59 @@ import AboutCard from '../components/AboutCard.astro';
     window.addEventListener('keydown', (e) => {
       if ([32, 33, 34, 35, 36, 38, 40].includes(e.keyCode)) scrollToTours();
     }, { once: true });*/
+
+    // ===============================
+    // SISTEMA DE ANIMACIONES AOS
+    // ===============================
+    
+    // Configuración del Intersection Observer para animaciones (trigger temprano)
+    const observerOptions = {
+      threshold: 0.05,  // Se activa cuando solo el 5% es visible
+      rootMargin: '0px 0px 150px 0px'  // Se activa 150px ANTES de que el elemento entre en vista
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const delay = element.getAttribute('data-aos-delay') || 0;
+          
+          // Aplicar delay si existe
+          setTimeout(() => {
+            element.classList.add('aos-animate');
+          }, parseInt(delay));
+          
+          // Dejar de observar este elemento
+          animationObserver.unobserve(element);
+        }
+      });
+    }, observerOptions);
+    
+    // Observar todos los elementos con data-aos
+    const elementsToAnimate = document.querySelectorAll('[data-aos]');
+    elementsToAnimate.forEach(element => {
+      animationObserver.observe(element);
+    });
+    
+    // Animación especial para títulos de sección
+    const sectionTitles = document.querySelectorAll('h2');
+    sectionTitles.forEach(title => {
+      title.classList.add('section-title');
+      animationObserver.observe(title);
+    });
+    
+    // Efecto especial: animar cards en secuencia
+    const tourCards = document.querySelectorAll('.tour-card-container');
+    const featuredCards = document.querySelectorAll('.featured-card');
+    
+    // Configurar delays dinámicos para tour cards (más rápido)
+    tourCards.forEach((card, index) => {
+      card.style.setProperty('--delay', `${index * 50}ms`);
+    });
+    
+    // Configurar delays dinámicos para featured cards (más rápido)
+    featuredCards.forEach((card, index) => {
+      card.style.setProperty('--delay', `${index * 100}ms`);
+    });
   });
 </script>
