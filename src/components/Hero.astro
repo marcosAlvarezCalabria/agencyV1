@@ -8,9 +8,55 @@ import AboutCard from '../components/AboutCard.astro';
 
 <!-- Hero -->
 <section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-  <!-- Pantalla de carga para el video -->
-  <div id="video-preloader" class="fixed inset-0 z-30 flex items-center justify-center bg-orange-50 transition-opacity duration-500 ease-in-out">
-    <img src="/assets/images/logoInkasTravel.png" alt="Cargando..." class="w-32 animate-pulse" />
+  <!-- Pantalla de carga mejorada para el video -->
+  <div id="video-preloader" class="enhanced-preloader">
+    <div class="loader-container">
+      <!-- Logo con mejor animación -->
+      <div class="logo-wrapper">
+        <img 
+          src="/assets/images/logoInkasTravel.png" 
+          alt="Peru Inkas Travel" 
+          class="logo-loader" 
+        />
+        <!-- Anillo de progreso -->
+        <div class="progress-ring">
+          <svg class="progress-circle" width="120" height="120">
+            <!-- Círculo de fondo -->
+            <circle 
+              cx="60" 
+              cy="60" 
+              r="54" 
+              stroke="rgba(210, 165, 48, 0.2)" 
+              stroke-width="3" 
+              fill="transparent" 
+              class="progress-track"
+            />
+            <!-- Círculo de progreso -->
+            <circle 
+              cx="60" 
+              cy="60" 
+              r="54" 
+              stroke="#d2a530" 
+              stroke-width="3" 
+              fill="transparent" 
+              class="progress-bar"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Textos dinámicos -->
+      <div class="loading-content">
+        <h2 class="loading-title">Peru Inkas Travel</h2>
+        <p class="loading-text" id="loading-message">Preparando tu experiencia...</p>
+        <div class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Video de fondo fijo -->
@@ -121,7 +167,270 @@ import AboutCard from '../components/AboutCard.astro';
   </div>
 </section>
 
+<style>
+/* =================================
+   PRELOADER MEJORADO - ESTILOS
+   ================================= */
+
+.enhanced-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Gradiente más elegante */
+  background: linear-gradient(135deg, #fef7cd 0%, #f3f1ef 50%, #e8f5e8 100%);
+  transition: opacity 0.8s ease-in-out;
+}
+
+.loader-container {
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* =================================
+   LOGO Y ANILLO DE PROGRESO
+   ================================= */
+
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.logo-loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Sombra elegante */
+  box-shadow: 
+    0 8px 25px rgba(210, 165, 48, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Animación suave */
+  animation: logoFloat 3s ease-in-out infinite;
+  /* Borde dorado sutil */
+  border: 3px solid rgba(210, 165, 48, 0.2);
+}
+
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+}
+
+.progress-circle {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bar {
+  /* Circunferencia del círculo: 2 * PI * radius = 2 * 3.14159 * 54 ≈ 339.292 */
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 339.292;
+  animation: progressLoad 4s ease-out forwards;
+  /* Efecto de brillo */
+  filter: drop-shadow(0 0 3px rgba(210, 165, 48, 0.4));
+}
+
+/* =================================
+   CONTENIDO DE TEXTO
+   ================================= */
+
+.loading-content {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.loading-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #372212;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.loading-text {
+  color: #6b5b47;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  animation: textFade 2s ease-in-out infinite alternate;
+}
+
+/* =================================
+   DOTS ANIMADOS
+   ================================= */
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: #d2a530;
+  border-radius: 50%;
+  animation: dotBounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+/* =================================
+   ANIMACIONES KEYFRAMES
+   ================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+  }
+  50% { 
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+@keyframes progressLoad {
+  0% {
+    stroke-dashoffset: 339.292;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(210, 165, 48, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(210, 165, 48, 0.6);
+  }
+}
+
+@keyframes textFade {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* =================================
+   RESPONSIVE
+   ================================= */
+
+@media (max-width: 640px) {
+  .logo-loader {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .progress-ring {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loading-title {
+    font-size: 1.25rem;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+  }
+}
+</style>
+
 <script is:inline>
+  // =================================
+  // JAVASCRIPT PARA TEXTOS DINÁMICOS
+  // =================================
+  (() => {
+    const loadingMessages = [
+      'Preparando tu experiencia...',
+      'Cargando vistas increíbles...',
+      'Conectando con la magia de Cusco...',
+      'Casi listo para el viaje...'
+    ];
+    
+    let messageIndex = 0;
+    let messageInterval;
+    
+    const initPreloaderMessages = () => {
+      const messageElement = document.getElementById('loading-message');
+      
+      if (messageElement) {
+        // Cambiar mensaje cada 1.5 segundos
+        messageInterval = setInterval(() => {
+          messageIndex = (messageIndex + 1) % loadingMessages.length;
+          messageElement.textContent = loadingMessages[messageIndex];
+        }, 1500);
+        
+        // Limpiar interval cuando se quite el preloader
+        const preloader = document.getElementById('video-preloader');
+        if (preloader) {
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.type === 'attributes') {
+                const hasOpacity0 = preloader.classList.contains('opacity-0');
+                const isDisplayNone = preloader.style.display === 'none';
+                
+                if (hasOpacity0 || isDisplayNone) {
+                  clearInterval(messageInterval);
+                  observer.disconnect();
+                }
+              }
+            });
+          });
+          
+          observer.observe(preloader, { 
+            attributes: true, 
+            attributeFilter: ['style', 'class'] 
+          });
+        }
+      }
+    };
+    
+    // Inicializar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPreloaderMessages);
+    } else {
+      initPreloaderMessages();
+    }
+  })();
+
+  // =================================
+  // SCRIPT ORIGINAL DEL HERO
+  // =================================
   window.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.getElementById('hero-title');
     const heroSubtitle = document.getElementById('hero-subtitle');
