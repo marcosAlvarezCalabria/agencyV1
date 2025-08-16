@@ -134,6 +134,29 @@ const { tours, lang, t } = Astro.props;
   .swiper-button-prev {
     animation: arrowBounce 2s ease-in-out 3.5s infinite;
   }
+
+  /* Mejorar interacción táctil en botones */
+  .swiper-slide a,
+  .swiper-slide button {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: transform 0.1s ease;
+  }
+
+  .swiper-slide a:active,
+  .swiper-slide button:active {
+    transform: scale(0.95);
+  }
+
+  /* Mejorar área de toque */
+  .swiper-slide a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
 </style>
 
@@ -154,6 +177,23 @@ const { tours, lang, t } = Astro.props;
       centeredSlides: true, // Centrar la card activa
       spaceBetween: 16, // Espacio entre slides
       initialSlide: 0,
+      // Configuración para mejorar la interacción con botones
+      touchRatio: 1,
+      touchAngle: 45, // Solo detectar swipe si el ángulo es mayor a 45°
+      threshold: 15, // Aumentar el threshold para activar el swipe (más tolerante)
+      shortSwipes: false, // Deshabilitar swipes cortos
+      longSwipes: true,
+      longSwipesRatio: 0.5,
+      longSwipesMs: 300,
+      followFinger: true,
+      allowTouchMove: true,
+      touchStartPreventDefault: false, // IMPORTANTE: No prevenir el comportamiento por defecto
+      touchStartForcePreventDefault: false,
+      touchMoveStopPropagation: false,
+      passiveListeners: true, // Usar listeners pasivos donde sea posible
+      // Configuración de resistencia
+      resistance: true,
+      resistanceRatio: 0.85,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -169,6 +209,27 @@ const { tours, lang, t } = Astro.props;
         disableOnInteraction: true, // Se detiene cuando el usuario interactúa
         pauseOnMouseEnter: true,
       },
+    });
+
+    // Mejorar la interacción con botones en móvil
+    const improveButtonInteraction = () => {
+      const buttons = swiperContainer.querySelectorAll('a, button, [role="button"]');
+      
+      buttons.forEach(button => {
+        // Agregar clase para que Swiper ignore estos elementos
+        button.classList.add('swiper-no-swiping');
+        
+        // Agregar atributo para mejor accesibilidad
+        button.style.touchAction = 'manipulation';
+      });
+    };
+    
+    // Ejecutar mejoras
+    setTimeout(improveButtonInteraction, 100);
+    
+    // Re-ejecutar cuando cambien los slides (en caso de contenido dinámico)
+    swiper.on('slideChange', () => {
+      setTimeout(improveButtonInteraction, 50);
     });
 
     const nextBtn = swiperContainer.querySelector('.swiper-button-next');
