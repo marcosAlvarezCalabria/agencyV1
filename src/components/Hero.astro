@@ -174,10 +174,10 @@ import AboutCard from '../components/AboutCard.astro';
         
         <!-- Skeleton overlay (encima del carousel) -->
         <div id="mobile-skeleton-overlay" class="absolute inset-0 z-10 bg-gray-50">
-          <div class="swiper main-swiper mb-6 relative">
+          <div class="swiper main-swiper mb-6 relative px-4"> <!-- Añadido px-4 para padding lateral -->
             <div class="swiper-wrapper pb-10">
-              <div class="swiper-slide p-2">
-                <div class="mobile-tour-skeleton">
+              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
+                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
                   <div class="skeleton-image-mobile"></div>
                   <div class="skeleton-content-mobile">
                     <div class="skeleton-title-mobile"></div>
@@ -191,8 +191,8 @@ import AboutCard from '../components/AboutCard.astro';
                 </div>
               </div>
               
-              <div class="swiper-slide p-2">
-                <div class="mobile-tour-skeleton">
+              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
+                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
                   <div class="skeleton-image-mobile"></div>
                   <div class="skeleton-content-mobile">
                     <div class="skeleton-title-mobile"></div>
@@ -206,8 +206,8 @@ import AboutCard from '../components/AboutCard.astro';
                 </div>
               </div>
               
-              <div class="swiper-slide p-2">
-                <div class="mobile-tour-skeleton">
+              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
+                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
                   <div class="skeleton-image-mobile"></div>
                   <div class="skeleton-content-mobile">
                     <div class="skeleton-title-mobile"></div>
@@ -585,8 +585,6 @@ import AboutCard from '../components/AboutCard.astro';
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  max-width: 320px;
-  margin: 0 auto;
 }
 
 .skeleton-image-mobile {

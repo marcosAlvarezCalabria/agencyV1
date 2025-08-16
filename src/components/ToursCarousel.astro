@@ -7,10 +7,10 @@ const { tours, lang, t } = Astro.props;
 ---
 
 <!-- Carousel principal -->
-<div class="swiper main-swiper mb-6 relative">
+<div class="swiper main-swiper mb-6 relative px-4"> <!-- Añadido px-4 para padding lateral -->
   <div class="swiper-wrapper pb-10"> <!-- Añadido pb-10 para dar espacio a la paginación -->
     {tours && tours.map(tour => (
-      <div class="swiper-slide p-2"> <!-- Añadido p-2 para que la sombra de la card no se corte -->
+      <div class="swiper-slide"> <!-- Removido p-2 para ancho completo -->
         <TourCardCarousel tour={tour} lang={lang} t={t} />
       </div>
     ))}
@@ -21,6 +21,11 @@ const { tours, lang, t } = Astro.props;
 
   <!-- Paginación -->
   <div class="swiper-pagination"></div>
+  
+  <!-- Indicador de swipe temporal -->
+  <div class="swipe-hint absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded-full text-sm font-medium opacity-0 animate-pulse z-20">
+    ☜️ Desliza para ver más tours ☞️
+  </div>
 </div>
 
 
@@ -30,10 +35,35 @@ const { tours, lang, t } = Astro.props;
     color: #d2a530; /* Color dorado para las flechas */
     top: 50%; /* Ajuste vertical si es necesario */
     transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .swiper-pagination {
+    bottom: 0px !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(210, 165, 48, 0.3);
+    border: 2px solid rgba(210, 165, 48, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
   }
 
   .swiper-pagination-bullet-active {
     background-color: #d2a530; /* Color dorado para la paginación activa */
+    border-color: #d2a530;
+    transform: scale(1.2);
   }
 
   .swiper-slide-thumb-active .thumb-content {
@@ -42,12 +72,74 @@ const { tours, lang, t } = Astro.props;
     box-shadow: 0 0 0 2px #f59e42;
   }
 
+  /* Indicador de swipe sutil */
+  .main-swiper::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 40px;
+    background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  /* Animación de entrada para las cards */
+  .swiper-slide {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Highlight en el slide activo */
+  .swiper-slide-active .tour-card-desktop {
+    box-shadow: 0 10px 25px rgba(210, 165, 48, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos para el hint de swipe */
+  .swipe-hint {
+    transition: all 0.4s ease;
+    transform: translateX(-50%) translateY(10px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Animación de rebote sutil en las flechas */
+  @keyframes arrowBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+    40% {
+      transform: translateY(-50%) translateX(3px);
+    }
+    60% {
+      transform: translateY(-50%) translateX(-3px);
+    }
+  }
+
+  .swiper-button-next {
+    animation: arrowBounce 2s ease-in-out 3s infinite;
+  }
+
+  .swiper-button-prev {
+    animation: arrowBounce 2s ease-in-out 3.5s infinite;
+  }
   
 </style>
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
 
@@ -56,12 +148,12 @@ const { tours, lang, t } = Astro.props;
     if (!swiperContainer) return;
 
     const swiper = new Swiper(swiperContainer, {
-      modules: [Navigation, Pagination],
+      modules: [Navigation, Pagination, Autoplay],
       loop: true,
-      slidesPerView: 1.2,
-      centeredSlides: true,
-      spaceBetween: 8,
-      initialSlide: 1,
+      slidesPerView: 1.1, // Mostrar un peek del siguiente slide
+      centeredSlides: true, // Centrar la card activa
+      spaceBetween: 16, // Espacio entre slides
+      initialSlide: 0,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -69,12 +161,49 @@ const { tours, lang, t } = Astro.props;
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        dynamicBullets: true, // Bullets dinámicos más atractivos
+      },
+      // Autoplay sutil para mostrar que es interactivo
+      autoplay: {
+        delay: 4000, // 4 segundos
+        disableOnInteraction: true, // Se detiene cuando el usuario interactúa
+        pauseOnMouseEnter: true,
       },
     });
 
     const nextBtn = swiperContainer.querySelector('.swiper-button-next');
     const prevBtn = swiperContainer.querySelector('.swiper-button-prev');
+    const swipeHint = swiperContainer.querySelector('.swipe-hint');
     let inactivityTimer;
+    let hintShown = false;
+
+    // Mostrar hint después de 2 segundos si no hay interacción
+    const showSwipeHint = () => {
+      if (!hintShown && swipeHint) {
+        setTimeout(() => {
+          if (!hintShown) {
+            swipeHint.style.opacity = '1';
+            swipeHint.style.transform = 'translateX(-50%) translateY(0)';
+            // Ocultar después de 3 segundos
+            setTimeout(() => {
+              if (swipeHint) {
+                swipeHint.style.opacity = '0';
+                swipeHint.style.transform = 'translateX(-50%) translateY(10px)';
+              }
+            }, 3000);
+          }
+        }, 2000);
+      }
+    };
+
+    // Ocultar hint permanentemente cuando hay interacción
+    const hideSwipeHint = () => {
+      hintShown = true;
+      if (swipeHint) {
+        swipeHint.style.opacity = '0';
+        swipeHint.style.transform = 'translateX(-50%) translateY(10px)';
+      }
+    };
 
     const hideButtons = () => {
       nextBtn?.classList.add('opacity-0', 'translate-y-4');
@@ -86,16 +215,27 @@ const { tours, lang, t } = Astro.props;
       prevBtn?.classList.remove('opacity-0', 'translate-y-4');
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(hideButtons, 500); // Ocultar después de 500ms
+      hideSwipeHint(); // Ocultar hint cuando se interactúa
     };
 
     // Mostrar botones al interactuar con el carrusel
     swiperContainer.addEventListener('mousemove', showButtons);
-    swiperContainer.addEventListener('touchstart', showButtons, { passive: true });
+    swiperContainer.addEventListener('touchstart', () => {
+      showButtons();
+      hideSwipeHint();
+    }, { passive: true });
+    
+    // Event listeners para swiper
+    swiper.on('slideChange', hideSwipeHint);
+    swiper.on('touchStart', hideSwipeHint);
 
     // Ocultar botones cuando el ratón sale del carrusel
     swiperContainer.addEventListener('mouseleave', hideButtons);
 
     // Iniciar el ciclo la primera vez
     showButtons();
+    
+    // Mostrar hint inicial
+    showSwipeHint();
   });
 </script>
