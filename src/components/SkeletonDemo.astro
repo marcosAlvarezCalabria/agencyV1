@@ -1,0 +1,299 @@
+---
+// Ejemplo práctico de cómo usar el sistema de skeletons
+import SkeletonLoader from './SkeletonLoader.astro';
+
+const { tours = [], lang = 'es', t } = Astro.props;
+---
+
+<!-- EJEMPLO 1: Skeleton automático con data attributes -->
+<div class="skeleton-demo-section">
+  <h2>🦴 Demo: Skeleton Automático</h2>
+  
+  <!-- Este contenedor mostrará automáticamente un skeleton -->
+  <div 
+    id="demo-tour-card-auto"
+    data-skeleton-auto="tour-card"
+    data-skeleton-count="1"
+    data-skeleton-auto-hide="false"
+    class="demo-container"
+  >
+    <!-- El contenido aquí se reemplazará automáticamente por el skeleton -->
+    <p>Este contenido será reemplazado por un skeleton automáticamente...</p>
+  </div>
+</div>
+
+<!-- EJEMPLO 2: Control manual de skeletons -->
+<div class="skeleton-demo-section">
+  <h2>🎮 Demo: Control Manual</h2>
+  
+  <div class="demo-controls">
+    <button id="show-skeleton-btn" class="demo-btn primary">
+      Mostrar Skeleton
+    </button>
+    <button id="hide-skeleton-btn" class="demo-btn secondary">
+      Ocultar Skeleton
+    </button>
+    <button id="show-search-skeleton-btn" class="demo-btn">
+      Mostrar Search Results
+    </button>
+  </div>
+  
+  <div id="demo-manual-control" class="demo-container">
+    <div class="demo-content">
+      <h3>✨ Contenido real</h3>
+      <p>Este es el contenido real que aparece cuando no hay skeleton.</p>
+      <p>Usa los botones arriba para controlar los skeletons manualmente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EJEMPLO 3: Integración con TourCard real -->
+<div class="skeleton-demo-section">
+  <h2>🎯 Demo: Integración Real</h2>
+  
+  <button id="simulate-tour-load" class="demo-btn primary">
+    Simular Carga de Tours
+  </button>
+  
+  <div id="tours-grid-demo" class="tours-grid-demo">
+    <!-- Aquí se cargarán los tours con skeleton -->
+  </div>
+</div>
+
+<style>
+.skeleton-demo-section {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 2px dashed var(--border-medium);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+}
+
+.skeleton-demo-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.demo-container {
+  min-height: 400px;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: white;
+  margin-top: 1rem;
+}
+
+.demo-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.demo-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.demo-btn.primary {
+  background: var(--primary-500);
+  color: white;
+}
+
+.demo-btn.primary:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.demo-btn.secondary {
+  background: var(--success-500);
+  color: white;
+}
+
+.demo-btn.secondary:hover {
+  background: var(--success-600);
+  transform: translateY(-1px);
+}
+
+.demo-btn:not(.primary):not(.secondary) {
+  background: var(--gray-200);
+  color: var(--text-primary);
+}
+
+.demo-btn:not(.primary):not(.secondary):hover {
+  background: var(--gray-300);
+  transform: translateY(-1px);
+}
+
+.demo-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.demo-content h3 {
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+}
+
+.demo-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tours-grid-demo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  min-height: 200px;
+}
+
+/* Estados de carga para la demo */
+.demo-container.loading {
+  background: var(--gray-50);
+}
+
+.demo-container.content-loaded {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skeleton-demo-section {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .demo-controls {
+    flex-direction: column;
+  }
+  
+  .tours-grid-demo {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  // EJEMPLO 1: Skeleton automático
+  // Se activa automáticamente por el IntersectionObserver
+  
+  // Simular contenido real después de 3 segundos
+  setTimeout(() => {
+    const autoContainer = document.getElementById('demo-tour-card-auto');
+    if (autoContainer && window.SkeletonManager) {
+      window.SkeletonManager.hide('demo-tour-card-auto', `
+        <div style="padding: 2rem; text-align: center;">
+          <h3 style="color: var(--success-600); margin-bottom: 1rem;">✅ ¡Contenido cargado!</h3>
+          <p style="color: var(--text-secondary);">El skeleton se ocultó automáticamente y apareció este contenido.</p>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Este es un ejemplo de cómo funciona el sistema automático.</p>
+        </div>
+      `);
+    }
+  }, 3000);
+  
+  // EJEMPLO 2: Control manual
+  const showSkeletonBtn = document.getElementById('show-skeleton-btn');
+  const hideSkeletonBtn = document.getElementById('hide-skeleton-btn');
+  const showSearchBtn = document.getElementById('show-search-skeleton-btn');
+  const manualContainer = document.getElementById('demo-manual-control');
+  
+  showSkeletonBtn?.addEventListener('click', () => {
+    if (window.SkeletonManager) {
+      window.SkeletonManager.show('demo-manual-control', 'tour-card', {
+        autoHide: false
+      });
+    }
+  });
+  
+  hideSkeletonBtn?.addEventListener('click', () => {
+    if (window.SkeletonManager) {
+      window.SkeletonManager.hide('demo-manual-control', `
+        <div class="demo-content">
+          <h3>✨ ¡Contenido restaurado!</h3>
+          <p>El skeleton fue ocultado manualmente y el contenido original regresó.</p>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Esto demuestra el control total sobre los estados de carga.</p>
+        </div>
+      `);
+    }
+  });
+  
+  showSearchBtn?.addEventListener('click', () => {
+    if (window.SkeletonManager) {
+      window.SkeletonManager.show('demo-manual-control', 'search-results', {
+        autoHide: false,
+        count: 1
+      });
+    }
+  });
+  
+  // EJEMPLO 3: Integración real
+  const simulateBtn = document.getElementById('simulate-tour-load');
+  const toursGrid = document.getElementById('tours-grid-demo');
+  
+  simulateBtn?.addEventListener('click', () => {
+    // Mostrar skeleton de búsqueda
+    if (window.SkeletonManager) {
+      window.SkeletonManager.show('tours-grid-demo', 'search-results', {
+        autoHide: false
+      });
+    }
+    
+    // Simular carga de datos
+    setTimeout(() => {
+      const mockTours = [
+        { name: 'Machu Picchu', price: 120, duration: '1 día' },
+        { name: 'Sacred Valley', price: 80, duration: '1 día' },
+        { name: 'Rainbow Mountain', price: 100, duration: '1 día' }
+      ];
+      
+      const toursHtml = mockTours.map(tour => `
+        <div style="
+          background: white;
+          border-radius: 12px;
+          padding: 1.5rem;
+          box-shadow: var(--shadow-md);
+          border: 1px solid var(--border-light);
+          text-align: center;
+        ">
+          <h4 style="color: var(--primary-600); margin-bottom: 0.5rem; font-size: 1.125rem;">${tour.name}</h4>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">${tour.duration}</p>
+          <div style="
+            background: var(--primary-500);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-block;
+          ">$${tour.price} USD</div>
+        </div>
+      `).join('');
+      
+      if (window.SkeletonManager) {
+        window.SkeletonManager.hide('tours-grid-demo', toursHtml);
+      }
+    }, 2000);
+  });
+  
+  // Debug info
+  console.log('🦴 Skeleton Demo cargado');
+  console.log('SkeletonManager disponible:', !!window.SkeletonManager);
+  
+  // Event listeners para eventos del skeleton manager
+  document.addEventListener('skeletonHidden', (event) => {
+    console.log('Skeleton ocultado:', event.detail);
+  });
+});
+</script>

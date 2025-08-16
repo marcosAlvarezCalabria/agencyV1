@@ -1,10 +1,17 @@
 ---
 // src/components/FloatingWhatsApp.astro
-const { message = "Hola, me gustaría obtener información sobre sus tours en Cusco" } = Astro.props;
-const whatsappNumber = "51984302905";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { message = t('whatsapp.defaultMessage') } = Astro.props;
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "51984302905";
 const encodedMessage = encodeURIComponent(message);
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 ---
+
+<!-- El resto del componente usa las traducciones dinámicas -->
 
 <!-- WhatsApp Flotante con mejoras UX -->
 <div id="whatsapp-floating" class="fixed bottom-6 right-6 z-50 group">
@@ -19,25 +26,25 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
           </svg>
         </div>
         <div>
-          <div class="font-semibold text-gray-900 text-sm">¡Consulta gratuita!</div>
-          <div class="text-xs text-green-600">En línea ahora</div>
+          <div class="font-semibold text-gray-900 text-sm">{t('whatsapp.tooltip.header')}</div>
+          <div class="text-xs text-green-600">{t('whatsapp.tooltip.status')}</div>
         </div>
       </div>
       
       <!-- Contenido del tooltip -->
       <div class="text-sm text-gray-700 mb-3">
-        <p>✅ Respuesta inmediata</p>
-        <p>✅ Planes personalizados</p>
-        <p>✅ Precios especiales</p>
+        <p>{t('whatsapp.tooltip.feature1')}</p>
+        <p>{t('whatsapp.tooltip.feature2')}</p>
+        <p>{t('whatsapp.tooltip.feature3')}</p>
       </div>
       
       <!-- Testimonial mini -->
       <div class="bg-gray-50 rounded-lg p-2 text-xs">
         <div class="flex items-center gap-1 mb-1">
           <div class="flex text-yellow-400">★★★★★</div>
-          <span class="text-gray-600">María, España</span>
+          <span class="text-gray-600">{t('whatsapp.testimonial.author')}</span>
         </div>
-        <p class="text-gray-700 italic">"Excelente atención y tours increíbles"</p>
+        <p class="text-gray-700 italic">"{t('whatsapp.testimonial.quote')}"</p>
       </div>
       
       <!-- Flecha del tooltip -->
@@ -68,8 +75,8 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
     <!-- Texto (solo desktop) -->
     <div class="hidden md:block">
-      <div class="text-sm font-bold">¡Consultá gratis!</div>
-      <div class="text-xs opacity-90">Respuesta inmediata</div>
+      <div class="text-sm font-bold">{t('whatsapp.button.title')}</div>
+      <div class="text-xs opacity-90">{t('whatsapp.button.subtitle')}</div>
     </div>
   </a>
 </div>

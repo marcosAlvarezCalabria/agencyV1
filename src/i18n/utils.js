@@ -4,6 +4,14 @@ import es from './es.json';
 const translations = { en, es };
 const defaultLang = 'es';
 
+export function getLangFromUrl(url) {
+  const [, lang] = url.pathname.split('/');
+  if (lang in translations) {
+    return lang;
+  }
+  return defaultLang;
+}
+
 export function useTranslations(lang) {
   return function t(key) {
     // Soporta claves anidadas tipo "hero.title"

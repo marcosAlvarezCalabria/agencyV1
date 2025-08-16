@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
+import "../styles/skeleton-loader.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import { useTranslations } from "../i18n/utils.js";
 
 // Recibe lang y seo como props desde la página
@@ -25,6 +27,7 @@ const t = useTranslations(lang);
       <slot />
     </main>
     <Footer />
+    <FloatingWhatsApp />
 
     <!-- Botón para volver arriba -->
     <a
@@ -46,8 +49,313 @@ const t = useTranslations(lang);
       </span>
     </a>
 
+    <!-- SKELETON MANAGER SCRIPT -->
     <script is:inline>
+      /**
+       * Skeleton Manager - Sistema centralizado de loading states
+       * Agencia Cusco v1
+       */
+      
+      class SkeletonManager {
+        constructor() {
+          this.activeSkeletons = new Map();
+          this.observers = new Map();
+          this.loadingStates = new Set();
+          this.config = {
+            showDuration: 1500,
+            fadeOutDuration: 300,
+            intersectionThreshold: 0.1,
+            autoHide: true
+          };
+          
+          this.init();
+        }
+        
+        init() {
+          this.setupIntersectionObserver();
+          this.bindEvents();
+        }
+        
+        show(containerId, type = 'tour-card', options = {}) {
+          const container = document.getElementById(containerId);
+          if (!container) {
+            console.warn(`Container with id "${containerId}" not found`);
+            return;
+          }
+          
+          const config = { ...this.config, ...options };
+          const skeletonData = {
+            container,
+            type,
+            startTime: Date.now(),
+            config,
+            isVisible: true
+          };
+          
+          container.innerHTML = '';
+          container.classList.add('loading');
+          
+          const skeletonElement = this.createSkeleton(type, config);
+          container.appendChild(skeletonElement);
+          
+          this.activeSkeletons.set(containerId, skeletonData);
+          this.loadingStates.add(containerId);
+          
+          this.announceLoading(containerId, 'Cargando contenido...');
+          
+          if (config.autoHide) {
+            setTimeout(() => {
+              if (this.activeSkeletons.has(containerId)) {
+                this.hide(containerId);
+              }
+            }, config.showDuration);
+          }
+          
+          return skeletonData;
+        }
+        
+        hide(containerId, contentHtml = null) {
+          const skeletonData = this.activeSkeletons.get(containerId);
+          if (!skeletonData) return;
+          
+          const { container, startTime, config } = skeletonData;
+          const elapsedTime = Date.now() - startTime;
+          const remainingTime = Math.max(0, config.showDuration - elapsedTime);
+          
+          setTimeout(() => {
+            this.performHide(containerId, contentHtml);
+          }, remainingTime);
+        }
+        
+        performHide(containerId, contentHtml) {
+          const skeletonData = this.activeSkeletons.get(containerId);
+          if (!skeletonData) return;
+          
+          const { container, config } = skeletonData;
+          const skeletonElement = container.querySelector('.skeleton-container');
+          
+          if (skeletonElement) {
+            skeletonElement.classList.add('loading-out');
+            
+            setTimeout(() => {
+              container.innerHTML = '';
+              container.classList.remove('loading');
+              
+              if (contentHtml) {
+                container.innerHTML = contentHtml;
+                container.classList.add('content-loaded');
+                
+                requestAnimationFrame(() => {
+                  container.classList.add('loaded');
+                });
+              }
+              
+              this.activeSkeletons.delete(containerId);
+              this.loadingStates.delete(containerId);
+              
+              this.announceLoading(containerId, 'Contenido cargado');
+              
+              container.dispatchEvent(new CustomEvent('skeletonHidden', {
+                detail: { containerId, loadedAt: Date.now() }
+              }));
+              
+            }, config.fadeOutDuration);
+          }
+        }
+        
+        createSkeleton(type, config) {
+          const skeletonContainer = document.createElement('div');
+          skeletonContainer.className = 'skeleton-container';
+          skeletonContainer.setAttribute('data-skeleton-type', type);
+          
+          const count = config.count || 1;
+          
+          for (let i = 0; i < count; i++) {
+            const skeletonItem = document.createElement('div');
+            skeletonItem.className = `skeleton-item skeleton-${type} ${config.animated !== false ? 'animated' : ''}`;
+            skeletonItem.innerHTML = this.getSkeletonTemplate(type);
+            skeletonContainer.appendChild(skeletonItem);
+          }
+          
+          return skeletonContainer;
+        }
+        
+        getSkeletonTemplate(type) {
+          const templates = {
+            'tour-card': `
+              <div class="tour-card-skeleton">
+                <div class="skeleton-image">
+                  <div class="skeleton-shimmer"></div>
+                </div>
+                <div class="skeleton-content">
+                  <div class="skeleton-header">
+                    <div class="skeleton-badge"></div>
+                    <div class="skeleton-favorite"></div>
+                  </div>
+                  <div class="skeleton-title-section">
+                    <div class="skeleton-line skeleton-title"></div>
+                    <div class="skeleton-rating">
+                      <div class="skeleton-stars"></div>
+                      <div class="skeleton-rating-text"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-price-section">
+                    <div class="skeleton-price-main"></div>
+                    <div class="skeleton-price-details">
+                      <div class="skeleton-line short"></div>
+                      <div class="skeleton-line mini"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-meta">
+                    <div class="skeleton-duration"></div>
+                    <div class="skeleton-cancellation"></div>
+                  </div>
+                  <div class="skeleton-description">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line medium"></div>
+                  </div>
+                  <div class="skeleton-tags">
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                    <div class="skeleton-tag"></div>
+                  </div>
+                  <div class="skeleton-availability">
+                    <div class="skeleton-availability-text">
+                      <div class="skeleton-line mini"></div>
+                      <div class="skeleton-line mini"></div>
+                    </div>
+                    <div class="skeleton-availability-bar">
+                      <div class="skeleton-progress"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-actions">
+                    <div class="skeleton-button primary"></div>
+                    <div class="skeleton-button secondary"></div>
+                  </div>
+                </div>
+              </div>
+            `,
+            'search-results': `
+              <div class="search-results-skeleton">
+                <div class="skeleton-search-header">
+                  <div class="skeleton-line medium"></div>
+                  <div class="skeleton-line short"></div>
+                </div>
+                <div class="skeleton-grid">
+                  ${Array.from({ length: 6 }, () => `
+                    <div class="skeleton-item skeleton-tour-card animated">
+                      <div class="tour-card-skeleton compact">
+                        <div class="skeleton-image small"></div>
+                        <div class="skeleton-content compact">
+                          <div class="skeleton-line skeleton-title"></div>
+                          <div class="skeleton-price-main small"></div>
+                          <div class="skeleton-button primary small"></div>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `,
+            'generic': `
+              <div class="generic-skeleton">
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-line short"></div>
+              </div>
+            `
+          };
+          
+          return templates[type] || templates['generic'];
+        }
+        
+        setupIntersectionObserver() {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const element = entry.target;
+                const skeletonType = element.dataset.skeletonAuto;
+                const containerId = element.id;
+                
+                if (skeletonType && containerId && !this.activeSkeletons.has(containerId)) {
+                  this.show(containerId, skeletonType, {
+                    count: parseInt(element.dataset.skeletonCount) || 1,
+                    autoHide: element.dataset.skeletonAutoHide !== 'false'
+                  });
+                }
+                
+                observer.unobserve(element);
+              }
+            });
+          }, {
+            threshold: this.config.intersectionThreshold
+          });
+          
+          this.observers.set('auto', observer);
+        }
+        
+        autoDetectSkeletons() {
+          document.querySelectorAll('[data-skeleton-auto]').forEach(element => {
+            if (element.id) {
+              this.observers.get('auto').observe(element);
+            }
+          });
+        }
+        
+        bindEvents() {
+          document.addEventListener('showSkeleton', (event) => {
+            const { containerId, type, options } = event.detail;
+            this.show(containerId, type, options);
+          });
+          
+          document.addEventListener('hideSkeleton', (event) => {
+            const { containerId, content } = event.detail;
+            this.hide(containerId, content);
+          });
+          
+          window.addEventListener('beforeunload', () => {
+            this.cleanup();
+          });
+        }
+        
+        announceLoading(containerId, message) {
+          const announcement = document.createElement('div');
+          announcement.setAttribute('aria-live', 'polite');
+          announcement.setAttribute('aria-atomic', 'true');
+          announcement.className = 'sr-only';
+          announcement.textContent = message;
+          announcement.id = `skeleton-announcement-${containerId}`;
+          
+          const existing = document.getElementById(announcement.id);
+          if (existing) {
+            existing.remove();
+          }
+          
+          document.body.appendChild(announcement);
+          
+          setTimeout(() => {
+            if (document.body.contains(announcement)) {
+              document.body.removeChild(announcement);
+            }
+          }, 1000);
+        }
+        
+        cleanup() {
+          this.activeSkeletons.clear();
+          this.loadingStates.clear();
+          this.observers.forEach(observer => observer.disconnect());
+          this.observers.clear();
+        }
+      }
+      
+      // Instancia global
+      window.SkeletonManager = new SkeletonManager();
+      
+      // Auto-detectar skeletons cuando el DOM esté listo
       document.addEventListener('DOMContentLoaded', () => {
+        window.SkeletonManager.autoDetectSkeletons();
+        
+        // Código existente del scroll button
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
         if (scrollToTopBtn) {

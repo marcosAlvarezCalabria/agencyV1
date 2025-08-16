@@ -1,0 +1,173 @@
+---
+// Componente base para todos los skeletons
+const { 
+  type = 'tour-card',
+  count = 1,
+  className = '',
+  animated = true,
+  ...props 
+} = Astro.props;
+
+const skeletonId = `skeleton-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div 
+  class={`skeleton-container ${className}`} 
+  data-skeleton-type={type}
+  data-skeleton-count={count}
+  data-skeleton-id={skeletonId}
+  {...props}
+>
+  {Array.from({ length: count }, (_, index) => (
+    <div class={`skeleton-item skeleton-${type} ${animated ? 'animated' : ''}`} key={index}>
+      {type === 'tour-card' && (
+        <div class="tour-card-skeleton">
+          <!-- Imagen skeleton -->
+          <div class="skeleton-image">
+            <div class="skeleton-shimmer"></div>
+          </div>
+          
+          <!-- Contenido skeleton -->
+          <div class="skeleton-content">
+            <!-- Header con badges -->
+            <div class="skeleton-header">
+              <div class="skeleton-badge"></div>
+              <div class="skeleton-favorite"></div>
+            </div>
+            
+            <!-- Título y rating -->
+            <div class="skeleton-title-section">
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-rating">
+                <div class="skeleton-stars"></div>
+                <div class="skeleton-rating-text"></div>
+              </div>
+            </div>
+            
+            <!-- Precio destacado -->
+            <div class="skeleton-price-section">
+              <div class="skeleton-price-main"></div>
+              <div class="skeleton-price-details">
+                <div class="skeleton-line short"></div>
+                <div class="skeleton-line mini"></div>
+              </div>
+            </div>
+            
+            <!-- Meta info (duración, cancelación) -->
+            <div class="skeleton-meta">
+              <div class="skeleton-duration"></div>
+              <div class="skeleton-cancellation"></div>
+            </div>
+            
+            <!-- Descripción -->
+            <div class="skeleton-description">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line medium"></div>
+            </div>
+            
+            <!-- Tags -->
+            <div class="skeleton-tags">
+              <div class="skeleton-tag"></div>
+              <div class="skeleton-tag"></div>
+              <div class="skeleton-tag"></div>
+            </div>
+            
+            <!-- Barra de disponibilidad -->
+            <div class="skeleton-availability">
+              <div class="skeleton-availability-text">
+                <div class="skeleton-line mini"></div>
+                <div class="skeleton-line mini"></div>
+              </div>
+              <div class="skeleton-availability-bar">
+                <div class="skeleton-progress"></div>
+              </div>
+            </div>
+            
+            <!-- Botones de acción -->
+            <div class="skeleton-actions">
+              <div class="skeleton-button primary"></div>
+              <div class="skeleton-button secondary"></div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {type === 'search-results' && (
+        <div class="search-results-skeleton">
+          <div class="skeleton-search-header">
+            <div class="skeleton-line medium"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+          <div class="skeleton-grid">
+            {Array.from({ length: 6 }, (_, i) => (
+              <div class="skeleton-item skeleton-tour-card animated" key={i}>
+                <!-- Reutilizar estructura de tour-card pero más pequeña -->
+                <div class="tour-card-skeleton compact">
+                  <div class="skeleton-image small"></div>
+                  <div class="skeleton-content compact">
+                    <div class="skeleton-line skeleton-title"></div>
+                    <div class="skeleton-price-main small"></div>
+                    <div class="skeleton-button primary small"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      {type === 'tour-list' && (
+        <div class="tour-list-skeleton">
+          <div class="skeleton-list-item">
+            <div class="skeleton-image thumbnail"></div>
+            <div class="skeleton-list-content">
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line medium"></div>
+              <div class="skeleton-meta-row">
+                <div class="skeleton-duration small"></div>
+                <div class="skeleton-price small"></div>
+              </div>
+            </div>
+            <div class="skeleton-list-actions">
+              <div class="skeleton-button small"></div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {type === 'hero-section' && (
+        <div class="hero-skeleton">
+          <div class="skeleton-hero-content">
+            <div class="skeleton-line hero-title"></div>
+            <div class="skeleton-line hero-subtitle"></div>
+            <div class="skeleton-hero-actions">
+              <div class="skeleton-button hero-cta"></div>
+              <div class="skeleton-button hero-secondary"></div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {type === 'navbar' && (
+        <div class="navbar-skeleton">
+          <div class="skeleton-logo"></div>
+          <div class="skeleton-nav-items">
+            <div class="skeleton-nav-item"></div>
+            <div class="skeleton-nav-item"></div>
+            <div class="skeleton-nav-item"></div>
+            <div class="skeleton-nav-item"></div>
+          </div>
+          <div class="skeleton-lang-switch"></div>
+        </div>
+      )}
+      
+      {type === 'generic' && (
+        <div class="generic-skeleton">
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line medium"></div>
+          <div class="skeleton-line short"></div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>

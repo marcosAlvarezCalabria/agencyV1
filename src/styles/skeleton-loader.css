@@ -1,0 +1,633 @@
+/* ===================================
+   SKELETON LOADER SYSTEM - AGENCIA CUSCO
+   =================================== */
+
+/* ===================================
+   BASE SKELETON STYLES
+   =================================== */
+
+.skeleton-container {
+  width: 100%;
+  position: relative;
+}
+
+.skeleton-item {
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Animación base shimmer */
+.skeleton-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Elementos skeleton base */
+.skeleton-line,
+.skeleton-image,
+.skeleton-button,
+.skeleton-badge,
+.skeleton-tag {
+  background: linear-gradient(
+    90deg,
+    var(--gray-200) 25%,
+    var(--gray-100) 50%,
+    var(--gray-200) 75%
+  );
+  background-size: 200% 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-item.animated .skeleton-line,
+.skeleton-item.animated .skeleton-image,
+.skeleton-item.animated .skeleton-button,
+.skeleton-item.animated .skeleton-badge,
+.skeleton-item.animated .skeleton-tag {
+  animation: skeletonPulse 2s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+/* ===================================
+   TOUR CARD SKELETON
+   =================================== */
+
+.tour-card-skeleton {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* Imagen skeleton */
+.skeleton-image {
+  height: 200px;
+  border-radius: 0;
+  position: relative;
+  background: linear-gradient(135deg, var(--gray-200), var(--gray-100));
+}
+
+.skeleton-image.small {
+  height: 120px;
+}
+
+.skeleton-image.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Contenido del card */
+.skeleton-content {
+  padding: 1.5rem;
+}
+
+.skeleton-content.compact {
+  padding: 1rem;
+}
+
+/* Header con badges */
+.skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.skeleton-badge {
+  width: 80px;
+  height: 20px;
+  border-radius: 12px;
+}
+
+.skeleton-favorite {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Título y rating */
+.skeleton-title-section {
+  margin-bottom: 1rem;
+}
+
+.skeleton-line {
+  height: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-line.skeleton-title {
+  height: 1.5rem;
+  width: 85%;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-line.medium {
+  width: 65%;
+}
+
+.skeleton-line.short {
+  width: 45%;
+}
+
+.skeleton-line.mini {
+  width: 30%;
+  height: 0.75rem;
+}
+
+.skeleton-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.skeleton-stars {
+  width: 100px;
+  height: 16px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--warning-200), var(--warning-100));
+}
+
+.skeleton-rating-text {
+  width: 40px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+/* Sección de precio */
+.skeleton-price-section {
+  background: linear-gradient(135deg, var(--primary-50), var(--primary-25));
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--primary-200);
+  margin-bottom: 1rem;
+}
+
+.skeleton-price-main {
+  width: 120px;
+  height: 2rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--primary-200), var(--primary-100));
+}
+
+.skeleton-price-main.small {
+  width: 80px;
+  height: 1.5rem;
+}
+
+.skeleton-price-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Meta información */
+.skeleton-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.skeleton-duration,
+.skeleton-cancellation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skeleton-duration::before,
+.skeleton-cancellation::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: var(--gray-300);
+  border-radius: 50%;
+}
+
+.skeleton-duration {
+  width: 80px;
+  height: 1rem;
+  border-radius: 4px;
+}
+
+.skeleton-cancellation {
+  width: 120px;
+  height: 1rem;
+  border-radius: 4px;
+}
+
+/* Descripción */
+.skeleton-description {
+  margin-bottom: 1rem;
+}
+
+/* Tags */
+.skeleton-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.skeleton-tag {
+  width: 100px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.skeleton-tag:nth-child(2) {
+  width: 80px;
+}
+
+.skeleton-tag:nth-child(3) {
+  width: 90px;
+}
+
+/* Disponibilidad */
+.skeleton-availability {
+  margin-bottom: 1rem;
+}
+
+.skeleton-availability-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-availability-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-progress {
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--success-300), var(--success-200));
+  border-radius: 4px;
+}
+
+/* Botones */
+.skeleton-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.skeleton-button {
+  height: 2.75rem;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.skeleton-button.primary {
+  background: linear-gradient(90deg, var(--primary-200), var(--primary-100));
+}
+
+.skeleton-button.secondary {
+  background: linear-gradient(90deg, var(--success-200), var(--success-100));
+}
+
+.skeleton-button.small {
+  height: 2rem;
+  min-width: 80px;
+}
+
+/* ===================================
+   SEARCH RESULTS SKELETON
+   =================================== */
+
+.search-results-skeleton {
+  padding: 1rem;
+}
+
+.skeleton-search-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.tour-card-skeleton.compact {
+  max-width: none;
+}
+
+/* ===================================
+   TOUR LIST SKELETON
+   =================================== */
+
+.tour-list-skeleton {
+  padding: 1rem 0;
+}
+
+.skeleton-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 1rem;
+}
+
+.skeleton-list-content {
+  flex: 1;
+}
+
+.skeleton-meta-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.skeleton-list-actions {
+  flex-shrink: 0;
+}
+
+/* ===================================
+   HERO SECTION SKELETON
+   =================================== */
+
+.hero-skeleton {
+  height: 400px;
+  background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.skeleton-hero-content {
+  max-width: 600px;
+}
+
+.skeleton-line.hero-title {
+  height: 3rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.skeleton-line.hero-subtitle {
+  height: 1.5rem;
+  width: 80%;
+  margin: 0 auto 2rem;
+}
+
+.skeleton-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.skeleton-button.hero-cta {
+  width: 180px;
+  height: 3rem;
+}
+
+.skeleton-button.hero-secondary {
+  width: 150px;
+  height: 3rem;
+}
+
+/* ===================================
+   NAVBAR SKELETON
+   =================================== */
+
+.navbar-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.skeleton-logo {
+  width: 80px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.skeleton-nav-items {
+  display: flex;
+  gap: 2rem;
+}
+
+.skeleton-nav-item {
+  width: 80px;
+  height: 1.5rem;
+  border-radius: 4px;
+}
+
+.skeleton-lang-switch {
+  width: 60px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+/* ===================================
+   GENERIC SKELETON
+   =================================== */
+
+.generic-skeleton {
+  padding: 1rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .tour-card-skeleton {
+    max-width: 100%;
+  }
+  
+  .skeleton-content {
+    padding: 1rem;
+  }
+  
+  .skeleton-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .skeleton-actions {
+    flex-direction: column;
+  }
+  
+  .skeleton-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .skeleton-hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .skeleton-nav-items {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton-price-section {
+    padding: 0.75rem;
+  }
+  
+  .skeleton-tags {
+    justify-content: center;
+  }
+  
+  .skeleton-list-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .skeleton-meta-row {
+    justify-content: center;
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer,
+  .skeleton-line,
+  .skeleton-image,
+  .skeleton-button,
+  .skeleton-badge,
+  .skeleton-tag {
+    animation: none !important;
+  }
+  
+  .skeleton-line,
+  .skeleton-image,
+  .skeleton-button,
+  .skeleton-badge,
+  .skeleton-tag {
+    background: var(--gray-200);
+  }
+}
+
+/* ===================================
+   DARK MODE SUPPORT (FUTURE)
+   =================================== */
+
+@media (prefers-color-scheme: dark) {
+  .skeleton-line,
+  .skeleton-image,
+  .skeleton-button,
+  .skeleton-badge,
+  .skeleton-tag {
+    background: linear-gradient(
+      90deg,
+      var(--gray-700) 25%,
+      var(--gray-600) 50%,
+      var(--gray-700) 75%
+    );
+  }
+  
+  .tour-card-skeleton {
+    background: var(--gray-800);
+    border-color: var(--gray-700);
+  }
+  
+  .skeleton-price-section {
+    background: linear-gradient(135deg, var(--primary-900), var(--primary-800));
+    border-color: var(--primary-700);
+  }
+}
+
+/* ===================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+.skeleton-container {
+  contain: layout style paint;
+  will-change: contents;
+}
+
+.skeleton-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ===================================
+   ESTADOS DE TRANSICIÓN
+   =================================== */
+
+.skeleton-container.loading-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.skeleton-container.loaded {
+  display: none;
+}
+
+/* Fade-in del contenido real */
+.content-container {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.content-container.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Clase utilitaria para screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

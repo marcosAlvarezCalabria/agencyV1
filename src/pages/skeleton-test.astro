@@ -1,0 +1,541 @@
+---
+import Baselayout from '../layouts/Baselayout.astro';
+import SkeletonDemo from '../components/SkeletonDemo.astro';
+import SkeletonLoader from '../components/SkeletonLoader.astro';
+import { useTranslations } from '../i18n/utils.js';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const seo = {
+  title: 'Skeleton System Demo - Agencia Cusco',
+  description: 'Demostración del sistema de skeletons para mejorar la experiencia de usuario'
+};
+---
+
+<Baselayout lang={lang} seo={seo}>
+  <div class="skeleton-test-page">
+    <!-- Header de la página -->
+    <section class="test-header">
+      <div class="container mx-auto px-4 py-8">
+        <h1 class="test-title">🦴 Sistema de Skeletons - Demo</h1>
+        <p class="test-subtitle">
+          Demonstración completa del sistema de loading states para Agencia Cusco v1
+        </p>
+        
+        <!-- Status del sistema -->
+        <div class="system-status" id="system-status">
+          <div class="status-item">
+            <span class="status-label">CSS Cargado:</span>
+            <span class="status-value" id="css-status">Verificando...</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">JavaScript Cargado:</span>
+            <span class="status-value" id="js-status">Verificando...</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Skeletons Activos:</span>
+            <span class="status-value" id="active-skeletons">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demos interactivos -->
+    <section class="demos-section">
+      <div class="container mx-auto px-4">
+        <SkeletonDemo />
+      </div>
+    </section>
+
+    <!-- Componente directo de Skeleton -->
+    <section class="direct-component-demo">
+      <div class="container mx-auto px-4 py-8">
+        <h2>🧩 Demo: Componente Directo</h2>
+        <p>Skeleton renderizado directamente como componente Astro:</p>
+        
+        <div class="direct-skeleton-container">
+          <SkeletonLoader type="tour-card" count={1} animated={true} />
+        </div>
+      </div>
+    </section>
+
+    <!-- API Testing -->
+    <section class="api-testing">
+      <div class="container mx-auto px-4 py-8">
+        <h2>🔧 Testing de API</h2>
+        
+        <div class="api-controls">
+          <button class="api-btn" onclick="testBasicAPI()">
+            Test API Básica
+          </button>
+          <button class="api-btn" onclick="testMultipleSkeletons()">
+            Test Múltiples Skeletons
+          </button>
+          <button class="api-btn" onclick="testErrorHandling()">
+            Test Manejo de Errores
+          </button>
+          <button class="api-btn" onclick="showDebugInfo()">
+            Ver Debug Info
+          </button>
+        </div>
+
+        <!-- Containers para testing -->
+        <div class="api-test-containers">
+          <div id="api-test-1" class="api-test-container">
+            <h4>Test Container 1</h4>
+            <p>Listo para testing...</p>
+          </div>
+          
+          <div id="api-test-2" class="api-test-container">
+            <h4>Test Container 2</h4>
+            <p>Listo para testing...</p>
+          </div>
+          
+          <div id="api-test-3" class="api-test-container">
+            <h4>Test Container 3</h4>
+            <p>Listo para testing...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Performance Info -->
+    <section class="performance-info">
+      <div class="container mx-auto px-4 py-8">
+        <h2>📊 Información de Performance</h2>
+        
+        <div class="perf-grid">
+          <div class="perf-card">
+            <h4>Tiempo de Carga CSS</h4>
+            <span id="css-load-time">Calculando...</span>
+          </div>
+          
+          <div class="perf-card">
+            <h4>Tiempo de Inicialización JS</h4>
+            <span id="js-init-time">Calculando...</span>
+          </div>
+          
+          <div class="perf-card">
+            <h4>Skeletons Creados</h4>
+            <span id="skeletons-created">0</span>
+          </div>
+          
+          <div class="perf-card">
+            <h4>Memoria Utilizada</h4>
+            <span id="memory-usage">N/A</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Baselayout>
+
+<style>
+.skeleton-test-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.test-header {
+  background: linear-gradient(135deg, var(--primary-50), var(--secondary-50));
+  border-bottom: 1px solid var(--border-light);
+}
+
+.test-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.test-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.system-status {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.status-item:last-child {
+  border-bottom: none;
+}
+
+.status-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.status-value {
+  font-family: monospace;
+  background: var(--gray-100);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.status-value.success {
+  background: var(--success-100);
+  color: var(--success-700);
+}
+
+.status-value.error {
+  background: var(--error-100);
+  color: var(--error-700);
+}
+
+.demos-section {
+  padding: 2rem 0;
+}
+
+.direct-component-demo {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.direct-component-demo h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.direct-skeleton-container {
+  max-width: 400px;
+  margin: 1rem 0;
+}
+
+.api-testing {
+  background: white;
+}
+
+.api-testing h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.api-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.api-btn {
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.api-btn:hover {
+  background: var(--primary-600);
+  transform: translateY(-1px);
+}
+
+.api-test-containers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.api-test-container {
+  background: var(--gray-50);
+  border: 2px dashed var(--border-medium);
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-height: 200px;
+  text-align: center;
+}
+
+.api-test-container h4 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.api-test-container p {
+  color: var(--text-secondary);
+}
+
+.performance-info {
+  background: var(--gray-900);
+  color: white;
+}
+
+.performance-info h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.perf-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.perf-card h4 {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.perf-card span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .test-title {
+    font-size: 2rem;
+  }
+  
+  .api-controls {
+    flex-direction: column;
+  }
+  
+  .api-test-containers {
+    grid-template-columns: 1fr;
+  }
+  
+  .perf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script is:inline>
+// Variables globales para tracking
+let performanceData = {
+  cssLoadTime: 0,
+  jsInitTime: 0,
+  skeletonsCreated: 0,
+  startTime: performance.now()
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  performanceData.jsInitTime = performance.now() - performanceData.startTime;
+  
+  // Verificar estado del sistema
+  checkSystemStatus();
+  
+  // Actualizar performance info
+  updatePerformanceInfo();
+  
+  // Setup listeners para tracking
+  setupPerformanceTracking();
+  
+  console.log('🦴 Skeleton Test Page cargada');
+});
+
+function checkSystemStatus() {
+  const cssStatus = document.getElementById('css-status');
+  const jsStatus = document.getElementById('js-status');
+  const activeSkeletons = document.getElementById('active-skeletons');
+  
+  // Verificar CSS
+  const testElement = document.createElement('div');
+  testElement.className = 'skeleton-line';
+  testElement.style.visibility = 'hidden';
+  document.body.appendChild(testElement);
+  
+  const styles = window.getComputedStyle(testElement);
+  const hasCSSLoaded = styles.background && styles.background !== 'rgba(0, 0, 0, 0)';
+  
+  document.body.removeChild(testElement);
+  
+  if (hasCSSLoaded) {
+    cssStatus.textContent = '✅ Cargado';
+    cssStatus.className = 'status-value success';
+  } else {
+    cssStatus.textContent = '❌ Error';
+    cssStatus.className = 'status-value error';
+  }
+  
+  // Verificar JavaScript
+  if (window.SkeletonManager) {
+    jsStatus.textContent = '✅ Cargado';
+    jsStatus.className = 'status-value success';
+  } else {
+    jsStatus.textContent = '❌ Error';
+    jsStatus.className = 'status-value error';
+  }
+  
+  // Actualizar contador de skeletons activos
+  if (window.SkeletonManager) {
+    const activeCount = window.SkeletonManager.getActiveSkeletons().length;
+    activeSkeletons.textContent = activeCount.toString();
+  }
+}
+
+function updatePerformanceInfo() {
+  document.getElementById('css-load-time').textContent = `${performanceData.cssLoadTime.toFixed(2)}ms`;
+  document.getElementById('js-init-time').textContent = `${performanceData.jsInitTime.toFixed(2)}ms`;
+  document.getElementById('skeletons-created').textContent = performanceData.skeletonsCreated.toString();
+  
+  // Memoria (si está disponible)
+  if (performance.memory) {
+    const memoryMB = (performance.memory.usedJSHeapSize / 1024 / 1024).toFixed(2);
+    document.getElementById('memory-usage').textContent = `${memoryMB} MB`;
+  }
+}
+
+function setupPerformanceTracking() {
+  // Actualizar contador cada segundo
+  setInterval(() => {
+    if (window.SkeletonManager) {
+      const activeCount = window.SkeletonManager.getActiveSkeletons().length;
+      document.getElementById('active-skeletons').textContent = activeCount.toString();
+    }
+    updatePerformanceInfo();
+  }, 1000);
+  
+  // Track skeleton events
+  document.addEventListener('skeletonHidden', () => {
+    performanceData.skeletonsCreated++;
+  });
+}
+
+// Funciones de testing de API
+function testBasicAPI() {
+  console.log('🧪 Testing API básica');
+  
+  if (!window.SkeletonManager) {
+    alert('❌ SkeletonManager no está disponible');
+    return;
+  }
+  
+  // Test 1: Mostrar skeleton
+  window.SkeletonManager.show('api-test-1', 'tour-card', {
+    autoHide: false
+  });
+  
+  setTimeout(() => {
+    window.SkeletonManager.hide('api-test-1', `
+      <div style="text-align: center; padding: 2rem;">
+        <h4 style="color: var(--success-600);">✅ Test Básico Exitoso</h4>
+        <p style="color: var(--text-secondary);">El skeleton se mostró y ocultó correctamente.</p>
+      </div>
+    `);
+  }, 2000);
+}
+
+function testMultipleSkeletons() {
+  console.log('🧪 Testing múltiples skeletons');
+  
+  if (!window.SkeletonManager) {
+    alert('❌ SkeletonManager no está disponible');
+    return;
+  }
+  
+  // Mostrar diferentes tipos de skeletons
+  window.SkeletonManager.show('api-test-1', 'tour-card', { autoHide: false });
+  window.SkeletonManager.show('api-test-2', 'search-results', { autoHide: false });
+  window.SkeletonManager.show('api-test-3', 'generic', { autoHide: false });
+  
+  setTimeout(() => {
+    window.SkeletonManager.hide('api-test-1', '<div style="text-align: center; padding: 1rem;"><h4>✅ Tour Card Test</h4></div>');
+    window.SkeletonManager.hide('api-test-2', '<div style="text-align: center; padding: 1rem;"><h4>✅ Search Results Test</h4></div>');
+    window.SkeletonManager.hide('api-test-3', '<div style="text-align: center; padding: 1rem;"><h4>✅ Generic Test</h4></div>');
+  }, 3000);
+}
+
+function testErrorHandling() {
+  console.log('🧪 Testing manejo de errores');
+  
+  if (!window.SkeletonManager) {
+    alert('❌ SkeletonManager no está disponible');
+    return;
+  }
+  
+  // Test con ID inexistente
+  try {
+    window.SkeletonManager.show('container-inexistente', 'tour-card');
+    console.log('✅ Manejo de error: ID inexistente manejado correctamente');
+  } catch (error) {
+    console.error('❌ Error no manejado:', error);
+  }
+  
+  // Test con tipo inexistente
+  try {
+    window.SkeletonManager.show('api-test-1', 'tipo-inexistente');
+    setTimeout(() => {
+      window.SkeletonManager.hide('api-test-1', `
+        <div style="text-align: center; padding: 1rem;">
+          <h4 style="color: var(--warning-600);">⚠️ Tipo Inexistente</h4>
+          <p>Se usó template genérico como fallback.</p>
+        </div>
+      `);
+    }, 2000);
+    console.log('✅ Manejo de error: Tipo inexistente usa fallback');
+  } catch (error) {
+    console.error('❌ Error no manejado:', error);
+  }
+}
+
+function showDebugInfo() {
+  if (!window.SkeletonManager) {
+    alert('❌ SkeletonManager no está disponible');
+    return;
+  }
+  
+  window.SkeletonManager.debug();
+  
+  const debugInfo = {
+    'Skeletons Activos': window.SkeletonManager.getActiveSkeletons(),
+    'Performance Data': performanceData,
+    'User Agent': navigator.userAgent,
+    'Viewport': `${window.innerWidth}x${window.innerHeight}`,
+    'Memoria Disponible': performance.memory ? {
+      'Usado': `${(performance.memory.usedJSHeapSize / 1024 / 1024).toFixed(2)} MB`,
+      'Total': `${(performance.memory.totalJSHeapSize / 1024 / 1024).toFixed(2)} MB`,
+      'Límite': `${(performance.memory.jsHeapSizeLimit / 1024 / 1024).toFixed(2)} MB`
+    } : 'No disponible'
+  };
+  
+  console.table(debugInfo);
+  alert('📊 Debug info enviada a la consola. Abre DevTools para ver los detalles.');
+}
+</script>
