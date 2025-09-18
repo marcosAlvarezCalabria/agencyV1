@@ -375,16 +375,9 @@ function checkSystemStatus() {
   const jsStatus = document.getElementById('js-status');
   const activeSkeletons = document.getElementById('active-skeletons');
   
-  // Verificar CSS
-  const testElement = document.createElement('div');
-  testElement.className = 'skeleton-line';
-  testElement.style.visibility = 'hidden';
-  document.body.appendChild(testElement);
-  
-  const styles = window.getComputedStyle(testElement);
-  const hasCSSLoaded = styles.background && styles.background !== 'rgba(0, 0, 0, 0)';
-  
-  document.body.removeChild(testElement);
+  // Verificar CSS (forma más fiable)
+  // Buscamos el tag de <style> que el manager debió inyectar.
+  const hasCSSLoaded = document.querySelector('#skeleton-styles');
   
   if (hasCSSLoaded) {
     cssStatus.textContent = '✅ Cargado';
@@ -448,9 +441,7 @@ function testBasicAPI() {
   }
   
   // Test 1: Mostrar skeleton
-  window.SkeletonManager.show('api-test-1', 'tour-card', {
-    autoHide: false
-  });
+  window.SkeletonManager.show('api-test-1', { type: 'tour-card', count: 1 });
   
   setTimeout(() => {
     window.SkeletonManager.hide('api-test-1', `
@@ -471,9 +462,9 @@ function testMultipleSkeletons() {
   }
   
   // Mostrar diferentes tipos de skeletons
-  window.SkeletonManager.show('api-test-1', 'tour-card', { autoHide: false });
-  window.SkeletonManager.show('api-test-2', 'search-results', { autoHide: false });
-  window.SkeletonManager.show('api-test-3', 'generic', { autoHide: false });
+  window.SkeletonManager.show('api-test-1', { type: 'tour-card', count: 1 });
+  window.SkeletonManager.show('api-test-2', { type: 'list-items', count: 2 });
+  window.SkeletonManager.show('api-test-3', { type: 'content-blocks', count: 1 });
   
   setTimeout(() => {
     window.SkeletonManager.hide('api-test-1', '<div style="text-align: center; padding: 1rem;"><h4>✅ Tour Card Test</h4></div>');
@@ -492,7 +483,7 @@ function testErrorHandling() {
   
   // Test con ID inexistente
   try {
-    window.SkeletonManager.show('container-inexistente', 'tour-card');
+    window.SkeletonManager.show('container-inexistente', { type: 'tour-card' });
     console.log('✅ Manejo de error: ID inexistente manejado correctamente');
   } catch (error) {
     console.error('❌ Error no manejado:', error);
@@ -500,7 +491,7 @@ function testErrorHandling() {
   
   // Test con tipo inexistente
   try {
-    window.SkeletonManager.show('api-test-1', 'tipo-inexistente');
+    window.SkeletonManager.show('api-test-1', { type: 'tipo-inexistente', count: 1 });
     setTimeout(() => {
       window.SkeletonManager.hide('api-test-1', `
         <div style="text-align: center; padding: 1rem;">

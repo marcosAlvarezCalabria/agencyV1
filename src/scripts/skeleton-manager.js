@@ -72,23 +72,35 @@ class SkeletonManager {
       return;
     }
 
-    // Remover clase de loading
-    container.classList.remove('skeleton-loading');
-    
-    // Mostrar contenido real con animación suave
+    // IMPORTANTE: El uso de innerHTML puede destruir los event listeners de frameworks
+    // o componentes complejos como carruseles. Si tu componente deja de funcionar
+    // después de que el esqueleto se oculta, es probable que necesites reinicializar
+    // su JavaScript después de llamar a este método `hide`.
     if (realContent) {
       container.innerHTML = realContent;
     }
 
+    // Remover clase de loading para quitar los estilos del esqueleto
+    container.classList.remove('skeleton-loading');
+
     // Animar la aparición del contenido real
     container.style.opacity = '0';
     container.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-      container.style.transition = 'all 0.5s ease-out';
+    container.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+
+    // Usamos requestAnimationFrame para asegurar que los estilos iniciales se apliquen
+    // antes de comenzar la transición al estado final.
+    requestAnimationFrame(() => {
       container.style.opacity = '1';
-      container.style.transform = 'translateY(0)';
-    }, 50);
+      container.style.transform = 'translateY(0px)';
+    });
+
+    // Limpiar los estilos en línea una vez que la transición haya terminado
+    container.addEventListener('transitionend', () => {
+      container.style.removeProperty('opacity');
+      container.style.removeProperty('transform');
+      container.style.removeProperty('transition');
+    }, { once: true });
 
     console.log(`✅ Skeleton hidden for ${containerId}`);
   }
@@ -302,6 +314,22 @@ class SkeletonManager {
     this.skeletonConfigs.clear();
     this.isInitialized = false;
   }
+
+  // Método para obtener los contenedores con skeletons activos
+  getActiveSkeletons() {
+    // Este método es llamado por la página de test.
+    return Array.from(document.querySelectorAll('.skeleton-loading'));
+  }
+
+  // Método para mostrar información de depuración en la consola
+  debug() {
+    // Este método es llamado por la página de test.
+    console.group("🐛 SkeletonManager Debug Info");
+    console.log("Is Initialized:", this.isInitialized);
+    console.log("Configs:", this.skeletonConfigs);
+    console.log("Active Skeletons:", this.getActiveSkeletons());
+    console.groupEnd();
+  }
 }
 
 // Crear instancia global
@@ -377,9 +405,10 @@ const skeletonStyles = `
 
 // Insertar estilos en el head
 if (!document.querySelector('#skeleton-styles')) {
-  const styleElement = document.createElement('div');
+  const styleElement = document.createElement('style');
   styleElement.id = 'skeleton-styles';
-  styleElement.innerHTML = skeletonStyles;
+  // Extraemos el contenido de las etiquetas <style> para inyectarlo correctamente
+  styleElement.textContent = skeletonStyles.replace(/<style>|<\/style>/g, '').trim();
   document.head.appendChild(styleElement);
 }
 
