@@ -3,7 +3,21 @@ const { tour, t, lang = 'es' } = Astro.props;
 if (!tour) {
   return null;
 }
-const { name, duration, description, includes, image, price, slug } = tour;
+const {
+  name,
+  duration,
+  description,
+  includes,
+  image,
+  price,
+  slug,
+  type,
+  difficulty,
+  places_to_visit,
+  discounts,
+  price_options,
+  has_photos
+} = tour;
 const whatsappLink = `https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`;
 const cardId = `desktop-card-${name.replace(/\s+/g, '').toLowerCase()}`;
 const detailsUrl = lang === 'es' ? `/es/tours/${slug}` : `/tours/${slug}`;
@@ -142,20 +156,43 @@ const originalPrice = hasDiscount ? Math.floor(price * 1.2) : null;
       </div>
     )}
 
-    <!-- Duración e información destacada -->
-    <div class="flex items-center justify-between mb-3 text-sm">
-      <div class="flex items-center gap-2 text-gray-600">
-        <svg class="w-4 h-4 text-[#b64926]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <span class="font-semibold">{duration}</span>
+    <!-- Información del tour -->
+    <div class="mb-3 space-y-2">
+      <!-- Duración y tipo -->
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center gap-2 text-gray-600">
+          <svg class="w-4 h-4 text-[#b64926]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span class="font-semibold">{duration}</span>
+        </div>
+
+        <div class="flex items-center gap-1 text-green-600 text-xs font-medium">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          Cancelación gratis
+        </div>
       </div>
-      
-      <div class="flex items-center gap-1 text-green-600 text-xs font-medium">
-        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-        </svg>
-        Cancelación gratis
+
+      <!-- Tipo y dificultad -->
+      <div class="flex items-center justify-between text-xs">
+        {type && (
+          <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">
+            {type}
+          </span>
+        )}
+        {difficulty && (
+          <span class={`px-2 py-1 rounded-full font-medium ${
+            difficulty === 'Fácil' || difficulty === 'Easy'
+              ? 'bg-green-100 text-green-800'
+              : difficulty === 'Moderado' || difficulty === 'Moderate'
+              ? 'bg-yellow-100 text-yellow-800'
+              : 'bg-red-100 text-red-800'
+          }`}>
+            {difficulty}
+          </span>
+        )}
       </div>
     </div>
 
@@ -163,6 +200,25 @@ const originalPrice = hasDiscount ? Math.floor(price * 1.2) : null;
     <p class="text-sm text-gray-700 mb-4 line-clamp-2 leading-relaxed">
       {description}
     </p>
+
+    <!-- Lugares a visitar -->
+    {places_to_visit && places_to_visit.length > 0 && (
+      <div class="mb-4">
+        <h4 class="text-xs font-semibold text-gray-600 mb-2">Lugares a visitar:</h4>
+        <div class="flex flex-wrap gap-1">
+          {places_to_visit.slice(0, 3).map(place => (
+            <span class="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded-full border border-amber-200">
+              📍 {place}
+            </span>
+          ))}
+          {places_to_visit.length > 3 && (
+            <span class="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-full border border-gray-200">
+              +{places_to_visit.length - 3} más
+            </span>
+          )}
+        </div>
+      </div>
+    )}
 
     <!-- Tags de características -->
     <div class="flex flex-wrap gap-1 mb-4">
@@ -175,6 +231,11 @@ const originalPrice = hasDiscount ? Math.floor(price * 1.2) : null;
       <span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-full border border-purple-200">
         🍽️ Comidas
       </span>
+      {has_photos && (
+        <span class="text-xs bg-pink-50 text-pink-700 px-2 py-1 rounded-full border border-pink-200">
+          📸 Fotos incluidas
+        </span>
+      )}
     </div>
 
     <!-- Disponibilidad visual -->
@@ -193,6 +254,24 @@ const originalPrice = hasDiscount ? Math.floor(price * 1.2) : null;
         }`}></div>
       </div>
     </div>
+
+    <!-- Descuentos disponibles -->
+    {discounts && discounts.length > 0 && (
+      <div class="mb-4 p-3 bg-green-50 rounded-lg border border-green-200">
+        <h4 class="text-xs font-semibold text-green-800 mb-2">💰 Descuentos disponibles:</h4>
+        <div class="space-y-1">
+          {discounts.slice(0, 2).map(discount => (
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-green-700">{discount.type}</span>
+              <span class="font-bold text-green-800">{discount.percentage}</span>
+            </div>
+          ))}
+          {discounts.length > 2 && (
+            <p class="text-xs text-green-600 font-medium">+{discounts.length - 2} descuentos más</p>
+          )}
+        </div>
+      </div>
+    )}
 
     <!-- Botones de acción mejorados -->
     <div class="space-y-2">

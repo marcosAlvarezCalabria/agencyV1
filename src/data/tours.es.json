@@ -1,235 +1,167 @@
 [
   {
-    "name": "Camino Inca Clásico a Machu Picchu 4D/3N",
-    "slug": "camino-inca-clasico-machu-picchu",
-    "duration": "4d/3n",
-    "description": "El Camino Inca Clásico es la ruta de trekking más famosa de Sudamérica, combinando paisajes andinos, selva alta y sitios arqueológicos únicos hasta llegar a Machu Picchu al amanecer del cuarto día.",
-    "price": 690,
+    "name": "Machu Picchu + Valle Sagrado 2D/1N",
+    "slug": "machu-picchu-valle-sagrado-2d1n",
+    "duration": "2 días / 1 noche",
+    "description": "Combina la majestuosidad del Valle Sagrado con la experiencia única de Machu Picchu. Un viaje completo que incluye los principales sitios arqueológicos del Valle Sagrado y una visita guiada a la ciudadela de Machu Picchu.",
+    "price": 900,
+    "type": "Tour Grupal",
+    "difficulty": "Fácil",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Chinchero",
+      "Moray",
+      "Salineras de Maras",
+      "Ollantaytambo",
+      "Pueblo de Aguas Calientes",
+      "Machu Picchu"
+    ],
     "itinerary": [
       {
         "day": "Día 1",
-        "title": "Cusco – Km 82 – Wayllabamba",
-        "description": "Salida temprano desde Cusco hacia el Km 82. Caminata por paisajes agrícolas y el sitio arqueológico de Llactapata. Campamento en Wayllabamba."
+        "title": "Valle Sagrado VIP + Tren a Aguas Calientes",
+        "activities": [
+          "Recojo en hotel (06:20 am)",
+          "Visita a Chinchero y su centro artesanal",
+          "Recorrido en Moray (laboratorio agrícola inca)",
+          "Ingreso a las Salineras de Maras",
+          "Almuerzo buffet en restaurante turístico",
+          "Visita guiada en Ollantaytambo",
+          "Tren vespertino desde Ollantaytambo hacia Aguas Calientes",
+          "Pernocte en hospedaje en Aguas Calientes"
+        ]
       },
       {
         "day": "Día 2",
-        "title": "Wayllabamba – Warmiwañusca – Pacaymayo",
-        "description": "Ascenso al punto más alto del camino (Abra Warmiwañusca, 4,215 msnm). Descenso y campamento en Pacaymayo."
-      },
-      {
-        "day": "Día 3",
-        "title": "Pacaymayo – Wiñay Wayna",
-        "description": "Visita a Runkurakay, Sayacmarca y Phuyupatamarca. Caminata por bosque nuboso hasta Wiñay Wayna."
-      },
-      {
-        "day": "Día 4",
-        "title": "Wiñay Wayna – Machu Picchu – Cusco",
-        "description": "Salida muy temprano hacia Inti Punku (Puerta del Sol) para ver el amanecer en Machu Picchu. Visita guiada y retorno a Cusco."
+        "title": "Machu Picchu + Retorno a Cusco",
+        "activities": [
+          "Desayuno en el hotel en Aguas Calientes",
+          "Subida en bus hacia Machu Picchu",
+          "Tour guiado de 2 horas en Machu Picchu",
+          "Tiempo libre para explorar y tomar fotos",
+          "Retorno en bus a Aguas Calientes",
+          "Tiempo para almorzar y pasear en el pueblo",
+          "Tren de retorno a Ollantaytambo",
+          "Traslado en transporte turístico a Cusco (llegada aprox. 10:00 pm)"
+        ]
       }
     ],
     "includes": [
-      "Transporte desde Cusco al Km 82",
-      "Guía profesional bilingüe",
-      "Cocinero y equipo de cocina",
-      "Carpas dobles de alta montaña",
-      "Colchonetas",
-      "Alimentación completa durante el trek",
-      "Porteadores para equipo de campamento",
-      "Entradas al Camino Inca y Machu Picchu",
-      "Bus de bajada a Aguas Calientes",
-      "Tren de retorno a Cusco"
+      "Guía profesional",
+      "Transporte grupal",
+      "Boletos de tren (ida y retorno)",
+      "Buses de subida y bajada a Machu Picchu",
+      "Entradas a Machu Picchu",
+      "Alojamiento (1 noche en Aguas Calientes)",
+      "Desayunos (1)",
+      "Almuerzos (1 – buffet en el Valle Sagrado)"
     ],
     "not_included": [
-      "Desayuno primer día",
-      "Almuerzo/cena último día",
-      "Bolsa de dormir",
-      "Bastones de trekking",
-      "Propinas"
+      "Cena del día 1 en Aguas Calientes",
+      "Ingresos al Valle Sagrado (Boleto Turístico)",
+      "Ingreso a Salineras (S/ 15 nacional – S/ 20 extranjero)",
+      "Propinas",
+      "Gastos personales"
     ],
-    "recommendations": [
-      "Reservar con varios meses de anticipación",
-      "Llevar pasaporte original",
-      "Buen estado físico",
-      "Ropa para clima variado",
-      "Repelente y protector solar"
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte",
+        "Carnet de estudiante (si aplica)",
+        "Boleto turístico para Valle Sagrado"
+      ],
+      "clothing": [
+        "Zapatillas cómodas para caminata",
+        "Ropa ligera y casaca cortaviento",
+        "Sombrero o gorra",
+        "Lentes de sol",
+        "Bloqueador solar"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos y extras",
+        "Mochila pequeña"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "desde S/. 900 (USD $240 aprox.)",
+        "description": "Transporte, guía, tren Expedition, ingreso a Machu Picchu, bus, 1 noche de hotel, 1 desayuno y 1 almuerzo buffet"
+      },
+      {
+        "option": "Tren categoría superior (Vistadome)",
+        "price": "Consultar",
+        "description": "Incluye lo anterior con mejor categoría de tren y hotel superior"
+      },
+      {
+        "option": "Tour privado personalizado",
+        "price": "Consultar",
+        "description": "Movilidad exclusiva, guía privado y hospedaje a elección"
+      }
     ],
-    "image": "/assets/images/inka-jungle+machupichu1.jpg",
-    "images": [
-      "/assets/images/inka-jungle+machupichu1.jpg",
-      "/assets/images/inka-jungle+machupichu2.jpg",
-      "/assets/images/inka-jungle+machupichu3.jpg",
-      "/assets/images/inka-jungle+machupichu4.jpg"
-    ]
-  },
-  {
-    "name": "Salkantay Trek + Machupicchu",
-    "slug": "salkantay-trek-machupicchu",
-    "duration": "4d/3n o 3d/2n",
-    "description": "Trekking por uno de los caminos más famosos hacia Machupicchu.",
-    "price": 350,
-    "includes": [
-      "Transporte turístico",
-      "Carpas y matras",
-      "Alimentación",
-      "Tren",
-      "Alojamiento en Aguas Calientes",
-      "Entrada a Machupicchu",
-      "Guía profesional"
+    "optional_services": [
+      {
+        "service": "Tren Vistadome (upgrade)",
+        "price": "Consultar"
+      },
+      {
+        "service": "Hospedaje en hotel 3★ o 4★ en Aguas Calientes",
+        "price": "Consultar"
+      },
+      {
+        "service": "Entrada a montaña Huayna Picchu o Machu Picchu Montaña (según disponibilidad)",
+        "price": "Consultar"
+      }
     ],
-    "image": "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
-    "images": [
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/Salkantaytrek+machupichu2.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu3.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu4.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu6.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu7.webp"
-    ]
-  },
-  {
-    "name": "Valle Sagrado + Machupicchu",
-    "slug": "sacred-valley-machupicchu",
-    "duration": "2d/1n",
-    "description": "Descubre el Valle Sagrado y termina en Machupicchu.",
-    "price": 280,
-    "includes": [
-      "Tour Valle Sagrado",
-      "Almuerzo buffet",
-      "Tren",
-      "1 noche de hostal en Aguas Calientes",
-      "Entrada a Machupicchu",
-      "Bus ida y vuelta",
-      "Guía profesional"
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "con carnet universitario válido"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "edad: 6 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "a partir de 10 personas"
+      },
+      {
+        "type": "Otros descuentos",
+        "percentage": "Variable",
+        "requirement": "Promociones por temporada baja"
+      }
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Machupicchu by Car",
-    "slug": "machupicchu-by-car",
-    "duration": "2d/1n",
-    "description": "Accede a Machupicchu por carretera, opción más económica.",
-    "price": 180,
-    "includes": [
-      "Transporte turístico",
-      "3 comidas",
-      "1 noche de hostal en Aguas Calientes",
-      "Entrada a Machupicchu",
-      "Bus",
-      "Guía profesional"
+    "additional_info": [
+      "El tren parte de Ollantaytambo en la tarde del día 1 y retorna el día 2 en la noche",
+      "El ingreso a Machu Picchu es en horario 07:00 am – 12:00 pm aprox.",
+      "El tour no incluye cena en Aguas Calientes, pero hay múltiples restaurantes disponibles",
+      "Se recomienda comprar boletos con anticipación, especialmente en temporada alta"
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Valle Sur",
-    "slug": "valle-sur",
-    "duration": "8:30 am – 3:00 pm",
-    "description": "Circuito cultural con arquitectura inca, pre-inca y colonial.",
-    "price": 35,
-    "includes": [
-      "Transporte turístico",
-      "Guía profesional"
+    "faq": [
+      {
+        "question": "¿El tour incluye el almuerzo en Machu Picchu?",
+        "answer": "No, el almuerzo incluido es el del día 1 (buffet en el Valle Sagrado)."
+      },
+      {
+        "question": "¿Dónde se pasa la noche?",
+        "answer": "En un hospedaje en Aguas Calientes (incluido)."
+      },
+      {
+        "question": "¿Este tour incluye entradas a todos los sitios arqueológicos del Valle Sagrado?",
+        "answer": "No, el Boleto Turístico y el ingreso a Salineras deben comprarse aparte."
+      }
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "7 Lagunas Ausangate",
-    "slug": "7-lagunas-ausangate",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Excursión natural en la zona del Ausangate.",
-    "price": 45,
-    "includes": [
-      "Transporte",
-      "Ingreso",
-      "Recojo desde el hotel",
-      "Desayuno y almuerzo",
-      "Guía profesional",
-      "Oxígeno"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Montaña de Colores",
-    "slug": "montana-de-colores",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Caminata hacia la famosa Vinicunca, la montaña arcoíris.",
-    "price": 40,
-    "includes": [
-      "Transporte",
-      "Ingreso",
-      "Recojo desde el hotel",
-      "Desayuno y almuerzo",
-      "Guía profesional"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Puente Queswachaca – Tupac Amaru",
-    "slug": "puente-queswachaca-tupac-amaru",
-    "duration": "08:40 – 17:00",
-    "description": "Descubre el puente colgante inca y la historia de Tupac Amaru.",
-    "price": 38,
-    "includes": [
-      "Transporte",
-      "Ingreso",
-      "Alimentación",
-      "Guía profesional"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "River Rafting (Canotaje)",
-    "slug": "river-rafting-canotaje",
-    "duration": "Todo el día",
-    "description": "Aventura acuática segura y divertida en ríos cercanos a Cusco.",
-    "price": 55,
-    "includes": [
-      "Transporte turístico",
-      "Equipo de rafting completo",
-      "Almuerzo",
-      "Bebidas calientes",
-      "Sauna",
-      "Zipline",
-      "Guía profesional / capitán"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Cuatrimotos Maras – Moray",
-    "slug": "cuatrimotos-maras-moray",
-    "duration": "7 am – 1 pm / 1 pm – 6 pm",
-    "description": "Recorrido en cuatrimotos por Maras, Moray y lagunas altoandinas.",
-    "price": 50,
-    "includes": [
-      "Transporte turístico",
-      "Guía profesional"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Laguna Humantay",
-    "slug": "laguna-humantay",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Trekking a una de las lagunas más impresionantes del Cusco.",
-    "price": 45,
-    "includes": [
-      "Transporte",
-      "Desayuno",
-      "Almuerzo",
-      "Oxígeno",
-      "Bastones",
-      "Guía profesional"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Maras – Moray (tour tradicional)",
-    "slug": "maras-moray-tradicional",
-    "duration": "8:30 am – 3:00 pm",
-    "description": "Visita arqueológica y cultural por sitios emblemáticos del Valle Sagrado.",
-    "price": 35,
-    "includes": [
-      "Transporte turístico",
-      "Guía profesional"
+    "has_photos": true,
+    "related_tours": [
+      "Machu Picchu 1 Día",
+      "Valle Sagrado VIP",
+      "City Tour Cusco"
     ],
     "image": "/assets/images/salkantay.jpg"
   }

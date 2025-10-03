@@ -1,235 +1,167 @@
 [
   {
-    "name": "Classic Inca Trail to Machu Picchu 4D/3N",
-    "slug": "camino-inca-clasico-machu-picchu",
-    "duration": "4d/3n",
-    "description": "The Classic Inca Trail is South America's most famous trekking route, combining Andean landscapes, cloud forest, and unique archaeological sites, culminating at Machu Picchu at sunrise on the fourth day.",
-    "price": 690,
+    "name": "Machu Picchu + Sacred Valley 2D/1N",
+    "slug": "machu-picchu-sacred-valley-2d1n",
+    "duration": "2 days / 1 night",
+    "description": "Combine the majesty of the Sacred Valley with the unique experience of Machu Picchu. A complete journey that includes the main archaeological sites of the Sacred Valley and a guided visit to the citadel of Machu Picchu.",
+    "price": 900,
+    "type": "Group Tour",
+    "difficulty": "Easy",
+    "availability": "All year round",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Chinchero",
+      "Moray",
+      "Maras Salt Mines",
+      "Ollantaytambo",
+      "Aguas Calientes Town",
+      "Machu Picchu"
+    ],
     "itinerary": [
       {
         "day": "Day 1",
-        "title": "Cusco – Km 82 – Wayllabamba",
-        "description": "Early departure from Cusco to Km 82. Hike through agricultural landscapes and the archaeological site of Llactapata. Camp at Wayllabamba."
+        "title": "Sacred Valley VIP + Train to Aguas Calientes",
+        "activities": [
+          "Hotel pickup (06:20 am)",
+          "Visit to Chinchero and its artisan center",
+          "Tour of Moray (Inca agricultural laboratory)",
+          "Entrance to Maras Salt Mines",
+          "Buffet lunch at tourist restaurant",
+          "Guided visit in Ollantaytambo",
+          "Evening train from Ollantaytambo to Aguas Calientes",
+          "Overnight in accommodation in Aguas Calientes"
+        ]
       },
       {
         "day": "Day 2",
-        "title": "Wayllabamba – Warmiwañusca – Pacaymayo",
-        "description": "Ascent to the highest point of the trail (Warmiwañusca Pass, 4,215 m). Descent and camp at Pacaymayo."
-      },
-      {
-        "day": "Day 3",
-        "title": "Pacaymayo – Wiñay Wayna",
-        "description": "Visit Runkurakay, Sayacmarca, and Phuyupatamarca. Hike through cloud forest to Wiñay Wayna."
-      },
-      {
-        "day": "Day 4",
-        "title": "Wiñay Wayna – Machu Picchu – Cusco",
-        "description": "Very early departure to Inti Punku (Sun Gate) to see the sunrise at Machu Picchu. Guided tour and return to Cusco."
+        "title": "Machu Picchu + Return to Cusco",
+        "activities": [
+          "Breakfast at the hotel in Aguas Calientes",
+          "Bus ride up to Machu Picchu",
+          "2-hour guided tour of Machu Picchu",
+          "Free time to explore and take photos",
+          "Return by bus to Aguas Calientes",
+          "Time for lunch and strolling in the town",
+          "Return train to Ollantaytambo",
+          "Transfer by tourist transport to Cusco (arrival approx. 10:00 pm)"
+        ]
       }
     ],
     "includes": [
-      "Transport from Cusco to Km 82",
-      "Professional bilingual guide",
-      "Cook and kitchen equipment",
-      "High mountain double tents",
-      "Sleeping mats",
-      "All meals during the trek",
-      "Porters for camping equipment",
-      "Entrance fees to Inca Trail and Machu Picchu",
-      "Bus down to Aguas Calientes",
-      "Train back to Cusco"
+      "Professional guide",
+      "Group transportation",
+      "Train tickets (round trip)",
+      "Buses up and down to Machu Picchu",
+      "Machu Picchu entrance fees",
+      "Accommodation (1 night in Aguas Calientes)",
+      "Breakfast (1)",
+      "Lunch (1 – buffet in the Sacred Valley)"
     ],
     "not_included": [
-      "Breakfast on the first day",
-      "Lunch/dinner on the last day",
-      "Sleeping bag",
-      "Trekking poles",
-      "Tips"
+      "Dinner on day 1 in Aguas Calientes",
+      "Sacred Valley entrances (Tourist Ticket)",
+      "Salt mines entrance (S/ 15 nationals – S/ 20 foreigners)",
+      "Tips",
+      "Personal expenses"
     ],
-    "recommendations": [
-      "Book several months in advance",
-      "Bring original passport",
-      "Good physical condition",
-      "Clothing for varied weather",
-      "Insect repellent and sunscreen"
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport",
+        "Student card (if applicable)",
+        "Tourist ticket for Sacred Valley"
+      ],
+      "clothing": [
+        "Comfortable walking shoes",
+        "Light clothing and windbreaker",
+        "Hat or cap",
+        "Sunglasses",
+        "Sunscreen"
+      ],
+      "other_items": [
+        "Personal water",
+        "Camera",
+        "Cash for entrances and extras",
+        "Small backpack"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard group tour",
+        "price": "from S/. 900 (USD $240 approx.)",
+        "description": "Transportation, guide, Expedition train, Machu Picchu entrance, bus, 1 night hotel, 1 breakfast and 1 buffet lunch"
+      },
+      {
+        "option": "Superior category train (Vistadome)",
+        "price": "Consult",
+        "description": "Includes the above with better train category and superior hotel"
+      },
+      {
+        "option": "Personalized private tour",
+        "price": "Consult",
+        "description": "Exclusive mobility, private guide and accommodation of choice"
+      }
     ],
-    "image": "/assets/images/inka-jungle+machupichu1.jpg",
-    "images": [
-      "/assets/images/inka-jungle+machupichu1.jpg",
-      "/assets/images/inka-jungle+machupichu2.jpg",
-      "/assets/images/inka-jungle+machupichu3.jpg",
-      "/assets/images/inka-jungle+machupichu4.jpg"
-    ]
-  },
-  {
-    "name": "Salkantay Trek + Machupicchu",
-    "slug": "salkantay-trek-machupicchu",
-    "duration": "4d/3n or 3d/2n",
-    "description": "Trekking along one of the most famous paths to Machupicchu.",
-    "price": 350,
-    "includes": [
-      "Tourist transportation",
-      "Tents and mats",
-      "Meals",
-      "Train",
-      "Accommodation in Aguas Calientes",
-      "Entrance to Machupicchu",
-      "Professional guide"
+    "optional_services": [
+      {
+        "service": "Vistadome train (upgrade)",
+        "price": "Consult"
+      },
+      {
+        "service": "3★ or 4★ hotel accommodation in Aguas Calientes",
+        "price": "Consult"
+      },
+      {
+        "service": "Entrance to Huayna Picchu or Machu Picchu Mountain (subject to availability)",
+        "price": "Consult"
+      }
     ],
-    "image": "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
-    "images": [
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu1.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/Salkantaytrek+machupichu2.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu3.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu4.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu6.webp",
-      "/assets/images/Salkantay_Trek+_Machupicchu/salkantaytrek+machupichu7.webp"
-    ]
-  },
-  {
-    "name": "Sacred Valley + Machupicchu",
-    "slug": "sacred-valley-machupicchu",
-    "duration": "2d/1n",
-    "description": "Discover the Sacred Valley and end in Machupicchu.",
-    "price": 280,
-    "includes": [
-      "Sacred Valley Tour",
-      "Buffet lunch",
-      "Train",
-      "1 night in a hostel in Aguas Calientes",
-      "Entrance to Machupicchu",
-      "Round-trip bus",
-      "Professional guide"
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": "with valid university card"
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "age: 6 to 12 years"
+      },
+      {
+        "type": "Large groups",
+        "percentage": "5%",
+        "requirement": "from 10 people"
+      },
+      {
+        "type": "Other discounts",
+        "percentage": "Variable",
+        "requirement": "Low season promotions"
+      }
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Machupicchu by Car",
-    "slug": "machupicchu-by-car",
-    "duration": "2d/1n",
-    "description": "Access Machupicchu by road, the most economical option.",
-    "price": 180,
-    "includes": [
-      "Tourist transportation",
-      "3 meals",
-      "1 night in a hostel in Aguas Calientes",
-      "Entrance to Machupicchu",
-      "Bus",
-      "Professional guide"
+    "additional_info": [
+      "The train departs from Ollantaytambo in the afternoon of day 1 and returns on day 2 in the evening",
+      "Machu Picchu entrance is during 07:00 am – 12:00 pm hours approx.",
+      "The tour does not include dinner in Aguas Calientes, but there are multiple restaurants available",
+      "It is recommended to buy tickets in advance, especially during high season"
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "South Valley",
-    "slug": "valle-sur",
-    "duration": "8:30 am – 3:00 pm",
-    "description": "Cultural circuit with Inca, pre-Inca, and colonial architecture.",
-    "price": 35,
-    "includes": [
-      "Tourist transportation",
-      "Professional guide"
+    "faq": [
+      {
+        "question": "Does the tour include lunch at Machu Picchu?",
+        "answer": "No, the included lunch is on day 1 (buffet in the Sacred Valley)."
+      },
+      {
+        "question": "Where do we spend the night?",
+        "answer": "In accommodation in Aguas Calientes (included)."
+      },
+      {
+        "question": "Does this tour include entrances to all Sacred Valley archaeological sites?",
+        "answer": "No, the Tourist Ticket and Salt mines entrance must be purchased separately."
+      }
     ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "7 Ausangate Lagoons",
-    "slug": "7-lagunas-ausangate",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Natural excursion in the Ausangate area.",
-    "price": 45,
-    "includes": [
-      "Transportation",
-      "Entrance fee",
-      "Hotel pickup",
-      "Breakfast and lunch",
-      "Professional guide",
-      "Oxygen"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Rainbow Mountain",
-    "slug": "montana-de-colores",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Hike to the famous Vinicunca, the rainbow mountain.",
-    "price": 40,
-    "includes": [
-      "Transportation",
-      "Entrance fee",
-      "Hotel pickup",
-      "Breakfast and lunch",
-      "Professional guide"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Queswachaca Bridge – Tupac Amaru",
-    "slug": "puente-queswachaca-tupac-amaru",
-    "duration": "08:40 – 17:00",
-    "description": "Discover the Inca hanging bridge and the history of Tupac Amaru.",
-    "price": 38,
-    "includes": [
-      "Transportation",
-      "Entrance fee",
-      "Meals",
-      "Professional guide"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "River Rafting",
-    "slug": "river-rafting-canotaje",
-    "duration": "All day",
-    "description": "Safe and fun water adventure in rivers near Cusco.",
-    "price": 55,
-    "includes": [
-      "Tourist transportation",
-      "Complete rafting equipment",
-      "Lunch",
-      "Hot drinks",
-      "Sauna",
-      "Zipline",
-      "Professional guide / captain"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "ATVs Maras – Moray",
-    "slug": "cuatrimotos-maras-moray",
-    "duration": "7 am – 1 pm / 1 pm – 6 pm",
-    "description": "ATV tour through Maras, Moray, and high Andean lagoons.",
-    "price": 50,
-    "includes": [
-      "Tourist transportation",
-      "Professional guide"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Humantay Lagoon",
-    "slug": "laguna-humantay",
-    "duration": "4:30 am – 6:00 pm",
-    "description": "Trekking to one of the most impressive lagoons in Cusco.",
-    "price": 45,
-    "includes": [
-      "Transportation",
-      "Breakfast",
-      "Lunch",
-      "Oxygen",
-      "Walking sticks",
-      "Professional guide"
-    ],
-    "image": "/assets/images/salkantay.jpg"
-  },
-  {
-    "name": "Maras – Moray (traditional tour)",
-    "slug": "maras-moray-tradicional",
-    "duration": "8:30 am – 3:00 pm",
-    "description": "Archaeological and cultural visit to emblematic sites of the Sacred Valley.",
-    "price": 35,
-    "includes": [
-      "Tourist transportation",
-      "Professional guide"
+    "has_photos": true,
+    "related_tours": [
+      "Machu Picchu 1 Day",
+      "Sacred Valley VIP",
+      "City Tour Cusco"
     ],
     "image": "/assets/images/salkantay.jpg"
   }
