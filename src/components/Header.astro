@@ -13,7 +13,7 @@ const cleanPath = path
 
 // Lógica mejorada para tours dinámicos
 const isTourDetailEs = /^\/es\/tours\/([^\/]+)$/.test(path);
-const isTourDetailEn = /^\/tours\/([^\/]+)$/.test(path);
+const isTourDetailEn = /^\/en\/tours\/([^\/]+)$/.test(path);
 
 if (isTourDetailEs || isTourDetailEn) {
   const slug = path.split('/').pop();
