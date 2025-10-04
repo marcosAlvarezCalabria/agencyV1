@@ -1,9 +1,275 @@
 [
   {
+    "name": "City Tour Cusco",
+    "slug": "city-tour-cusco",
+    "duration": "1 día (5 horas)",
+    "description": "Explora los principales atractivos arqueológicos y religiosos de Cusco y sus alrededores en un recorrido de medio día, visitando el Templo del Sol (Qorikancha) y las impresionantes ruinas incas de Sacsayhuamán, Qenqo, Pucapucara y Tambomachay.",
+    "price": 50,
+    "type": "Tour Grupal",
+    "difficulty": "Fácil",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Qorikancha",
+      "Sacsayhuamán",
+      "Qenqo",
+      "Pucapucara",
+      "Tambomachay",
+      "Cristo Blanco",
+      "Bosque de Eucalipto"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "City Tour Cusco",
+        "activities": [
+          "Reunión en la Plaza de Armas de Cusco (9:00 am o 1:00 pm)",
+          "Visita guiada al Qorikancha",
+          "Recorrido por Sacsayhuamán",
+          "Exploración de Qenqo, Pucapucara y Tambomachay",
+          "Parada en Cristo Blanco y Bosque de Eucalipto",
+          "Retorno a Cusco (2:00 pm o 6:30 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal"
+    ],
+    "not_included": [
+      "Ingreso al Qorikancha (S/ 20 adulto, S/ 10 estudiante o niño)",
+      "Boleto turístico (parcial o general)",
+      "Alimentación",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte",
+        "Carnet de estudiante (si aplica)",
+        "Boleto turístico parcial o general"
+      ],
+      "clothing": [
+        "Zapatillas cómodas",
+        "Sombrero o gorra",
+        "Casaca ligera",
+        "Lentes de sol",
+        "Bloqueador solar"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 50 (USD $14 aprox.)",
+        "description": "Incluye guía profesional y transporte grupal"
+      },
+      {
+        "option": "Tour privado",
+        "price": "CONSULTAR",
+        "description": "Servicio personalizado con guía privado y movilidad exclusiva"
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Tour privado",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo en hotel fuera del centro",
+        "price": "Consultar"
+      },
+      {
+        "service": "Guía en otro idioma (inglés/francés)",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "Carnet universitario"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "6 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "A partir de 10 personas"
+      }
+    ],
+    "additional_info": [
+      "El tour tiene dos horarios: 9:00 am – 2:00 pm o 1:00 pm – 6:30 pm",
+      "Se recomienda comprar el Boleto Turístico con anticipación",
+      "Los ingresos no incluidos se pagan en efectivo el mismo día"
+    ],
+    "faq": [
+      {
+        "question": "¿Incluye las entradas a los sitios?",
+        "answer": "No, deben pagarse aparte (Qorikancha y Boleto Turístico)."
+      },
+      {
+        "question": "¿Dónde inicia el tour?",
+        "answer": "El punto de partida es la Plaza de Armas de Cusco."
+      },
+      {
+        "question": "¿Puedo tomar el tour cualquier día?",
+        "answer": "Sí, está disponible todo el año."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Valle Sagrado VIP",
+      "Machu Picchu 1D",
+      "Laguna Humantay"
+    ],
+    "image": "/assets/images/tours/city_tour_cusco/card_city_tour_cusco.jpg"
+  },
+  {
+    "name": "Valle Sagrado VIP",
+    "slug": "valle-sagrado-vip",
+    "duration": "1 día (12 horas)",
+    "description": "Un tour completo de un día por los sitios más importantes del Valle Sagrado de los Incas, incluyendo la ingeniería inca de Moray, las famosas Salineras de Maras, el complejo arqueológico de Ollantaytambo y el mercado artesanal de Pisaq. Incluye almuerzo buffet.",
+    "price": 90,
+    "type": "Tour Grupal",
+    "difficulty": "Fácil",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Chinchero",
+      "Moray",
+      "Salineras de Maras",
+      "Ollantaytambo",
+      "Pisaq"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Valle Sagrado VIP",
+        "activities": [
+          "Recojo en el hotel (07:00 am)",
+          "Traslado hacia Chinchero y visita guiada",
+          "Recorrido en Moray y explicación del laboratorio agrícola inca",
+          "Visita a las Salineras de Maras",
+          "Almuerzo buffet en restaurante turístico",
+          "Recorrido por Ollantaytambo y su zona arqueológica",
+          "Visita final a Pisaq y su mercado/artesanías",
+          "Retorno a Cusco (07:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Almuerzos (1)"
+    ],
+    "not_included": [
+      "Boleto Turístico (para Chinchero, Moray, Pisaq y Ollantaytambo)",
+      "Ingreso a Salineras (S/. 15 peruanos, S/. 20 extranjeros)",
+      "Alimentación adicional (cenas, extras)",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte",
+        "Boleto Turístico (parcial o general)",
+        "Carnet de estudiante (si aplica)"
+      ],
+      "clothing": [
+        "Zapatillas cómodas",
+        "Sombrero o gorra",
+        "Casaca ligera",
+        "Lentes de sol",
+        "Bloqueador solar"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos",
+        "Snacks"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 90 (USD $24 aprox.)",
+        "description": "Incluye transporte grupal, guía profesional y almuerzo buffet"
+      },
+      {
+        "option": "Tour privado",
+        "price": "CONSULTAR",
+        "description": "Servicio personalizado con movilidad exclusiva y guía privado"
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Tour privado",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo en hotel fuera del centro histórico",
+        "price": "Consultar"
+      },
+      {
+        "service": "Guía en idioma adicional (inglés, francés, italiano)",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "Carnet universitario"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "6 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "Desde 10 personas"
+      }
+    ],
+    "additional_info": [
+      "Es obligatorio contar con el Boleto Turístico (parcial o general)",
+      "El ingreso a Salineras no está incluido y se paga en efectivo en el lugar",
+      "El almuerzo buffet está incluido en el tour"
+    ],
+    "faq": [
+      {
+        "question": "¿El almuerzo está incluido?",
+        "answer": "Sí, incluye un almuerzo buffet."
+      },
+      {
+        "question": "¿Qué entradas debo comprar?",
+        "answer": "El Boleto Turístico (para los sitios arqueológicos) y el ingreso a Salineras."
+      },
+      {
+        "question": "¿Este tour se realiza todos los días?",
+        "answer": "Sí, el Valle Sagrado VIP está disponible todo el año."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "City Tour Cusco",
+      "Machu Picchu 1 Día",
+      "Machu Picchu + Valle Sagrado 2D/1N"
+    ],
+    "image": "/assets/images/tours/valle_sagrado_vip/valle_sagrado_vip_card.webp"
+  },
+  {
     "name": "Machu Picchu + Valle Sagrado 2D/1N",
     "slug": "machu-picchu-valle-sagrado-2d1n",
     "duration": "2 días / 1 noche",
-    "description": "Combina la majestuosidad del Valle Sagrado con la experiencia única de Machu Picchu. Un viaje completo que incluye los principales sitios arqueológicos del Valle Sagrado y una visita guiada a la ciudadela de Machu Picchu.",
+    "description": "Paquete que combina un recorrido completo por el Valle Sagrado de los Incas (Chinchero, Moray, Salineras, Ollantaytambo) el primer día, con una visita guiada a la Ciudadela Inca de Machu Picchu el segundo día, incluyendo tren y alojamiento.",
     "price": 900,
     "type": "Tour Grupal",
     "difficulty": "Fácil",
@@ -111,7 +377,7 @@
         "price": "Consultar"
       },
       {
-        "service": "Entrada a montaña Huayna Picchu o Machu Picchu Montaña (según disponibilidad)",
+        "service": "Entrada a montaña Huayna Picchu o Machu Picchu Montaña",
         "price": "Consultar"
       }
     ],
@@ -119,29 +385,24 @@
       {
         "type": "Estudiantes",
         "percentage": "10%",
-        "requirement": "con carnet universitario válido"
+        "requirement": "Carnet universitario válido"
       },
       {
         "type": "Niños",
         "percentage": "10%",
-        "requirement": "edad: 6 a 12 años"
+        "requirement": "6 a 12 años"
       },
       {
         "type": "Grupos grandes",
         "percentage": "5%",
-        "requirement": "a partir de 10 personas"
-      },
-      {
-        "type": "Otros descuentos",
-        "percentage": "Variable",
-        "requirement": "Promociones por temporada baja"
+        "requirement": "A partir de 10 personas"
       }
     ],
     "additional_info": [
-      "El tren parte de Ollantaytambo en la tarde del día 1 y retorna el día 2 en la noche",
+      "El tren parte de Ollantaytambo en la tarde del día 1 y retorna el día 2 en la noche.",
       "El ingreso a Machu Picchu es en horario 07:00 am – 12:00 pm aprox.",
-      "El tour no incluye cena en Aguas Calientes, pero hay múltiples restaurantes disponibles",
-      "Se recomienda comprar boletos con anticipación, especialmente en temporada alta"
+      "El tour no incluye cena en Aguas Calientes, pero hay múltiples restaurantes disponibles.",
+      "Se recomienda comprar boletos con anticipación, especialmente en temporada alta."
     ],
     "faq": [
       {
@@ -163,6 +424,821 @@
       "Valle Sagrado VIP",
       "City Tour Cusco"
     ],
-    "image": "/assets/images/salkantay.jpg"
+    "image": "/assets/images/tours/machu_picchu_valle_sagrado_2d1n/machupichu_valle_sagrado_card.webp"
+  },
+  {
+    "name": "Aventura en las Montañas (Humantay + Montaña de Colores + 7 Lagunas Ausangate)",
+    "slug": "aventura-montanas-3d2n",
+    "duration": "3 días / 2 noches",
+    "description": "Un desafiante itinerario de 3 días que combina las tres caminatas de montaña más populares de Cusco: la Laguna Humantay, la Montaña de Colores (Vinicunca) y las 7 Lagunas de Ausangate, con desayunos y almuerzos incluidos.",
+    "price": 320,
+    "type": "Tour Grupal",
+    "difficulty": "Moderado, Desafiante",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Laguna Humantay",
+      "Montaña de Colores (Vinicunca)",
+      "7 Lagunas de Ausangate",
+      "Baños termales de Pacchanta (opcional)"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Laguna Humantay",
+        "activities": [
+          "Recojo del hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Caminata de aprox. 1h30 min hacia la Laguna Humantay",
+          "Tiempo libre para fotos y descanso",
+          "Retorno con almuerzo incluido",
+          "Traslado al hotel en Cusco"
+        ]
+      },
+      {
+        "day": "Día 2",
+        "title": "Montaña de Colores (Vinicunca)",
+        "activities": [
+          "Recojo del hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Caminata de 1h30 min hacia la Montaña de Colores",
+          "Tiempo libre para disfrutar de la vista y tomar fotos",
+          "Retorno con almuerzo incluido",
+          "Traslado al hotel en Cusco"
+        ]
+      },
+      {
+        "day": "Día 3",
+        "title": "7 Lagunas Ausangate",
+        "activities": [
+          "Recojo del hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Caminata de 3 a 4 horas aprox. para visitar las 7 lagunas de Ausangate",
+          "Tiempo en los baños termales de Pacchanta (opcional)",
+          "Almuerzo incluido",
+          "Retorno a Cusco (aprox. 06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Desayunos (3)",
+      "Almuerzos (3)",
+      "Bastones de caminata",
+      "Primeros auxilios",
+      "Oxígeno"
+    ],
+    "not_included": [
+      "Ingreso Laguna Humantay (S/. 10 nacionales / S/. 20 extranjeros)",
+      "Ingreso Montaña de Colores (S/. 15 nacionales / S/. 25 extranjeros)",
+      "Ingreso 7 Lagunas (S/. 20 generales)",
+      "Caballos (opcional, desde S/. 50 – 80 según ruta)",
+      "Ingreso a baños termales de Pacchanta (S/. 5)",
+      "Cenas",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte",
+        "Carnet de estudiante (si aplica)"
+      ],
+      "clothing": [
+        "Botas o zapatillas de trekking",
+        "Casaca abrigadora",
+        "Impermeable o poncho de lluvia",
+        "Sombrero o gorra",
+        "Guantes y bufanda"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Snacks energéticos",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos y caballos",
+        "Mochila pequeña"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar (3D/2N)",
+        "price": "S/. 320 (USD $85 aprox.)",
+        "description": "Incluye transporte, guía profesional, 3 desayunos, 3 almuerzos, bastones, oxígeno y primeros auxilios."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Servicio privado con movilidad exclusiva, guía personalizado y horarios flexibles."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Caballos de apoyo en Humantay o Vinicunca",
+        "price": "S/. 80 ida y retorno"
+      },
+      {
+        "service": "Ingreso a baños termales de Pacchanta",
+        "price": "S/. 5"
+      },
+      {
+        "service": "Hospedaje extra en Cusco (antes o después del tour)",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "Carnet universitario válido"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "8 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "Desde 10 personas"
+      }
+    ],
+    "additional_info": [
+      "Este tour combina 3 de las caminatas más famosas de Cusco.",
+      "Se recomienda aclimatarse al menos 2 días en Cusco antes de realizar estas excursiones.",
+      "Las caminatas son de intensidad moderada a desafiante y requieren buena condición física.",
+      "Es importante llevar ropa abrigadora y adecuada para montaña."
+    ],
+    "faq": [
+      {
+        "question": "¿Necesito experiencia previa en trekking?",
+        "answer": "No, pero sí es recomendable estar en buena condición física."
+      },
+      {
+        "question": "¿Hay caballos disponibles?",
+        "answer": "Sí, en Humantay y Montaña de Colores se puede alquilar caballo (S/. 80 aprox.)."
+      },
+      {
+        "question": "¿Qué pasa si no quiero ir a los baños termales de Pacchanta?",
+        "answer": "Es opcional, el guía organiza el tiempo libre para quienes deseen descansar o bañarse."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Laguna Humantay (1 día)",
+      "Montaña de Colores (1 día)",
+      "7 Lagunas Ausangate (1 día)"
+    ],
+    "image": "/assets/images/tours/aventura_montanas_3d2n/aventura_montañas_card.webp"
+  },
+  {
+    "name": "Full Adrenalina (Rafting + Cuatrimotos + Paseo a Caballos)",
+    "slug": "full-adrenalina-2d1n",
+    "duration": "2 días / 1 noche",
+    "description": "Un paquete de aventura de 2 días que combina Rafting en el río Urubamba, un tour en Cuatrimotos a Moray y Salineras de Maras, y un Paseo a Caballo por sitios arqueológicos cercanos a Cusco, ideal para amantes de la adrenalina.",
+    "price": 480,
+    "type": "Tour Grupal",
+    "difficulty": "Moderado, Desafiante",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Río Urubamba (para Rafting)",
+      "Moray",
+      "Salineras de Maras",
+      "Laguna de Huaypo",
+      "Zona X (caballos)",
+      "Templo de la Luna (caballos)",
+      "Cara del Inca (caballos)"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Rafting en el Río Urubamba",
+        "activities": [
+          "Recojo en el hotel (08:30 am)",
+          "Traslado hacia el campamento de rafting",
+          "Charla de seguridad y entrega de equipos",
+          "Rafting en el río Urubamba",
+          "Almuerzo en el campamento",
+          "Actividades adicionales: sauna, zipline, descanso",
+          "Retorno al hotel en Cusco (05:00 pm)"
+        ]
+      },
+      {
+        "day": "Día 2",
+        "title": "Cuatrimotos + Paseo a Caballos",
+        "activities": [
+          "Recojo en el hotel (07:00 am)",
+          "Manejo de cuatrimotos con visitas a Moray, Salineras de Maras y Laguna de Huaypo",
+          "Retorno a Cusco (01:00 pm)",
+          "Paseo a Caballo en la tarde: Zona X, Templo de la Luna y Cara del Inca",
+          "Retorno al hotel en Cusco (06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Almuerzos (1)",
+      "Equipo de rafting (chaleco, casco, traje neopreno, remo)",
+      "Cuatrimotos + cascos",
+      "Un caballo por pasajero con montura y casco de equitación",
+      "Sauna y zipline en campamento de rafting",
+      "Primeros auxilios"
+    ],
+    "not_included": [
+      "Ingresos a Moray y Salineras",
+      "Alimentación no mencionada",
+      "Cenas",
+      "Propinas",
+      "Fotos opcionales en rafting"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte"
+      ],
+      "clothing": [
+        "Ropa ligera y de baño para rafting",
+        "Toalla y sandalias",
+        "Ropa cómoda para cuatrimotos y caballos",
+        "Zapatillas de trekking",
+        "Sombrero o gorra",
+        "Casaca cortaviento"
+      ],
+      "other_items": [
+        "Bloqueador solar",
+        "Cámara fotográfica (resistente al agua para rafting)",
+        "Dinero en efectivo para ingresos y extras",
+        "Snacks"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar (2D/1N)",
+        "price": "S/. 480 (USD $125 aprox.)",
+        "description": "Incluye transporte, guía, rafting con almuerzo, cuatrimotos, caballos y equipos completos."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Incluye movilidad exclusiva, guía personalizado y flexibilidad en horarios."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Servicio fotográfico de rafting",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo en hotel fuera del centro histórico",
+        "price": "Consultar"
+      },
+      {
+        "service": "Guía en idioma adicional (inglés, francés, italiano)",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "Carnet universitario"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "8 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "A partir de 10 personas"
+      }
+    ],
+    "additional_info": [
+      "El rafting se realiza con todas las medidas de seguridad (clase II – III).",
+      "Las cuatrimotos se manejan de forma individual (una por persona).",
+      "El paseo a caballo es guiado por un arriero y es apto para principiantes."
+    ],
+    "faq": [
+      {
+        "question": "¿Es necesario saber nadar para hacer rafting?",
+        "answer": "No, el chaleco salvavidas y el equipo de seguridad están incluidos."
+      },
+      {
+        "question": "¿Puedo manejar una cuatrimoto si nunca lo hice antes?",
+        "answer": "Sí, antes del recorrido se da una charla y práctica de manejo."
+      },
+      {
+        "question": "¿Los caballos son seguros para principiantes?",
+        "answer": "Sí, cada pasajero tiene un caballo asignado y cuenta con guía y arriero."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Rafting 1 día",
+      "Cuatrimotos medio día",
+      "Paseo a Caballos medio día"
+    ],
+    "image": "/assets/images/tours/full_adrenalina_2d1n/full_adrenalina_card.webp"
+  },
+  {
+    "name": "Montaña de Colores (Vinicunca)",
+    "slug": "montana-de-colores",
+    "duration": "1 día (13 horas)",
+    "description": "Excursión de día completo a la famosa Montaña de Colores (Vinicunca), un reto de altitud (más de 5,000 msnm) con paisajes andinos espectaculares. Incluye desayuno y almuerzo en ruta.",
+    "price": 100,
+    "type": "Tour Grupal",
+    "difficulty": "Moderado, Desafiante",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Montaña de Colores (Vinicunca)",
+      "Cordillera del Ausangate (panorámica)"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Montaña de Colores",
+        "activities": [
+          "Recojo en el hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Caminata de aprox. 1h30 min hacia la cima de la montaña",
+          "Tiempo libre para fotos y descanso en la cima",
+          "Retorno con almuerzo incluido",
+          "Llegada a Cusco (05:00 pm aprox.)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Desayunos (1)",
+      "Almuerzos (1)",
+      "Bastones de caminata",
+      "Oxígeno",
+      "Primeros auxilios"
+    ],
+    "not_included": [
+      "Ingreso a la Montaña de Colores (S/. 15 nacionales, S/. 25 extranjeros)",
+      "Caballo opcional (S/. 80, ida y retorno)",
+      "Cena",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte"
+      ],
+      "clothing": [
+        "Botas o zapatillas de trekking",
+        "Casaca abrigadora",
+        "Impermeable o poncho de lluvia",
+        "Sombrero o gorra",
+        "Guantes y bufanda"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Snacks energéticos",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 100 (USD $27 aprox.)",
+        "description": "Incluye transporte, guía, desayuno, almuerzo, bastones, oxígeno y botiquín."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Movilidad exclusiva, guía privado, horarios flexibles."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Alquiler de caballo en ruta",
+        "price": "S/. 80"
+      },
+      {
+        "service": "Guía en idioma adicional",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo en hotel fuera del centro",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": "Carnet universitario"
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "8 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "Desde 10 personas"
+      }
+    ],
+    "additional_info": [
+      "La caminata es de dificultad moderada-alta por la altitud (más de 5,000 msnm).",
+      "Se recomienda aclimatarse en Cusco al menos 2 días antes.",
+      "Llevar ropa abrigadora y suficiente agua."
+    ],
+    "faq": [
+      {
+        "question": "¿Es muy difícil la caminata?",
+        "answer": "No es técnica, pero la altura puede afectar; hay caballos disponibles."
+      },
+      {
+        "question": "¿El ingreso está incluido?",
+        "answer": "No, se paga en el lugar (S/. 15 – 25 según nacionalidad)."
+      },
+      {
+        "question": "¿Se puede ir con niños?",
+        "answer": "Sí, pero se recomienda a partir de 8 años y con buen estado físico."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Laguna Humantay",
+      "7 Lagunas Ausangate",
+      "Palcoyo"
+    ],
+    "image": "/assets/images/tours/montana_de_colores/montaña_siete_colores_card.jpg"
+  },
+  {
+    "name": "Puente Inca Q’eswachaka",
+    "slug": "puente-inca-qeswachaka",
+    "duration": "1 día (14 horas)",
+    "description": "Viaje de día completo para visitar el Puente Inca Q’eswachaka, el último puente inca colgante hecho de fibra vegetal que es renovado anualmente. Una experiencia cultural y de ingeniería ancestral, declarada Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO.",
+    "price": 150,
+    "type": "Tour Grupal",
+    "difficulty": "Fácil",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Puente Inca Q’eswachaka",
+      "Comunidad de Quehue",
+      "Paisajes andinos del Cusco"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Q’eswachaka",
+        "activities": [
+          "Recojo en el hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Traslado hacia Quehue (provincia de Canas)",
+          "Visita al puente inca Q’eswachaka y explicación cultural",
+          "Tiempo libre para tomar fotos y cruzar el puente",
+          "Almuerzo incluido",
+          "Retorno a Cusco (06:00 pm aprox.)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Desayunos (1)",
+      "Almuerzos (1)",
+      "Primeros auxilios"
+    ],
+    "not_included": [
+      "Ingreso al puente (S/. 20)",
+      "Cena",
+      "Propinas",
+      "Gastos personales"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte"
+      ],
+      "clothing": [
+        "Zapatillas cómodas",
+        "Sombrero o gorra",
+        "Casaca ligera",
+        "Bloqueador solar",
+        "Lentes de sol"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 150 (USD $40 aprox.)",
+        "description": "Incluye transporte, guía profesional, desayuno y almuerzo."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Servicio personalizado con movilidad exclusiva."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Guía en idioma adicional",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo en hotel fuera del centro",
+        "price": "Consultar"
+      },
+      {
+        "service": "Extensión a visitas cercanas (lagunas de la zona)",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "6 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "Desde 10 personas"
+      }
+    ],
+    "additional_info": [
+      "El Puente Q’eswachaka es Patrimonio Cultural Inmaterial de la Humanidad (UNESCO).",
+      "Es reconstruido cada año por las comunidades locales con técnicas ancestrales.",
+      "La caminata hasta el puente es corta y fácil."
+    ],
+    "faq": [
+      {
+        "question": "¿Es seguro cruzar el puente?",
+        "answer": "Sí, está elaborado con ichu (paja andina) y renovado anualmente."
+      },
+      {
+        "question": "¿El ingreso está incluido?",
+        "answer": "No, se paga en la misma comunidad (S/. 20)."
+      },
+      {
+        "question": "¿Se puede visitar en cualquier época del año?",
+        "answer": "Sí, pero el mejor momento es en junio, cuando lo reconstruyen."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Waqrapukara",
+      "Palcoyo",
+      "City Tour Cusco"
+    ],
+    "image": "/assets/images/tours/puente_inca_qeswachaka/Puente_Inca_qeswachaka_card.webp"
+  },
+  {
+    "name": "Laguna Humantay",
+    "slug": "laguna-humantay",
+    "duration": "1 día (14 horas)",
+    "description": "Excursión de día completo para visitar la hermosa Laguna Humantay, de aguas turquesas y rodeada de nevados. Una caminata de dificultad moderada ideal para disfrutar de la belleza natural de los Andes peruanos. Incluye desayuno y almuerzo.",
+    "price": 100,
+    "type": "Tour Grupal",
+    "difficulty": "Moderado",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Laguna Humantay",
+      "Cordillera de los Andes (panorámicas)"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Laguna Humantay",
+        "activities": [
+          "Recojo en el hotel (04:00 am)",
+          "Desayuno en ruta",
+          "Caminata de 1h30 min hasta la laguna",
+          "Tiempo libre para fotos y descanso en la laguna",
+          "Retorno con almuerzo incluido",
+          "Llegada a Cusco (06:00 pm aprox.)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Desayunos (1)",
+      "Almuerzos (1)",
+      "Bastones de caminata",
+      "Primeros auxilios"
+    ],
+    "not_included": [
+      "Ingreso a la Laguna Humantay (S/. 10 nacionales, S/. 20 extranjeros)",
+      "Caballo opcional (S/. 80)",
+      "Cena",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte"
+      ],
+      "clothing": [
+        "Zapatillas de trekking",
+        "Casaca abrigadora",
+        "Poncho de lluvia",
+        "Sombrero o gorra",
+        "Guantes"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Snacks energéticos",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 100 (USD $27 aprox.)",
+        "description": "Transporte, guía, desayuno, almuerzo, bastones, primeros auxilios."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Servicio personalizado, movilidad exclusiva, guía privado."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Caballo de apoyo",
+        "price": "S/. 80"
+      },
+      {
+        "service": "Guía en idioma adicional",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo fuera del centro histórico",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": "8 a 12 años"
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": "10 personas a más"
+      }
+    ],
+    "additional_info": [
+      "La caminata es de dificultad moderada, ideal para personas aclimatadas.",
+      "Se recomienda llegar a Cusco al menos 2 días antes.",
+      "La laguna está a más de 4,200 msnm."
+    ],
+    "faq": [
+      {
+        "question": "¿Es difícil la caminata?",
+        "answer": "Es moderada, pero se puede alquilar caballo."
+      },
+      {
+        "question": "¿Incluye ingresos?",
+        "answer": "No, se pagan en efectivo en la entrada."
+      },
+      {
+        "question": "¿Se puede hacer en familia?",
+        "answer": "Sí, siempre que estén en buen estado físico."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Montaña de Colores",
+      "7 Lagunas Ausangate",
+      "Palcoyo"
+    ],
+    "image": "/assets/images/tours/laguna_humantay/laguna_humantay_card.webp"
+  },
+  {
+    "name": "Waqrapukara 1 Día",
+    "slug": "waqrapukara-1-dia",
+    "duration": "1 día (13.5 horas)",
+    "description": "Excursión de trekking al impresionante sitio arqueológico de Waqrapukara, una fortaleza preinca en lo alto de un cañón, con vistas espectaculares. El tour incluye desayuno y almuerzo en ruta.",
+    "price": 150,
+    "type": "Tour Grupal",
+    "difficulty": "Moderado",
+    "availability": "Todo el año",
+    "days_available": "Todos los días",
+    "places_to_visit": [
+      "Waqrapukara (sitio arqueológico preinca)",
+      "Paisajes del Cusco andino"
+    ],
+    "itinerary": [
+      {
+        "day": "Día 1",
+        "title": "Waqrapukara",
+        "activities": [
+          "Recojo en el hotel (04:30 am)",
+          "Desayuno en ruta",
+          "Caminata de 2 horas aprox. hasta Waqrapukara",
+          "Visita guiada al sitio arqueológico",
+          "Almuerzo en ruta",
+          "Retorno a Cusco (06:00 pm aprox.)"
+        ]
+      }
+    ],
+    "includes": [
+      "Guía profesional",
+      "Transporte grupal",
+      "Desayunos (1)",
+      "Almuerzos (1)",
+      "Primeros auxilios"
+    ],
+    "not_included": [
+      "Ingreso a Waqrapukara (S/. 10)",
+      "Cena",
+      "Propinas"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Documento de identidad o pasaporte"
+      ],
+      "clothing": [
+        "Zapatillas de trekking",
+        "Casaca abrigadora",
+        "Sombrero o gorra",
+        "Impermeable",
+        "Guantes"
+      ],
+      "other_items": [
+        "Agua personal",
+        "Cámara fotográfica",
+        "Dinero en efectivo para ingresos"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Tour grupal estándar",
+        "price": "S/. 150 (USD $40 aprox.)",
+        "description": "Transporte, guía, desayuno, almuerzo y primeros auxilios."
+      },
+      {
+        "option": "Tour privado",
+        "price": "Consultar",
+        "description": "Servicio exclusivo, movilidad privada, guía personal."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Guía en idioma adicional",
+        "price": "Consultar"
+      },
+      {
+        "service": "Extensión con visita a comunidades locales",
+        "price": "Consultar"
+      },
+      {
+        "service": "Recojo fuera del centro",
+        "price": "Consultar"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Estudiantes",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Niños",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Grupos grandes",
+        "percentage": "5%",
+        "requirement": ""
+      }
+    ],
+    "additional_info": [],
+    "faq": [],
+    "has_photos": true,
+    "related_tours": [
+      "Puente Inca Q'eswachaka",
+      "Palcoyo",
+      "City Tour Cusco"
+    ],
+    "image": "/assets/images/tours/waqrapukara_1_dia/waqrapukara_card.webp"
   }
 ]

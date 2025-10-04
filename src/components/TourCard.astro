@@ -46,31 +46,6 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   data-whatsapp={whatsappLink}
   data-slug={slug}
 >
-  <!-- Badges estratégicos (máximo 2 visibles) -->
-  <div class="absolute top-4 left-0 z-20 flex flex-col gap-2">
-    {availability === 'limited' && spotsLeft && (
-      <div class="bg-[#b64926] text-white px-4 py-1.5 rounded-r-full text-xs font-bold shadow-xl flex items-center gap-1.5">
-        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-        Solo {spotsLeft} cupos disponibles
-      </div>
-    )}
-
-    {isPopular && (
-      <div class="bg-[#d2a530] text-white px-4 py-1.5 rounded-r-full text-xs font-bold shadow-xl">
-        ⭐ Más reservado
-      </div>
-    )}
-  </div>
-
-  <!-- Discount badge (esquina superior derecha) -->
-  {hasDiscount && discountPercentage && (
-    <div class="absolute top-4 right-4 z-20 bg-[#b64926] text-white px-3 py-2 rounded-lg text-sm font-black shadow-xl transform rotate-3">
-      <div class="text-center leading-none">
-        <div class="text-lg">{discountPercentage}</div>
-        <div class="text-[10px] font-medium">OFF</div>
-      </div>
-    </div>
-  )}
 
   <!-- Imagen principal -->
   <div class="relative overflow-hidden h-56">
@@ -92,12 +67,6 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         <span class="text-sm font-bold text-gray-900">{rating}</span>
         <span class="text-xs text-gray-600">({totalReviews})</span>
       </div>
-
-      {has_photos && (
-        <div class="bg-[#b64926] text-white px-2.5 py-1 rounded-full text-xs font-semibold shadow-lg">
-          📸 Fotos gratis
-        </div>
-      )}
     </div>
   </div>
 
@@ -130,19 +99,11 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
     {price && (
       <div class="mb-4">
         <div class="flex items-baseline gap-2 mb-1">
-          {hasDiscount && originalPrice && (
-            <span class="text-base text-gray-400 line-through font-medium">${originalPrice}</span>
-          )}
           <span class="text-3xl font-black text-[#b64926]">${price}</span>
           <span class="text-sm text-gray-500">USD</span>
         </div>
         <div class="text-xs text-gray-600">
-          por persona •
-          {hasDiscount && originalPrice ? (
-            <span class="text-[#d2a530] font-bold ml-1">Ahorras ${originalPrice - price} USD</span>
-          ) : (
-            <span class="font-medium">Mejor precio garantizado</span>
-          )}
+          por persona • <span class="font-medium">Mejor precio garantizado</span>
         </div>
       </div>
     )}

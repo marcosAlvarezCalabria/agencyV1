@@ -1,18 +1,284 @@
 [
   {
-    "name": "Machu Picchu + Sacred Valley 2D/1N",
-    "slug": "machu-picchu-sacred-valley-2d1n",
-    "duration": "2 days / 1 night",
-    "description": "Combine the majesty of the Sacred Valley with the unique experience of Machu Picchu. A complete journey that includes the main archaeological sites of the Sacred Valley and a guided visit to the citadel of Machu Picchu.",
-    "price": 900,
+    "name": "Cusco City Tour",
+    "slug": "city-tour-cusco",
+    "duration": "1 day (5 hours)",
+    "description": "Explore the main archaeological and religious attractions of Cusco and its surroundings in a half-day tour, visiting the Temple of the Sun (Qorikancha) and the impressive Inca ruins of Sacsayhuamán, Qenqo, Pucapucara, and Tambomachay.",
+    "price": 50,
     "type": "Group Tour",
     "difficulty": "Easy",
-    "availability": "All year round",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Qorikancha",
+      "Sacsayhuamán",
+      "Qenqo",
+      "Pucapucara",
+      "Tambomachay",
+      "Cristo Blanco",
+      "Eucalyptus Forest"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Cusco City Tour",
+        "activities": [
+          "Meeting at the Plaza de Armas in Cusco (9:00 am or 1:00 pm)",
+          "Guided visit to Qorikancha",
+          "Tour of Sacsayhuamán",
+          "Exploration of Qenqo, Pucapucara, and Tambomachay",
+          "Stop at Cristo Blanco and Eucalyptus Forest",
+          "Return to Cusco (2:00 pm or 6:30 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport"
+    ],
+    "not_included": [
+      "Entrance to Qorikancha (S/ 20 adult, S/ 10 student or child)",
+      "Tourist Ticket (partial or general)",
+      "Meals",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport",
+        "Student card (if applicable)",
+        "Partial or general Tourist Ticket"
+      ],
+      "clothing": [
+        "Comfortable sneakers",
+        "Hat or cap",
+        "Light jacket",
+        "Sunglasses",
+        "Sunscreen"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Camera",
+        "Cash for entrance fees"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 50 (USD $14 approx.)",
+        "description": "Includes professional guide and group transport"
+      },
+      {
+        "option": "Private Tour",
+        "price": "INQUIRE",
+        "description": "Personalized service with private guide and exclusive transportation"
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Private Tour",
+        "price": "Inquire"
+      },
+      {
+        "service": "Hotel pickup outside the center",
+        "price": "Inquire"
+      },
+      {
+        "service": "Guide in an additional language (English/French)",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": "University card"
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "6 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "The tour has two schedules: 9:00 am – 2:00 pm or 1:00 pm – 6:30 pm",
+      "It is recommended to buy the Tourist Ticket in advance",
+      "Unincluded entrance fees are paid in cash on the day of the tour"
+    ],
+    "faq": [
+      {
+        "question": "Are entrance fees to the sites included?",
+        "answer": "No, they must be paid separately (Qorikancha and Tourist Ticket)."
+      },
+      {
+        "question": "Where does the tour start?",
+        "answer": "The starting point is the Plaza de Armas in Cusco."
+      },
+      {
+        "question": "Can I take the tour any day?",
+        "answer": "Yes, it is available all year."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Sacred Valley VIP",
+      "Machu Picchu 1D",
+      "Humantay Lake"
+    ],
+    "image": "/assets/images/tours/city_tour_cusco/card_city_tour_cusco.jpg"
+  },
+  {
+    "name": "Sacred Valley VIP",
+    "slug": "valle-sagrado-vip",
+    "duration": "1 day (12 hours)",
+    "description": "A full-day tour of the most important sites in the Sacred Valley of the Incas, including the Inca engineering of Moray, the famous Maras Salt Mines, the archaeological complex of Ollantaytambo, and the artisan market of Pisaq. Buffet lunch is included.",
+    "price": 90,
+    "type": "Group Tour",
+    "difficulty": "Easy",
+    "availability": "All year",
     "days_available": "Every day",
     "places_to_visit": [
       "Chinchero",
       "Moray",
-      "Maras Salt Mines",
+      "Maras Salt Mines (Salineras de Maras)",
+      "Ollantaytambo",
+      "Pisaq"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Sacred Valley VIP",
+        "activities": [
+          "Hotel pickup (07:00 am)",
+          "Transfer to Chinchero and guided visit",
+          "Tour of Moray and explanation of the Inca agricultural laboratory",
+          "Visit to the Maras Salt Mines",
+          "Buffet lunch at a tourist restaurant",
+          "Tour of Ollantaytambo and its archaeological zone",
+          "Final visit to Pisaq and its market/handicrafts",
+          "Return to Cusco (07:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Lunch (1)"
+    ],
+    "not_included": [
+      "Tourist Ticket (for Chinchero, Moray, Pisaq, and Ollantaytambo)",
+      "Entrance to Salt Mines (S/. 15 Peruvians, S/. 20 foreigners)",
+      "Additional food (dinners, extras)",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport",
+        "Tourist Ticket (partial or general)",
+        "Student card (if applicable)"
+      ],
+      "clothing": [
+        "Comfortable sneakers",
+        "Hat or cap",
+        "Light jacket",
+        "Sunglasses",
+        "Sunscreen"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Camera",
+        "Cash for entrance fees",
+        "Snacks"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 90 (USD $24 approx.)",
+        "description": "Includes group transport, professional guide, and buffet lunch"
+      },
+      {
+        "option": "Private Tour",
+        "price": "INQUIRE",
+        "description": "Personalized service with exclusive transport and private guide"
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Private Tour",
+        "price": "Inquire"
+      },
+      {
+        "service": "Hotel pickup outside the historic center",
+        "price": "Inquire"
+      },
+      {
+        "service": "Guide in an additional language (English, French, Italian)",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": "University card"
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "6 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "It is mandatory to have the Tourist Ticket (partial or general)",
+      "The entrance to the Salt Mines is not included and is paid in cash at the site",
+      "The buffet lunch is included in the tour"
+    ],
+    "faq": [
+      {
+        "question": "Is lunch included?",
+        "answer": "Yes, it includes a buffet lunch."
+      },
+      {
+        "question": "Which tickets do I need to buy?",
+        "answer": "The Tourist Ticket (for the archaeological sites) and the entrance to the Salt Mines."
+      },
+      {
+        "question": "Is this tour available every day?",
+        "answer": "Yes, the Sacred Valley VIP is available all year."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Cusco City Tour",
+      "Machu Picchu 1 Day",
+      "Machu Picchu + Sacred Valley 2D/1N"
+    ],
+    "image": "/assets/images/tours/valle_sagrado_vip/valle_sagrado_vip_card.webp"
+  },
+  {
+    "name": "Machu Picchu + Sacred Valley 2D/1N",
+    "slug": "machu-picchu-valle-sagrado-2d1n",
+    "duration": "2 days / 1 night",
+    "description": "A package that combines a full tour of the Sacred Valley of the Incas (Chinchero, Moray, Salt Mines, Ollantaytambo) on the first day, with a guided visit to the Inca Citadel of Machu Picchu on the second day, including train and accommodation.",
+    "price": 900,
+    "type": "Group Tour",
+    "difficulty": "Easy",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Chinchero",
+      "Moray",
+      "Maras Salt Mines (Salineras de Maras)",
       "Ollantaytambo",
       "Aguas Calientes Town",
       "Machu Picchu"
@@ -25,11 +291,11 @@
           "Hotel pickup (06:20 am)",
           "Visit to Chinchero and its artisan center",
           "Tour of Moray (Inca agricultural laboratory)",
-          "Entrance to Maras Salt Mines",
-          "Buffet lunch at tourist restaurant",
-          "Guided visit in Ollantaytambo",
+          "Entrance to the Maras Salt Mines",
+          "Buffet lunch at a tourist restaurant",
+          "Guided visit to Ollantaytambo",
           "Evening train from Ollantaytambo to Aguas Calientes",
-          "Overnight in accommodation in Aguas Calientes"
+          "Overnight stay in accommodation in Aguas Calientes"
         ]
       },
       {
@@ -38,7 +304,7 @@
         "activities": [
           "Breakfast at the hotel in Aguas Calientes",
           "Bus ride up to Machu Picchu",
-          "2-hour guided tour of Machu Picchu",
+          "2-hour guided tour in Machu Picchu",
           "Free time to explore and take photos",
           "Return by bus to Aguas Calientes",
           "Time for lunch and strolling in the town",
@@ -49,18 +315,18 @@
     ],
     "includes": [
       "Professional guide",
-      "Group transportation",
+      "Group transport",
       "Train tickets (round trip)",
-      "Buses up and down to Machu Picchu",
+      "Bus tickets up and down to Machu Picchu",
       "Machu Picchu entrance fees",
       "Accommodation (1 night in Aguas Calientes)",
-      "Breakfast (1)",
-      "Lunch (1 – buffet in the Sacred Valley)"
+      "Breakfasts (1)",
+      "Lunches (1 – buffet in the Sacred Valley)"
     ],
     "not_included": [
-      "Dinner on day 1 in Aguas Calientes",
-      "Sacred Valley entrances (Tourist Ticket)",
-      "Salt mines entrance (S/ 15 nationals – S/ 20 foreigners)",
+      "Dinner on Day 1 in Aguas Calientes",
+      "Entrance fees to the Sacred Valley (Tourist Ticket)",
+      "Entrance to Salt Mines (S/ 15 national – S/ 20 foreign)",
       "Tips",
       "Personal expenses"
     ],
@@ -68,101 +334,912 @@
       "documents": [
         "Identity document or passport",
         "Student card (if applicable)",
-        "Tourist ticket for Sacred Valley"
+        "Tourist Ticket for Sacred Valley"
       ],
       "clothing": [
-        "Comfortable walking shoes",
-        "Light clothing and windbreaker",
+        "Comfortable hiking shoes",
+        "Light clothing and windbreaker jacket",
         "Hat or cap",
         "Sunglasses",
         "Sunscreen"
       ],
       "other_items": [
-        "Personal water",
+        "Personal water bottle",
         "Camera",
-        "Cash for entrances and extras",
+        "Cash for entrance fees and extras",
         "Small backpack"
       ]
     },
     "price_options": [
       {
-        "option": "Standard group tour",
+        "option": "Standard Group Tour",
         "price": "from S/. 900 (USD $240 approx.)",
-        "description": "Transportation, guide, Expedition train, Machu Picchu entrance, bus, 1 night hotel, 1 breakfast and 1 buffet lunch"
+        "description": "Transport, guide, Expedition train, Machu Picchu entrance, bus, 1 night hotel, 1 breakfast, and 1 buffet lunch"
       },
       {
-        "option": "Superior category train (Vistadome)",
-        "price": "Consult",
+        "option": "Superior Train Category (Vistadome)",
+        "price": "Inquire",
         "description": "Includes the above with better train category and superior hotel"
       },
       {
-        "option": "Personalized private tour",
-        "price": "Consult",
-        "description": "Exclusive mobility, private guide and accommodation of choice"
+        "option": "Customized Private Tour",
+        "price": "Inquire",
+        "description": "Exclusive transport, private guide, and choice of accommodation"
       }
     ],
     "optional_services": [
       {
-        "service": "Vistadome train (upgrade)",
-        "price": "Consult"
+        "service": "Vistadome Train (upgrade)",
+        "price": "Inquire"
       },
       {
-        "service": "3★ or 4★ hotel accommodation in Aguas Calientes",
-        "price": "Consult"
+        "service": "Accommodation in 3★ or 4★ hotel in Aguas Calientes",
+        "price": "Inquire"
       },
       {
         "service": "Entrance to Huayna Picchu or Machu Picchu Mountain (subject to availability)",
-        "price": "Consult"
+        "price": "Inquire"
       }
     ],
     "discounts": [
       {
         "type": "Students",
         "percentage": "10%",
-        "requirement": "with valid university card"
+        "requirement": "Valid university card"
       },
       {
         "type": "Children",
         "percentage": "10%",
-        "requirement": "age: 6 to 12 years"
+        "requirement": "6 to 12 years old"
       },
       {
-        "type": "Large groups",
+        "type": "Large Groups",
         "percentage": "5%",
-        "requirement": "from 10 people"
-      },
-      {
-        "type": "Other discounts",
-        "percentage": "Variable",
-        "requirement": "Low season promotions"
+        "requirement": "From 10 people"
       }
     ],
     "additional_info": [
-      "The train departs from Ollantaytambo in the afternoon of day 1 and returns on day 2 in the evening",
-      "Machu Picchu entrance is during 07:00 am – 12:00 pm hours approx.",
-      "The tour does not include dinner in Aguas Calientes, but there are multiple restaurants available",
-      "It is recommended to buy tickets in advance, especially during high season"
+      "The train departs from Ollantaytambo in the afternoon of Day 1 and returns on Day 2 in the evening.",
+      "Entrance to Machu Picchu is approximately between 07:00 am – 12:00 pm.",
+      "The tour does not include dinner in Aguas Calientes, but there are multiple restaurants available.",
+      "It is recommended to buy tickets in advance, especially in high season."
     ],
     "faq": [
       {
-        "question": "Does the tour include lunch at Machu Picchu?",
-        "answer": "No, the included lunch is on day 1 (buffet in the Sacred Valley)."
+        "question": "Does the tour include lunch in Machu Picchu?",
+        "answer": "No, the included lunch is on Day 1 (buffet in the Sacred Valley)."
       },
       {
         "question": "Where do we spend the night?",
         "answer": "In accommodation in Aguas Calientes (included)."
       },
       {
-        "question": "Does this tour include entrances to all Sacred Valley archaeological sites?",
-        "answer": "No, the Tourist Ticket and Salt mines entrance must be purchased separately."
+        "question": "Does this tour include entrance fees to all archaeological sites in the Sacred Valley?",
+        "answer": "No, the Tourist Ticket and the entrance to the Salt Mines must be purchased separately."
       }
     ],
     "has_photos": true,
     "related_tours": [
       "Machu Picchu 1 Day",
       "Sacred Valley VIP",
-      "City Tour Cusco"
+      "Cusco City Tour"
     ],
-    "image": "/assets/images/salkantay.jpg"
+    "image": "/assets/images/tours/machu_picchu_valle_sagrado_2d1n/machupichu_valle_sagrado_card.webp"
+  },
+  {
+    "name": "Mountain Adventure (Humantay + Rainbow Mountain + 7 Ausangate Lakes)",
+    "slug": "aventura-montanas-3d2n",
+    "duration": "3 days / 2 nights",
+    "description": "A challenging 3-day itinerary that combines the three most popular mountain hikes in Cusco: Humantay Lake, Rainbow Mountain (Vinicunca), and the 7 Ausangate Lakes, with breakfasts and lunches included.",
+    "price": 320,
+    "type": "Group Tour",
+    "difficulty": "Moderate, Challenging",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Humantay Lake",
+      "Rainbow Mountain (Vinicunca)",
+      "7 Ausangate Lakes",
+      "Pacchanta Hot Springs (optional)"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Humantay Lake",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Hike of approx. 1h30 min to Humantay Lake",
+          "Free time for photos and rest",
+          "Return with included lunch",
+          "Transfer to hotel in Cusco"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Rainbow Mountain (Vinicunca)",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Hike of 1h30 min to Rainbow Mountain summit",
+          "Free time to enjoy the view and take photos",
+          "Return with included lunch",
+          "Transfer to hotel in Cusco"
+        ]
+      },
+      {
+        "day": "Day 3",
+        "title": "7 Ausangate Lakes",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Hike of approx. 3 to 4 hours to visit the 7 Ausangate Lakes",
+          "Time at Pacchanta Hot Springs (optional)",
+          "Included lunch",
+          "Return to Cusco (approx. 06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Breakfasts (3)",
+      "Lunches (3)",
+      "Trekking poles",
+      "First aid",
+      "Oxygen"
+    ],
+    "not_included": [
+      "Entrance to Humantay Lake (S/. 10 nationals / S/. 20 foreigners)",
+      "Entrance to Rainbow Mountain (S/. 15 nationals / S/. 25 foreigners)",
+      "Entrance to 7 Lakes (S/. 20 general)",
+      "Horses (optional, from S/. 50 – 80 depending on route)",
+      "Entrance to Pacchanta Hot Springs (S/. 5)",
+      "Dinners",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport",
+        "Student card (if applicable)"
+      ],
+      "clothing": [
+        "Trekking boots or shoes",
+        "Warm jacket (low temperatures in the morning)",
+        "Raincoat or rain poncho",
+        "Hat or cap",
+        "Gloves and scarf"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Energy snacks",
+        "Camera",
+        "Cash for entrance fees and horses",
+        "Small backpack"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour (3D/2N)",
+        "price": "S/. 320 (USD $85 approx.)",
+        "description": "Includes transport, professional guide, 3 breakfasts, 3 lunches, trekking poles, oxygen, and first aid."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Private service with exclusive transport, personalized guide, and flexible schedules."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Support horses at Humantay or Vinicunca",
+        "price": "S/. 80 round trip"
+      },
+      {
+        "service": "Entrance to Pacchanta Hot Springs",
+        "price": "S/. 5"
+      },
+      {
+        "service": "Extra accommodation in Cusco (before or after the tour)",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": "Valid university card"
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "8 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "This tour combines 3 of the most famous hikes in Cusco.",
+      "It is recommended to acclimatize for at least 2 days in Cusco before taking these excursions.",
+      "The hikes are moderate to challenging intensity and require good physical condition.",
+      "It is important to bring warm clothing and appropriate mountain gear."
+    ],
+    "faq": [
+      {
+        "question": "Do I need prior trekking experience?",
+        "answer": "No, but being in good physical condition is recommended."
+      },
+      {
+        "question": "Are horses available?",
+        "answer": "Yes, horses can be rented at Humantay and Rainbow Mountain (approx. S/. 80)."
+      },
+      {
+        "question": "What if I don't want to go to the Pacchanta Hot Springs?",
+        "answer": "It is optional; the guide organizes free time for those who wish to rest or bathe."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Humantay Lake (1 day)",
+      "Rainbow Mountain (1 day)",
+      "7 Ausangate Lakes (1 day)"
+    ],
+    "image": "/assets/images/tours/aventura_montanas_3d2n/aventura_montañas_card.webp"
+  },
+  {
+    "name": "Full Adrenaline (Rafting + Quad Bikes + Horseback Riding)",
+    "slug": "full-adrenalina-2d1n",
+    "duration": "2 days / 1 night",
+    "description": "A 2-day adventure package combining Rafting on the Urubamba River, a Quad Bike tour to Moray and Maras Salt Mines, and Horseback Riding to archaeological sites near Cusco, ideal for adrenaline junkies.",
+    "price": 480,
+    "type": "Group Tour",
+    "difficulty": "Moderate, Challenging",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Urubamba River (for Rafting)",
+      "Moray",
+      "Maras Salt Mines (Salineras de Maras)",
+      "Huaypo Lagoon",
+      "Zone X (horses)",
+      "Temple of the Moon (horses)",
+      "Inca's Face (horses)"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Rafting on the Urubamba River",
+        "activities": [
+          "Hotel pickup (08:30 am)",
+          "Transfer to the rafting camp",
+          "Safety talk and equipment distribution (helmet, life vest, neoprene suit, paddle)",
+          "Rafting on the Urubamba River",
+          "Lunch at the camp",
+          "Additional activities: sauna, zipline, rest",
+          "Return to hotel in Cusco (05:00 pm)"
+        ]
+      },
+      {
+        "day": "Day 2",
+        "title": "Quad Bikes + Horseback Riding",
+        "activities": [
+          "Hotel pickup (07:00 am)",
+          "Quad biking with visits to Moray, Maras Salt Mines, and Huaypo Lagoon",
+          "Return to Cusco (01:00 pm)",
+          "Horseback Riding in the afternoon: Zone X, Temple of the Moon, and Inca's Face",
+          "Return to hotel in Cusco (06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Lunch (1)",
+      "Rafting equipment (life vest, helmet, neoprene suit, paddle)",
+      "Quad Bikes + helmets",
+      "One horse per passenger with saddle and riding helmet",
+      "Sauna and zipline at rafting camp",
+      "First aid"
+    ],
+    "not_included": [
+      "Entrance fees to Moray and Salt Mines",
+      "Meals not mentioned",
+      "Dinners",
+      "Tips",
+      "Optional photos in rafting"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport"
+      ],
+      "clothing": [
+        "Light clothing and swimwear for rafting",
+        "Towel and sandals",
+        "Comfortable clothing for quad biking and horseback riding",
+        "Trekking shoes",
+        "Hat or cap",
+        "Windbreaker jacket"
+      ],
+      "other_items": [
+        "Sunscreen",
+        "Camera (waterproof for rafting)",
+        "Cash for entrance fees and extras",
+        "Snacks"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour (2D/1N)",
+        "price": "S/. 480 (USD $125 approx.)",
+        "description": "Includes transport, guide, rafting with lunch, quad bikes, horses, and complete equipment."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Includes exclusive transport, personalized guide, and flexibility in schedules."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Rafting photography service",
+        "price": "Inquire"
+      },
+      {
+        "service": "Hotel pickup outside the historic center",
+        "price": "Inquire"
+      },
+      {
+        "service": "Guide in an additional language (English, French, Italian)",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": "University card"
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "8 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "Rafting is carried out with all safety measures.",
+      "The rafting difficulty level is suitable for beginners (class II – III).",
+      "Quad bikes are driven individually (one per person).",
+      "The horseback riding is guided by a muleteer and is suitable for beginners."
+    ],
+    "faq": [
+      {
+        "question": "Is it necessary to know how to swim for rafting?",
+        "answer": "No, the life jacket and safety equipment are included."
+      },
+      {
+        "question": "Can I drive a quad bike if I've never done it before?",
+        "answer": "Yes, a talk and practice session is provided before the tour."
+      },
+      {
+        "question": "Are the horses safe for beginners?",
+        "answer": "Yes, each passenger has an assigned horse and is accompanied by a guide and muleteer."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Rafting 1 day",
+      "Quad Bikes half day",
+      "Horseback Riding half day"
+    ],
+    "image": "/assets/images/tours/full_adrenalina_2d1n/full_adrenalina_card.webp"
+  },
+  {
+    "name": "Rainbow Mountain (Vinicunca)",
+    "slug": "montana-de-colores",
+    "duration": "1 day (13 hours)",
+    "description": "Full-day excursion to the famous Rainbow Mountain (Vinicunca), an altitude challenge (over 5,000 meters above sea level) with spectacular Andean landscapes. Includes breakfast and lunch en route.",
+    "price": 100,
+    "type": "Group Tour",
+    "difficulty": "Moderate, Challenging",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Rainbow Mountain (Vinicunca)",
+      "Ausangate Mountain Range (panoramic)"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Rainbow Mountain",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Hike of approx. 1h30 min to the summit of the mountain",
+          "Free time for photos and rest at the summit",
+          "Return with included lunch",
+          "Arrival in Cusco (approx. 05:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Breakfasts (1)",
+      "Lunches (1)",
+      "Trekking poles",
+      "Oxygen",
+      "First aid"
+    ],
+    "not_included": [
+      "Entrance to Rainbow Mountain (S/. 15 nationals, S/. 25 foreigners)",
+      "Optional horse (S/. 80, round trip)",
+      "Dinner",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport"
+      ],
+      "clothing": [
+        "Trekking boots or shoes",
+        "Warm jacket",
+        "Raincoat or rain poncho",
+        "Hat or cap",
+        "Gloves and scarf"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Energy snacks",
+        "Camera",
+        "Cash for entrance fees"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 100 (USD $27 approx.)",
+        "description": "Includes transport, guide, breakfast, lunch, trekking poles, oxygen, and first aid kit."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Exclusive transport, private guide, flexible schedules."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Horse rental on the route",
+        "price": "S/. 80"
+      },
+      {
+        "service": "Guide in an additional language",
+        "price": "Inquire"
+      },
+      {
+        "service": "Hotel pickup outside the center",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "8 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "The hike is moderate-to-high difficulty due to altitude (over 5,000 masl).",
+      "It is recommended to acclimatize in Cusco for at least 2 days prior.",
+      "Bring warm clothing and enough water."
+    ],
+    "faq": [
+      {
+        "question": "Is the hike very difficult?",
+        "answer": "It is not technical, but the altitude can affect; horses are available."
+      },
+      {
+        "question": "Is the entrance fee included?",
+        "answer": "No, it is paid at the site (S/. 15 – 25 depending on nationality)."
+      },
+      {
+        "question": "Can children go?",
+        "answer": "Yes, but it is recommended for children from 8 years old with good physical condition."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Humantay Lake",
+      "7 Ausangate Lakes",
+      "Palcoyo"
+    ],
+    "image": "/assets/images/tours/montana_de_colores/montaña_de_colores.webp"
+  },
+  {
+    "name": "Q'eswachaka Inca Bridge",
+    "slug": "puente-inca-qeswachaka",
+    "duration": "1 day (14 hours)",
+    "description": "Full-day trip to visit the Q’eswachaka Inca Bridge, the last Inca suspension bridge made of vegetable fiber that is renewed annually. A cultural and ancestral engineering experience, declared Intangible Cultural Heritage of Humanity by UNESCO.",
+    "price": 150,
+    "type": "Group Tour",
+    "difficulty": "Easy",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Q’eswachaka Inca Bridge",
+      "Quehue Community",
+      "Andean landscapes of Cusco"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Q’eswachaka",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Transfer to Quehue (Canas province)",
+          "Visit to the Q’eswachaka Inca Bridge and cultural explanation",
+          "Free time to take photos and cross the bridge",
+          "Included lunch",
+          "Return to Cusco (approx. 06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Breakfasts (1)",
+      "Lunches (1)",
+      "First aid"
+    ],
+    "not_included": [
+      "Entrance to the bridge (S/. 20)",
+      "Dinner",
+      "Tips",
+      "Personal expenses"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport"
+      ],
+      "clothing": [
+        "Comfortable sneakers",
+        "Hat or cap",
+        "Light jacket",
+        "Sunscreen",
+        "Sunglasses"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Camera",
+        "Cash for entrance fees"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 150 (USD $40 approx.)",
+        "description": "Includes transport, professional guide, breakfast, and lunch."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Personalized service with exclusive transport."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Guide in an additional language",
+        "price": "Inquire"
+      },
+      {
+        "service": "Hotel pickup outside the center",
+        "price": "Inquire"
+      },
+      {
+        "service": "Extension to nearby visits (lakes in the area)",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "6 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "From 10 people"
+      }
+    ],
+    "additional_info": [
+      "The Q’eswachaka Bridge is Intangible Cultural Heritage of Humanity (UNESCO).",
+      "It is rebuilt every year by local communities using ancestral techniques.",
+      "The walk to the bridge is short and easy."
+    ],
+    "faq": [
+      {
+        "question": "Is it safe to cross the bridge?",
+        "answer": "Yes, it is made of ichu (Andean straw) and renewed annually."
+      },
+      {
+        "question": "Is the entrance fee included?",
+        "answer": "No, it is paid in the community itself (S/. 20)."
+      },
+      {
+        "question": "Can it be visited at any time of the year?",
+        "answer": "Yes, but the best time is in June when it is rebuilt."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Waqrapukara",
+      "Palcoyo",
+      "Cusco City Tour"
+    ],
+    "image": "/assets/images/tours/puente_inca_qeswachaka/Puente_Inca_qeswachaka_card.webp"
+  },
+  {
+    "name": "Humantay Lake",
+    "slug": "laguna-humantay",
+    "duration": "1 day (14 hours)",
+    "description": "Full-day excursion to visit the beautiful Humantay Lake, with turquoise waters and surrounded by snow-capped mountains. A moderate-difficulty hike ideal for enjoying the natural beauty of the Peruvian Andes. Includes breakfast and lunch.",
+    "price": 100,
+    "type": "Group Tour",
+    "difficulty": "Moderate",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Humantay Lake",
+      "Andes Mountain Range (panoramic views)"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Humantay Lake",
+        "activities": [
+          "Hotel pickup (04:00 am)",
+          "Breakfast en route",
+          "Hike of 1h30 min to the lake",
+          "Free time for photos and rest at the lake",
+          "Return with included lunch",
+          "Arrival in Cusco (approx. 06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Breakfasts (1)",
+      "Lunches (1)",
+      "Trekking poles",
+      "First aid"
+    ],
+    "not_included": [
+      "Entrance to Humantay Lake (S/. 10 nationals, S/. 20 foreigners)",
+      "Optional horse (S/. 80)",
+      "Dinner",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport"
+      ],
+      "clothing": [
+        "Trekking shoes",
+        "Warm jacket",
+        "Rain poncho",
+        "Hat or cap",
+        "Gloves"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Energy snacks",
+        "Camera",
+        "Cash for entrance fees"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 100 (USD $27 approx.)",
+        "description": "Transport, guide, breakfast, lunch, trekking poles, first aid."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Personalized service, exclusive transport, private guide."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Support horse",
+        "price": "S/. 80"
+      },
+      {
+        "service": "Guide in an additional language",
+        "price": "Inquire"
+      },
+      {
+        "service": "Pickup outside the historic center",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": "8 to 12 years old"
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": "10 people or more"
+      }
+    ],
+    "additional_info": [
+      "The hike is of moderate difficulty, ideal for acclimatized people.",
+      "It is recommended to arrive in Cusco at least 2 days prior.",
+      "The lake is over 4,200 meters above sea level."
+    ],
+    "faq": [
+      {
+        "question": "Is the hike difficult?",
+        "answer": "It is moderate, but a horse can be rented."
+      },
+      {
+        "question": "Are entrance fees included?",
+        "answer": "No, they are paid in cash at the entrance."
+      },
+      {
+        "question": "Can it be done with family?",
+        "answer": "Yes, as long as they are in good physical condition."
+      }
+    ],
+    "has_photos": true,
+    "related_tours": [
+      "Rainbow Mountain",
+      "7 Ausangate Lakes",
+      "Palcoyo"
+    ],
+    "image": "/assets/images/tours/laguna_humantay/laguna_humantay_card.webp"
+  },
+  {
+    "name": "Waqrapukara 1 Day",
+    "slug": "waqrapukara-1-dia",
+    "duration": "1 day (13.5 hours)",
+    "description": "Trekking excursion to the impressive archaeological site of Waqrapukara, a pre-Inca fortress high up on a canyon, with spectacular views. The tour includes breakfast and lunch en route.",
+    "price": 150,
+    "type": "Group Tour",
+    "difficulty": "Moderate",
+    "availability": "All year",
+    "days_available": "Every day",
+    "places_to_visit": [
+      "Waqrapukara (pre-Inca archaeological site)",
+      "Andean landscapes of Cusco"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "title": "Waqrapukara",
+        "activities": [
+          "Hotel pickup (04:30 am)",
+          "Breakfast en route",
+          "Hike of approx. 2 hours to Waqrapukara",
+          "Guided visit to the archaeological site",
+          "Lunch en route",
+          "Return to Cusco (approx. 06:00 pm)"
+        ]
+      }
+    ],
+    "includes": [
+      "Professional guide",
+      "Group transport",
+      "Breakfasts (1)",
+      "Lunches (1)",
+      "First aid"
+    ],
+    "not_included": [
+      "Entrance to Waqrapukara (S/. 10)",
+      "Dinner",
+      "Tips"
+    ],
+    "what_to_bring": {
+      "documents": [
+        "Identity document or passport"
+      ],
+      "clothing": [
+        "Trekking shoes",
+        "Warm jacket",
+        "Hat or cap",
+        "Raincoat",
+        "Gloves"
+      ],
+      "other_items": [
+        "Personal water bottle",
+        "Camera",
+        "Cash for entrance fees"
+      ]
+    },
+    "price_options": [
+      {
+        "option": "Standard Group Tour",
+        "price": "S/. 150 (USD $40 approx.)",
+        "description": "Transport, guide, breakfast, lunch, and first aid."
+      },
+      {
+        "option": "Private Tour",
+        "price": "Inquire",
+        "description": "Exclusive service, private transport, personal guide."
+      }
+    ],
+    "optional_services": [
+      {
+        "service": "Guide in an additional language",
+        "price": "Inquire"
+      },
+      {
+        "service": "Extension with visit to local communities",
+        "price": "Inquire"
+      },
+      {
+        "service": "Pickup outside the center",
+        "price": "Inquire"
+      }
+    ],
+    "discounts": [
+      {
+        "type": "Students",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Children",
+        "percentage": "10%",
+        "requirement": ""
+      },
+      {
+        "type": "Large Groups",
+        "percentage": "5%",
+        "requirement": ""
+      }
+    ],
+    "additional_info": [],
+    "faq": [],
+    "has_photos": true,
+    "related_tours": [
+      "Q'eswachaka Inca Bridge",
+      "Palcoyo",
+      "Cusco City Tour"
+    ],
+    "image": "/assets/images/tours/waqrapukara_1_dia/waqrapukara_card.webp"
   }
 ]
