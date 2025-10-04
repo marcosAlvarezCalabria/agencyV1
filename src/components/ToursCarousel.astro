@@ -173,10 +173,22 @@ const { tours, lang, t } = Astro.props;
     const swiper = new Swiper(swiperContainer, {
       modules: [Navigation, Pagination, Autoplay],
       loop: true,
-      slidesPerView: 1.1, // Mostrar un peek del siguiente slide
-      centeredSlides: true, // Centrar la card activa
-      spaceBetween: 16, // Espacio entre slides
+      slidesPerView: 1.1,
+      centeredSlides: true,
+      spaceBetween: 16,
       initialSlide: 0,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          centeredSlides: false,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+          centeredSlides: false,
+        },
+      },
       // Configuración para mejorar la interacción con botones
       touchRatio: 1,
       touchAngle: 45, // Solo detectar swipe si el ángulo es mayor a 45°
