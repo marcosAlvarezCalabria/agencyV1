@@ -7,16 +7,18 @@ import AboutCard from '../components/AboutCard.astro';
 ---
 
 <!-- Hero -->
-<section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+<section id="inicio" class="relative w-full h-screen flex items-center justify-center overflow-hidden" aria-label="Hero principal - Bienvenida a Peru Inkas Travel">
   <!-- Pantalla de carga mejorada para el video -->
   <div id="video-preloader" class="enhanced-preloader">
     <div class="loader-container">
       <!-- Logo con mejor animación -->
       <div class="logo-wrapper">
-        <img 
-          src="/assets/images/logos/logoInkasTravel.png" 
-          alt="Peru Inkas Travel" 
-          class="logo-loader" 
+        <img
+          src="/assets/images/logos/logoInkasTravel.png"
+          alt="Peru Inkas Travel - Logo de agencia de viajes en Cusco especializada en tours a Machu Picchu"
+          width="80"
+          height="80"
+          class="logo-loader"
         />
         <!-- Anillo de progreso -->
         <div class="progress-ring">
@@ -64,10 +66,11 @@ import AboutCard from '../components/AboutCard.astro';
     id="hero-video"
     class="fixed inset-0 w-full h-screen object-cover z-0"
     src="/assets/videos/hero-video-portada-2mb.mp4"
-    preload="auto"
+    preload="metadata"
     playsinline
     muted
-    style="pointer-events: none;"
+    poster="/assets/images/logos/logoInkasTravel.png"
+    style="pointer-events: none; background-color: #fef7cd;"
   ></video>
   <!-- Frase centrada -->
   <div class="relative z-20 flex flex-col items-center justify-center text-center px-4">
@@ -96,7 +99,7 @@ import AboutCard from '../components/AboutCard.astro';
 <div class="h-24"></div>
 
 <!-- Sección Tours -->
-<section id="tours" class="relative z-30 glassmorphism py-16 px-4 md:px-8 lg:px-16">
+<section id="tours" class="relative z-30 glassmorphism py-16 px-4 md:px-8 lg:px-16" aria-label="Catálogo de tours disponibles">
   <div class="container mx-auto">
     <h2 class="text-4xl font-bold text-center mb-12 drop-shadow-lg" style="color: #3d1f14 !important;">{t('tours.title')}</h2>
 
@@ -114,70 +117,27 @@ import AboutCard from '../components/AboutCard.astro';
     </div>
 
 
-    <!-- Carousel para Móvil con Skeleton Overlay -->
+    <!-- Carousel para Móvil con Skeleton Simplificado -->
     <div class="md:hidden">
       <div id="mobile-tours-container" class="relative">
         <!-- Carousel real (siempre presente) -->
         <div id="real-mobile-carousel">
           <ToursCarousel tours={tours} t={t} />
         </div>
-        
-        <!-- Skeleton overlay (encima del carousel) -->
-        <div id="mobile-skeleton-overlay" class="absolute inset-0 z-10 bg-white">
-          <div class="swiper main-swiper mb-6 relative px-4"> <!-- Añadido px-4 para padding lateral -->
-            <div class="swiper-wrapper pb-10">
-              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
-                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
-                  <div class="skeleton-image-mobile"></div>
-                  <div class="skeleton-content-mobile">
-                    <div class="skeleton-title-mobile"></div>
-                    <div class="skeleton-price-mobile"></div>
-                    <div class="skeleton-meta-mobile"></div>
-                    <div class="skeleton-buttons-mobile">
-                      <div class="skeleton-btn-mobile"></div>
-                      <div class="skeleton-btn-mobile"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
-                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
-                  <div class="skeleton-image-mobile"></div>
-                  <div class="skeleton-content-mobile">
-                    <div class="skeleton-title-mobile"></div>
-                    <div class="skeleton-price-mobile"></div>
-                    <div class="skeleton-meta-mobile"></div>
-                    <div class="skeleton-buttons-mobile">
-                      <div class="skeleton-btn-mobile"></div>
-                      <div class="skeleton-btn-mobile"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="swiper-slide"> <!-- Sin padding para ancho completo -->
-                <div class="mobile-tour-skeleton w-full max-w-sm mx-auto"> <!-- Añadido max-w y centrado -->
-                  <div class="skeleton-image-mobile"></div>
-                  <div class="skeleton-content-mobile">
-                    <div class="skeleton-title-mobile"></div>
-                    <div class="skeleton-price-mobile"></div>
-                    <div class="skeleton-meta-mobile"></div>
-                    <div class="skeleton-buttons-mobile">
-                      <div class="skeleton-btn-mobile"></div>
-                      <div class="skeleton-btn-mobile"></div>
-                    </div>
-                  </div>
+
+        <!-- Skeleton overlay simplificado -->
+        <div id="mobile-skeleton-overlay" class="absolute inset-0 z-10 bg-white flex items-center justify-center">
+          <div class="w-full max-w-sm mx-auto px-4">
+            <div class="mobile-tour-skeleton-simple">
+              <div class="skeleton-image-mobile"></div>
+              <div class="skeleton-content-mobile">
+                <div class="skeleton-title-mobile"></div>
+                <div class="skeleton-price-mobile"></div>
+                <div class="skeleton-buttons-mobile">
+                  <div class="skeleton-btn-mobile"></div>
                 </div>
               </div>
             </div>
-            
-            <!-- Botones de Navegación skeleton -->
-            <div class="swiper-button-prev text-[#d2a530] opacity-0 translate-y-4 transition-all duration-300"></div>
-            <div class="swiper-button-next text-[#d2a530] opacity-0 translate-y-4 transition-all duration-300"></div>
-
-            <!-- Paginación skeleton -->
-            <div class="swiper-pagination"></div>
           </div>
         </div>
       </div>
@@ -188,7 +148,7 @@ import AboutCard from '../components/AboutCard.astro';
 <div class="h-24"></div>
 
 <!-- Sección Nosotros -->
-<section id="nosotros" class="relative z-30 glassmorphism py-16 px-4 md:px-8 lg:px-16">
+<section id="nosotros" class="relative z-30 glassmorphism py-16 px-4 md:px-8 lg:px-16" aria-label="Información sobre Peru Inkas Travel">
   <div class="container mx-auto">
     <AboutCard t={t} />
   </div>
@@ -687,29 +647,17 @@ import AboutCard from '../components/AboutCard.astro';
     });
 
     // ===============================
-    // MOBILE SKELETON LOADING
+    // MOBILE SKELETON LOADING (Optimizado)
     // ===============================
 
-    const replaceMobileSkeletonSimple = (container) => {
-      const skeletonOverlay = document.getElementById('mobile-skeleton-overlay');
-
-      if (!skeletonOverlay) return;
-
-      // Fade out skeleton overlay
+    const skeletonOverlay = document.getElementById('mobile-skeleton-overlay');
+    if (skeletonOverlay) {
+      // Remover skeleton después de 1 segundo
       setTimeout(() => {
-        skeletonOverlay.style.transition = 'opacity 0.5s ease';
+        skeletonOverlay.style.transition = 'opacity 0.3s ease';
         skeletonOverlay.style.opacity = '0';
-
-        setTimeout(() => {
-          skeletonOverlay.remove();
-        }, 500);
-      }, 1500);
-    };
-
-    // Inicializar mobile skeleton loading
-    const mobileContainer = document.getElementById('mobile-tours-container');
-    if (mobileContainer) {
-      replaceMobileSkeletonSimple(mobileContainer);
+        setTimeout(() => skeletonOverlay.remove(), 300);
+      }, 1000);
     }
   });
 </script>

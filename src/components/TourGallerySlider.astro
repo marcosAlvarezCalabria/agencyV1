@@ -122,7 +122,7 @@ if (images.length === 0) {
     watchSlidesProgress: true,
     lazy: {
       loadPrevNext: true,
-      loadPrevNextAmount: 2,
+      loadPrevNextAmount: 1,
     },
     breakpoints: {
       640: {
@@ -147,8 +147,10 @@ if (images.length === 0) {
       loadPrevNext: true,
       loadPrevNextAmount: 1,
       loadOnTransitionStart: true,
+      checkInView: true,
     },
     preloadImages: false,
+    watchSlidesProgress: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',

@@ -1,0 +1,96 @@
+---
+// Componente para agregar Schema.org JSON-LD
+const { type = 'organization', data = {} } = Astro.props;
+
+// Schema base para la organización
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Peru Inkas Travel",
+  "description": "Agencia de viajes especializada en tours a Cusco, Machu Picchu, Valle Sagrado y más destinos en Perú",
+  "url": "https://www.peruinkastravel.com",
+  "logo": "https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.png",
+  "image": "https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.png",
+  "telephone": "+51984775784",
+  "email": "info@peruinkastravel.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cusco",
+    "addressRegion": "Cusco",
+    "addressCountry": "PE"
+  },
+  "sameAs": [
+    "https://www.facebook.com/share/19qWaZ6KHs/?mibextid=qi2Omg",
+    "https://www.instagram.com/peruinkastravel"
+  ],
+  "priceRange": "$$",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "150"
+  }
+};
+
+// Schema para TourPackage
+const tourSchema = data.tour ? {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": data.tour.name,
+  "description": data.tour.description,
+  "image": `https://www.peruinkastravel.com${data.tour.image}`,
+  "provider": {
+    "@type": "TravelAgency",
+    "name": "Peru Inkas Travel",
+    "url": "https://www.peruinkastravel.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": data.tour.price,
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": `https://www.peruinkastravel.com/tours/${data.tour.slug}`,
+    "validFrom": new Date().toISOString()
+  },
+  "duration": data.tour.duration,
+  "touristType": data.tour.difficulty,
+  "itinerary": data.tour.places_to_visit ? {
+    "@type": "ItemList",
+    "itemListElement": data.tour.places_to_visit.map((place, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": place
+    }))
+  } : undefined
+} : null;
+
+// Schema para página de inicio
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Peru Inkas Travel",
+  "url": "https://www.peruinkastravel.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.peruinkastravel.com/tours?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Breadcrumbs schema
+const breadcrumbSchema = data.breadcrumbs ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": data.breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": `https://www.peruinkastravel.com${item.url}`
+  }))
+} : null;
+
+const schemas = [organizationSchema, websiteSchema, tourSchema, breadcrumbSchema].filter(Boolean);
+---
+
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

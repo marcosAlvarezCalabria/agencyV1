@@ -48,31 +48,35 @@ function sectionLink(section) {
 }
 ---
 
-<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex items-center h-16 px-6 sm:px-8 bg-transparent border-none shadow-none backdrop-blur-md transition-all duration-300">
+<header id="main-header" data-lang={lang} class="fixed top-0 left-0 w-full z-50 flex items-center h-16 px-6 sm:px-8 bg-transparent border-none shadow-none backdrop-blur-md transition-all duration-300" role="banner">
   <!-- Logo mejorado -->
   <div class="flex items-center justify-start min-w-0">
-    <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10 group">
-      <img 
-        src="/assets/images/logos/logoInkasTravel.png" 
-        alt="Peru Inkas Travel Logo" 
-        class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out drop-shadow-xl group-hover:scale-105 group-hover:drop-shadow-2xl focus:scale-105" 
+    <a href={lang === 'es' ? '/es/' : '/'} class="flex items-center z-10 group" aria-label={lang === 'es' ? 'Ir a la página de inicio de Peru Inkas Travel' : 'Go to Peru Inkas Travel homepage'}>
+      <img
+        src="/assets/images/logos/logoInkasTravel.png"
+        alt={lang === 'es' ? 'Logo de Peru Inkas Travel - Agencia de viajes en Cusco' : 'Peru Inkas Travel Logo - Travel Agency in Cusco'}
+        width="80"
+        height="80"
+        class="w-14 md:w-20 h-auto transition-all duration-300 ease-in-out drop-shadow-xl group-hover:scale-105 group-hover:drop-shadow-2xl focus:scale-105"
       />
     </a>
   </div>
 
   <!-- Menú desktop mejorado -->
   <div class="hidden md:flex flex-1 min-w-0 items-center justify-end gap-x-6">
-    <nav 
-      id="menu-container" 
+    <nav
+      id="menu-container"
       class="flex items-center gap-x-6 px-2 sm:px-4 py-2 transition-all duration-300 ease-in-out bg-transparent border-none shadow-none"
+      role="navigation"
+      aria-label={lang === 'es' ? 'Navegación principal' : 'Main navigation'}
     >
-      <a href={sectionLink('inicio')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+      <a href={sectionLink('inicio')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative" aria-label={lang === 'es' ? 'Ir a Inicio' : 'Go to Home'}>
         <span>{t('nav.home')}</span>
       </a>
-      <a href={sectionLink('nosotros')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+      <a href={sectionLink('nosotros')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative" aria-label={lang === 'es' ? 'Ir a Nosotros' : 'Go to About'}>
         <span>{t('nav.about')}</span>
       </a>
-      <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
+      <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative" aria-label={lang === 'es' ? 'Ver todos los Tours' : 'View all Tours'}>
         <span>{t('nav.tours')}</span>
       </a>
     </nav>
@@ -101,13 +105,15 @@ function sectionLink(section) {
     </a>
 
     <!-- Botón hamburguesa mejorado -->
-    <button id="menu-btn" 
-            class="relative text-[#372212] focus:outline-none hover:scale-110 transition-transform duration-200 p-2 rounded-full bg-white/20 backdrop-blur-sm" 
-            aria-label="Abrir menú">
-      <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="#372212" viewBox="0 0 24 24">
+    <button id="menu-btn"
+            class="relative text-[#372212] focus:outline-none hover:scale-110 transition-transform duration-200 p-2 rounded-full bg-white/20 backdrop-blur-sm"
+            aria-label={lang === 'es' ? 'Abrir menú de navegación' : 'Open navigation menu'}
+            aria-expanded="false"
+            aria-controls="mobile-menu">
+      <svg id="icon-hamburger" class="h-8 w-8 block" fill="none" stroke="#372212" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
-      <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="#372212" viewBox="0 0 24 24">
+      <svg id="icon-close" class="h-8 w-8 hidden" fill="none" stroke="#372212" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
@@ -118,10 +124,10 @@ function sectionLink(section) {
 <div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-500"></div>
 
 <!-- Menú móvil moderno con animaciones -->
-<div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-80 shadow-2xl z-50 transform translate-x-full transition-all duration-500 ease-out overflow-hidden" style="background: linear-gradient(135deg, #fef7cd 0%, #f5ead3 50%, #ead9b8 100%);">
+<div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-80 shadow-2xl z-50 transform translate-x-full transition-all duration-500 ease-out overflow-hidden" style="background: linear-gradient(135deg, #fef7cd 0%, #f5ead3 50%, #ead9b8 100%);" role="dialog" aria-modal="true" aria-label={lang === 'es' ? 'Menú de navegación móvil' : 'Mobile navigation menu'}>
 
   <!-- Decoración de fondo -->
-  <div class="absolute inset-0 opacity-5">
+  <div class="absolute inset-0 opacity-5" aria-hidden="true">
     <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#d2a530] to-[#b64926] rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#b64926] to-[#d2a530] rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
   </div>
@@ -330,6 +336,7 @@ function sectionLink(section) {
     iconHamburger.classList.add('hidden');
     iconClose.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    btn?.setAttribute('aria-expanded', 'true');
   }
 
   function closeMenu() {
@@ -347,6 +354,7 @@ function sectionLink(section) {
       iconHamburger.classList.remove('hidden');
       iconClose.classList.add('hidden');
       document.body.style.overflow = '';
+      btn?.setAttribute('aria-expanded', 'false');
 
       // Resetear la rotación después de cerrar
       if (closeBtn) {

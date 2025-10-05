@@ -1,0 +1,18 @@
+# robots.txt para Peru Inkas Travel
+
+User-agent: *
+Allow: /
+
+# Archivos importantes
+Sitemap: https://www.peruinkastravel.com/sitemap.xml
+
+# Bloquear carpetas privadas (si las hay)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Permitir indexación de imágenes
+Allow: /assets/images/
+
+# Crawl-delay (opcional, para bots agresivos)
+Crawl-delay: 1
