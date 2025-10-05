@@ -120,13 +120,8 @@ import AboutCard from '../components/AboutCard.astro';
     <!-- Carousel para Móvil con Skeleton Simplificado -->
     <div class="md:hidden">
       <div id="mobile-tours-container" class="relative">
-        <!-- Carousel real (siempre presente) -->
-        <div id="real-mobile-carousel">
-          <ToursCarousel tours={tours} t={t} />
-        </div>
-
-        <!-- Skeleton overlay simplificado -->
-        <div id="mobile-skeleton-overlay" class="absolute inset-0 z-10 bg-white flex items-center justify-center">
+        <!-- Skeleton overlay simplificado (se oculta rápido) -->
+        <div id="mobile-skeleton-overlay" class="absolute inset-0 z-10 bg-white flex items-center justify-center pointer-events-auto">
           <div class="w-full max-w-sm mx-auto px-4">
             <div class="mobile-tour-skeleton-simple">
               <div class="skeleton-image-mobile"></div>
@@ -139,6 +134,11 @@ import AboutCard from '../components/AboutCard.astro';
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Carousel real (siempre presente, debajo del skeleton) -->
+        <div id="real-mobile-carousel" class="relative z-0">
+          <ToursCarousel tours={tours} t={t} />
         </div>
       </div>
     </div>
@@ -647,17 +647,35 @@ import AboutCard from '../components/AboutCard.astro';
     });
 
     // ===============================
-    // MOBILE SKELETON LOADING (Optimizado)
+    // MOBILE SKELETON LOADING (Ultra Rápido)
     // ===============================
 
     const skeletonOverlay = document.getElementById('mobile-skeleton-overlay');
     if (skeletonOverlay) {
-      // Remover skeleton después de 1 segundo
-      setTimeout(() => {
-        skeletonOverlay.style.transition = 'opacity 0.3s ease';
+      // Remover skeleton INMEDIATAMENTE cuando el swiper esté listo
+      const removeSkeleton = () => {
+        skeletonOverlay.style.transition = 'opacity 0.2s ease';
         skeletonOverlay.style.opacity = '0';
-        setTimeout(() => skeletonOverlay.remove(), 300);
-      }, 1000);
+        skeletonOverlay.style.pointerEvents = 'none';
+        setTimeout(() => {
+          if (skeletonOverlay.parentNode) {
+            skeletonOverlay.remove();
+          }
+        }, 200);
+      };
+
+      // Escuchar el evento de Swiper listo
+      document.addEventListener('swiperReady', () => {
+        removeSkeleton();
+      }, { once: true });
+
+      // Fallback - remover después de 500ms si el evento no llega
+      setTimeout(() => {
+        if (skeletonOverlay.parentNode && skeletonOverlay.style.opacity !== '0') {
+          console.log('⚠️ Fallback: Removiendo skeleton por timeout');
+          removeSkeleton();
+        }
+      }, 500);
     }
   });
 </script>
