@@ -1,6 +1,7 @@
 ---
 // Página dinámica de tour individual
 import Baselayout from '../../layouts/Baselayout.astro';
+import TourGallery from '../../components/TourGallery.astro';
 
 export async function getStaticPaths() {
   const tours = (await import('../../data/tours.en.json')).default;
@@ -43,6 +44,11 @@ const seo = {
         
         <!-- Contenido del tour -->
         <div class="flex-1">
+          <!-- Galería de fotos -->
+          {tour.images && tour.images.length > 0 && (
+            <TourGallery images={tour.images} tourName={tour.name} />
+          )}
+
           <!-- Título -->
           <h1 
             class="text-3xl md:text-4xl font-extrabold mb-2" 

@@ -1,5 +1,6 @@
 ---
 import Baselayout from '../../../layouts/Baselayout.astro';
+import TourGallery from '../../../components/TourGallery.astro';
 import toursData from '../../../data/tours.es.json';
 import { useTranslations } from '../../../i18n/utils.js';
 
@@ -103,6 +104,13 @@ const {
           <p class="text-center text-gray-500 text-sm mt-4">Disponible: {days_available}</p>
         </div>
       </div>
+
+      <!-- Photo Gallery -->
+      {tour.images && tour.images.length > 0 && (
+        <div class="mb-12">
+          <TourGallery images={tour.images} tourName={tour.name} />
+        </div>
+      )}
 
       <!-- Tour Details Grid -->
       <div class="grid md:grid-cols-3 gap-8 mb-12">
