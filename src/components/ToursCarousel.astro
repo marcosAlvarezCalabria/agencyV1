@@ -172,11 +172,10 @@ const { tours, lang, t } = Astro.props;
 
     const swiper = new Swiper(swiperContainer, {
       modules: [Navigation, Pagination],
-      loop: true,
       slidesPerView: 1.1,
       centeredSlides: true,
       spaceBetween: 16,
-      initialSlide: 0,
+      loop: false,
       breakpoints: {
         640: {
           slidesPerView: 2,
@@ -189,23 +188,6 @@ const { tours, lang, t } = Astro.props;
           centeredSlides: false,
         },
       },
-      // Configuración optimizada para móvil - Swipe MUY fácil
-      touchRatio: 1.5, // Aumentado para más sensibilidad
-      touchAngle: 60, // Ángulo más amplio
-      threshold: 3, // Muy sensible - casi cualquier movimiento activa swipe
-      shortSwipes: true,
-      longSwipes: true,
-      longSwipesRatio: 0.2, // Solo necesita 20% de distancia
-      longSwipesMs: 150, // Muy rápido
-      speed: 400, // Velocidad de transición
-      followFinger: true,
-      allowTouchMove: true,
-      touchStartPreventDefault: false,
-      touchStartForcePreventDefault: false,
-      touchMoveStopPropagation: false,
-      passiveListeners: true,
-      resistance: true,
-      resistanceRatio: 0.5, // Menos resistencia
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
