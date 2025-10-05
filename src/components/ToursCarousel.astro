@@ -176,6 +176,24 @@ const { tours, lang, t } = Astro.props;
       centeredSlides: true,
       spaceBetween: 16,
       loop: false,
+
+      // Configuración de gestos táctiles mejorada
+      touchRatio: 1,
+      touchAngle: 45,
+      threshold: 10,
+      longSwipes: true,
+      longSwipesRatio: 0.5,
+      longSwipesMs: 300,
+      followFinger: true,
+      allowTouchMove: true,
+      touchMoveStopPropagation: false,
+      simulateTouch: true,
+      shortSwipes: true,
+
+      // Resistencia al final del slider
+      resistance: true,
+      resistanceRatio: 0.85,
+
       breakpoints: {
         640: {
           slidesPerView: 2,

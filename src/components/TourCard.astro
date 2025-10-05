@@ -274,14 +274,29 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
     const tourCards = document.querySelectorAll('.tour-card-modern');
 
     tourCards.forEach(card => {
+      // Verificar si la card está dentro de un Swiper
+      const isInsideSwiper = card.closest('.swiper-slide') !== null;
+
       let touchStartX = 0;
       let touchStartY = 0;
       let touchStartTime = 0;
+      let hasMoved = false;
 
       card.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
         touchStartTime = Date.now();
+        hasMoved = false;
+      }, { passive: true });
+
+      card.addEventListener('touchmove', (e) => {
+        const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+        const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+
+        // Detectar si hubo movimiento significativo
+        if (deltaX > 5 || deltaY > 5) {
+          hasMoved = true;
+        }
       }, { passive: true });
 
       card.addEventListener('touchend', (e) => {
@@ -293,8 +308,15 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         const deltaY = Math.abs(touchEndY - touchStartY);
         const deltaTime = touchEndTime - touchStartTime;
 
-        // Si el movimiento fue mínimo y rápido, es un tap/click
-        if (deltaX < 10 && deltaY < 10 && deltaTime < 300) {
+        // SOLO navegar si:
+        // 1. NO hubo movimiento durante touchmove
+        // 2. El movimiento total fue mínimo (< 10px)
+        // 3. El tiempo fue corto (< 300ms)
+        // 4. Si está en Swiper, el movimiento horizontal debe ser casi nulo (< 5px)
+        const maxDelta = isInsideSwiper ? 5 : 10;
+        const isTap = !hasMoved && deltaX < maxDelta && deltaY < maxDelta && deltaTime < 300;
+
+        if (isTap) {
           // No hacer nada si se clickeó en el botón de WhatsApp
           const target = e.target as HTMLElement;
           if (!target.closest('a[href*="wa.me"]')) {
@@ -306,8 +328,13 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         }
       });
 
-      // Para desktop (mouse)
+      // Para desktop (mouse) - solo si NO está en Swiper o si está en desktop
       card.addEventListener('click', (e) => {
+        // En móvil dentro de Swiper, no usar click (solo touchend)
+        if (isInsideSwiper && 'ontouchstart' in window) {
+          return;
+        }
+
         const target = e.target as HTMLElement;
         // No hacer nada si se clickeó en el botón de WhatsApp
         if (!target.closest('a[href*="wa.me"]')) {
