@@ -1,4 +1,4 @@
----
+º1---
 import fs from 'fs';
 import path from 'path';
 
@@ -41,15 +41,18 @@ if (images.length === 0) {
   <div class="gallery-container" style="max-width: 896px; margin: 0 auto;">
     <div class="swiper gallery-main mb-4">
       <div class="swiper-wrapper">
-        {images.map((image) => (
+        {images.map((image, index) => (
           <div class="swiper-slide">
             <div class="relative aspect-video md:h-[500px] bg-gray-100 rounded-xl overflow-hidden">
+              <!-- Skeleton loader -->
+              <div class="gallery-skeleton absolute inset-0"></div>
+
               <img
-                src={image.url}
+                data-src={image.url}
                 alt={image.alt}
-                class="w-full h-full object-cover"
-                loading="lazy"
+                class="swiper-lazy w-full h-full object-cover"
               />
+              <div class="swiper-lazy-preloader"></div>
               {image.photographer && (
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                   <p class="text-white text-sm">
@@ -88,11 +91,11 @@ if (images.length === 0) {
           <div class="swiper-slide">
             <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:ring-2 hover:ring-offset-2" style="--tw-ring-color: var(--primary-500);">
               <img
-                src={image.url}
+                data-src={image.url}
                 alt={image.alt}
-                class="w-full h-full object-cover"
-                loading="lazy"
+                class="swiper-lazy w-full h-full object-cover"
               />
+              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             </div>
           </div>
         ))}
@@ -103,19 +106,24 @@ if (images.length === 0) {
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Thumbs, Autoplay } from 'swiper/modules';
+  import { Navigation, Pagination, Thumbs, Lazy } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
   import 'swiper/css/thumbs';
+  import 'swiper/css/lazy';
 
   // Slider de miniaturas
   const thumbsSwiper = new Swiper('.gallery-thumbs', {
-    modules: [Thumbs],
+    modules: [Thumbs, Lazy],
     spaceBetween: 10,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 2,
+    },
     breakpoints: {
       640: {
         slidesPerView: 5,
@@ -131,10 +139,16 @@ if (images.length === 0) {
 
   // Slider principal
   const mainSwiper = new Swiper('.gallery-main', {
-    modules: [Navigation, Pagination, Thumbs, Autoplay],
+    modules: [Navigation, Pagination, Thumbs, Lazy],
     spaceBetween: 0,
     slidesPerView: 1,
     centeredSlides: true,
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 1,
+      loadOnTransitionStart: true,
+    },
+    preloadImages: false,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -146,11 +160,7 @@ if (images.length === 0) {
     thumbs: {
       swiper: thumbsSwiper,
     },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    loop: true,
+    loop: false,
   });
 </script>
 
@@ -225,5 +235,38 @@ if (images.length === 0) {
     transform: translateX(-50%);
     font-size: 14px;
     font-weight: 500;
+  }
+
+  /* Skeleton loader for gallery */
+  @keyframes galleryShimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .gallery-skeleton {
+    background: #e5e7eb;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .gallery-skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: galleryShimmer 1.5s infinite;
+  }
+
+  /* Hide skeleton when image is loaded */
+  .swiper-slide img.swiper-lazy-loaded ~ .gallery-skeleton,
+  .swiper-slide img.swiper-lazy-loaded + .swiper-lazy-preloader {
+    display: none;
   }
 </style>
