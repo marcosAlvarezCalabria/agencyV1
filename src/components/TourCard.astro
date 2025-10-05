@@ -46,7 +46,6 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   data-whatsapp={whatsappLink}
   data-slug={slug}
   data-details-url={detailsUrl}
-  onclick="window.location.href = this.dataset.detailsUrl"
 >
 
   <!-- Imagen principal -->
@@ -269,6 +268,55 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
           }
         });
       }
+    });
+
+    // Manejar clicks en las cards (detectar swipe vs click)
+    const tourCards = document.querySelectorAll('.tour-card-modern');
+
+    tourCards.forEach(card => {
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchStartTime = 0;
+
+      card.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }, { passive: true });
+
+      card.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const touchEndTime = Date.now();
+
+        const deltaX = Math.abs(touchEndX - touchStartX);
+        const deltaY = Math.abs(touchEndY - touchStartY);
+        const deltaTime = touchEndTime - touchStartTime;
+
+        // Si el movimiento fue mínimo y rápido, es un tap/click
+        if (deltaX < 10 && deltaY < 10 && deltaTime < 300) {
+          // No hacer nada si se clickeó en el botón de WhatsApp
+          const target = e.target as HTMLElement;
+          if (!target.closest('a[href*="wa.me"]')) {
+            const detailsUrl = card.getAttribute('data-details-url');
+            if (detailsUrl) {
+              window.location.href = detailsUrl;
+            }
+          }
+        }
+      });
+
+      // Para desktop (mouse)
+      card.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        // No hacer nada si se clickeó en el botón de WhatsApp
+        if (!target.closest('a[href*="wa.me"]')) {
+          const detailsUrl = card.getAttribute('data-details-url');
+          if (detailsUrl) {
+            window.location.href = detailsUrl;
+          }
+        }
+      });
     });
   });
 </script>
