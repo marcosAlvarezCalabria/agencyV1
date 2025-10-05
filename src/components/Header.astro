@@ -75,9 +75,6 @@ function sectionLink(section) {
       <a href={sectionLink('tours')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
         <span>{t('nav.tours')}</span>
       </a>
-      <a href={sectionLink('destacados')} class="menu-link text-lg sm:text-xl font-extrabold px-3 py-2 transition-all duration-300 drop-shadow-md relative">
-        <span>{t('nav.featured')}</span>
-      </a>
     </nav>
 
     <!-- Selector de idioma mejorado (escritorio) -->
@@ -117,100 +114,124 @@ function sectionLink(section) {
   </div>
 </header>
 
-<!-- Overlay mejorado -->
-<div id="mobile-overlay" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
+<!-- Overlay moderno con blur -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-500"></div>
 
-<!-- Menú móvil lateral -->
-<div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out bg-gradient-to-b from-white to-gray-50">
-  <!-- Header del menú -->
-  <div class="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-[#d2a530] to-[#b64926]">
-    <div class="flex items-center gap-3">
-      <img src="/assets/images/logos/logoInkasTravel.png" alt="Logo" class="w-12 h-12 rounded-full shadow-lg" />
-      <div class="text-white">
-        <div class="font-bold text-lg">Peru Inkas</div>
-        <div class="text-sm opacity-90">Travel</div>
-      </div>
-    </div>
-    <button id="close-menu" class="text-white hover:text-gray-200 p-2 rounded-full hover:bg-white/20 transition-colors">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
+<!-- Menú móvil moderno con animaciones -->
+<div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-80 shadow-2xl z-50 transform translate-x-full transition-all duration-500 ease-out overflow-hidden" style="background: linear-gradient(135deg, #fef7cd 0%, #f5ead3 50%, #ead9b8 100%);">
+
+  <!-- Decoración de fondo -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#d2a530] to-[#b64926] rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#b64926] to-[#d2a530] rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
   </div>
 
   <!-- Contenido del menú -->
-  <div class="p-6">
-    <!-- Enlaces de navegación -->
-    <nav class="space-y-1">
-      <a href={sectionLink('inicio')} 
-         class="mobile-menu-item block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">
-        {t('nav.home')}
+  <div class="relative h-full flex flex-col">
+    <!-- Header minimalista del menú -->
+    <div class="px-6 pt-6 pb-4 border-b" style="border-color: rgba(210, 165, 48, 0.2);">
+      <div class="flex items-center justify-between">
+        <div class="text-lg font-bold" style="color: #b64926;">Menú</div>
+        <button id="close-menu" class="p-2.5 rounded-lg transition-all duration-300 close-btn" style="background: rgba(182, 73, 38, 0.1);">
+          <svg class="w-6 h-6" fill="none" stroke="#b64926" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Enlaces de navegación modernos -->
+    <nav class="px-6 space-y-2 pt-4">
+      <a href={sectionLink('inicio')}
+         class="modern-menu-link group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+        <div class="menu-icon-wrapper">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+        </div>
+        <span class="font-semibold text-sm">{t('nav.home')}</span>
+        <svg class="w-3 h-3 ml-auto transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
       </a>
-      
-      <a href={sectionLink('nosotros')} 
-         class="mobile-menu-item block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">
-        {t('nav.about')}
+
+      <a href={sectionLink('nosotros')}
+         class="modern-menu-link group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+        <div class="menu-icon-wrapper">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+          </svg>
+        </div>
+        <span class="font-semibold text-sm">{t('nav.about')}</span>
+        <svg class="w-3 h-3 ml-auto transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
       </a>
-      
-      <a href={sectionLink('tours')} 
-         class="mobile-menu-item block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">
-        {t('nav.tours')}
-      </a>
-      
-      <a href={sectionLink('destacados')} 
-         class="mobile-menu-item block text-center py-3 text-[#a67c00] text-lg font-bold hover:bg-[#fffbe6] hover:text-[#a67c00] focus:bg-[#fffbe6] focus:text-[#a67c00] transition-all duration-300">
-        {t('nav.featured')}
+
+      <a href={sectionLink('tours')}
+         class="modern-menu-link group flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+        <div class="menu-icon-wrapper">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <span class="font-semibold text-sm">{t('nav.tours')}</span>
+        <svg class="w-3 h-3 ml-auto transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
       </a>
     </nav>
 
-    <!-- Separador -->
-    <div class="my-6 border-t border-gray-200"></div>
-
-    <!-- Acciones rápidas -->
-    <div class="space-y-3">
-      <!-- WhatsApp -->
-      <a href="https://wa.me/51984775784" 
-         target="_blank" 
+    <!-- Botones de acción modernos -->
+    <div class="px-6 pb-6 pt-4 space-y-2">
+      <a href="https://wa.me/51984775784"
+         target="_blank"
          rel="noopener"
-         class="flex items-center gap-3 bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 transition-colors shadow-lg">
+         class="action-button contact-btn flex items-center gap-2 px-4 py-3 rounded-xl font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
         </svg>
-        <div>
-          <div class="font-semibold">Consulta WhatsApp</div>
-          <div class="text-xs opacity-90">Respuesta inmediata</div>
+        <div class="flex-1 text-left">
+          <div class="text-xs font-bold">WhatsApp</div>
+          <div class="text-xs opacity-75">Respuesta inmediata</div>
         </div>
-      </a>
-
-      <!-- Teléfono -->
-      <a href="tel:+51984775784" 
-         class="flex items-center gap-3 bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        <svg class="w-4 h-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
         </svg>
-        <div>
-          <div class="font-semibold">Llamar ahora</div>
-          <div class="text-xs opacity-90">+51 984 775 784</div>
-        </div>
       </a>
-    </div>
 
-    <!-- Footer del menú -->
-    <div class="mt-8 pt-6 border-t border-gray-200">
-      <div class="text-center">
-        <p class="text-xs text-gray-500 mb-2">Síguenos en</p>
-        <div class="flex justify-center space-x-4">
-          <a href="https://www.facebook.com/share/19qWaZ6KHs/?mibextid=qi2Omg" target="_blank" class="text-blue-600 hover:text-blue-800">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
-            </svg>
-          </a>
-          <a href="https://www.instagram.com/peruinkastravel?utm_source=qr&igsh=MXE1cnN2a3lnejRhbA==" target="_blank" class="text-pink-600 hover:text-pink-800">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.402 3.635 1.37 2.668 2.337 2.396 3.51 2.338 4.788 2.279 6.068 2.266 6.477 2.266 12c0 5.523.013 5.932.072 7.212.058 1.278.33 2.451 1.297 3.418.967.967 2.14 1.239 3.418 1.297C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.278-.058 2.451-.33 3.418-1.297.967-.967 1.239-2.14 1.297-3.418.059-1.28.072-1.689.072-7.212 0-5.523-.013-5.932-.072-7.212-.058-1.278-.33-2.451-1.297-3.418C19.399.402 18.226.13 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
-            </svg>
-          </a>
+      <a href="tel:+51984775784"
+         class="action-button contact-btn flex items-center gap-2 px-4 py-3 rounded-xl font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <div class="flex-1 text-left">
+          <div class="text-xs font-bold">Llamar</div>
+          <div class="text-xs opacity-75">+51 984 775 784</div>
         </div>
+        <svg class="w-4 h-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+
+      <!-- Redes sociales modernas -->
+      <div class="flex gap-2 pt-2">
+        <a href="https://www.facebook.com/share/19qWaZ6KHs/?mibextid=qi2Omg"
+           target="_blank"
+           class="social-link">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+          </svg>
+          <span class="text-xs font-bold">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/peruinkastravel?utm_source=qr&igsh=MXE1cnN2a3lnejRhbA=="
+           target="_blank"
+           class="social-link">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.402 3.635 1.37 2.668 2.337 2.396 3.51 2.338 4.788 2.279 6.068 2.266 6.477 2.266 12c0 5.523.013 5.932.072 7.212.058 1.278.33 2.451 1.297 3.418.967.967 2.14 1.239 3.418 1.297C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.278-.058 2.451-.33 3.418-1.297.967-.967 1.239-2.14 1.297-3.418.059-1.28.072-1.689.072-7.212 0-5.523-.013-5.932-.072-7.212-.058-1.278-.33-2.451-1.297-3.418C19.399.402 18.226.13 16.948.072 15.668.013 15.259 0 12 0z"/>
+          </svg>
+          <span class="text-xs font-bold">Instagram</span>
+        </a>
       </div>
     </div>
   </div>
@@ -312,11 +333,26 @@ function sectionLink(section) {
   }
 
   function closeMenu() {
-    menu.classList.add('translate-x-full');
-    overlay.classList.add('hidden');
-    iconHamburger.classList.remove('hidden');
-    iconClose.classList.add('hidden');
-    document.body.style.overflow = '';
+    const closeBtn = document.getElementById('close-menu');
+
+    // Rotar el botón X
+    if (closeBtn) {
+      closeBtn.style.transform = 'rotate(90deg)';
+    }
+
+    // Esperar la animación de rotación antes de cerrar
+    setTimeout(() => {
+      menu.classList.add('translate-x-full');
+      overlay.classList.add('hidden');
+      iconHamburger.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      document.body.style.overflow = '';
+
+      // Resetear la rotación después de cerrar
+      if (closeBtn) {
+        closeBtn.style.transform = '';
+      }
+    }, 300);
   }
 
   // --- Event Listeners ---
@@ -331,6 +367,10 @@ function sectionLink(section) {
   });
 
   overlay?.addEventListener('click', closeMenu);
+
+  const closeMenuBtn = document.getElementById('close-menu');
+  closeMenuBtn?.addEventListener('click', closeMenu);
+
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
@@ -367,7 +407,7 @@ function sectionLink(section) {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 0;
+    border-radius: 12px;
     border: 2px solid #ffe082;
     background: rgba(255, 224, 130, 0.32);
     box-shadow: 0 2px 16px 0 rgba(255, 224, 130, 0.18);
@@ -401,5 +441,113 @@ function sectionLink(section) {
   #lang-toggle-desktop:hover .material-symbols-outlined,
   #lang-toggle-mobile:hover .material-symbols-outlined {
     color: #d2a530 !important;
+  }
+
+  /* Estilos modernos para el menú móvil */
+  .modern-menu-link {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(210, 165, 48, 0.2);
+    color: #6b5b47;
+  }
+
+  .modern-menu-link:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: #d2a530;
+    box-shadow: 0 4px 20px rgba(210, 165, 48, 0.3);
+  }
+
+  .menu-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d2a530, #a67c00);
+    border-radius: 10px;
+    color: white;
+  }
+
+  .modern-menu-link:hover .menu-icon-wrapper {
+    transform: rotate(5deg) scale(1.1);
+    transition: transform 0.3s ease;
+  }
+
+  .contact-btn {
+    background: linear-gradient(135deg, #d2a530 0%, #a67c00 100%);
+  }
+
+  .contact-btn:hover {
+    background: linear-gradient(135deg, #a67c00 0%, #d2a530 100%);
+  }
+
+  .social-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s;
+    transform: scale(1);
+    background: rgba(210, 165, 48, 0.15);
+    color: #6b5b47;
+  }
+
+  .social-link:hover {
+    background: rgba(210, 165, 48, 0.25);
+    box-shadow: 0 4px 15px rgba(210, 165, 48, 0.3);
+    transform: scale(1.05);
+  }
+
+  .close-btn:hover {
+    background: rgba(182, 73, 38, 0.2) !important;
+    transform: rotate(90deg);
+  }
+
+  /* Animaciones de entrada para elementos del menú */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .menu-logo-container {
+    animation: slideInRight 0.4s ease-out;
+  }
+
+  .modern-menu-link {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  .modern-menu-link:nth-child(1) {
+    animation-delay: 0.1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .modern-menu-link:nth-child(2) {
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .modern-menu-link:nth-child(3) {
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  .action-button {
+    animation: slideInRight 0.5s ease-out;
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
   }
 </style>

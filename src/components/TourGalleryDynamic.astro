@@ -1,0 +1,176 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+interface Props {
+  tourSlug: string;
+  tourName: string;
+}
+
+const { tourSlug, tourName } = Astro.props;
+
+// Cargar el archivo gallery.json de la carpeta del tour
+let images: any[] = [];
+const galleryFilePath = path.join(process.cwd(), 'public', 'assets', 'images', 'tours', tourSlug, 'gallery.json');
+
+try {
+  if (fs.existsSync(galleryFilePath)) {
+    const galleryData = JSON.parse(fs.readFileSync(galleryFilePath, 'utf-8'));
+    // Construir las URLs completas de las imágenes
+    images = galleryData.map((img: any) => ({
+      url: `/assets/images/tours/${tourSlug}/${img.filename}`,
+      photographer: img.photographer,
+      photographerUrl: img.photographerUrl,
+      alt: img.alt || `${tourName} - ${img.filename}`,
+    }));
+  }
+} catch (error) {
+  console.warn(`No se encontró o no se pudo leer gallery.json para ${tourSlug}:`, error);
+}
+
+// Si no hay imágenes, no renderizar nada
+if (images.length === 0) {
+  return null;
+}
+---
+
+<div class="tour-gallery mb-8">
+  <h3 class="text-2xl font-bold mb-4" style="color: var(--earth-600);">
+    📸 Photo Gallery
+  </h3>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {images.map((image, index) => (
+      <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+        <img
+          src={image.url}
+          alt={image.alt}
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+          loading="lazy"
+          data-index={index}
+        />
+        {image.photographer && (
+          <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Photo by {image.photographerUrl ? (
+              <a href={image.photographerUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-300">
+                {image.photographer}
+              </a>
+            ) : (
+              <span>{image.photographer}</span>
+            )}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+  <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 z-10">
+    &times;
+  </button>
+
+  <button id="prev-image" class="absolute left-4 text-white text-4xl hover:text-gray-300 z-10">
+    &#8249;
+  </button>
+
+  <div class="max-w-6xl max-h-full flex flex-col items-center">
+    <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[80vh] object-contain" />
+    <div id="lightbox-credit" class="text-white mt-4 text-center"></div>
+  </div>
+
+  <button id="next-image" class="absolute right-4 text-white text-4xl hover:text-gray-300 z-10">
+    &#8250;
+  </button>
+</div>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCredit = document.getElementById('lightbox-credit');
+  const closeBtn = document.getElementById('close-lightbox');
+  const prevBtn = document.getElementById('prev-image');
+  const nextBtn = document.getElementById('next-image');
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+  }
+
+  function updateLightbox() {
+    const image = images[currentIndex];
+    lightboxImage.src = image.url;
+    lightboxImage.alt = image.alt || '';
+
+    if (image.photographer) {
+      const creditText = image.photographerUrl
+        ? `Photo by <a href="${image.photographerUrl}" target="_blank" rel="noopener noreferrer" class="underline hover:text-blue-300">${image.photographer}</a>`
+        : `Photo by ${image.photographer}`;
+      lightboxCredit.innerHTML = creditText;
+      lightboxCredit.classList.remove('hidden');
+    } else {
+      lightboxCredit.innerHTML = '';
+      lightboxCredit.classList.add('hidden');
+    }
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateLightbox();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightbox();
+  }
+
+  // Event listeners
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      const index = parseInt(e.target.dataset.index);
+      openLightbox(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  // Close on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('hidden')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    }
+  });
+</script>
+
+<style>
+  .gallery-item {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+
+  .gallery-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>

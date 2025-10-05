@@ -162,7 +162,7 @@ const { tours, lang, t } = Astro.props;
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  import { Navigation, Pagination } from 'swiper/modules';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
 
@@ -171,7 +171,7 @@ const { tours, lang, t } = Astro.props;
     if (!swiperContainer) return;
 
     const swiper = new Swiper(swiperContainer, {
-      modules: [Navigation, Pagination, Autoplay],
+      modules: [Navigation, Pagination],
       loop: true,
       slidesPerView: 1.1,
       centeredSlides: true,
@@ -214,12 +214,6 @@ const { tours, lang, t } = Astro.props;
         el: '.swiper-pagination',
         clickable: true,
         dynamicBullets: true, // Bullets dinámicos más atractivos
-      },
-      // Autoplay sutil para mostrar que es interactivo
-      autoplay: {
-        delay: 4000, // 4 segundos
-        disableOnInteraction: true, // Se detiene cuando el usuario interactúa
-        pauseOnMouseEnter: true,
       },
     });
 

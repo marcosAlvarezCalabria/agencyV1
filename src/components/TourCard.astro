@@ -37,7 +37,7 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
 ---
 
 <div id={cardId}
-  class="tour-card-modern group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-1 cursor-pointer w-full max-w-sm mx-auto"
+  class="tour-card-modern group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-1 cursor-pointer w-full max-w-sm mx-auto flex flex-col h-full"
   data-name={name}
   data-duration={duration}
   data-description={description}
@@ -45,18 +45,23 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   data-image={image}
   data-whatsapp={whatsappLink}
   data-slug={slug}
+  data-details-url={detailsUrl}
+  onclick="window.location.href = this.dataset.detailsUrl"
 >
 
   <!-- Imagen principal -->
   <div class="relative overflow-hidden h-56">
+    <!-- Skeleton loader -->
+    <div class="image-skeleton absolute inset-0 z-0"></div>
+
     <img
       src={image}
       alt={name}
-      class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+      class="tour-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 z-10"
       loading="lazy"
     />
     <!-- Overlay sutil -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20"></div>
 
     <!-- Social proof sobre la imagen -->
     <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between z-10">
@@ -71,13 +76,13 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   </div>
 
   <!-- Contenido de la card -->
-  <div class="p-5">
+  <div class="p-5 flex flex-col flex-1">
     <!-- Título del tour -->
-    <a href={detailsUrl} class="block mb-2">
+    <div class="block mb-2">
       <h3 class="text-lg font-bold text-gray-900 group-hover:text-[#b64926] transition-colors leading-snug line-clamp-2">
         {name}
       </h3>
-    </a>
+    </div>
 
     <!-- Trust signals -->
     <div class="flex items-center gap-3 mb-4 text-xs text-gray-600">
@@ -130,23 +135,6 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
       </p>
     </div>
 
-    <!-- Highlights del tour (valor destacado) -->
-    <div class="mb-4 space-y-2">
-      {includes && includes.slice(0, 3).map(item => (
-        <div class="flex items-start gap-2 text-xs text-gray-700">
-          <svg class="w-4 h-4 text-[#d2a530] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-          </svg>
-          <span>{item}</span>
-        </div>
-      ))}
-      {includes && includes.length > 3 && (
-        <button class="text-xs text-[#b64926] font-semibold hover:underline ml-6">
-          +{includes.length - 3} servicios más incluidos
-        </button>
-      )}
-    </div>
-
     <!-- Lugares destacados -->
     {places_to_visit && places_to_visit.length > 0 && (
       <div class="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
@@ -172,13 +160,14 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
     )}
 
     <!-- CTAs optimizados -->
-    <div class="space-y-2.5">
+    <div class="space-y-2.5 mt-auto" onclick="event.stopPropagation()">
       <!-- CTA primario: Reservar por WhatsApp -->
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center justify-center gap-2 w-full bg-[#b64926] hover:bg-[#a03e1f] text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl group"
+        onclick="event.stopPropagation()"
+        class="flex items-center justify-center gap-2 w-full bg-[#b64926] hover:bg-[#a03e1f] text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl group relative z-10"
       >
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
@@ -186,17 +175,6 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         <span>Reservar ahora</span>
         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </a>
-
-      <!-- CTA secundario: Ver detalles -->
-      <a
-        href={detailsUrl}
-        class="flex items-center justify-center gap-2 w-full bg-white hover:bg-gray-50 text-gray-900 font-semibold py-2.5 px-4 rounded-xl border-2 border-gray-200 hover:border-gray-300 transition-all duration-300"
-      >
-        <span>Ver itinerario completo</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
         </svg>
       </a>
     </div>
@@ -218,6 +196,41 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   overflow: hidden;
 }
 
+/* Skeleton loader shimmer animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.image-skeleton {
+  background: #d1d5db;
+  overflow: hidden;
+}
+
+.image-skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+.tour-image {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.tour-image.loaded {
+  opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .tour-card-modern:hover {
@@ -232,3 +245,30 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
   }
 }
 </style>
+
+<script>
+  // Manejar la carga de imágenes
+  document.addEventListener('DOMContentLoaded', () => {
+    const tourImages = document.querySelectorAll('.tour-image');
+
+    tourImages.forEach(img => {
+      if (img.complete) {
+        // Si la imagen ya está cargada (desde caché)
+        img.classList.add('loaded');
+        const skeleton = img.previousElementSibling;
+        if (skeleton && skeleton.classList.contains('image-skeleton')) {
+          skeleton.style.display = 'none';
+        }
+      } else {
+        // Cuando la imagen termine de cargar
+        img.addEventListener('load', function() {
+          this.classList.add('loaded');
+          const skeleton = this.previousElementSibling;
+          if (skeleton && skeleton.classList.contains('image-skeleton')) {
+            skeleton.style.display = 'none';
+          }
+        });
+      }
+    });
+  });
+</script>

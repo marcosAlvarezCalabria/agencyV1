@@ -1,0 +1,229 @@
+---
+import fs from 'fs';
+import path from 'path';
+
+interface Props {
+  tourSlug: string;
+  tourName: string;
+}
+
+const { tourSlug, tourName } = Astro.props;
+
+// Cargar el archivo gallery.json de la carpeta del tour
+let images: any[] = [];
+const galleryFilePath = path.join(process.cwd(), 'public', 'assets', 'images', 'tours', tourSlug, 'gallery.json');
+
+try {
+  if (fs.existsSync(galleryFilePath)) {
+    const galleryData = JSON.parse(fs.readFileSync(galleryFilePath, 'utf-8'));
+    images = galleryData.map((img: any) => ({
+      url: `/assets/images/tours/${tourSlug}/${img.filename}`,
+      photographer: img.photographer,
+      photographerUrl: img.photographerUrl,
+      alt: img.alt || `${tourName} - ${img.filename}`,
+    }));
+  }
+} catch (error) {
+  console.warn(`No se encontró o no se pudo leer gallery.json para ${tourSlug}:`, error);
+}
+
+if (images.length === 0) {
+  return null;
+}
+---
+
+<div class="tour-gallery-slider mb-8">
+  <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center" style="color: var(--earth-600);">
+    📸 Galería de Fotos
+  </h3>
+
+  <!-- Slider Principal -->
+  <div class="gallery-container" style="max-width: 896px; margin: 0 auto;">
+    <div class="swiper gallery-main mb-4">
+      <div class="swiper-wrapper">
+        {images.map((image) => (
+          <div class="swiper-slide">
+            <div class="relative aspect-video md:h-[500px] bg-gray-100 rounded-xl overflow-hidden">
+              <img
+                src={image.url}
+                alt={image.alt}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              {image.photographer && (
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                  <p class="text-white text-sm">
+                    Photo by {image.photographerUrl ? (
+                      <a
+                        href={image.photographerUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="underline hover:text-blue-300 transition-colors"
+                      >
+                        {image.photographer}
+                      </a>
+                    ) : (
+                      <span>{image.photographer}</span>
+                    )}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navegación -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+      <!-- Paginación -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Miniaturas -->
+    <div class="swiper gallery-thumbs">
+      <div class="swiper-wrapper">
+        {images.map((image) => (
+          <div class="swiper-slide">
+            <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:ring-2 hover:ring-offset-2" style="--tw-ring-color: var(--primary-500);">
+              <img
+                src={image.url}
+                alt={image.alt}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Thumbs, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  import 'swiper/css/thumbs';
+
+  // Slider de miniaturas
+  const thumbsSwiper = new Swiper('.gallery-thumbs', {
+    modules: [Thumbs],
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      640: {
+        slidesPerView: 5,
+      },
+      768: {
+        slidesPerView: 6,
+      },
+      1024: {
+        slidesPerView: 7,
+      },
+    },
+  });
+
+  // Slider principal
+  const mainSwiper = new Swiper('.gallery-main', {
+    modules: [Navigation, Pagination, Thumbs, Autoplay],
+    spaceBetween: 0,
+    slidesPerView: 1,
+    centeredSlides: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction',
+    },
+    thumbs: {
+      swiper: thumbsSwiper,
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
+</script>
+
+<style>
+  .gallery-container {
+    max-width: 100%;
+  }
+
+  .gallery-main {
+    position: relative;
+    width: 100%;
+  }
+
+  .gallery-main .swiper-wrapper {
+    align-items: center;
+  }
+
+  .gallery-main .swiper-slide {
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    width: 100% !important;
+  }
+
+  .gallery-main .swiper-slide > div {
+    width: 100%;
+  }
+
+  .gallery-main .swiper-slide-active {
+    opacity: 1;
+  }
+
+  .gallery-thumbs .swiper-slide {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+    ring-width: 2px;
+    --tw-ring-color: var(--primary-500);
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 20px;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .swiper-pagination {
+    bottom: 10px !important;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 500;
+  }
+</style>

@@ -3,7 +3,6 @@ import "../styles/global.css";
 import "../styles/skeleton-loader.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
 import { useTranslations } from "../i18n/utils.js";
 
 // Recibe lang y seo como props desde la página
@@ -21,33 +20,12 @@ const t = useTranslations(lang);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     {seo.hreflangs && seo.hreflangs.map(h => <link rel="alternate" hreflang={h.lang} href={h.url} />)}
   </head>
-  <body style="background-color: var(--bg-primary); color: var(--text-primary);">
+  <body style="background-color: white; color: var(--text-primary);">
     <Header lang={lang} t={t} />
     <main class="pt-16">
       <slot />
     </main>
     <Footer />
-    <FloatingWhatsApp />
-
-    <!-- Botón para volver arriba -->
-    <a
-      id="scrollToTopBtn"
-      href="#"
-      class="fixed bottom-4 right-4 z-50 hidden h-8 w-8 items-center justify-center rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
-      style="
-        background-color: var(--primary-500);
-        color: var(--text-inverse);
-        box-shadow: var(--shadow-primary);
-        focus-ring-color: var(--primary-500);
-      "
-      onmouseover="this.style.backgroundColor = 'var(--secondary-800)'; this.style.color = 'var(--primary-500)';"
-      onmouseout="this.style.backgroundColor = 'var(--primary-500)'; this.style.color = 'var(--text-inverse)';"
-      aria-label="Volver al inicio"
-    >
-      <span class="material-symbols-outlined text-xl">
-        keyboard_arrow_up
-      </span>
-    </a>
 
     <!-- SKELETON MANAGER SCRIPT -->
     <script is:inline>
@@ -354,26 +332,6 @@ const t = useTranslations(lang);
       // Auto-detectar skeletons cuando el DOM esté listo
       document.addEventListener('DOMContentLoaded', () => {
         window.SkeletonManager.autoDetectSkeletons();
-        
-        // Código existente del scroll button
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-        if (scrollToTopBtn) {
-          window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-              scrollToTopBtn.classList.remove('hidden');
-              scrollToTopBtn.classList.add('flex');
-            } else {
-              scrollToTopBtn.classList.remove('flex');
-              scrollToTopBtn.classList.add('hidden');
-            }
-          });
-
-          scrollToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-        }
       });
     </script>
   </body>

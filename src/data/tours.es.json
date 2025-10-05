@@ -3,7 +3,11 @@
     "name": "City Tour Cusco",
     "slug": "city-tour-cusco",
     "duration": "1 día (5 horas)",
-    "description": "Explora los principales atractivos arqueológicos y religiosos de Cusco y sus alrededores en un recorrido de medio día, visitando el Templo del Sol (Qorikancha) y las impresionantes ruinas incas de Sacsayhuamán, Qenqo, Pucapucara y Tambomachay.",
+    "description":"Descubra la magia de la antigua capital del Imperio Inca en nuestro <strong>City Tour</strong> de medio día (aprox. 5 horas), ideal para aclimatarse. Este recorrido esencial combina el legado inca y colonial, visitando el <strong>Templo del Sol (Qorikancha)</strong>, donde la perfección de la ingeniería inca se fusiona con la arquitectura española. En los alrededores, explorará las ruinas monumentales: <strong>Sacsayhuamán</strong>, con sus colosales muros de piedra; el centro ceremonial <strong>Qenqo</strong>; el puesto de vigilancia <strong>Pucapucara</strong>; y el <strong>Templo del Agua (Tambomachay)</strong>, famoso por sus impresionantes fuentes hidráulicas. Un tour fundamental para comprender la historia de Cusco."
+
+
+,
+
     "price": 50,
     "type": "Tour Grupal",
     "difficulty": "Fácil",
@@ -129,45 +133,8 @@
       "Machu Picchu 1D",
       "Laguna Humantay"
     ],
-    "image": "/assets/images/tours/city_tour_cusco/kieran-proctor-MmqS-XUsfTY-unsplash.webp",
-    "images": [
-      {
-        "url": "/assets/images/tours/city_tour_cusco/adrian-dascal-NDVI15vYJKI-unsplash.webp",
-        "photographer": "Adrian Dascal",
-        "photographerUrl": "https://unsplash.com/@dascal",
-        "alt": "City Tour Cusco - Vista de Sacsayhuamán"
-      },
-      {
-        "url": "/assets/images/tours/city_tour_cusco/alexander-schimmeck-MraFXV3v7Ts-unsplash.webp",
-        "photographer": "Alexander Schimmeck",
-        "photographerUrl": "https://unsplash.com/@alschim",
-        "alt": "City Tour Cusco - Arquitectura colonial"
-      },
-      {
-        "url": "/assets/images/tours/city_tour_cusco/andy-salazar-wbk1_A2vddQ-unsplash.webp",
-        "photographer": "Andy Salazar",
-        "photographerUrl": "https://unsplash.com/@andysalazar",
-        "alt": "City Tour Cusco - Plaza principal"
-      },
-      {
-        "url": "/assets/images/tours/city_tour_cusco/deb-dowd-kBRjkENt2GE-unsplash.webp",
-        "photographer": "Deb Dowd",
-        "photographerUrl": "https://unsplash.com/@debdowd",
-        "alt": "City Tour Cusco - Ruinas incas"
-      },
-      {
-        "url": "/assets/images/tours/city_tour_cusco/isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp",
-        "photographer": "Isaac Clinton Suca Fuentes",
-        "photographerUrl": "https://unsplash.com/@isaacfuentess",
-        "alt": "City Tour Cusco - Vista panorámica"
-      },
-      {
-        "url": "/assets/images/tours/city_tour_cusco/isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp",
-        "photographer": "Isaac Clinton Suca Fuentes",
-        "photographerUrl": "https://unsplash.com/@isaacfuentess",
-        "alt": "City Tour Cusco - Atardecer en Cusco"
-      }
-    ]
+    "image": "/assets/images/tours/city-tour-cusco/kieran-proctor-MmqS-XUsfTY-unsplash.webp",
+    "images": []
   },
   {
     "name": "Valle Sagrado VIP",
