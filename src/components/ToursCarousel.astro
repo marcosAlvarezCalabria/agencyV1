@@ -177,22 +177,26 @@ const { tours, lang, t } = Astro.props;
       spaceBetween: 16,
       loop: false,
 
-      // Configuración de gestos táctiles mejorada
-      touchRatio: 1,
-      touchAngle: 45,
-      threshold: 10,
-      longSwipes: true,
-      longSwipesRatio: 0.5,
-      longSwipesMs: 300,
-      followFinger: true,
-      allowTouchMove: true,
+      // Configuración MUY sensible para deslizar fácilmente
+      touchRatio: 1.2,              // Más sensible al tacto
+      touchAngle: 45,               // Ángulo para swipe horizontal
+      threshold: 5,                 // SOLO 5px para activar el swipe (MUY sensible)
+      longSwipes: false,            // Desactivar swipes largos
+      shortSwipes: true,            // Activar swipes cortos
+      longSwipesRatio: 0.3,         // 30% de la slide para cambiar (más fácil)
+      longSwipesMs: 150,            // Reducido a 150ms (más rápido)
+      followFinger: true,           // Seguir el dedo
+      allowTouchMove: true,         // Permitir movimiento
       touchMoveStopPropagation: false,
       simulateTouch: true,
-      shortSwipes: true,
+      touchStartPreventDefault: false,
+      touchStartForcePreventDefault: false,
+      passiveListeners: true,
 
-      // Resistencia al final del slider
+      // Velocidad y resistencia
+      speed: 300,                   // Transición rápida (300ms)
       resistance: true,
-      resistanceRatio: 0.85,
+      resistanceRatio: 0.5,         // Menos resistencia (más suave)
 
       breakpoints: {
         640: {
@@ -250,6 +254,25 @@ const { tours, lang, t } = Astro.props;
       // En desktop, mostrar siempre
       nextBtn?.classList.remove('opacity-0', 'translate-y-4');
       prevBtn?.classList.remove('opacity-0', 'translate-y-4');
+    }
+
+    // Debug opcional (puedes comentar esto después de probar)
+    if (window.innerWidth < 768) {
+      swiper.on('touchStart', () => {
+        console.log('🖐️ Touch Start - Iniciando swipe');
+      });
+
+      swiper.on('touchMove', (swiper, event) => {
+        console.log('👉 Touch Move - Deslizando...');
+      });
+
+      swiper.on('touchEnd', () => {
+        console.log('✅ Touch End - Swipe terminado');
+      });
+
+      swiper.on('slideChange', () => {
+        console.log('🔄 Slide cambiado a:', swiper.activeIndex + 1);
+      });
     }
   });
 </script>

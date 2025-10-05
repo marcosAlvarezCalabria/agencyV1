@@ -293,8 +293,8 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
         const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
 
-        // Detectar si hubo movimiento significativo
-        if (deltaX > 5 || deltaY > 5) {
+        // Detectar CUALQUIER movimiento (muy sensible)
+        if (deltaX > 3 || deltaY > 3) {
           hasMoved = true;
         }
       }, { passive: true });
@@ -308,13 +308,11 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
         const deltaY = Math.abs(touchEndY - touchStartY);
         const deltaTime = touchEndTime - touchStartTime;
 
-        // SOLO navegar si:
-        // 1. NO hubo movimiento durante touchmove
-        // 2. El movimiento total fue mínimo (< 10px)
-        // 3. El tiempo fue corto (< 300ms)
-        // 4. Si está en Swiper, el movimiento horizontal debe ser casi nulo (< 5px)
-        const maxDelta = isInsideSwiper ? 5 : 10;
-        const isTap = !hasMoved && deltaX < maxDelta && deltaY < maxDelta && deltaTime < 300;
+        // SOLO navegar si es una PULSACIÓN pura (sin movimiento)
+        // Si está en Swiper: movimiento < 3px
+        // Si NO está en Swiper: movimiento < 8px
+        const maxDelta = isInsideSwiper ? 3 : 8;
+        const isTap = !hasMoved && deltaX < maxDelta && deltaY < maxDelta && deltaTime < 400;
 
         if (isTap) {
           // No hacer nada si se clickeó en el botón de WhatsApp
