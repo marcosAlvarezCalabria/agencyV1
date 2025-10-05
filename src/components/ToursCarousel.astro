@@ -189,14 +189,15 @@ const { tours, lang, t } = Astro.props;
           centeredSlides: false,
         },
       },
-      // Configuración optimizada para móvil - Swipe más fácil
-      touchRatio: 1,
-      touchAngle: 45,
-      threshold: 5, // Reducido de 15 a 5 - más sensible al swipe
-      shortSwipes: true, // Habilitado para permitir swipes rápidos
+      // Configuración optimizada para móvil - Swipe MUY fácil
+      touchRatio: 1.5, // Aumentado para más sensibilidad
+      touchAngle: 60, // Ángulo más amplio
+      threshold: 3, // Muy sensible - casi cualquier movimiento activa swipe
+      shortSwipes: true,
       longSwipes: true,
-      longSwipesRatio: 0.3, // Reducido de 0.5 a 0.3 - necesita menos distancia
-      longSwipesMs: 200, // Reducido de 300 a 200ms
+      longSwipesRatio: 0.2, // Solo necesita 20% de distancia
+      longSwipesMs: 150, // Muy rápido
+      speed: 400, // Velocidad de transición
       followFinger: true,
       allowTouchMove: true,
       touchStartPreventDefault: false,
@@ -204,7 +205,7 @@ const { tours, lang, t } = Astro.props;
       touchMoveStopPropagation: false,
       passiveListeners: true,
       resistance: true,
-      resistanceRatio: 0.85,
+      resistanceRatio: 0.5, // Menos resistencia
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
