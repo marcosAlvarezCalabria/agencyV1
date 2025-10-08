@@ -89,45 +89,26 @@ const {
     scrollBtn?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+  </script>
 
-    // Efecto parallax optimizado
+  <script>
+    import simpleParallax from 'simple-parallax-js';
+
+    // Efecto parallax con simpleParallax
     const parallaxImg = document.querySelector('.parallax-img');
     if (parallaxImg) {
-      let lastScrollY = 0;
-      let ticking = false;
-
-      const updateParallax = () => {
-        const scrollY = window.scrollY;
-        const heroSection = parallaxImg.parentElement;
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-
-        // Solo aplicar parallax si el hero está visible
-        if (scrollY < heroBottom) {
-          const offset = scrollY * 0.3; // Velocidad del parallax (0.3 = 30% de la velocidad de scroll)
-          parallaxImg.style.transform = `translate3d(0, ${offset}px, 0)`;
-        }
-
-        ticking = false;
-      };
-
-      const onScroll = () => {
-        lastScrollY = window.scrollY;
-
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      };
-
-      window.addEventListener('scroll', onScroll, { passive: true });
+      new simpleParallax(parallaxImg, {
+        scale: 1.3,
+        delay: 0.6,
+        transition: 'cubic-bezier(0,0,0,1)'
+      });
     }
-
   </script>
 
   <main class="min-h-screen bg-white">
     <!-- Hero Section -->
     <section class="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-      <div class="parallax-img absolute inset-0 h-[120%] top-[-10%]" style={`background-image: url('${image}'); background-size: cover; background-position: center;`}></div>
+      <img src={image} alt={name} class="parallax-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
         <div class="max-w-7xl mx-auto">
