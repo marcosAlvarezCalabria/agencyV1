@@ -89,12 +89,22 @@ const {
     scrollBtn?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Efecto parallax suave
+    const parallaxBg = document.querySelector('.parallax-bg');
+    if (parallaxBg) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const rate = scrolled * 0.5;
+        parallaxBg.style.transform = `translate3d(0, ${rate}px, 0)`;
+      });
+    }
   </script>
 
   <main class="min-h-screen bg-white">
     <!-- Hero Section with Parallax -->
     <section class="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-      <div class="absolute inset-0" style={`background-image: url('${image}'); background-size: cover; background-position: center;`}></div>
+      <div class="parallax-bg absolute inset-0 will-change-transform" style={`background-image: url('${image}'); background-size: cover; background-position: center;`}></div>
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
         <div class="max-w-7xl mx-auto">
