@@ -48,11 +48,11 @@ if (images.length === 0) {
               <div class="gallery-skeleton absolute inset-0"></div>
 
               <img
-                data-src={image.url}
+                src={image.url}
                 alt={image.alt}
-                class="swiper-lazy w-full h-full object-cover"
+                class="w-full h-full object-cover"
+                loading={index === 0 ? "eager" : "lazy"}
               />
-              <div class="swiper-lazy-preloader"></div>
               {image.photographer && (
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                   <p class="text-white text-sm">
@@ -91,11 +91,11 @@ if (images.length === 0) {
           <div class="swiper-slide">
             <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 hover:ring-2 hover:ring-offset-2" style="--tw-ring-color: var(--primary-500);">
               <img
-                data-src={image.url}
+                src={image.url}
                 alt={image.alt}
-                class="swiper-lazy w-full h-full object-cover"
+                class="w-full h-full object-cover"
+                loading="lazy"
               />
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             </div>
           </div>
         ))}
@@ -106,24 +106,19 @@ if (images.length === 0) {
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Thumbs, Lazy } from 'swiper/modules';
+  import { Navigation, Pagination, Thumbs } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
   import 'swiper/css/thumbs';
-  import 'swiper/css/lazy';
 
   // Slider de miniaturas
   const thumbsSwiper = new Swiper('.gallery-thumbs', {
-    modules: [Thumbs, Lazy],
+    modules: [Thumbs],
     spaceBetween: 10,
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 1,
-    },
     breakpoints: {
       640: {
         slidesPerView: 5,
@@ -139,14 +134,10 @@ if (images.length === 0) {
 
   // Slider principal
   const mainSwiper = new Swiper('.gallery-main', {
-    modules: [Navigation, Pagination, Thumbs, Lazy],
+    modules: [Navigation, Pagination, Thumbs],
     spaceBetween: 0,
     slidesPerView: 1,
     centeredSlides: false,
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 1,
-    },
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -159,6 +150,17 @@ if (images.length === 0) {
       swiper: thumbsSwiper,
     },
     loop: false,
+  });
+
+  // Ocultar skeleton cuando las imágenes carguen
+  document.querySelectorAll('.gallery-main img').forEach(img => {
+    if (img.complete) {
+      img.parentElement?.querySelector('.gallery-skeleton')?.remove();
+    } else {
+      img.addEventListener('load', () => {
+        img.parentElement?.querySelector('.gallery-skeleton')?.remove();
+      });
+    }
   });
 </script>
 
