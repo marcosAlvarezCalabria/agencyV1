@@ -90,41 +90,12 @@ const {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Parallax suave y más sutil
-    const heroImg = document.querySelector('.hero-parallax-img');
-    const heroSection = document.querySelector('.hero-parallax-section');
-
-    if (heroImg && heroSection) {
-      let ticking = false;
-
-      const updateParallax = () => {
-        const scrollY = window.scrollY;
-        const sectionTop = heroSection.offsetTop;
-        const sectionHeight = heroSection.offsetHeight;
-
-        // Solo aplicar parallax si estamos en la sección hero
-        if (scrollY < sectionTop + sectionHeight) {
-          // Movimiento muy sutil (20% de la velocidad del scroll)
-          const parallaxValue = scrollY * 0.2;
-          heroImg.style.transform = `translate3d(0, ${parallaxValue}px, 0) scale(1.1)`;
-        }
-
-        ticking = false;
-      };
-
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }, { passive: true });
-    }
   </script>
 
   <main class="min-h-screen bg-white">
     <!-- Hero Section -->
     <section class="hero-parallax-section relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-      <img src={image} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" style="will-change: transform; transform: scale(1.1);" />
+      <img src={image} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
         <div class="max-w-7xl mx-auto">
