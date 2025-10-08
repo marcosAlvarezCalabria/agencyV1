@@ -107,15 +107,13 @@ const {
     <!-- Hero Section with Parallax -->
     <section class="hero-section relative h-[70vh] w-full overflow-hidden bg-black">
       <!-- Imagen con efecto parallax -->
-      <div class="absolute inset-0 w-full h-[120%]">
-        <img
-          src={image}
-          alt={name}
-          data-speed="0.5"
-          class="parallax-layer w-full h-full object-cover"
-          style="will-change: transform;"
-        />
-      </div>
+      <img
+        src={image}
+        alt={name}
+        data-speed="0.3"
+        class="parallax-layer absolute top-[-10%] left-0 w-full h-[120%] object-cover"
+        style="will-change: transform;"
+      />
 
       <!-- Overlay gradiente -->
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none z-10"></div>
