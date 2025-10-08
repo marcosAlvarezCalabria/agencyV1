@@ -89,11 +89,24 @@ const {
     scrollBtn?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Parallax con capas
+    const parallaxLayers = document.querySelectorAll('.parallax-layer');
+    if (parallaxLayers.length > 0) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        parallaxLayers.forEach(layer => {
+          const speed = parseFloat(layer.getAttribute('data-speed') || '0');
+          layer.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+      }, { passive: true });
+    }
   </script>
 
   <main class="min-h-screen bg-white">
     <!-- Hero Section -->
-    <section class="hero-parallax relative h-[60vh] md:h-[70vh] w-full overflow-hidden" style={`background-image: url('${image}'); background-size: cover; background-position: center; background-attachment: fixed;`}>
+    <section class="hero-section relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black">
+      <img src={image} alt={name} data-speed="0.3" class="absolute inset-0 w-full h-full object-cover parallax-layer" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-20">
         <div class="max-w-7xl mx-auto">
