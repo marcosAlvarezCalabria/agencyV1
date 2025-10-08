@@ -30,7 +30,7 @@ const t = useTranslations(lang);
     <meta property="og:url" content={`https://www.peruinkastravel.com${Astro.url.pathname}`} />
     <meta property="og:title" content={seo.ogTitle || seo.title || 'Peru Inkas Travel | Tours en Cusco'} />
     <meta property="og:description" content={seo.ogDescription || seo.description || 'Descubre la magia de Cusco y Machu Picchu con nosotros'} />
-    <meta property="og:image" content={seo.ogImage || 'https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.png'} />
+    <meta property="og:image" content={seo.ogImage || 'https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.webp'} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={lang === 'es' ? 'es_PE' : 'en_US'} />
@@ -41,14 +41,14 @@ const t = useTranslations(lang);
     <meta name="twitter:url" content={`https://www.peruinkastravel.com${Astro.url.pathname}`} />
     <meta name="twitter:title" content={seo.twitterTitle || seo.title || 'Peru Inkas Travel'} />
     <meta name="twitter:description" content={seo.twitterDescription || seo.description || 'Tours en Cusco y Machu Picchu'} />
-    <meta name="twitter:image" content={seo.twitterImage || seo.ogImage || 'https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.png'} />
+    <meta name="twitter:image" content={seo.twitterImage || seo.ogImage || 'https://www.peruinkastravel.com/assets/images/logos/logoInkasTravel.webp'} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="/assets/images/logos/logo1.jpg" />
-    <link rel="apple-touch-icon" href="/assets/images/logos/logoInkasTravel.png" />
+    <link rel="icon" type="image/webp" href="/assets/images/logos/logo1.webp" />
+    <link rel="apple-touch-icon" href="/assets/images/logos/logoInkasTravel.webp" />
 
-    <!-- Preload crítico: Logo -->
-    <link rel="preload" as="image" href="/assets/images/logos/logoInkasTravel.png" type="image/png" />
+    <!-- Preload crítico: Logo WebP -->
+    <link rel="preload" as="image" href="/assets/images/logos/logoInkasTravel.webp" type="image/webp" />
 
     <!-- Preconnect para fuentes externas -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -57,7 +57,9 @@ const t = useTranslations(lang);
     <!-- DNS prefetch para WhatsApp -->
     <link rel="dns-prefetch" href="https://wa.me" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Material Symbols con font-display: swap para mejor performance -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" media="print" onload="this.media='all'" />
 
     <!-- Hreflang para multiidioma -->
     {seo.hreflangs && seo.hreflangs.map(h => <link rel="alternate" hreflang={h.lang} href={`https://www.peruinkastravel.com${h.url}`} />)}

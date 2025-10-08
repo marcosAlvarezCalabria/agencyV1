@@ -105,63 +105,93 @@ if (images.length === 0) {
 </div>
 
 <script>
-  import Swiper from 'swiper';
-  import { Navigation, Pagination, Thumbs } from 'swiper/modules';
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
-  import 'swiper/css/thumbs';
+  // Lazy load Swiper para galería
+  const galleryMain = document.querySelector('.gallery-main');
+  if (!galleryMain) {
+    console.error('Gallery main not found');
+  }
 
-  // Slider de miniaturas
-  const thumbsSwiper = new Swiper('.gallery-thumbs', {
-    modules: [Thumbs],
-    spaceBetween: 10,
-    slidesPerView: 4,
-    freeMode: true,
-    watchSlidesProgress: true,
-    breakpoints: {
-      640: {
-        slidesPerView: 5,
-      },
-      768: {
-        slidesPerView: 6,
-      },
-      1024: {
-        slidesPerView: 7,
-      },
-    },
-  });
+  let galleryLoaded = false;
 
-  // Slider principal
-  const mainSwiper = new Swiper('.gallery-main', {
-    modules: [Navigation, Pagination, Thumbs],
-    spaceBetween: 0,
-    slidesPerView: 1,
-    centeredSlides: false,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'fraction',
-    },
-    thumbs: {
-      swiper: thumbsSwiper,
-    },
-    loop: false,
-  });
+  const initGallery = async () => {
+    if (galleryLoaded) return;
+    galleryLoaded = true;
 
-  // Ocultar skeleton cuando las imágenes carguen
-  document.querySelectorAll('.gallery-main img').forEach(img => {
-    if (img.complete) {
-      img.parentElement?.querySelector('.gallery-skeleton')?.remove();
-    } else {
-      img.addEventListener('load', () => {
-        img.parentElement?.querySelector('.gallery-skeleton')?.remove();
+    try {
+      const [{ default: Swiper }, { Navigation, Pagination, Thumbs }] = await Promise.all([
+        import('swiper'),
+        import('swiper/modules')
+      ]);
+
+      await Promise.all([
+        import('swiper/css'),
+        import('swiper/css/navigation'),
+        import('swiper/css/pagination'),
+        import('swiper/css/thumbs')
+      ]);
+
+      // Slider de miniaturas
+      const thumbsSwiper = new Swiper('.gallery-thumbs', {
+        modules: [Thumbs],
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+          640: { slidesPerView: 5 },
+          768: { slidesPerView: 6 },
+          1024: { slidesPerView: 7 },
+        },
       });
+
+      // Slider principal
+      new Swiper('.gallery-main', {
+        modules: [Navigation, Pagination, Thumbs],
+        spaceBetween: 0,
+        slidesPerView: 1,
+        centeredSlides: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction',
+        },
+        thumbs: {
+          swiper: thumbsSwiper,
+        },
+        loop: false,
+      });
+
+      // Ocultar skeleton cuando las imágenes carguen
+      document.querySelectorAll('.gallery-main img').forEach(img => {
+        if (img.complete) {
+          img.parentElement?.querySelector('.gallery-skeleton')?.remove();
+        } else {
+          img.addEventListener('load', () => {
+            img.parentElement?.querySelector('.gallery-skeleton')?.remove();
+          });
+        }
+      });
+    } catch (error) {
+      console.error('Failed to load gallery:', error);
     }
-  });
+  };
+
+  // Observer para cargar galería cuando esté visible
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initGallery();
+        galleryObserver.disconnect();
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  if (galleryMain) {
+    galleryObserver.observe(galleryMain);
+  }
 </script>
 
 <style>

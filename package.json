@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "gallery:generate": "node scripts/generate-gallery.js",
-    "gallery:all": "node scripts/generate-gallery.js --all"
+    "gallery:all": "node scripts/generate-gallery.js --all",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "optimize:replace": "node scripts/replace-optimized.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
@@ -17,7 +19,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "imagemin": "^9.0.1",
+    "imagemin-webp": "^8.0.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
+    "sharp": "^0.34.4",
+    "tailwindcss": "^4.1.11",
+    "terser": "^5.44.0"
   }
 }

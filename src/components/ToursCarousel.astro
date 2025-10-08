@@ -158,42 +158,73 @@ const { tours, lang, t } = Astro.props;
 </style>
 
 <script>
-  import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
+  // Lazy load Swiper solo cuando el usuario se acerca a la sección
+  const swiperContainer = document.querySelector('.main-swiper') as HTMLElement;
+  if (!swiperContainer) {
+    console.error('Swiper container not found');
+  }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const swiperContainer = document.querySelector('.main-swiper') as HTMLElement;
-    if (!swiperContainer) return;
+  let swiperLoaded = false;
 
-    new Swiper(swiperContainer, {
-      modules: [Navigation, Pagination],
-      slidesPerView: 1.1,
-      centeredSlides: true,
-      spaceBetween: 16,
-      loop: false,
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          centeredSlides: false,
+  const initSwiper = async () => {
+    if (swiperLoaded) return;
+    swiperLoaded = true;
+
+    try {
+      const [{ default: Swiper }, { Navigation, Pagination }] = await Promise.all([
+        import('swiper'),
+        import('swiper/modules')
+      ]);
+
+      await Promise.all([
+        import('swiper/css/navigation'),
+        import('swiper/css/pagination')
+      ]);
+
+      new Swiper(swiperContainer, {
+        modules: [Navigation, Pagination],
+        slidesPerView: 1.1,
+        centeredSlides: true,
+        spaceBetween: 16,
+        loop: false,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            centeredSlides: false,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+            centeredSlides: false,
+          },
         },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-          centeredSlides: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-      },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          dynamicBullets: true,
+        },
+      });
+    } catch (error) {
+      console.error('Failed to load Swiper:', error);
+    }
+  };
+
+  // Observer para cargar Swiper cuando esté cerca del viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initSwiper();
+        observer.disconnect();
+      }
     });
-  });
+  }, { rootMargin: '200px' });
+
+  if (swiperContainer) {
+    observer.observe(swiperContainer);
+  }
 </script>
