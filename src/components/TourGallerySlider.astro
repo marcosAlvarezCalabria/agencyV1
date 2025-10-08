@@ -43,14 +43,14 @@ if (images.length === 0) {
       <div class="swiper-wrapper">
         {images.map((image, index) => (
           <div class="swiper-slide">
-            <div class="relative aspect-video bg-gray-100 rounded-xl overflow-hidden">
+            <div class="relative aspect-video bg-gray-100 rounded-xl overflow-hidden max-h-[600px]">
               <!-- Skeleton loader -->
               <div class="gallery-skeleton absolute inset-0"></div>
 
               <img
                 data-src={image.url}
                 alt={image.alt}
-                class="swiper-lazy w-full h-full object-contain"
+                class="swiper-lazy w-full h-full object-cover"
               />
               <div class="swiper-lazy-preloader"></div>
               {image.photographer && (
@@ -142,15 +142,11 @@ if (images.length === 0) {
     modules: [Navigation, Pagination, Thumbs, Lazy],
     spaceBetween: 0,
     slidesPerView: 1,
-    centeredSlides: true,
+    centeredSlides: false,
     lazy: {
       loadPrevNext: true,
       loadPrevNextAmount: 1,
-      loadOnTransitionStart: true,
-      checkInView: true,
     },
-    preloadImages: false,
-    watchSlidesProgress: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
