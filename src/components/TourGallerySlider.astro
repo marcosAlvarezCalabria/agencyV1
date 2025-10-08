@@ -43,14 +43,14 @@ if (images.length === 0) {
       <div class="swiper-wrapper">
         {images.map((image, index) => (
           <div class="swiper-slide">
-            <div class="relative aspect-video md:h-[500px] bg-gray-100 rounded-xl overflow-hidden">
+            <div class="relative aspect-video bg-gray-100 rounded-xl overflow-hidden">
               <!-- Skeleton loader -->
               <div class="gallery-skeleton absolute inset-0"></div>
 
               <img
                 data-src={image.url}
                 alt={image.alt}
-                class="swiper-lazy w-full h-full object-cover"
+                class="swiper-lazy w-full h-full object-contain"
               />
               <div class="swiper-lazy-preloader"></div>
               {image.photographer && (
