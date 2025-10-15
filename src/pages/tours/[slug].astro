@@ -1,5 +1,4 @@
 ---
-// Página dinámica de tour individual
 import Baselayout from '../../layouts/Baselayout.astro';
 import TourGallerySlider from '../../components/TourGallerySlider.astro';
 import { getImageUrl } from '../../utils/cloudinary.js';
@@ -21,15 +20,14 @@ if (!tour) {
 const imagePath = tour.image.replace('/assets/images/tours/', '');
 const [tourSlug, imageName] = imagePath.split('/');
 const cloudinaryImageUrl = getImageUrl(tourSlug, imageName, {
-  width: 800,
-  height: 600,
+  width: 1920,
+  height: 1080,
   crop: 'fill',
   quality: 'auto:best',
   format: 'auto'
 });
 
 // SEO y lang dinámico para el layout
-// Variables auxiliares (NO Astro.props)
 const lang = 'en';
 const seo = {
   title: `${tour.name} | Agencia Cusco`,
@@ -39,11 +37,32 @@ const seo = {
     { lang: 'es', url: `/es/tours/${slug}` }
   ]
 };
+
+const {
+  name,
+  description,
+  duration,
+  price,
+  type,
+  difficulty,
+  availability,
+  days_available,
+  places_to_visit,
+  itinerary,
+  includes,
+  not_included,
+  what_to_bring,
+  price_options,
+  optional_services,
+  discounts,
+  additional_info
+} = tour;
 ---
+
 <Baselayout lang={lang} seo={seo}>
-  <!-- Joystick de navegación flotante -->
+  <!-- Navigation Joystick -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
-    <!-- Botón subir arriba -->
+    <!-- Scroll to top button -->
     <button
       id="scroll-to-top"
       class="flex items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg opacity-0 pointer-events-none"
@@ -55,7 +74,7 @@ const seo = {
       </svg>
     </button>
 
-    <!-- Botón volver atrás -->
+    <!-- Back button -->
     <a
       href="/tours"
       class="flex items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg group"
@@ -87,241 +106,296 @@ const seo = {
     });
   </script>
 
-  <!-- Contenedor principal con fondo blanco -->
-  <div class="min-h-screen bg-white">
-    <section class="container mx-auto px-4 py-8">
-      <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
-        <!-- Imagen del tour -->
-        <img
-          src={cloudinaryImageUrl}
-          alt={tour.name}
-          class="w-full md:w-80 rounded-xl shadow-lg border-2 bg-white"
-          style="border-color: var(--primary-500);"
-          loading="lazy"
-        />
-        
-        <!-- Contenido del tour -->
-        <div class="flex-1">
-          <!-- Galería de fotos -->
-          <TourGallerySlider tourSlug={tour.slug} tourName={tour.name} />
-
-          <!-- Título -->
-          <h1 
-            class="text-3xl md:text-4xl font-extrabold mb-2" 
-            style="color: var(--earth-600);"
-          >
-            {tour.name}
-          </h1>
-          
-          <!-- Precio -->
-          <span 
-            class="inline-block text-white px-3 py-1 rounded-lg font-bold text-lg mb-2" 
-            style="background-color: var(--primary-500);"
-          >
-            ${tour.price}
-          </span>
-          
-          <!-- Descripción -->
-          <p 
-            class="text-lg mb-4" 
-            style="color: var(--text-primary);"
-          >
-            {tour.description}
-          </p>
-          
-          <!-- Duración -->
-          <div class="mb-4">
-            <span 
-              class="font-semibold" 
-              style="color: var(--earth-600);"
-            >
-              Duration:
-            </span> 
-            <span style="color: var(--text-secondary);">{tour.duration}</span>
-          </div>
-          
-          <!-- Tipo y Dificultad -->
-          <div class="mb-4 flex gap-4">
-            {tour.type && (
-              <div>
-                <span class="font-semibold" style="color: var(--earth-600);">Type:</span>
-                <span class="ml-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                  {tour.type}
-                </span>
-              </div>
-            )}
-            {tour.difficulty && (
-              <div>
-                <span class="font-semibold" style="color: var(--earth-600);">Difficulty:</span>
-                <span class={`ml-2 px-3 py-1 rounded-full text-sm font-medium ${
-                  tour.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
-                  tour.difficulty === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-red-100 text-red-800'
-                }`}>
-                  {tour.difficulty}
-                </span>
-              </div>
-            )}
-          </div>
-
-          <!-- Lugares a visitar -->
-          {tour.places_to_visit && tour.places_to_visit.length > 0 && (
-            <div class="mb-4">
-              <span class="font-semibold" style="color: var(--earth-600);">
-                Places to visit:
-              </span>
-              <div class="flex flex-wrap gap-2 mt-2">
-                {tour.places_to_visit.map(place => (
-                  <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm">
-                    📍 {place}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <!-- Incluye -->
-          <div class="mb-4">
-            <span
-              class="font-semibold"
-              style="color: var(--earth-600);"
-            >
-              Includes:
+  <main class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <section class="hero-parallax-section relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+      <img src={cloudinaryImageUrl} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+        <div class="max-w-7xl mx-auto">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{name}</h1>
+          <div class="flex flex-wrap gap-4 text-white/90">
+            <span class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              {duration}
             </span>
-            <ul
-              class="list-disc list-inside mt-2"
-              style="color: var(--text-primary);"
-            >
-              {tour.includes.map(item => <li>✅ {item}</li>)}
-            </ul>
+            <span class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              {type}
+            </span>
+            <span class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              {difficulty}
+            </span>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- No incluye -->
-          {tour.not_included && tour.not_included.length > 0 && (
-            <div class="mb-4">
-              <span class="font-semibold" style="color: var(--earth-600);">
-                Not included:
-              </span>
-              <ul class="list-disc list-inside mt-2" style="color: var(--text-primary);">
-                {tour.not_included.map(item => <li>❌ {item}</li>)}
-              </ul>
-            </div>
-          )}
+    <div class="max-w-7xl mx-auto px-6 pt-16 pb-8 md:px-12">
+      <!-- Price & Booking Section -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="md:col-span-2">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Description</h2>
+          <p class="text-gray-700 text-lg leading-relaxed" set:html={description}></p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-6 h-fit sticky top-6">
+          <div class="text-center mb-6">
+            <p class="text-gray-600 text-sm mb-2">From</p>
+            <p class="text-5xl font-bold text-[#b64926]">${price}</p>
+            <p class="text-gray-500 text-sm mt-1">per person</p>
+          </div>
+          <a
+            href={`https://wa.me/51984302905?text=Hi,%20I'm%20interested%20in%20the%20tour%20${encodeURIComponent(name)}`}
+            target="_blank"
+            class="block w-full bg-[#d2a530] hover:bg-[#b88a2a] text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Book Now
+          </a>
+          <p class="text-center text-gray-500 text-sm mt-4">Available: {days_available}</p>
+        </div>
+      </div>
+    </div>
 
-          <!-- Itinerario detallado -->
-          {tour.itinerary && tour.itinerary.length > 0 && (
-            <div class="mb-6">
-              <h3 class="text-xl font-bold mb-3" style="color: var(--earth-600);">
-                Itinerary:
-              </h3>
-              <div class="space-y-4">
-                {tour.itinerary.map(day => (
-                  <div class="border rounded-lg p-4" style="border-color: var(--earth-200);">
-                    <h4 class="font-semibold text-lg mb-2" style="color: var(--earth-600);">
-                      {day.day}: {day.title}
-                    </h4>
-                    {day.activities && (
-                      <ul class="space-y-1" style="color: var(--text-primary);">
-                        {day.activities.map(activity => (
-                          <li class="flex items-start gap-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span>{activity}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+    <!-- Photo Gallery - Full Width -->
+    <div class="w-full mb-8 flex justify-center">
+      <div class="w-full max-w-7xl px-6 md:px-12">
+        <TourGallerySlider tourSlug={tour.slug} tourName={tour.name} />
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <!-- Tour Details Grid -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <!-- Highlights -->
+        <div class="md:col-span-2 space-y-8">
+          <!-- Places to Visit -->
+          {places_to_visit && places_to_visit.length > 0 && (
+            <section>
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">Places to Visit</h2>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {places_to_visit.map((place) => (
+                  <div class="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+                    <svg class="w-6 h-6 text-[#d2a530] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-gray-700 font-medium">{place}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
-          <!-- Opciones de precio -->
-          {tour.price_options && tour.price_options.length > 0 && (
-            <div class="mb-6">
-              <h3 class="text-xl font-bold mb-3" style="color: var(--earth-600);">
-                Price Options:
-              </h3>
+          <!-- Itinerary -->
+          {itinerary && itinerary.length > 0 && (
+            <section>
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">Itinerary</h2>
+              <div class="space-y-6">
+                {itinerary.map((day) => (
+                  <div class="border-l-4 border-[#d2a530] pl-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{day.day}: {day.title}</h3>
+                    <ul class="space-y-2">
+                      {day.activities.map((activity) => (
+                        <li class="flex items-start gap-3 text-gray-700">
+                          <svg class="w-5 h-5 text-[#d2a530] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                          </svg>
+                          <span>{activity}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <!-- Includes & Not Included -->
+          <section class="grid sm:grid-cols-2 gap-6">
+            {includes && includes.length > 0 && (
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  Includes
+                </h3>
+                <ul class="space-y-2">
+                  {includes.map((item) => (
+                    <li class="flex items-start gap-2 text-gray-700">
+                      <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {not_included && not_included.length > 0 && (
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                  </svg>
+                  Not Included
+                </h3>
+                <ul class="space-y-2">
+                  {not_included.map((item) => (
+                    <li class="flex items-start gap-2 text-gray-700">
+                      <svg class="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+
+          <!-- What to Bring -->
+          {what_to_bring && (
+            <section>
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">What to Bring</h2>
+              <div class="grid sm:grid-cols-3 gap-6">
+                {what_to_bring.documents && what_to_bring.documents.length > 0 && (
+                  <div class="rounded-xl p-5" style="background-color: #fef3e2;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--primary-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                      </svg>
+                      Documents
+                    </h4>
+                    <ul class="space-y-1.5 text-sm text-gray-700">
+                      {what_to_bring.documents.map((item) => <li>• {item}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {what_to_bring.clothing && what_to_bring.clothing.length > 0 && (
+                  <div class="rounded-xl p-5" style="background-color: #f5e6d3;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--earth-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                      </svg>
+                      Clothing
+                    </h4>
+                    <ul class="space-y-1.5 text-sm text-gray-700">
+                      {what_to_bring.clothing.map((item) => <li>• {item}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {what_to_bring.other_items && what_to_bring.other_items.length > 0 && (
+                  <div class="rounded-xl p-5" style="background-color: #e8d5c4;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--earth-500);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                      </svg>
+                      Other Items
+                    </h4>
+                    <ul class="space-y-1.5 text-sm text-gray-700">
+                      {what_to_bring.other_items.map((item) => <li>• {item}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+        </div>
+
+        <!-- Sidebar Info -->
+        <div class="space-y-6">
+          <!-- Discounts -->
+          {discounts && discounts.length > 0 && (
+            <div class="bg-gray-50 rounded-2xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Discounts</h3>
               <div class="space-y-3">
-                {tour.price_options.map(option => (
-                  <div class="border rounded-lg p-4" style="border-color: var(--earth-200);">
-                    <div class="flex justify-between items-start mb-2">
-                      <h4 class="font-semibold" style="color: var(--earth-600);">
-                        {option.option}
-                      </h4>
-                      <span class="font-bold text-lg" style="color: var(--primary-500);">
-                        {option.price}
-                      </span>
+                {discounts.map((discount) => (
+                  <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-1">
+                      <span class="font-medium text-gray-800">{discount.type}</span>
+                      <span class="font-bold text-[#b64926]">{discount.percentage}</span>
                     </div>
-                    <p class="text-sm" style="color: var(--text-secondary);">
-                      {option.description}
-                    </p>
+                    <p class="text-sm text-gray-600">{discount.requirement}</p>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          <!-- Descuentos -->
-          {tour.discounts && tour.discounts.length > 0 && (
-            <div class="mb-6">
-              <h3 class="text-xl font-bold mb-3" style="color: var(--earth-600);">
-                💰 Available Discounts:
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {tour.discounts.map(discount => (
-                  <div class="bg-green-50 border border-green-200 rounded-lg p-3">
-                    <div class="flex justify-between items-center">
-                      <span class="font-medium text-green-800">{discount.type}</span>
-                      <span class="font-bold text-green-900">{discount.percentage}</span>
-                    </div>
-                    <p class="text-sm text-green-700 mt-1">{discount.requirement}</p>
+          <!-- Price Options -->
+          {price_options && price_options.length > 0 && (
+            <div class="bg-gray-50 rounded-2xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Price Options</h3>
+              <div class="space-y-3">
+                {price_options.map((option) => (
+                  <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <p class="font-bold text-gray-900 mb-1">{option.option}</p>
+                    <p class="text-[#b64926] font-bold text-lg mb-2">{option.price}</p>
+                    <p class="text-sm text-gray-600">{option.description}</p>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          <!-- FAQ -->
-          {tour.faq && tour.faq.length > 0 && (
-            <div class="mb-6">
-              <h3 class="text-xl font-bold mb-3" style="color: var(--earth-600);">
-                ❓ Frequently Asked Questions:
-              </h3>
-              <div class="space-y-4">
-                {tour.faq.map(faq => (
-                  <div class="border rounded-lg p-4" style="border-color: var(--earth-200);">
-                    <h4 class="font-semibold mb-2" style="color: var(--earth-600);">
-                      Q: {faq.question}
-                    </h4>
-                    <p style="color: var(--text-primary);">
-                      A: {faq.answer}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <!-- Información adicional -->
-          {tour.additional_info && tour.additional_info.length > 0 && (
-            <div class="mb-6">
-              <h3 class="text-xl font-bold mb-3" style="color: var(--earth-600);">
-                ℹ️ Additional Information:
-              </h3>
-              <ul class="space-y-2" style="color: var(--text-primary);">
-                {tour.additional_info.map(info => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-blue-600 mt-1">•</span>
-                    <span>{info}</span>
+          <!-- Optional Services -->
+          {optional_services && optional_services.length > 0 && (
+            <div class="bg-gray-50 rounded-2xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Optional Services</h3>
+              <ul class="space-y-3">
+                {optional_services.map((service) => (
+                  <li class="flex justify-between items-start text-sm">
+                    <span class="text-gray-700">{service.service}</span>
+                    <span class="font-medium text-gray-900 ml-2">{service.price}</span>
                   </li>
                 ))}
               </ul>
             </div>
           )}
 
+          <!-- Additional Info -->
+          {additional_info && additional_info.length > 0 && (
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+                Additional Information
+              </h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                {additional_info.map((info) => <li>• {info}</li>)}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-16" style="background: linear-gradient(135deg, #e8d5a8 0%, #f5e6d3 50%, #ead9b8 100%);">
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--earth-800);">Ready for the adventure?</h2>
+        <p class="text-lg mb-8" style="color: var(--earth-700);">Book now and live an unforgettable experience</p>
+        <a
+          href={`https://wa.me/51984302905?text=Hi,%20I'm%20interested%20in%20the%20tour%20${encodeURIComponent(name)}`}
+          target="_blank"
+          class="inline-block font-bold py-4 px-10 rounded-xl transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+          style="background-color: var(--earth-700); color: white;"
+          onmouseover="this.style.backgroundColor = 'var(--earth-800)';"
+          onmouseout="this.style.backgroundColor = 'var(--earth-700)';"
+        >
+          Contact via WhatsApp
+        </a>
+      </div>
     </section>
-  </div>
+  </main>
 </Baselayout>
