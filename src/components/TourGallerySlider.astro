@@ -11,7 +11,7 @@ interface Props {
 const { tourSlug, tourName } = Astro.props;
 
 // Convertir slug con guiones a guiones bajos para coincidir con la estructura de carpetas
-// Ejemplo: "laguna-humantay" -> "laguna_humantay"
+// Todas las carpetas de tours usan guiones bajos: city_tour_cusco, laguna_humantay, etc.
 const folderSlug = tourSlug.replace(/-/g, '_');
 
 // Cargar el archivo gallery.json de la carpeta del tour

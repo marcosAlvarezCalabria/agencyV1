@@ -2,10 +2,10 @@
   "images": {
     "success": [
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\aventura_montañas_card.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760523574/AGENCY-V1/images/aventura_montanas_3d2n/ah14zqcop4gzd4veowac.jpg",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\aventura_montanas_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760534649/AGENCY-V1/images/aventura_montanas_3d2n/aventura_montanas_card.jpg",
         "tourFolder": "aventura_montanas_3d2n",
-        "fileName": "aventura_montañas_card.webp"
+        "fileName": "aventura_montanas_card.webp"
       },
       {
         "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\laguna_humantay_card.webp",
@@ -21,74 +21,74 @@
       },
       {
         "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\waqrapukara_card.jpeg",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760523578/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535619/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
         "tourFolder": "aventura_montanas_3d2n",
         "fileName": "waqrapukara_card.jpeg"
       },
       {
         "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\waqrapukara_card.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760523579/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535621/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
         "tourFolder": "aventura_montanas_3d2n",
         "fileName": "waqrapukara_card.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\adrian-dascal-NDVI15vYJKI-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513247/AGENCY-V1/images/city-tour-cusco/adrian-dascal-NDVI15vYJKI-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\adrian-dascal-NDVI15vYJKI-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535622/AGENCY-V1/images/city_tour_cusco/adrian-dascal-NDVI15vYJKI-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "adrian-dascal-NDVI15vYJKI-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\alexander-schimmeck-MraFXV3v7Ts-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513249/AGENCY-V1/images/city-tour-cusco/alexander-schimmeck-MraFXV3v7Ts-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\alexander-schimmeck-MraFXV3v7Ts-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535624/AGENCY-V1/images/city_tour_cusco/alexander-schimmeck-MraFXV3v7Ts-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "alexander-schimmeck-MraFXV3v7Ts-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\andy-salazar-wbk1_A2vddQ-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513250/AGENCY-V1/images/city-tour-cusco/andy-salazar-wbk1_A2vddQ-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\andy-salazar-wbk1_A2vddQ-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535627/AGENCY-V1/images/city_tour_cusco/andy-salazar-wbk1_A2vddQ-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "andy-salazar-wbk1_A2vddQ-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\deb-dowd-kBRjkENt2GE-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513252/AGENCY-V1/images/city-tour-cusco/deb-dowd-kBRjkENt2GE-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\deb-dowd-kBRjkENt2GE-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535629/AGENCY-V1/images/city_tour_cusco/deb-dowd-kBRjkENt2GE-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "deb-dowd-kBRjkENt2GE-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\felipe-mendoza-TsdB-pTeFv8-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513253/AGENCY-V1/images/city-tour-cusco/felipe-mendoza-TsdB-pTeFv8-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\felipe-mendoza-TsdB-pTeFv8-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535631/AGENCY-V1/images/city_tour_cusco/felipe-mendoza-TsdB-pTeFv8-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "felipe-mendoza-TsdB-pTeFv8-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513255/AGENCY-V1/images/city-tour-cusco/isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535633/AGENCY-V1/images/city_tour_cusco/isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513256/AGENCY-V1/images/city-tour-cusco/isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535635/AGENCY-V1/images/city_tour_cusco/isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\kieran-proctor-MmqS-XUsfTY-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513258/AGENCY-V1/images/city-tour-cusco/kieran-proctor-MmqS-XUsfTY-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\kieran-proctor-MmqS-XUsfTY-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535637/AGENCY-V1/images/city_tour_cusco/kieran-proctor-MmqS-XUsfTY-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "kieran-proctor-MmqS-XUsfTY-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\michael-baron-YQSXw2YVqyU-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513259/AGENCY-V1/images/city-tour-cusco/michael-baron-YQSXw2YVqyU-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\michael-baron-YQSXw2YVqyU-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535639/AGENCY-V1/images/city_tour_cusco/michael-baron-YQSXw2YVqyU-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "michael-baron-YQSXw2YVqyU-unsplash.webp"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\ruben-hanssen-j2RL1N9WRTE-unsplash.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513261/AGENCY-V1/images/city-tour-cusco/ruben-hanssen-j2RL1N9WRTE-unsplash.jpg",
-        "tourFolder": "city-tour-cusco",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city_tour_cusco\\ruben-hanssen-j2RL1N9WRTE-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760535641/AGENCY-V1/images/city_tour_cusco/ruben-hanssen-j2RL1N9WRTE-unsplash.jpg",
+        "tourFolder": "city_tour_cusco",
         "fileName": "ruben-hanssen-j2RL1N9WRTE-unsplash.webp"
       },
       {
@@ -188,10 +188,10 @@
         "fileName": "montana_de_colores_7.jpg"
       },
       {
-        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montaña_de_colores.webp",
-        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760523631/AGENCY-V1/images/montana_de_colores/zj7bdf1pulwlgaq3zyyc.jpg",
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760534715/AGENCY-V1/images/montana_de_colores/montana_de_colores_card.jpg",
         "tourFolder": "montana_de_colores",
-        "fileName": "montaña_de_colores.webp"
+        "fileName": "montana_de_colores_card.webp"
       },
       {
         "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\puente_inca_qeswachaka\\Puente_Inca_qeswachaka_card.webp",

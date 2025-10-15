@@ -133,7 +133,7 @@
       "Machu Picchu 1D",
       "Laguna Humantay"
     ],
-    "image": "/assets/images/tours/city-tour-cusco/kieran-proctor-MmqS-XUsfTY-unsplash.webp",
+    "image": "/assets/images/tours/city_tour_cusco/kieran-proctor-MmqS-XUsfTY-unsplash.webp",
     "images": []
   },
   {
@@ -592,7 +592,7 @@
       "Montaña de Colores (1 día)",
       "7 Lagunas Ausangate (1 día)"
     ],
-    "image": "/assets/images/tours/aventura_montanas_3d2n/aventura_montañas_card.webp"
+    "image": "/assets/images/tours/aventura_montanas_3d2n/aventura_montanas_card.webp"
   },
   {
     "name": "Full Adrenalina (Rafting + Cuatrimotos + Paseo a Caballos)",
@@ -874,7 +874,7 @@
       "7 Lagunas Ausangate",
       "Palcoyo"
     ],
-    "image": "/assets/images/tours/montana_de_colores/montaña_de_colores.webp"
+    "image": "/assets/images/tours/montana_de_colores/montana_de_colores_card.webp"
   },
   {
     "name": "Puente Inca Q’eswachaka",
