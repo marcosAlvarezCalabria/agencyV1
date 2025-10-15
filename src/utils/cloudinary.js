@@ -3,7 +3,7 @@
  * Generates optimized image and video URLs from Cloudinary CDN
  */
 
-const CLOUDINARY_CLOUD_NAME = import.meta.env.CLOUDINARY_CLOUD_NAME || 'your_cloud_name_here';
+const CLOUDINARY_CLOUD_NAME = import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME || 'your_cloud_name_here';
 const BASE_IMAGE_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload`;
 const BASE_VIDEO_URL = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/video/upload`;
 
