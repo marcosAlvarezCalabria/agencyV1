@@ -1,6 +1,7 @@
 º1---
 import fs from 'fs';
 import path from 'path';
+import { getTourGalleryImageUrl, getImageUrl } from '../utils/cloudinary.js';
 
 interface Props {
   tourSlug: string;
@@ -17,7 +18,13 @@ try {
   if (fs.existsSync(galleryFilePath)) {
     const galleryData = JSON.parse(fs.readFileSync(galleryFilePath, 'utf-8'));
     images = galleryData.map((img: any) => ({
-      url: `/assets/images/tours/${tourSlug}/${img.filename}`,
+      url: getImageUrl(tourSlug, img.filename, {
+        width: 800,
+        height: 600,
+        crop: 'fill',
+        quality: 'auto:good',
+        format: 'auto'
+      }),
       photographer: img.photographer,
       photographerUrl: img.photographerUrl,
       alt: img.alt || `${tourName} - ${img.filename}`,

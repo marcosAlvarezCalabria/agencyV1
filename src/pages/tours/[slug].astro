@@ -2,6 +2,7 @@
 // Página dinámica de tour individual
 import Baselayout from '../../layouts/Baselayout.astro';
 import TourGallerySlider from '../../components/TourGallerySlider.astro';
+import { getImageUrl } from '../../utils/cloudinary.js';
 
 export async function getStaticPaths() {
   const tours = (await import('../../data/tours.en.json')).default;
@@ -15,6 +16,17 @@ const tour = tours.find(t => t.slug === slug);
 if (!tour) {
   throw new Error('Tour not found');
 }
+
+// Get Cloudinary image URL for main tour image
+const imagePath = tour.image.replace('/assets/images/tours/', '');
+const [tourSlug, imageName] = imagePath.split('/');
+const cloudinaryImageUrl = getImageUrl(tourSlug, imageName, {
+  width: 800,
+  height: 600,
+  crop: 'fill',
+  quality: 'auto:best',
+  format: 'auto'
+});
 
 // SEO y lang dinámico para el layout
 // Variables auxiliares (NO Astro.props)
@@ -80,12 +92,12 @@ const seo = {
     <section class="container mx-auto px-4 py-8">
       <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
         <!-- Imagen del tour -->
-        <img 
-          src={tour.image} 
-          alt={tour.name} 
-          class="w-full md:w-80 rounded-xl shadow-lg border-2 bg-white" 
-          style="border-color: var(--primary-500);" 
-          loading="lazy" 
+        <img
+          src={cloudinaryImageUrl}
+          alt={tour.name}
+          class="w-full md:w-80 rounded-xl shadow-lg border-2 bg-white"
+          style="border-color: var(--primary-500);"
+          loading="lazy"
         />
         
         <!-- Contenido del tour -->

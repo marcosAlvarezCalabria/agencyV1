@@ -3,6 +3,7 @@ import Baselayout from '../../../layouts/Baselayout.astro';
 import TourGallerySlider from '../../../components/TourGallerySlider.astro';
 import toursData from '../../../data/tours.es.json';
 import { useTranslations } from '../../../i18n/utils.js';
+import { getImageUrl } from '../../../utils/cloudinary.js';
 
 export async function getStaticPaths() {
   return toursData.map((tour) => ({
@@ -13,6 +14,17 @@ export async function getStaticPaths() {
 
 const { tour } = Astro.props;
 const t = useTranslations('es');
+
+// Get Cloudinary image URL for main tour image
+const imagePath = tour.image.replace('/assets/images/tours/', '');
+const [tourSlug, imageName] = imagePath.split('/');
+const cloudinaryImageUrl = getImageUrl(tourSlug, imageName, {
+  width: 1920,
+  height: 1080,
+  crop: 'fill',
+  quality: 'auto:best',
+  format: 'auto'
+});
 
 const layoutProps = {
   lang: 'es',
@@ -95,7 +107,7 @@ const {
   <main class="min-h-screen bg-white">
     <!-- Hero Section -->
     <section class="hero-parallax-section relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-      <img src={image} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" />
+      <img src={cloudinaryImageUrl} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
         <div class="max-w-7xl mx-auto">
