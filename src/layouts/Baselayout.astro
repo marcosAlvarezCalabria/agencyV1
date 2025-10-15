@@ -9,6 +9,9 @@ import { useTranslations } from "../i18n/utils.js";
 // Recibe lang y seo como props desde la página
 const { lang = 'es', seo = {} } = Astro.props;
 const t = useTranslations(lang);
+
+// Google Analytics ID from environment variable
+const GA_ID = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 ---
 
 <html lang={lang}>
@@ -69,6 +72,23 @@ const t = useTranslations(lang);
 
     <!-- Structured Data (Schema.org) -->
     <StructuredData type="organization" data={seo.structuredData || {}} />
+
+    <!-- Google Analytics 4 -->
+    {GA_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', GA_ID, {
+            page_path: window.location.pathname,
+            anonymize_ip: true,
+            cookie_flags: 'SameSite=None;Secure'
+          });
+        </script>
+      </>
+    )}
   </head>
   <body style="background-color: white; color: var(--text-primary);">
     <Header lang={lang} t={t} />
