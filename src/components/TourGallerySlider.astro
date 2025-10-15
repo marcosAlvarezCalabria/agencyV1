@@ -96,7 +96,7 @@ if (images.length === 0) {
     </div>
 
     <!-- Miniaturas -->
-    <div class="swiper gallery-thumbs">
+    <div class={`swiper gallery-thumbs ${images.length < 7 ? 'thumbs-centered' : ''}`}>
       <div class="swiper-wrapper">
         {images.map((image) => (
           <div class="swiper-slide">
@@ -130,6 +130,7 @@ if (images.length === 0) {
     slidesPerView: 4,
     freeMode: true,
     watchSlidesProgress: true,
+    loop: true,
     breakpoints: {
       640: {
         slidesPerView: 5,
@@ -160,7 +161,7 @@ if (images.length === 0) {
     thumbs: {
       swiper: thumbsSwiper,
     },
-    loop: false,
+    loop: true,
   });
 
   // Ocultar skeleton cuando las imágenes carguen
@@ -212,6 +213,11 @@ if (images.length === 0) {
     opacity: 1;
     ring-width: 2px;
     --tw-ring-color: var(--primary-500);
+  }
+
+  /* Centrar miniaturas cuando hay menos de 7 imágenes */
+  .thumbs-centered .swiper-wrapper {
+    justify-content: center;
   }
 
   .swiper-button-next,
