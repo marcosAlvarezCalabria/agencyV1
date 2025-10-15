@@ -2,8 +2,16 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+
+console.log("🔍 Environment check (Netlify build):");
+console.log("PUBLIC_CLOUDINARY_CLOUD_NAME =", process.env.PUBLIC_CLOUDINARY_CLOUD_NAME);
+console.log("CLOUDINARY_API_KEY =", process.env.CLOUDINARY_API_KEY ? "[secure]" : "❌ missing");
+console.log("CLOUDINARY_API_SECRET =", process.env.CLOUDINARY_API_SECRET ? "[secure]" : "❌ missing");
+// ================================================
+
 // https://astro.build/config
 export default defineConfig({
+  
   vite: {
     plugins: [tailwindcss()],
     build: {
