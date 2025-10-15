@@ -28,22 +28,47 @@ if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !pr
 }
 
 const toursDir = path.resolve(__dirname, '../public/assets/images/tours');
+const videosDir = path.resolve(__dirname, '../public/assets/videos');
 
 // Function to upload a single image
 async function uploadImage(filePath, folder) {
   try {
     const result = await cloudinary.uploader.upload(filePath, {
-      folder: `agency-cusco/${folder}`,
+      folder: `AGENCY-V1/${folder}`,
       use_filename: true,
       unique_filename: false,
       overwrite: true,
       quality: 'auto:best',
       fetch_format: 'auto'
     });
-    console.log(`✅ Uploaded: ${path.basename(filePath)} -> ${result.secure_url}`);
+    console.log(`✅ Uploaded image: ${path.basename(filePath)} -> ${result.secure_url}`);
     return result;
   } catch (error) {
     console.error(`❌ Error uploading ${filePath}:`, error.message);
+    return null;
+  }
+}
+
+// Function to upload a single video
+async function uploadVideo(filePath, folder) {
+  try {
+    const result = await cloudinary.uploader.upload(filePath, {
+      resource_type: 'video',
+      folder: `AGENCY-V1/${folder}`,
+      use_filename: true,
+      unique_filename: false,
+      overwrite: true,
+      quality: 'auto:best',
+      // Video-specific optimizations
+      transformation: [
+        { quality: 'auto:best' },
+        { fetch_format: 'auto' }
+      ]
+    });
+    console.log(`✅ Uploaded video: ${path.basename(filePath)} -> ${result.secure_url}`);
+    return result;
+  } catch (error) {
+    console.error(`❌ Error uploading video ${filePath}:`, error.message);
     return null;
   }
 }
@@ -72,29 +97,68 @@ function getImageFiles(dir) {
   return images;
 }
 
+// Function to get all video files
+function getVideoFiles(dir) {
+  const videos = [];
+
+  if (!fs.existsSync(dir)) {
+    return videos;
+  }
+
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    if (/\.(mp4|mov|avi|webm|mkv)$/i.test(file)) {
+      videos.push({
+        filePath: path.join(dir, file),
+        fileName: file
+      });
+    }
+  }
+
+  return videos;
+}
+
 // Main upload function
-async function uploadAllImages() {
+async function uploadAll() {
   console.log('🚀 Starting upload to Cloudinary...\n');
 
+  const results = {
+    images: { success: [], failed: [] },
+    videos: { success: [], failed: [] }
+  };
+
+  // Upload images
   const images = getImageFiles(toursDir);
   console.log(`📸 Found ${images.length} images to upload\n`);
 
-  const results = {
-    success: [],
-    failed: []
-  };
-
   for (const image of images) {
-    const result = await uploadImage(image.filePath, image.tourFolder);
+    const result = await uploadImage(image.filePath, `images/${image.tourFolder}`);
     if (result) {
-      results.success.push({
+      results.images.success.push({
         localPath: image.filePath,
         cloudinaryUrl: result.secure_url,
         tourFolder: image.tourFolder,
         fileName: image.fileName
       });
     } else {
-      results.failed.push(image.filePath);
+      results.images.failed.push(image.filePath);
+    }
+  }
+
+  // Upload videos
+  const videos = getVideoFiles(videosDir);
+  console.log(`\n🎥 Found ${videos.length} videos to upload\n`);
+
+  for (const video of videos) {
+    const result = await uploadVideo(video.filePath, 'videos');
+    if (result) {
+      results.videos.success.push({
+        localPath: video.filePath,
+        cloudinaryUrl: result.secure_url,
+        fileName: video.fileName
+      });
+    } else {
+      results.videos.failed.push(video.filePath);
     }
   }
 
@@ -103,13 +167,13 @@ async function uploadAllImages() {
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
 
   console.log('\n✨ Upload completed!');
-  console.log(`✅ Success: ${results.success.length}`);
-  console.log(`❌ Failed: ${results.failed.length}`);
+  console.log(`📸 Images - Success: ${results.images.success.length} | Failed: ${results.images.failed.length}`);
+  console.log(`🎥 Videos - Success: ${results.videos.success.length} | Failed: ${results.videos.failed.length}`);
   console.log(`\n📄 URLs saved to: cloudinary-urls.json`);
 }
 
 // Run the upload
-uploadAllImages().catch(error => {
+uploadAll().catch(error => {
   console.error('Fatal error:', error);
   process.exit(1);
 });

@@ -1,0 +1,341 @@
+{
+  "images": {
+    "success": [
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\aventura_montañas_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513240/AGENCY-V1/images/aventura_montanas_3d2n/zuky6ly99relkyt01kbj.jpg",
+        "tourFolder": "aventura_montanas_3d2n",
+        "fileName": "aventura_montañas_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\laguna_humantay_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513242/AGENCY-V1/images/aventura_montanas_3d2n/laguna_humantay_card.jpg",
+        "tourFolder": "aventura_montanas_3d2n",
+        "fileName": "laguna_humantay_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\Puente_Inca_Q’eswachaka_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513243/AGENCY-V1/images/aventura_montanas_3d2n/Puente_Inca_Q_eswachaka_card.jpg",
+        "tourFolder": "aventura_montanas_3d2n",
+        "fileName": "Puente_Inca_Q’eswachaka_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\waqrapukara_card.jpeg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513244/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
+        "tourFolder": "aventura_montanas_3d2n",
+        "fileName": "waqrapukara_card.jpeg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\aventura_montanas_3d2n\\waqrapukara_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513245/AGENCY-V1/images/aventura_montanas_3d2n/waqrapukara_card.jpg",
+        "tourFolder": "aventura_montanas_3d2n",
+        "fileName": "waqrapukara_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\adrian-dascal-NDVI15vYJKI-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513247/AGENCY-V1/images/city-tour-cusco/adrian-dascal-NDVI15vYJKI-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "adrian-dascal-NDVI15vYJKI-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\alexander-schimmeck-MraFXV3v7Ts-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513249/AGENCY-V1/images/city-tour-cusco/alexander-schimmeck-MraFXV3v7Ts-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "alexander-schimmeck-MraFXV3v7Ts-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\andy-salazar-wbk1_A2vddQ-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513250/AGENCY-V1/images/city-tour-cusco/andy-salazar-wbk1_A2vddQ-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "andy-salazar-wbk1_A2vddQ-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\deb-dowd-kBRjkENt2GE-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513252/AGENCY-V1/images/city-tour-cusco/deb-dowd-kBRjkENt2GE-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "deb-dowd-kBRjkENt2GE-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\felipe-mendoza-TsdB-pTeFv8-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513253/AGENCY-V1/images/city-tour-cusco/felipe-mendoza-TsdB-pTeFv8-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "felipe-mendoza-TsdB-pTeFv8-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513255/AGENCY-V1/images/city-tour-cusco/isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "isaac-clinton-suca-fuentes-EQ8eVO1GnCM-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513256/AGENCY-V1/images/city-tour-cusco/isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "isaac-clinton-suca-fuentes-_jw2LuhPiSY-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\kieran-proctor-MmqS-XUsfTY-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513258/AGENCY-V1/images/city-tour-cusco/kieran-proctor-MmqS-XUsfTY-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "kieran-proctor-MmqS-XUsfTY-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\michael-baron-YQSXw2YVqyU-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513259/AGENCY-V1/images/city-tour-cusco/michael-baron-YQSXw2YVqyU-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "michael-baron-YQSXw2YVqyU-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\city-tour-cusco\\ruben-hanssen-j2RL1N9WRTE-unsplash.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513261/AGENCY-V1/images/city-tour-cusco/ruben-hanssen-j2RL1N9WRTE-unsplash.jpg",
+        "tourFolder": "city-tour-cusco",
+        "fileName": "ruben-hanssen-j2RL1N9WRTE-unsplash.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\full_adrenalina_2d1n\\full_adrenalina_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513262/AGENCY-V1/images/full_adrenalina_2d1n/full_adrenalina_card.jpg",
+        "tourFolder": "full_adrenalina_2d1n",
+        "fileName": "full_adrenalina_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_1.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513263/AGENCY-V1/images/laguna_humantay/laguna_humantay_1.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_1.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_2.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513265/AGENCY-V1/images/laguna_humantay/laguna_humantay_2.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_2.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_3.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513268/AGENCY-V1/images/laguna_humantay/laguna_humantay_3.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_3.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_4.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513269/AGENCY-V1/images/laguna_humantay/laguna_humantay_4.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_4.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_5.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513272/AGENCY-V1/images/laguna_humantay/laguna_humantay_5.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_5.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_6.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513274/AGENCY-V1/images/laguna_humantay/laguna_humantay_6.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_6.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\laguna_humantay\\laguna_humantay_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513276/AGENCY-V1/images/laguna_humantay/laguna_humantay_card.jpg",
+        "tourFolder": "laguna_humantay",
+        "fileName": "laguna_humantay_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\machu_picchu_valle_sagrado_2d1n\\machupichu_valle_sagrado_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513277/AGENCY-V1/images/machu_picchu_valle_sagrado_2d1n/machupichu_valle_sagrado_card.jpg",
+        "tourFolder": "machu_picchu_valle_sagrado_2d1n",
+        "fileName": "machupichu_valle_sagrado_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_1.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513279/AGENCY-V1/images/montana_de_colores/montana_de_colores_1.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_1.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_2.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513281/AGENCY-V1/images/montana_de_colores/montana_de_colores_2.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_2.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_3.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513283/AGENCY-V1/images/montana_de_colores/montana_de_colores_3.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_3.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_4.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513285/AGENCY-V1/images/montana_de_colores/montana_de_colores_4.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_4.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_5.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513287/AGENCY-V1/images/montana_de_colores/montana_de_colores_5.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_5.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_6.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513289/AGENCY-V1/images/montana_de_colores/montana_de_colores_6.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_6.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montana_de_colores_7.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513291/AGENCY-V1/images/montana_de_colores/montana_de_colores_7.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montana_de_colores_7.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\montana_de_colores\\montaña_de_colores.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513294/AGENCY-V1/images/montana_de_colores/l8iqkwniuc6tkrpzyndd.jpg",
+        "tourFolder": "montana_de_colores",
+        "fileName": "montaña_de_colores.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\puente_inca_qeswachaka\\Puente_Inca_qeswachaka_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513295/AGENCY-V1/images/puente_inca_qeswachaka/Puente_Inca_qeswachaka_card.jpg",
+        "tourFolder": "puente_inca_qeswachaka",
+        "fileName": "Puente_Inca_qeswachaka_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_1.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513297/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_1.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_1.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_10.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513300/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_10.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_10.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_11.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513302/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_11.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_11.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_12.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513304/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_12.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_12.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_13.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513306/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_13.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_13.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_2.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513309/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_2.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_2.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_3.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513311/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_3.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_3.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_4.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513313/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_4.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_4.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_5.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513315/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_5.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_5.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_6.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513318/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_6.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_6.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_7.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513320/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_7.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_7.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_8.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513322/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_8.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_8.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_9.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513323/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_9.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_9.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\valle_sagrado_vip\\valle_sagrado_vip_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513325/AGENCY-V1/images/valle_sagrado_vip/valle_sagrado_vip_card.jpg",
+        "tourFolder": "valle_sagrado_vip",
+        "fileName": "valle_sagrado_vip_card.webp"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_1.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513327/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_1.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_1.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_2.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513329/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_2.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_2.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_3.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513331/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_3.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_3.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_4.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513333/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_4.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_4.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_5.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513336/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_5.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_5.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_1_dia_6.jpg",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513338/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_1_dia_6.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_1_dia_6.jpg"
+      },
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\images\\tours\\waqrapukara_1_dia\\waqrapukara_card.webp",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/image/upload/v1760513339/AGENCY-V1/images/waqrapukara_1_dia/waqrapukara_card.jpg",
+        "tourFolder": "waqrapukara_1_dia",
+        "fileName": "waqrapukara_card.webp"
+      }
+    ],
+    "failed": []
+  },
+  "videos": {
+    "success": [
+      {
+        "localPath": "C:\\Users\\Marcos\\Desktop\\Agencia Cusco v1\\agency-v1\\public\\assets\\videos\\hero-video-portada-2mb.mp4",
+        "cloudinaryUrl": "https://res.cloudinary.com/doxmikxlo/video/upload/v1760513341/AGENCY-V1/videos/hero-video-portada-2mb.mp4",
+        "fileName": "hero-video-portada-2mb.mp4"
+      }
+    ],
+    "failed": []
+  }
+}

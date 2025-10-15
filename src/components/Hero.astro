@@ -3,7 +3,10 @@ const { t, tours } = Astro.props;
 import ToursCarousel from '../components/ToursCarousel.astro';
 import TourCard from '../components/TourCard.astro';
 import AboutCard from '../components/AboutCard.astro';
+import { getVideoUrlWithFallback } from '../utils/cloudinary.js';
 
+// Get hero video URL from Cloudinary or fallback to local
+const heroVideoUrl = getVideoUrlWithFallback('hero-video-portada-2mb.mp4');
 ---
 
 <!-- Hero -->
@@ -65,7 +68,7 @@ import AboutCard from '../components/AboutCard.astro';
   <video
     id="hero-video"
     class="fixed inset-0 w-full h-screen object-cover z-0"
-    src="/assets/videos/hero-video-portada-2mb.mp4"
+    src={heroVideoUrl}
     preload="none"
     playsinline
     muted
