@@ -10,18 +10,23 @@ const __dirname = path.dirname(__filename);
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
+// Get Cloudinary credentials (support both PUBLIC_ and non-PUBLIC_ prefixes)
+const CLOUDINARY_CLOUD_NAME = process.env.PUBLIC_CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
+const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
+
 // Configure Cloudinary
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET
 });
 
 // Verify configuration
-if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET) {
   console.error('❌ Error: Cloudinary credentials not found in .env file');
   console.log('Please add the following to your .env file:');
-  console.log('CLOUDINARY_CLOUD_NAME="your_cloud_name"');
+  console.log('PUBLIC_CLOUDINARY_CLOUD_NAME="your_cloud_name"');
   console.log('CLOUDINARY_API_KEY="your_api_key"');
   console.log('CLOUDINARY_API_SECRET="your_api_secret"');
   process.exit(1);
