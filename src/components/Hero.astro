@@ -497,9 +497,19 @@ const heroVideoUrl = getVideoUrlWithFallback('hero-video-portada-2mb.mp4');
     // Animación de entrada y preloader
     if (heroVideo && preloader && heroTitle && heroSubtitle && heroButton) {
       let shown = false;
+
+      // Detectar si es móvil
+      const isMobile = window.innerWidth < 768;
+
       const showContent = () => {
         if (shown) return;
         shown = true;
+
+        // En móvil, adelantar el video 3 segundos para que aparezca la llama más rápido
+        if (isMobile) {
+          heroVideo.currentTime = 1;
+        }
+
         // Acelera el video durante 200ms
         heroVideo.playbackRate = 2.5;
         setTimeout(() => { heroVideo.playbackRate = 1; }, 200);
