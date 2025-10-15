@@ -65,7 +65,10 @@ export function getCloudinaryUrl(publicId, options = {}) {
  * @returns {string} The Cloudinary URL
  */
 export function getTourImageUrl(tourSlug, imageName, options = {}) {
-  const publicId = `AGENCY-V1/images/${tourSlug}/${imageName}`;
+  // Remove file extension from imageName, let Cloudinary handle it with format transformation
+  // This handles cases where local file is .webp but Cloudinary has .jpg
+  const imageNameWithoutExt = imageName.replace(/\.(jpg|jpeg|png|webp|gif)$/i, '');
+  const publicId = `AGENCY-V1/images/${tourSlug}/${imageNameWithoutExt}`;
   return getCloudinaryUrl(publicId, options);
 }
 

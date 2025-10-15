@@ -1,7 +1,9 @@
 ---
 import Baselayout from '../../../layouts/Baselayout.astro';
+import TourGallerySlider from '../../../components/TourGallerySlider.astro';
 import toursData from '../../../data/tours.en.json';
 import { useTranslations } from '../../../i18n/utils.js';
+import { getImageUrl } from '../../../utils/cloudinary.js';
 
 export async function getStaticPaths() {
   return toursData.map((tour) => ({
@@ -12,6 +14,17 @@ export async function getStaticPaths() {
 
 const { tour } = Astro.props;
 const t = useTranslations('en');
+
+// Get Cloudinary image URL for main tour image
+const imagePath = tour.image.replace('/assets/images/tours/', '');
+const [tourSlug, imageName] = imagePath.split('/');
+const cloudinaryImageUrl = getImageUrl(tourSlug, imageName, {
+  width: 1920,
+  height: 1080,
+  crop: 'fill',
+  quality: 'auto:best',
+  format: 'auto'
+});
 
 const layoutProps = {
   lang: 'en',
@@ -44,15 +57,58 @@ const {
 ---
 
 <Baselayout {...layoutProps}>
+  <!-- Navigation joystick (floating) -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
+    <!-- Scroll to top button -->
+    <button
+      id="scroll-to-top"
+      class="flex items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg opacity-0 pointer-events-none"
+      style="background: linear-gradient(135deg, #d2a530 0%, #a67c00 100%);"
+      title="Scroll to top"
+    >
+      <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+      </svg>
+    </button>
+
+    <!-- Back button -->
+    <a
+      href="/en/tours"
+      class="flex items-center justify-center w-9 h-9 rounded-full shadow-md transition-all duration-300 hover:scale-110 hover:shadow-lg group"
+      style="background: linear-gradient(135deg, #b64926 0%, #8a3619 100%);"
+      title="Back to tours"
+    >
+      <svg class="w-4 h-4 text-white transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    // Scroll to top functionality
+    const scrollBtn = document.getElementById('scroll-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn?.classList.remove('opacity-0', 'pointer-events-none');
+        scrollBtn?.classList.add('opacity-100');
+      } else {
+        scrollBtn?.classList.add('opacity-0', 'pointer-events-none');
+        scrollBtn?.classList.remove('opacity-100');
+      }
+    });
+
+    scrollBtn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+  </script>
+
   <main class="min-h-screen bg-white">
     <!-- Hero Section -->
-    <section class="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-      <img
-        src={image}
-        alt={name}
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+    <section class="hero-parallax-section relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+      <img src={cloudinaryImageUrl} alt={name} class="hero-parallax-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
         <div class="max-w-7xl mx-auto">
           <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{name}</h1>
@@ -80,12 +136,12 @@ const {
       </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-6 py-12 md:px-12">
+    <div class="max-w-7xl mx-auto px-6 pt-16 pb-8 md:px-12">
       <!-- Price & Booking Section -->
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
         <div class="md:col-span-2">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">Description</h2>
-          <p class="text-gray-700 text-lg leading-relaxed">{description}</p>
+          <p class="text-gray-700 text-lg leading-relaxed" set:html={description}></p>
         </div>
         <div class="bg-gray-50 rounded-2xl p-6 h-fit sticky top-6">
           <div class="text-center mb-6">
@@ -103,11 +159,20 @@ const {
           <p class="text-center text-gray-500 text-sm mt-4">Available: {days_available}</p>
         </div>
       </div>
+    </div>
 
+    <!-- Photo Gallery - Full Width -->
+    <div class="w-full mb-8 flex justify-center">
+      <div class="w-full max-w-7xl px-6 md:px-12">
+        <TourGallerySlider tourSlug={tour.slug} tourName={tour.name} />
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
       <!-- Tour Details Grid -->
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
         <!-- Highlights -->
-        <div class="md:col-span-2 space-y-12">
+        <div class="md:col-span-2 space-y-8">
           <!-- Places to Visit -->
           {places_to_visit && places_to_visit.length > 0 && (
             <section>
@@ -201,9 +266,9 @@ const {
               <h2 class="text-3xl font-bold text-gray-900 mb-6">What to Bring</h2>
               <div class="grid sm:grid-cols-3 gap-6">
                 {what_to_bring.documents && what_to_bring.documents.length > 0 && (
-                  <div class="bg-blue-50 rounded-xl p-5">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="rounded-xl p-5" style="background-color: #fef3e2;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--primary-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                       </svg>
                       Documents
@@ -214,9 +279,9 @@ const {
                   </div>
                 )}
                 {what_to_bring.clothing && what_to_bring.clothing.length > 0 && (
-                  <div class="bg-purple-50 rounded-xl p-5">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="rounded-xl p-5" style="background-color: #f5e6d3;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--earth-600);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
                       </svg>
                       Clothing
@@ -227,9 +292,9 @@ const {
                   </div>
                 )}
                 {what_to_bring.other_items && what_to_bring.other_items.length > 0 && (
-                  <div class="bg-orange-50 rounded-xl p-5">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="rounded-xl p-5" style="background-color: #e8d5c4;">
+                    <h4 class="font-bold mb-3 flex items-center gap-2" style="color: var(--earth-700);">
+                      <svg class="w-5 h-5" style="color: var(--earth-500);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                       </svg>
                       Others
@@ -312,14 +377,17 @@ const {
     </div>
 
     <!-- CTA Section -->
-    <section class="bg-gradient-to-r from-[#b64926] to-[#d2a530] py-16">
+    <section class="py-16" style="background: linear-gradient(135deg, #e8d5a8 0%, #f5e6d3 50%, #ead9b8 100%);">
       <div class="max-w-4xl mx-auto text-center px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready for adventure?</h2>
-        <p class="text-white/90 text-lg mb-8">Book now and live an unforgettable experience</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--earth-800);">Ready for adventure?</h2>
+        <p class="text-lg mb-8" style="color: var(--earth-700);">Book now and live an unforgettable experience</p>
         <a
           href="https://wa.me/51987654321?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(name)}%20tour"
           target="_blank"
-          class="inline-block bg-white text-[#b64926] font-bold py-4 px-10 rounded-xl hover:bg-gray-100 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+          class="inline-block font-bold py-4 px-10 rounded-xl transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+          style="background-color: var(--earth-700); color: white;"
+          onmouseover="this.style.backgroundColor = 'var(--earth-800)';"
+          onmouseout="this.style.backgroundColor = 'var(--earth-700)';"
         >
           Contact via WhatsApp
         </a>
