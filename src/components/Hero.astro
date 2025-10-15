@@ -114,7 +114,7 @@ const heroVideoUrl = getVideoUrlWithFallback('hero-video-portada-2mb.mp4');
     >
       {tours && tours.map((tour, index) => (
         <div data-aos="fade-up" data-aos-delay={index * 50}>
-          <TourCard tour={tour} lang="es" t={t} />
+          <TourCard tour={tour} lang="es" t={t} index={index} />
         </div>
       ))}
     </div>

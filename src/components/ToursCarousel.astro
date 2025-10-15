@@ -7,9 +7,9 @@ const { tours, lang, t } = Astro.props;
 <!-- Carousel principal -->
 <div class="swiper main-swiper mb-6 relative px-4"> <!-- Añadido px-4 para padding lateral -->
   <div class="swiper-wrapper pb-10"> <!-- Añadido pb-10 para dar espacio a la paginación -->
-    {tours && tours.map(tour => (
+    {tours && tours.map((tour, index) => (
       <div class="swiper-slide"> <!-- Removido p-2 para ancho completo -->
-        <TourCardCarousel tour={tour} lang={lang} t={t} />
+        <TourCardCarousel tour={tour} lang={lang} t={t} index={index} />
       </div>
     ))}
   </div>

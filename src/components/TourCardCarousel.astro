@@ -1,7 +1,7 @@
 
 ---
 import TourCard from './TourCard.astro';
-const { tour, t, lang = 'es' } = Astro.props;
+const { tour, t, lang = 'es', index = 0 } = Astro.props;
 ---
 
-{tour && <TourCard tour={tour} t={t} lang={lang} />}
+{tour && <TourCard tour={tour} t={t} lang={lang} index={index} />}

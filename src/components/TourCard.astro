@@ -1,7 +1,7 @@
 ---
 import { getTourCardImageUrl, getImageUrl } from '../utils/cloudinary.js';
 
-const { tour, t, lang = 'es' } = Astro.props;
+const { tour, t, lang = 'es', index = 0 } = Astro.props;
 if (!tour) {
   return null;
 }
@@ -27,13 +27,18 @@ const imagePath = image.replace('/assets/images/tours/', '');
 const [tourSlug, imageName] = imagePath.split('/');
 
 // Get optimized Cloudinary URL or fallback to local
+// Para las primeras 3 imágenes usamos mayor calidad y carga prioritaria
 const cloudinaryImageUrl = getImageUrl(tourSlug, imageName, {
   width: 400,
   height: 300,
   crop: 'fill',
-  quality: 'auto:good',
+  quality: index < 3 ? 'auto:best' : 'auto:good',
   format: 'auto'
 });
+
+// Determinar estrategia de carga según la posición
+const loadingStrategy = index < 3 ? 'eager' : 'lazy';
+const fetchPriority = index < 2 ? 'high' : 'auto';
 
 const whatsappLink = `https://wa.me/51984302905?text=Hola, me gustaría reservar el tour: ${name}`;
 const cardId = `desktop-card-${name.replace(/\s+/g, '').toLowerCase()}`;
@@ -76,7 +81,8 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
       width="400"
       height="300"
       class="tour-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 z-10"
-      loading="lazy"
+      loading={loadingStrategy}
+      fetchpriority={fetchPriority}
       decoding="async"
     />
 
