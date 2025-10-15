@@ -13,7 +13,10 @@ export default defineConfig({
         compress: {
           drop_console: true, // Remover console.logs en producción
           drop_debugger: true,
+          passes: 2, // Dos pasadas de compresión
+          unsafe: true, // Optimizaciones agresivas
         },
+        mangle: true, // Ofuscar nombres de variables
       },
       // Optimizar chunks
       rollupOptions: {
@@ -21,8 +24,14 @@ export default defineConfig({
           manualChunks: {
             'swiper': ['swiper'],
           },
+          // Reducir overhead de chunks
+          chunkFileNames: '_astro/[name].[hash].js',
+          assetFileNames: '_astro/[name].[hash][extname]',
         },
       },
+      // Reducir límite de chunk warnings
+      chunkSizeWarningLimit: 500,
+      cssCodeSplit: true,
     },
   },
   build: {

@@ -56,8 +56,11 @@ const recentBookings = Math.floor(Math.random() * 15) + 5;
     <img
       src={image}
       alt={name}
+      width="400"
+      height="300"
       class="tour-image w-full h-full object-cover transition-all duration-500 group-hover:scale-110 absolute inset-0 z-10"
       loading="lazy"
+      decoding="async"
     />
     <!-- Overlay sutil -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20"></div>

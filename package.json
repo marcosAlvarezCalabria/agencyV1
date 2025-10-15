@@ -10,11 +10,14 @@
     "gallery:generate": "node scripts/generate-gallery.js",
     "gallery:all": "node scripts/generate-gallery.js --all",
     "optimize:images": "node scripts/optimize-images.mjs",
-    "optimize:replace": "node scripts/replace-optimized.mjs"
+    "optimize:replace": "node scripts/replace-optimized.mjs",
+    "cloudinary:upload": "node scripts/upload-to-cloudinary.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.14.1",
+    "cloudinary": "^2.7.0",
+    "dotenv": "^17.2.3",
     "swiper": "^11.2.10"
   },
   "devDependencies": {
